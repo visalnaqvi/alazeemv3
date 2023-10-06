@@ -1,0 +1,42 @@
+.wrapper{
+    background-image: linear-gradient(90deg,#1f88ff,30%,#003b7f);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    width: 98%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.contactBoxSection{
+    width: 70%;
+}
+
+.contactBoxSection:last-child{
+    width: 30%;
+    text-align: center;
+}
+
+.contactBoxSection button{
+    background-color: #fff;
+    padding: 15px 30px;
+    font-size: large;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #003b7f;
+    width: 60%;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.contactBoxSection button:hover{
+    background-color: #003b7f;
+    color: #fff;
+}
+
+.contactBoxSection:first-child button{
+    width: auto;
+    margin-top: 20px;
+}

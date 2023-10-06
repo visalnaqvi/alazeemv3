@@ -1,5 +1,15 @@
-import '@/styles/globals.css'
+import NavBar from "@/components/navbar/navbar"
+import "../styles/globals.css"
+import ContactBox from "@/components/contactBox/contactBox"
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+    <NavBar />
+    <main>
+      <Component {...pageProps} />
+    </main>
+    <ContactBox />
+    </>
+  )
 }

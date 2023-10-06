@@ -1,0 +1,14 @@
+.wrapper{
+    width: 80%;
+    background-color: #f8f8f8;
+    margin: 30px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.imageCardSection{
+    width: 50%;
+}
+
+.imageCardSection.content{
+    padding: 30px;
+}

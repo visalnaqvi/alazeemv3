@@ -1,0 +1,15 @@
+.wrapper{
+    width: 80%;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 15px 15px 20px #00000050;
+    margin: 20px auto;
+}
+
+
+.wrapper iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}

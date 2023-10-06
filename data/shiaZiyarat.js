@@ -1,0 +1,81 @@
+const data = [[
+    {
+        title:"BAGHDAD - AL ALAWE RAILWAY YARD 5 KM",
+        items:["1. SHAIKH BEHLOL DANA (R.A.)"]
+    },
+    {
+        title:"BAGHDAD - KAZMAIN - 10 KM",
+        items:["2. SAYYED IMAM MOOSA KAZIM (R.A.) (7TH IMAM)",
+        "3. SAYYED IMAM MOHAMMAD TAQI (9TH IMAM)"]
+    },
+    {
+        title:"BAGHDAD 60 KM FROM ASTANA",
+        items:["4. HAZRAT SALMAN FARSI (R.A.) SALMAN PARK",
+        "5. HUZAIFA BIN YAMAN (R.A.)",
+        "6. TAHIR BIN MOHAMMAD AL BAQIR (R.A.)",
+        "7. ABDUALLAH BIN JABIR AL ANSARI (R.A.)",
+    "8. DARYA -E- DAJLA"]
+    },
+    {
+        title:"BAGHDAD - AL MIDAN 5KM FROM ASTANA",
+        items:["9. IMAM AHMED BIN HAMBAL (R.A.)"]
+    },
+    {
+        title:"NAJAF CITY - 220 KM FROM BAGDAD",
+        items:["10. HAZRAT ALI (R.A.)",
+        "11. PROPHET SALEH (R.A.)",
+        "12. PROPHET HOOD (R.A.)",
+        "13. WADI-US- SALAAM (World Largest graveyard 14sq KM) ( MANY PROPHETS AND ISLAMIC SCHOLARS RESTING PLACE)"]
+    },
+    {
+        title:"AULAD-E- MUSLIM",
+        items:["14. SAYED IBRAHIM BIN MUSLIM BIN AQEEL BIN ABU TALIB (R.A.)",
+        "15. SAYED MOHAMMAD BIN MUSLIM BIN AQEEL (R.A.)",
+        "16. MOHAMMAD BIN AQEEL",
+        "17. PROPHET AYUB (A.S.) AND HIS WIFE RAHIMA",
+    "18. SHIFA KA KUWA",
+    "19. RADDE SHAMS",
+    "20. JANAB-E- AUN AND JANAB-E- MOHAMMAD",
+    "21. JANAB-E-HOOR (R.A.)",
+    "22. BIRTH PLACE OF PROPHET IBRAHIM (A.S.)",
+"23. WOH MUQAM JAHAN PAR NABI IBRAHIM (A.S.) KO AAG MAIN JALANE KE LIYA LAKDIYA JAMA KI GAYI THI",]
+    }
+],
+[
+    {
+        title:"KUFA CITY-180KM SOUTH OF BAGHDAD",
+        items:["24. MASJID-E-KUFA",
+        "25. MIMBER (JIS MIMBER PAR HAZRAT ALI (R.A.) KAY UPAR HAMLA HUA THA)",
+        "26. HAZRAT IMAM BIN MUSLIM BIN AQEEL (R.A.)",
+        "27. JANAB E HANI BIN URWA (R.A.)",
+    "28. QABAR MUKHTAR SAQAFI",
+    "29. TOOFAN-E-NOOH JAHAN SAY SHRU HUA (KUWA)",
+    "30. MUSALLAH-E-NABI ADAM (A.S.)",
+    "31. MUSALLAH HAZRAT JIBRAIEL (A.S.)",
+    "32. HOUSE OF HAZRAT ALI (R.A.)",
+"33. WELL OF HAZRAT ALI(R.A.)",
+"34. JANAB-E-MISAMME TAMMAR(R.A.)",
+"35. SAYYEDA KHATIJA (R.A.) (DAUGHTER OF HAZRAT ALI)"]
+    },
+    {
+        title:"KARBALAI MUQADDAS-110 KM SOUTH OF BAGHDAD",
+        items:["36. MAIDAN-E-KARBALA",
+        "37. NEHAR-E-FARAT",
+        "38. ROZA-E-IMAM HUSSAIN (R.A.)",
+        "39. ROZA-E-ABBAS ALAMBARDAR(R.A.)",
+    "40. HAZRAT HUSSAIN(R.A.) (SHAHADAT KI JAGAH)",
+    "41. ALI AKBAR(R.A.)",
+    "42. ALI ASGHAR (R.A.)",
+    "43. MUKAM-E-BAZU-E-ABBAS ALAMBARDAR",
+    "44. SHUHADA-E- KARBALA KI MAZAR",
+"45. ZAINAB (R.A.) TEKRI"]
+    },
+    {
+        title:"SAMARRAH- THIS ZIYARAT IS EXTRA PAYABLE NOT INCLUDED IN PACKAGE 140KM FROM BAGDAD",
+        items:["46. IMAM ALI NAQI (R.A.) (10th IMAM)",
+        "47. IMAM HASAN ASKARI (R.A.) (11th IMAM)"]
+    },
+]
+]
+
+export default data;
