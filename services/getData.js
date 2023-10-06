@@ -19,7 +19,7 @@ export const getUmrahPackages =  async ()=>{
 }
 
 export const getIraqPackages =  async (type)=>{
-    const q = query(iraqPackagesCollection, where("type","==",type));
+    const q = type=="all" ? query(iraqPackagesCollection) : query(iraqPackagesCollection, where("type","==",type));
 
     const iraqSnapshot = await getDocs(q);
 
@@ -46,7 +46,7 @@ export const getPageTitle =  async (id)=>{
 }
 
 export const getHolidayPackages = async (city)=>{
-    const q = query(holidayPackagesCollection, where("city","==",city));
+    const q = city=="all" ? query(holidayPackagesCollection) : query(holidayPackagesCollection, where("city","==",city));
 
     const holidaySnapshot = await getDocs(q);
 
@@ -59,6 +59,19 @@ export const getHolidayPackages = async (city)=>{
 
     return holidayPackages;
 
+}
+
+export const getAdminPackages = async (packageid) =>{
+    switch(packageid){
+        case "hajjUmrah": return await getUmrahPackages();
+                      
+        case "iraq" : return await getIraqPackages("all");
+                        
+        case "holiday" : return await getHolidayPackages("all");
+
+        default : return [];
+                     
+    }
 }
 
 

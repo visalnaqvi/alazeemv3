@@ -15,6 +15,7 @@ main{
     --light-green:#00c981;
     --dark-green:#00665a;
     --primary-blue:#2192ff;
+    --primary-blue-light:#e1f2ff;
 }
 
 *{
@@ -96,11 +97,22 @@ ul{
     border-radius: 5px;
     margin-top: 10px;
     box-shadow: 10px 10px 20px #00000050;
+    cursor: pointer;
 }
 
 .primary-btn.blue{
     background-color: var(--primary-blue);
     border-color:var(--primary-blue) ;
+}
+
+.primary-btn.red{
+    background-color: crimson;
+    border-color:crimson ;
+}
+
+.primary-btn.yellow{
+    background-color:var(--dark-green);
+    border-color:var(--dark-green);
 }
 
 .boldHeading{
