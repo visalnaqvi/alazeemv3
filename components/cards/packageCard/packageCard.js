@@ -1,13 +1,12 @@
-import { useEffect } from "react";
 import IconList from "../../lists/iconList";
 import styles from "./packageCard.module.css"
 
 
-const PackageCard = ({tour , type}) => {
+const PackageCard = ({tour , type , subType}) => {
 
  
     return (
-        <div className={`${styles.card}  ${styles[type]}`}>
+        <div className={`${styles.card}  ${styles[type]} ${styles[subType]}`}>
             <div className={styles.content}>
                 <h2>{tour.title}</h2>
                 <h3 className={styles.callToActionYellow}>Departure: {tour.date}</h3>

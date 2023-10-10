@@ -4,6 +4,7 @@ import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import CarouselComp from "@/components/carousel/carousel.js"
 import IconList from "@/components/lists/iconList.js"
 import ContactBox from "@/components/contactBox/contactBox.js"
+import Toast from "@/components/notification/toast.js"
 
 
 const HajjUmrah = ()=>{
@@ -11,15 +12,20 @@ const HajjUmrah = ()=>{
     const [umrahPackages , setUmrahPackages] = useState([])
     const [iraqPackages , setIraqPackages] = useState([])
     const [pageTitle , setPageTitle] = useState({})
-
+    const [toastMsg , setToastMsg] = useState({msg:""})
     useEffect(()=>{
        fetchData();
     },[])
 
     const fetchData = async ()=>{
-        setUmrahPackages(await getUmrahPackages());
+        try{setUmrahPackages(await getUmrahPackages());
         setIraqPackages(await getIraqPackages("sunni"));
-        setPageTitle(await getPageTitle("hajjUmrah"))
+        setPageTitle(await getPageTitle("hajjUmrah"))}
+        catch (err){
+            if(err){
+                setToastMsg({status:"warning" , msg:"Something went wrong cannot get package"})
+            }
+        }
     }
 
     const images = [
@@ -35,15 +41,20 @@ const HajjUmrah = ()=>{
           mobile:"/hajjUmrahSlider/3.webp",
           desktop:"/sliders/hajjUmrahSlider/3.webp"
         }]
+
+        const onClose = ()=>{
+            setToastMsg({msg:""})
+        }
     return (
         <div>
+            {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             <CarouselComp width={900} height={500} images={images} pageTitle={pageTitle} />
             <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
             <div className="body-wrapper">
             {
                 umrahPackages.map((pkg,i)=>(
-                    <PackageCard type="hajjUmrahCard" tour={pkg} key={i} />
+                    <PackageCard type="hajjUmrah" tour={pkg} key={i} />
                 ))
             }
             </div>
@@ -51,7 +62,7 @@ const HajjUmrah = ()=>{
             <div className="body-wrapper">
             {
                 iraqPackages.map((pkg,i)=>(
-                    <PackageCard type="iraqCard" tour={pkg} key={i} />
+                    <PackageCard type="iraq" subType="sunni" tour={pkg} key={i} />
                 ))
             }
             </div>

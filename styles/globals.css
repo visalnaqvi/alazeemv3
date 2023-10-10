@@ -28,6 +28,11 @@ ul{
     list-style-type: none;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .body-wrapper{
     display: flex;
     justify-content: center;
@@ -51,6 +56,10 @@ ul{
 
 .body-wrapper.justify-start{
     justify-content: flex-start;
+}
+
+.body-wrapper.justify-between{
+    justify-content: space-between;
 }
 
 .margin{
@@ -157,4 +166,31 @@ ul{
     color: #fff;
     padding: 1px 0;
     border-radius: 6px;
+}
+
+.delete-icon , .check-icon{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbdbdb;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 100%;
+    color: crimson;
+}
+
+.check-icon{
+    background-color: var(--light-green);
+    color: #fff;
+}
+
+.delete-icon:hover{
+    background-color: crimson;
+    color: #fff;
+}
+
+.check-icon:hover{
+    background-color: var(--dark-green);
 }

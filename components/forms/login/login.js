@@ -11,9 +11,6 @@ const LoginComponent = () =>{
 
     const onSubmit = async (e)=>{
         e.preventDefault();
-        console.log("submit")
-        console.log(userId);
-        console.log(password);
         const token = await checkUser(userId,password)
         if(localStorage.getItem("token")==token){
             router.push("/admin-panel")

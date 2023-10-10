@@ -1,25 +1,33 @@
 import db from "../config/firebase.js"
 import { collection, getDocs, orderBy , query, getDoc , doc, where } from "firebase/firestore"; 
+import { umrahPackagesCollection , iraqPackagesCollection , holidayPackagesCollection } from "@/config/collections.js";
+import { getAllVendorsList } from "./vendor.js";
+import { updatePackageData } from "./updateData.js";
 
-const umrahPackagesCollection = collection(db, "umrahPackages_v2")
-const iraqPackagesCollection = collection(db, "iraqPackages_v2")
-const holidayPackagesCollection = collection(db, "holiday_packages_v2")
 export const getUmrahPackages =  async ()=>{
-    const q = query(umrahPackagesCollection, orderBy("order"));
+    try{
+        const q = query(umrahPackagesCollection, orderBy("order"));
 
-    const umrahSnapshot = await getDocs(q);
-
-    let umrahPackages = []
-
-    umrahSnapshot.forEach(doc=>{
-        umrahPackages.push(doc.data());
-    })
-
-    return umrahPackages;
+        const umrahSnapshot = await getDocs(q);
+    
+        let umrahPackages = []
+        
+        umrahSnapshot.forEach(doc=>{
+            umrahPackages.push(doc.data());
+        })
+    
+    
+        return umrahPackages;
+    }catch (err){
+        if(err){
+            return {status:"warning" , msg:"Something went wrong cannot get package"}
+        }
+    }
+   
 }
 
 export const getIraqPackages =  async (type)=>{
-    const q = type=="all" ? query(iraqPackagesCollection) : query(iraqPackagesCollection, where("type","==",type));
+    try{const q = type=="all" ? query(iraqPackagesCollection , orderBy("order")) : query(iraqPackagesCollection, where("type","==",type));
 
     const iraqSnapshot = await getDocs(q);
 
@@ -30,7 +38,12 @@ export const getIraqPackages =  async (type)=>{
     })
 
 
-    return iraqPackages;
+    return iraqPackages;}
+    catch (err){
+        if(err){
+            return {status:"warning" , msg:"Something went wrong cannot get package"}
+        }
+    }
 }
 
 
@@ -46,7 +59,7 @@ export const getPageTitle =  async (id)=>{
 }
 
 export const getHolidayPackages = async (city)=>{
-    const q = city=="all" ? query(holidayPackagesCollection) : query(holidayPackagesCollection, where("city","==",city));
+    try{const q = city=="all" ? query(holidayPackagesCollection) : query(holidayPackagesCollection, where("city","==",city));
 
     const holidaySnapshot = await getDocs(q);
 
@@ -57,7 +70,11 @@ export const getHolidayPackages = async (city)=>{
     })
 
 
-    return holidayPackages;
+    return holidayPackages;}catch (err){
+        if(err){
+            return {status:"warning" , msg:"Something went wrong cannot get package"}
+        }
+    }
 
 }
 
@@ -69,9 +86,34 @@ export const getAdminPackages = async (packageid) =>{
                         
         case "holiday" : return await getHolidayPackages("all");
 
+        case "vendors" : return await getAllVendorsList();
+
         default : return [];
                      
     }
 }
 
+export const getPackageWithId = async (collection , packageId)=>{
+    try{let collectionRef;
+    switch(collection){
+        case "hajjUmrah": collectionRef = "umrahPackages_v2";
+                                    break;
+        case "iraq" : collectionRef = "iraqPackages_v2";
+                                    break;
+        case "holiday" : collectionRef = "holiday_packages_v2";
+                                    break;
+        default : return;
+    }
 
+    const docRef = doc(db,collectionRef,packageId)
+    const document = await getDoc(docRef)
+    if(document.exists()){
+        return document.data();
+    }else{
+        return {};
+    }}catch (err){
+        if(err){
+            return {status:"warning" , msg:"Something went wrong cannot get package"}
+        }
+    }
+}

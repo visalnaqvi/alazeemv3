@@ -4,6 +4,7 @@ import styles from "./navBar.module.css"
 import {ImFacebook2} from "react-icons/im"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
+import Link from "next/link"
 const NavBar = ()=>{
 
     const [menuState , setMenuState] = useState({
@@ -11,12 +12,20 @@ const NavBar = ()=>{
         hajjUmrah:false,
         iraqZiyarat:false,
     })
-    const router = useRouter()    
+
+    const router = useRouter()  
+    const [packageid , setPackageId] = useState("")  
+    const [isNew , setIsNew] = useState(true)  
 
     useEffect(()=>{
-        const path = router.pathname;
-
-        switch(path){
+        let {packageid , singlePackageId} = router.query;
+      
+            setPackageId(packageid)
+       
+        const {pathname } = router;
+        console.log("single package id" , singlePackageId)
+        setIsNew(singlePackageId=="new")
+        switch(pathname){
             case "/": setMenuState({home:true , hajjUmrah:false , iraqZiyarat:false , holidayPackages:false});
                                                 break;
             case "/hajj-and-umrah-packages" : setMenuState({home:false , 
@@ -31,31 +40,29 @@ const NavBar = ()=>{
                             break;
 
         }
-    },[router.pathname])
+    },[router])
 
     return(
+        <>
         <div className={`${styles.navBar} body-wrapper`} style={{justifyContent:"space-between"}}>
             <Image src={logo} width={120} height={50} alt="al azeem logo"/>
             <div className={styles.mainMenu}>
                 <ul style={{display:"flex"}}>
-                    <li className={`${menuState["home"] && styles.active}`} onClick={(e)=>{
-                        router.push("/")
-                    }}>Home</li>
-                    <li className={`${menuState["hajjUmrah"] && styles.active}`} onClick={(e)=>{
-                        router.push("/hajj-and-umrah-packages")
-                    }}>Hajj Umrah</li>
-                    <li className={`${menuState["iraqZiyarat"] && styles.active}`} onClick={(e)=>{
-                        router.push("/iraq-ziyarat-packages")
-                    }}>Iraq Ziyarat</li>
-                    <li className={`${menuState["holidayPackages"] && styles.active}`} onClick={(e)=>{
-                        router.push("/holiday-packages")
-                    }}>Holiday Packages</li>
+                    <li className={`${menuState["home"] && styles.active}`}><Link href="/">Home</Link></li>
+                    <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
+                    <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages">Iraq Ziyarat</Link></li>
+                    <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li>
                 </ul>
             </div>
             <div className={styles.facebook}>
                <a target="blank" href="https://www.facebook.com/AlAzeemTravels/"><ImFacebook2 /></a>
             </div>
         </div>
+        {packageid && <div className="body-wrapper justify-between margin">
+        <button onClick={()=>{router.back()}} style={{float:"right",marginBottom:"20px"}} className="primary-btn blue">Back</button>
+        {!isNew && <Link href={`${packageid}/new`}><button style={{marginBottom:"20px"}} className="primary-btn blue">Add New Package</button></Link>}
+    </div>}
+    </>
     )
 }
 

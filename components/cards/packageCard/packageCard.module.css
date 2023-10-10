@@ -16,15 +16,15 @@
     background-size: contain;
 }
 
-.card.hajjUmrahCard .content{
+.card.hajjUmrah .content{
     background-image: url("../../../public/cardBackgrounds/hajjumrahDesktop.png");
 }
 
-.card.iraqCard .content{
+.card.iraq.sunni .content{
     background-image: url("../../../public/cardBackgrounds/iraqDesktop.png");
 }
 
-.card.iraqZiyarat .content{
+.card.iraq.shia .content{
     background-image: url("../../../public/cardBackgrounds/iraqZiyaratbg.png");
 }
 
