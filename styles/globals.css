@@ -194,3 +194,16 @@ a{
 .check-icon:hover{
     background-color: var(--dark-green);
 }
+
+.mainLoading{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 100000;
+    padding: 20px;
+    font-size: 5rem;
+    font-weight: 700;
+}
