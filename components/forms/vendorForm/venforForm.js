@@ -3,14 +3,14 @@ import styles from "./vendorForm.module.css"
 
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { getIraqPackages, getUmrahPackages } from "@/services/getData";
-import { updateVendor } from "@/services/vendor";
+import { addNewVendor, updateVendor } from "@/services/vendor";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
 const VendorForm = ({ details }) => {
 
     const [newDetails, setNewDetails] = useState({
         title: "",
-        packages: [""],
+        packages: [],
         id: ""
     });
 
@@ -18,32 +18,32 @@ const VendorForm = ({ details }) => {
     const [addedPackages, setAddedPackages] = useState([]);
     const [newAddedPackge, setnewAddedPackge] = useState({ title: "" });
 
-    const [toastMsg , setToastMsg] = useState({msg:""});
+    const [toastMsg, setToastMsg] = useState({ msg: "" });
     useEffect(() => {
         setNewDetails(details)
         fetchData();
     }, [details])
 
     const fetchData = async () => {
-        try{
+        try {
             let umrahPackages = await getUmrahPackages();
             let iraqPackage = await getIraqPackages("all");
             let finalPakacges = [];
             umrahPackages.forEach((p) => {
                 finalPakacges.push(p)
             })
-    
+
             iraqPackage.forEach((p) => {
                 finalPakacges.push(p);
             })
-    
+
             setTourPackages(finalPakacges)
-        }catch (err){
-            if(err){
-                return setToastMsg({status:"warning" , msg:"Something went wrong cannot get data from databse"})
+        } catch (err) {
+            if (err) {
+                return setToastMsg({ status: "warning", msg: "Something went wrong cannot get data from databse" })
             }
         }
-       
+
 
     }
 
@@ -51,18 +51,22 @@ const VendorForm = ({ details }) => {
         let oldP = newDetails.packages;
         let newP = addedPackages;
         let finalP = []
-
-        oldP.forEach(p => finalP.push(p))
-        newP.forEach(p => finalP.push(p))
+        if(oldP){
+            oldP.forEach(p => finalP.push(p))
+        }
+        if(newP){
+            newP.forEach(p => finalP.push(p))
+        }
 
         setAddedPackages([])
         let datatoSend = { ...newDetails };
 
         datatoSend.packages = [...finalP];
+        console.log("llll", datatoSend)
 
-          let msg =  await updateVendor(datatoSend)
+          let msg = newDetails.id ? await updateVendor(datatoSend) : await addNewVendor(datatoSend)
 
-          setToastMsg(msg);
+        setToastMsg(msg);
 
         setNewDetails({ ...newDetails, packages: [...finalP] });
 
@@ -72,13 +76,13 @@ const VendorForm = ({ details }) => {
         setnewAddedPackge({ title: "" })
     }, [addedPackages]);
 
-    const onClose = (()=>{
-        setToastMsg({msg:""})
+    const onClose = (() => {
+        setToastMsg({ msg: "" })
     })
 
     return (
         <div className="body-wrapper">
-            {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose}/>}
+            {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             <div className={styles.wrapper}>
                 <form>
                     <div className={styles.formItem}>
@@ -89,7 +93,7 @@ const VendorForm = ({ details }) => {
                         <label className={styles.label}>Packages</label>
 
                         {
-                            newDetails && newDetails.packages.map((tour, i) => (
+                            newDetails.packages && newDetails.packages.map((tour, i) => (
                                 <div key={i} className={styles.formItem}>
                                     <div className="body-wrapper justify-start">
                                         <select disabled className={`${styles.input} ${styles.optionsIinput}`} id={tour.id} placeholder="Enter New Package">
@@ -103,7 +107,7 @@ const VendorForm = ({ details }) => {
                                             let newPackages = newDetails.packages.filter((p) => {
                                                 return p.id != e.target.id;
                                             });
-                                            setNewDetails({...newDetails , packages:[...newPackages]})
+                                            setNewDetails({ ...newDetails, packages: [...newPackages] })
                                         }}>
                                             <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
                                         </div>
@@ -158,13 +162,17 @@ const VendorForm = ({ details }) => {
                                     }
                                 </select>
                                 <div className="check-icon" onClick={() => {
-                                    let index = addedPackages.findIndex(v => v.id == newAddedPackge.id);
-                                    if (index > -1) {
-                                        return;
+                                    if (addedPackages?.length != 0) {
+                                        let index = addedPackages.findIndex(v => v.id == newAddedPackge.id);
+                                        if (index > -1) {
+                                            return;
+                                        }
                                     }
-                                    let index2 = newDetails.packages.findIndex(v => v.id == newAddedPackge.id);
-                                    if (index2 > -1) {
-                                        return;
+                                    if (newDetails.packages && newDetails.packages.length != 0) {
+                                        let index2 = newDetails.packages.findIndex(v => v.id == newAddedPackge.id);
+                                        if (index2 > -1) {
+                                            return;
+                                        }
                                     }
                                     if (newAddedPackge.title) {
                                         setAddedPackages([...addedPackages, newAddedPackge])
@@ -180,6 +188,10 @@ const VendorForm = ({ details }) => {
                         e.preventDefault();
                         handleSubmit();
                     }}>Submit</button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
                 </form>
             </div >
         </div >

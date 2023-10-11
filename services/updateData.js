@@ -44,11 +44,10 @@ export const updatePackageData = async (details , packageId ) =>{
 
 export const addNewPackage = async (details , packageId)=>{
     try{const collectionName = getCollectionName(packageId)
-    console.log("details in add document",details)
     const docRef = await addDoc(collection(db,collectionName),details);
     details.id = docRef.id;
     await updatePackageData(details , packageId);
-    console.log(docRef.id);}
+}
     catch (err){
         if(err){
             return {status:"warning" , msg:"Something went wrong add new package"}

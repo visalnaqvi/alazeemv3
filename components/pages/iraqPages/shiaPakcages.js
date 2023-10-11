@@ -1,36 +1,13 @@
-import Image from "next/image";
-import { useEffect, useState } from "react"
-import { getIraqPackages } from "../../services/getData.js"
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
-import background from "../../public/backgroundImages/iraqZiyarat.jpeg"
-import ziyarat from "../../data/shiaZiyarat.js"
+import background from "../../../public/backgroundImages/iraqZiyaratShia.jpeg"
+import ziyarat from "../../../data/shiaZiyarat.js"
 import IconLongList from "@/components/lists/iconLongList.js";
-import ContactBox from "@/components/contactBox/contactBox.js";
-import Toast from "@/components/notification/toast.js"
+import Image from "next/image";
 
-const IraqZiyarat = () => {
-    const [iraqPackages, setIraqPackages] = useState([])
-    const [toastMsg , setToastMsg] = useState({msg:""})
-
-    useEffect(() => {
-        fetchData();
-    }, [])
-    const onClose = ()=>{
-        setToastMsg({msg:""})
-    }
-    const fetchData = async () => {
-        try{setIraqPackages(await getIraqPackages("shia"));}
-        catch (err){
-            if(err){
-                setToastMsg({status:"warning" , msg:"Something went wrong cannot get package"})
-            }
-        }
-    }
-    return (
-        <div>
-                        {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
-
-            <div className="backgroundImgWrapper">
+const ShiaZiyarat = ({iraqPackages})=>{
+    return(
+        <>
+        <div className="backgroundImgWrapper">
                 <Image className="backgroundImg" width={"100%"} height={500} src={background} alt="iraq ziyarat packages" />
             </div>
             <div className="margin">
@@ -105,10 +82,8 @@ const IraqZiyarat = () => {
                     </div>
                 </div>
             </div>
-            <br></br>
-        </div>
-
+            </>
     )
 }
 
-export default IraqZiyarat;
+export default ShiaZiyarat;

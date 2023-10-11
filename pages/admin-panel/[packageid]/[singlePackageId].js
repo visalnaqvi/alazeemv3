@@ -1,5 +1,5 @@
-import TourPackagesEdit from "@/components/editPages/tourPackagesEdit";
-import VendorEdit from "@/components/editPages/vendorEdit";
+import TourPackagesEdit from "@/components/pages/editPages/tourPackagesEdit";
+import VendorEdit from "@/components/pages/editPages/vendorEdit";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 

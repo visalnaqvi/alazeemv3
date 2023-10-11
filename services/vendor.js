@@ -1,4 +1,4 @@
-import { query, collection, where, getDocs, getDoc, doc, setDoc } from "firebase/firestore";
+import { query, collection, where, getDocs, getDoc, doc, setDoc , addDoc } from "firebase/firestore";
 import db from "../config/firebase.js"
 import { vendorCollection } from "@/config/collections.js";
 
@@ -42,10 +42,10 @@ export const updateVendor = async (details) => {
     const docRef = doc(db, "vendor_v2", details.id);
     try {
         await setDoc(docRef, details)
-        return { status: "success", msg: "Package Update Successfully" }
+        return { status: "success", msg: "Vendor Update Successfully" }
     } catch (err) {
         if (err) {
-            return { status: "warning", msg: "Something went wrong cannot update package" }
+            return { status: "warning", msg: "Something went wrong cannot update vendor" }
         }
     }
 }
@@ -97,4 +97,20 @@ export const handleNewVendor = async (vendorIds, docDetails) => {
         }
     }
 
+}
+
+export const addNewVendor = async (details)=>{
+    try{
+    const docRef = await addDoc(collection(db,"vendor_v2"),details);
+    details.id = docRef.id;
+    console.log("kkkk",docRef.id)
+    await updateVendor(details);
+    return {status:"success",msg:"New Vendor Added Successfully"}
+}
+    catch (err){
+        if(err){
+            console.log("llololo",err)
+            return {status:"warning" , msg:"Something went wrong add new vendor"}
+        }
+    }
 }

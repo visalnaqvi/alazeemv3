@@ -53,7 +53,7 @@ const PackagesList = ()=>{
     return(
     <div className="margin">
         
-    <div className="body-wrapper">
+    <div className="body-wrapper justify-start">
         {
             packages.map((tour,i)=>(
                 <AdminPanelCard onUpClick={onUpClick} onDownClick={onDownClick} key={i} index={i} card={tour} packageid={packageid} />

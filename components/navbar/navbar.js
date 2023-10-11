@@ -24,7 +24,6 @@ const NavBar = ()=>{
             setPackageId(packageid)
             setsinglePackageId(singlePackageId)
         const {pathname } = router;
-        console.log("single package id" , singlePackageId)
         setIsNew(singlePackageId=="new")
         switch(pathname){
             case "/": setMenuState({home:true , hajjUmrah:false , iraqZiyarat:false , holidayPackages:false});
@@ -61,7 +60,7 @@ const NavBar = ()=>{
         </div>
         {packageid && <div className="body-wrapper justify-between margin">
         <button onClick={()=>{router.back()}} style={{float:"right",marginBottom:"20px"}} className="primary-btn blue">Back</button>
-        {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{marginBottom:"20px"}} className="primary-btn blue">Add New Package</button></Link>}
+        {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{marginBottom:"20px"}} className="primary-btn blue">Add New {packageid=="vendors"?"Vendor":"Package"}</button></Link>}
     </div>}
     </>
     )

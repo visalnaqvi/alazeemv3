@@ -16,7 +16,7 @@ const PackageEditForm = ({ details, packageid }) => {
         title: "",
         price: "",
         order: "",
-        hotels: ["",""],
+        hotels: [],
         features: [
             "All Meals and Laudary",
             "Air Ticket and Visa",
@@ -29,9 +29,9 @@ const PackageEditForm = ({ details, packageid }) => {
     })
 
     useEffect(() => {
-        if (details.id) {
+        console.log("-----------",details)
             setNewDetails(details);
-        }
+       
         getVendor();
     }, [details])
 
@@ -66,19 +66,18 @@ const PackageEditForm = ({ details, packageid }) => {
         newVendor.forEach(v => {
             newVendorsIds.push(v.id)
         })
-        console.log("newDateails" , newDetails)
 
-        // if (newDetails.id) {
-        //     msg = await updatePackageData(newDetails, packageid)
-        // } else {
-        //     msg = await addNewPackage(newDetails, packageid)
-        // }
-        // if (newVendorsIds.length == 0) {
-        //     setToastMessage(msg);
-        //     return;
-        // }
-        // msg = await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
-        // setToastMessage(msg);
+        if (newDetails.id) {
+            msg = await updatePackageData(newDetails, packageid)
+        } else {
+            msg = await addNewPackage(newDetails, packageid)
+        }
+        if (newVendorsIds.length == 0) {
+            setToastMessage(msg);
+            return;
+        }
+        msg = await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
+        setToastMessage(msg);
 
     }
 
@@ -86,14 +85,19 @@ const PackageEditForm = ({ details, packageid }) => {
         setNewSelectedVendor({ title: "" });
     }, [newVendor])
 
-    
+    useEffect(()=>{
+        console.log("something" , newDetails.hotels.length)
+    })
 
     useEffect(()=>{
       
-        if(packageid=='iraq' && !newDetails.id){
-            setNewDetails({...newDetails , type:" "})
+        if(packageid=='iraq' && !details.id){
+            setNewDetails({...details , type:"something"})
         }
-    },[packageid])
+        if(details.id){
+            setNewDetails({...details})
+        }
+    },[details , packageid])
 
     return (
         <div className="body-wrapper">
@@ -143,6 +147,10 @@ const PackageEditForm = ({ details, packageid }) => {
                             </div>
                         </div>
                     }
+                    {newDetails.title && 
+                    <div>
+                    {newDetails.hotels.length == 2 ?
+                    
                     <input onChange={(e)=>{
                         
                         if(e.target.checked){
@@ -150,7 +158,19 @@ const PackageEditForm = ({ details, packageid }) => {
                             return
                         }
                         setNewDetails({...newDetails , hotels:["",""]})
-                    }} defaultChecked={!(details.hotels.length == 0)} type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} /><label className={styles.label} htmlFor="shia_type">Hide Hotels? (Check this to hide hotels)</label>
+                    }} defaultChecked={false} type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} />
+                    
+                    :<input onChange={(e)=>{
+                        
+                        if(e.target.checked){
+                            setNewDetails({...newDetails , hotels:[]})
+                            return
+                        }
+                        setNewDetails({...newDetails , hotels:["",""]})
+                    }} defaultChecked type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} />}
+                    
+                    <label className={styles.label} htmlFor="shia_type">Do not show hotels</label>
+                    </div>}
                     {
                        newDetails.hotels.length>=0 && newDetails.hotels.map((hotel, i) => (
                             <div key={i} className={styles.formItem}>

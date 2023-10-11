@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const TourPackagesEdit = ({singlePackageId , packageid})=>{
+    const [isLoading , setIsLoading] = useState(true);
     const [packageDetails , setPackageDetails] = useState({
-        title:"",
+        title:"Add a New Title Here",
         id:"",
         price:"",
         order:"",
-        hotels:["",""],
+        hotels:[],
         features:[
             "All Meals and Laudary",
             "Air Ticket and Visa",
@@ -24,9 +25,13 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
         if(singlePackageId && singlePackageId != "new" && packageid){
             fetchData();
         }
+        if(singlePackageId=="new"){
+            setIsLoading(false);
+        }
     },[packageid , singlePackageId])
     const fetchData = async ()=>{
         setPackageDetails(await getPackageWithId(packageid , singlePackageId))
+        setIsLoading(false);
     }
 
     useEffect(()=>{
@@ -35,7 +40,7 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
 
     return(
         <div className="margin"> 
-                <PackageEditForm details={packageDetails} packageid={packageid} />        
+              {isLoading ? <p>Loading</p> : <PackageEditForm details={packageDetails} packageid={packageid} /> }        
         </div>
     )
 }
