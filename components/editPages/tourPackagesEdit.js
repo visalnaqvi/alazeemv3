@@ -35,7 +35,7 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
 
     return(
         <div className="margin"> 
-                <PackageEditForm details={packageDetails} packageid={packageid} type={packageDetails.type} />        
+                <PackageEditForm details={packageDetails} packageid={packageid} />        
         </div>
     )
 }

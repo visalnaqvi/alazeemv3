@@ -6,17 +6,17 @@ import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
-const PackageEditForm = ({ details, packageid , type }) => {
+const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
     const [newVendor, setNewVendors] = useState([])
-    const [toastMessage , setToastMessage] = useState({msg:""});
+    const [toastMessage, setToastMessage] = useState({ msg: "" });
     const [newSelectedVendor, setNewSelectedVendor] = useState({ title: "" });
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
         order: "",
-        hotels: ["", ""],
+        hotels: ["",""],
         features: [
             "All Meals and Laudary",
             "Air Ticket and Visa",
@@ -55,28 +55,30 @@ const PackageEditForm = ({ details, packageid , type }) => {
 
     }, [allVendors, details.id])
 
-    const onClose = ()=>{
-        setToastMessage({msg:""})
+    const onClose = () => {
+        setToastMessage({ msg: "" })
     }
 
+   
     const handleSubmit = async () => {
         let msg;
         let newVendorsIds = []
         newVendor.forEach(v => {
             newVendorsIds.push(v.id)
         })
-        if(newDetails.id){
-            msg = await updatePackageData(newDetails , packageid)
-        }else{
-            msg = await addNewPackage(newDetails , packageid)
-        }
-        if(newVendorsIds.length == 0){
-            console.log(msg,"lllllllllll")
-            setToastMessage(msg);
-            return;
-        }
-        msg = await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
-        setToastMessage(msg);
+        console.log("newDateails" , newDetails)
+
+        // if (newDetails.id) {
+        //     msg = await updatePackageData(newDetails, packageid)
+        // } else {
+        //     msg = await addNewPackage(newDetails, packageid)
+        // }
+        // if (newVendorsIds.length == 0) {
+        //     setToastMessage(msg);
+        //     return;
+        // }
+        // msg = await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
+        // setToastMessage(msg);
 
     }
 
@@ -84,9 +86,18 @@ const PackageEditForm = ({ details, packageid , type }) => {
         setNewSelectedVendor({ title: "" });
     }, [newVendor])
 
+    
+
+    useEffect(()=>{
+      
+        if(packageid=='iraq' && !newDetails.id){
+            setNewDetails({...newDetails , type:" "})
+        }
+    },[packageid])
+
     return (
         <div className="body-wrapper">
-            { toastMessage.msg && <Toast onClose={onClose} type={toastMessage.status} message={toastMessage.msg}/>}
+            {toastMessage.msg && <Toast onClose={onClose} type={toastMessage.status} message={toastMessage.msg} />}
             <div className={styles.wrapper}>
                 <form>
                     <div className={styles.formItem}>
@@ -112,10 +123,36 @@ const PackageEditForm = ({ details, packageid , type }) => {
                             ))
                         }
                     </div>
-
-
                     {
-                        newDetails.hotels.map((hotel, i) => (
+                        newDetails.type &&
+                        <div className={styles.formItem}>
+                            <label className={styles.label}>Select Type</label>
+                            <div className={styles.formItem}>
+                                {
+                                    newDetails.type == 'sunni' ?<input onChange={()=>setNewDetails({...newDetails , type:"sunni"})} defaultChecked  type="radio" id="sunni_type" name="package_type" value="sunni" /> :
+                                    <input onChange={()=>setNewDetails({...newDetails , type:"sunni"})}  type="radio" id="sunni_type" name="package_type" value="sunni" />
+                                }
+                                <label className={styles.label} htmlFor="sunni_type">Sunni</label>
+                            </div>
+                            <div className={styles.formItem}>
+                               {
+                                newDetails.type == 'shia' ? <input onChange={()=>setNewDetails({...newDetails , type:"shia"})} defaultChecked type="radio" id="shia_type" name="package_type" value="shia" /> :
+                                <input onChange={()=>setNewDetails({...newDetails , type:"shia"})} type="radio" id="shia_type" name="package_type" value="shia" />
+                               }
+                                <label className={styles.label} htmlFor="shia_type">Shia</label>
+                            </div>
+                        </div>
+                    }
+                    <input onChange={(e)=>{
+                        
+                        if(e.target.checked){
+                            setNewDetails({...newDetails , hotels:[]})
+                            return
+                        }
+                        setNewDetails({...newDetails , hotels:["",""]})
+                    }} defaultChecked={!(details.hotels.length == 0)} type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} /><label className={styles.label} htmlFor="shia_type">Hide Hotels? (Check this to hide hotels)</label>
+                    {
+                       newDetails.hotels.length>=0 && newDetails.hotels.map((hotel, i) => (
                             <div key={i} className={styles.formItem}>
                                 <label className={styles.label} htmlFor={`${i == 0 ? "makkah" : "madina"}-hotels`}>{i == 0 ? "Makkah" : "Madina"} Hotels</label>
                                 <input onChange={(e) => {
@@ -219,7 +256,7 @@ const PackageEditForm = ({ details, packageid , type }) => {
                     <br></br>
                 </form>
             </div>
-            <PackageCard tour={newDetails} type={packageid} subType={type}/>
+            <PackageCard tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
         </div>
     )
 }

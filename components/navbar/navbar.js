@@ -15,13 +15,14 @@ const NavBar = ()=>{
 
     const router = useRouter()  
     const [packageid , setPackageId] = useState("")  
+    const [singlePackageId , setsinglePackageId] = useState("")  
     const [isNew , setIsNew] = useState(true)  
 
     useEffect(()=>{
         let {packageid , singlePackageId} = router.query;
       
             setPackageId(packageid)
-       
+            setsinglePackageId(singlePackageId)
         const {pathname } = router;
         console.log("single package id" , singlePackageId)
         setIsNew(singlePackageId=="new")
@@ -60,7 +61,7 @@ const NavBar = ()=>{
         </div>
         {packageid && <div className="body-wrapper justify-between margin">
         <button onClick={()=>{router.back()}} style={{float:"right",marginBottom:"20px"}} className="primary-btn blue">Back</button>
-        {!isNew && <Link href={`${packageid}/new`}><button style={{marginBottom:"20px"}} className="primary-btn blue">Add New Package</button></Link>}
+        {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{marginBottom:"20px"}} className="primary-btn blue">Add New Package</button></Link>}
     </div>}
     </>
     )
