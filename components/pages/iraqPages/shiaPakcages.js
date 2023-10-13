@@ -4,7 +4,7 @@ import ziyarat from "../../../data/shiaZiyarat.js"
 import IconLongList from "@/components/lists/iconLongList.js";
 import Image from "next/image";
 
-const ShiaZiyarat = ({iraqPackages})=>{
+const ShiaZiyarat = ({iraqPackages , fetchData})=>{
     return(
         <>
         <div className="backgroundImgWrapper">
@@ -14,7 +14,7 @@ const ShiaZiyarat = ({iraqPackages})=>{
                 <div className="body-wrapper">
                     {
                         iraqPackages.map((pkg, i) => (
-                            <PackageCard type="iraq" subType="shia" tour={pkg} key={i} />
+                            <PackageCard fetchData={fetchData} type="iraq" subType="shia" tour={pkg} key={i} />
                         ))
                     }
                 </div>

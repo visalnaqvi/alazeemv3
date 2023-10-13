@@ -3,7 +3,7 @@ import CarouselComp from "@/components/carousel/carousel"
 import services from "../data/services.js"
 import features from "../data/features.js"
 import Map from "../components/map/map.js"
-import ContactBox from "@/components/contactBox/contactBox.js"
+import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 export default function Home() {
   const images = [
     {

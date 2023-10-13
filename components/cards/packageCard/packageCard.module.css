@@ -96,3 +96,25 @@
     color: #fff;
 }
 
+.quickEditBar{
+    top: -50px;
+    z-index: 20;
+    background-color: var(--light-green);
+    color: #fff;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.vendorList , .iconBox{
+    width: 50%;
+}
+
+.iconBox{
+    justify-content: flex-end !important;
+}
+
+.icon{
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}

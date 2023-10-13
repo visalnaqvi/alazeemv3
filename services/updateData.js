@@ -1,4 +1,5 @@
 import db from "@/config/firebase.js";
+import { getCollectionName } from "@/config/collections";
 import { addDoc, doc, setDoc, updateDoc , collection } from "firebase/firestore";
 import dotenv from "dotenv"
 dotenv.config()
@@ -17,17 +18,7 @@ export const updateOrder = async(newOrder , docId , packageId)=>{
     }
 }
 
-const getCollectionName = (packageId)=>{
-    switch(packageId){
-        case "hajjUmrah" : return `${process.env.NEXT_PUBLIC_UMRAH_COLLECTION}`;
 
-        case "iraq" : return `${process.env.NEXT_PUBLIC_IRAQ_COLLECTION}`;
-        
-        case "links" : return `${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`;
-
-        default : return "";
-    }
-}
 
 export const updatePackageData = async (details , packageId ) =>{
     const collectionName = getCollectionName(packageId);
@@ -49,6 +40,7 @@ export const addNewPackage = async (details , packageId)=>{
     const docRef = await addDoc(collection(db,collectionName),details);
     details.id = docRef.id;
     await updatePackageData(details , packageId);
+    return {status:"success",msg:"Package Updated Successfully"}
 }
     catch (err){
         if(err){

@@ -115,3 +115,20 @@ export const addNewVendor = async (details)=>{
         }
     }
 }
+
+export const getPackageVendor = async (packageId)=>{
+    try{
+        let allVendors = await getAllVendorsList();
+        let packageVendors =[]
+        allVendors.forEach(p => {
+            p.packages.forEach(t => {
+                if (t.id == packageId) {
+                    packageVendors.push(p);
+                }
+            })
+        })
+        return packageVendors;
+    }catch(err){
+        return {status:"warning",msg:"Something went wrong cannot get vendor"}
+    }
+}

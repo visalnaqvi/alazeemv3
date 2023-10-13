@@ -1,0 +1,30 @@
+.wrapper{
+    justify-content: flex-end !important;
+    margin: 0;
+    padding-right: 20px;
+    position: fixed;
+    bottom: 10px;
+    width: 300px;
+    right: 20px;
+    pointer-events: none;
+}
+
+.icon{
+    font-size: 2rem;
+    background-color: #000000;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    pointer-events: all;
+    border-radius: 100%;
+}
+
+.wa{
+    margin-right: 10px;
+    background-color: var(--light-green);
+}
+
+.call{
+    margin-right: 10px;
+    background-color: var(--primary-blue);
+}

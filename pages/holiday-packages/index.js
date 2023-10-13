@@ -3,7 +3,7 @@ import background from "../../public/backgroundImages/HolidayPackages.jpeg"
 import { useEffect, useState } from "react";
 import { getHolidayPackages } from "@/services/getData";
 import ImageCardFormal from "@/components/cards/imageCardFormal/imageCardFormal";
-import ContactBox from "@/components/contactBox/contactBox";
+import ContactBox from "@/components/contactBox/contactBox/contactBox";
 const HolidayPackages = ()=>{
 
     const [srinagarPackages, setSrinagarPackages] = useState([]);

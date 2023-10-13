@@ -37,7 +37,7 @@ const IraqZiyarat = () => {
        {isLoading?<p className="boldHeading">Loading...</p>: <div>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
 
-            {isShia ? <ShiaZiyarat iraqPackages={iraqPackages} /> : <SunniPackages iraqPackages={iraqPackages} />}
+            {isShia ? <ShiaZiyarat fetchData={fetchData} iraqPackages={iraqPackages} /> : <SunniPackages fetchData={fetchData} iraqPackages={iraqPackages} />}
             <br></br>
         </div>}
         </div>

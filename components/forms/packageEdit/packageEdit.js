@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./packageEdit.module.css";
 import PackageCard from "@/components/cards/packageCard/packageCard";
-import { getAllVendorsList, getVendorFromPackageId, handleNewVendor, handleVendorDelete } from "@/services/vendor";
+import { getAllVendorsList, getPackageVendor, getVendorFromPackageId, handleNewVendor, handleVendorDelete } from "@/services/vendor";
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
@@ -37,23 +37,8 @@ const PackageEditForm = ({ details, packageid }) => {
 
     const getVendor = async () => {
         setAllVendors(await getAllVendorsList())
+        setVendors(await getPackageVendor(details.id))
     }
-
-
-    useEffect(() => {
-        let ven = []
-
-        allVendors.forEach(p => {
-            p.packages.forEach(t => {
-                if (t.id == details.id) {
-                    ven.push(p);
-                }
-            })
-        })
-        setVendors([...ven])
-
-
-    }, [allVendors, details.id])
 
     const onClose = () => {
         setToastMessage({ msg: "" })
@@ -61,7 +46,7 @@ const PackageEditForm = ({ details, packageid }) => {
 
    
     const handleSubmit = async () => {
-        let msg;
+        let msg={msg:"something"};
         let newVendorsIds = []
         newVendor.forEach(v => {
             newVendorsIds.push(v.id)

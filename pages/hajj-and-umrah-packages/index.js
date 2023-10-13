@@ -3,7 +3,7 @@ import { getUmrahPackages , getIraqPackages, getPageTitle } from "../../services
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import CarouselComp from "@/components/carousel/carousel.js"
 import IconList from "@/components/lists/iconList.js"
-import ContactBox from "@/components/contactBox/contactBox.js"
+import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 import Toast from "@/components/notification/toast.js"
 
 
@@ -54,7 +54,7 @@ const HajjUmrah = ()=>{
             <div className="body-wrapper">
             {
                 umrahPackages.map((pkg,i)=>(
-                    <PackageCard type="hajjUmrah" tour={pkg} key={i} />
+                    <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
                 ))
             }
             </div>

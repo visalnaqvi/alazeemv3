@@ -30,8 +30,8 @@ const NavBar = () => {
 
         setPackageId(packageid)
         setsinglePackageId(singlePackageId)
-        const { pathname } = router;
-        if (pathname.includes("admin-panel")) {
+        const { asPath } = router;
+        if (asPath.includes("admin-panel")) {
             setIsLoading(true);
             if (!user) {
                 router.push("/")
@@ -44,18 +44,41 @@ const NavBar = () => {
         }
       
         setIsNew(singlePackageId == "new")
-        switch (pathname) {
-            case "/": setMenuState({ home: true, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false });
+        switch (asPath) {
+            case "/": setMenuState({ home: true,
+                                     hajjUmrah: false, 
+                                    iraqZiyarat: false, 
+                                    holidayPackages: false,
+                                    karbalaZiyarat:false });
                 break;
             case "/hajj-and-umrah-packages": setMenuState({
-                home: false,
-                hajjUmrah: true,
-                iraqZiyarat: false, holidayPackages: false
-            });
+                                                home: false,
+                                                hajjUmrah: true,
+                                                iraqZiyarat: false,
+                                                holidayPackages: false,
+                                                karbalaZiyarat:false
+                                            });
                 break;
-            case "/iraq-ziyarat-packages/[type]": setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: true, holidayPackages: false });
+            case "/iraq-ziyarat-packages/iraq-ziyarat": setMenuState({ 
+                                                home: false, 
+                                                hajjUmrah: false, 
+                                                iraqZiyarat: true, 
+                                                holidayPackages: false,
+                                                karbalaZiyarat:false });
                 break;
-            case "/holiday-packages": setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: true });
+                case "/iraq-ziyarat-packages/karbala-iraq-ziyarat": setMenuState({ 
+                    home: false, 
+                    hajjUmrah: false, 
+                    iraqZiyarat: false, 
+                    holidayPackages: false,
+                    karbalaZiyarat:true });
+break;
+            case "/holiday-packages": setMenuState({ 
+                                                home: false, 
+                                                hajjUmrah: false, 
+                                                iraqZiyarat: false, 
+                                                holidayPackages: true,
+                                                karbalaZiyarat:false });
                 break;
             default: setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false })
                 break;
