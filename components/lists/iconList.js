@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {HiCheckCircle} from "react-icons/hi"
 const IconList = ({items , bold , big , margin})=>{
    

@@ -1,9 +1,9 @@
 import db from "../config/firebase.js"
-import { collection, getDocs, orderBy , query, getDoc , doc, where } from "firebase/firestore"; 
+import { getDocs, orderBy , query, getDoc , doc, where } from "firebase/firestore"; 
 import {navCollection, umrahPackagesCollection , iraqPackagesCollection , holidayPackagesCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
-import { updatePackageData } from "./updateData.js";
-
+import dotenv from "dotenv"
+dotenv.config()
 export const getUmrahPackages =  async ()=>{
     try{
         const q = query(umrahPackagesCollection, orderBy("order"));
@@ -96,11 +96,11 @@ export const getAdminPackages = async (packageid) =>{
 export const getPackageWithId = async (collection , packageId)=>{
     try{let collectionRef;
     switch(collection){
-        case "hajjUmrah": collectionRef = "umrahPackages_v2";
+        case "hajjUmrah": collectionRef = `${process.env.NEXT_PUBLIC_UMRAH_COLLECTION}`;
                                     break;
-        case "iraq" : collectionRef = "iraqPackages_v2";
+        case "iraq" : collectionRef = `${process.env.NEXT_PUBLIC_IRAQ_COLLECTION}`;
                                     break;
-        case "holiday" : collectionRef = "holiday_packages_v2";
+        case "holiday" : collectionRef = `${process.env.NEXT_PUBLIC_HOLIDAY_COLLECTION}`;
                                     break;
         default : return;
     }
@@ -120,7 +120,6 @@ export const getPackageWithId = async (collection , packageId)=>{
 
 
 export const getNavLinks = async ()=>{
-    console.log('kmkmkmkm2222');
     try{
         const q = query(navCollection,orderBy("order"));
         const docs = await getDocs(q);
@@ -134,7 +133,7 @@ export const getNavLinks = async ()=>{
 
 export const getNavLinkFromId = async (linkId) => {
     try {
-        const docRef = doc(db, "naav_menu_v2", linkId);
+        const docRef = doc(db, `${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`, linkId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {

@@ -1,7 +1,7 @@
 import db from "@/config/firebase.js";
-import { umrahPackagesCollection , iraqPackagesCollection } from "@/config/collections";
 import { addDoc, doc, setDoc, updateDoc , collection } from "firebase/firestore";
-
+import dotenv from "dotenv"
+dotenv.config()
 
 export const updateOrder = async(newOrder , docId , packageId)=>{
     try{const collectionName = getCollectionName(packageId);
@@ -19,11 +19,11 @@ export const updateOrder = async(newOrder , docId , packageId)=>{
 
 const getCollectionName = (packageId)=>{
     switch(packageId){
-        case "hajjUmrah" : return "umrahPackages_v2";
+        case "hajjUmrah" : return `${process.env.NEXT_PUBLIC_UMRAH_COLLECTION}`;
 
-        case "iraq" : return "iraqPackages_v2";
+        case "iraq" : return `${process.env.NEXT_PUBLIC_IRAQ_COLLECTION}`;
         
-        case "links" : return "naav_menu_v2";
+        case "links" : return `${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`;
 
         default : return "";
     }

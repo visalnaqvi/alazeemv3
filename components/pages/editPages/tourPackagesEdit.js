@@ -1,6 +1,5 @@
 import PackageEditForm from "@/components/forms/packageEdit/packageEdit";
 import { getPackageWithId } from "@/services/getData";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const TourPackagesEdit = ({singlePackageId , packageid})=>{

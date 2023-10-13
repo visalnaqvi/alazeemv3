@@ -1,8 +1,10 @@
 import db from "../config/firebase.js"
 import { collection } from "firebase/firestore"
-export const umrahPackagesCollection = collection(db, "umrahPackages_v2")
-export const iraqPackagesCollection = collection(db, "iraqPackages_v2")
-export const holidayPackagesCollection = collection(db, "holiday_packages_v2")
-export const vendorCollection = collection(db, "vendor_v2");
-export const userCollection = collection(db,"users_v2");
-export const navCollection = collection(db,"naav_menu_v2");
+import dotenv from "dotenv"
+dotenv.config()
+export const umrahPackagesCollection = collection(db, `${process.env.NEXT_PUBLIC_UMRAH_COLLECTION}`)
+export const iraqPackagesCollection = collection(db, `${process.env.NEXT_PUBLIC_IRAQ_COLLECTION}`)
+export const holidayPackagesCollection = collection(db, `${process.env.NEXT_PUBLIC_HOLIDAY_COLLECTION}`)
+export const vendorCollection = collection(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`);
+export const userCollection = collection(db,`${process.env.NEXT_PUBLIC_USERS_COLLECTION}`);
+export const navCollection = collection(db,`${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`);

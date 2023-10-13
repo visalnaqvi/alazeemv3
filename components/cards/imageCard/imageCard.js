@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './imageCard.module.css'
-import visa from "../../../public/services/visa.png"
 const ImageCard = ({data})=>{
     return(
         <div className={`body-wrapper ${styles.wrapper}`} style={{flexDirection:data.direction}}>

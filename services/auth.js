@@ -1,7 +1,8 @@
-import { addDoc, and, collection, doc, getDocs, query, where } from "firebase/firestore"
+import { addDoc, getDocs, query, where } from "firebase/firestore"
 import { userCollection } from "@/config/collections";
 import jwt from "jsonwebtoken";
-
+import dotenv from "dotenv"
+dotenv.config()
 
 export const checkUser  = async (userId , passowrd)=>{
     const q = query(userCollection , where("userId","==",userId) , where('password',"==",passowrd));
@@ -22,7 +23,7 @@ export const checkUser  = async (userId , passowrd)=>{
 }
 
 const generateToken =  (payload)=>{
-    const token = jwt.sign({payload}, 'XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN', {
+    const token = jwt.sign({payload}, `${process.env.NEXT_PUBLIC_SECRECT_KEY_JWT}`, {
         expiresIn: '1h'
       });
     localStorage.setItem("token",token);
@@ -35,7 +36,7 @@ export const checkStorageForAdminToken = ()=>{
         if(!token){
             return false;
         }
-        const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
+        const payload = jwt.verify(token , `${process.env.NEXT_PUBLIC_SECRECT_KEY_JWT}` );
      
         return payload.payload.role == 'admin';
     }catch(err){
@@ -48,7 +49,7 @@ export const checkStorageForToken = ()=>{
     try{
         let token = localStorage.getItem("token");
         if(token){
-            const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
+            const payload = jwt.verify(token , `${process.env.NEXT_PUBLIC_SECRECT_KEY_JWT}` );
           
             return payload.payload;
         }

@@ -9,7 +9,7 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
             <button className={`primary-btn red ${styles.button}`}>Delete</button>
             <button onClick={() => { onUpClick(index) }} className={`primary-btn blue ${styles.button}`}>Move Up</button>
             <button onClick={() => { onDownClick(index) }} className={`primary-btn blue ${styles.button}`}>Move Down</button>
-           {packageid != "links" && <button className={`primary-btn yellow ${styles.button}`}>Price - {card.price}</button>}
+           {packageid == "links"? <button className={`primary-btn yellow ${styles.button}`}>Status - {`${card.active}`}</button> : <button className={`primary-btn yellow ${styles.button}`}>Price - {card.price}</button>}
         </div>
     </div>
 
@@ -17,8 +17,7 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
         <h2 className={`boldHeading  ${styles.cardTitle}`}>{card.title}</h2>
         <Link href={packageid == "vendors" ? `${packageid}/${card.id}` : `admin-panel/${card.link}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>
     </div>
-
-
+   
     switch (packageid) {
         case "vednors": return (AdminPanelCollectionCard);
 

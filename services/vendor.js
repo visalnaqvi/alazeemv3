@@ -1,7 +1,8 @@
-import { query, collection, where, getDocs, getDoc, doc, setDoc , addDoc } from "firebase/firestore";
+import { query, collection, getDocs, getDoc, doc, setDoc , addDoc } from "firebase/firestore";
 import db from "../config/firebase.js"
 import { vendorCollection } from "@/config/collections.js";
-
+import dotenv from "dotenv"
+dotenv.config()
 export const getAllVendorsList = async () => {
     try {
         const q = query(vendorCollection)
@@ -22,7 +23,7 @@ export const getAllVendorsList = async () => {
 
 export const getVendorDetailsFromId = async (vendorId) => {
     try {
-        const docRef = doc(db, "vendor_v2", vendorId);
+        const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, vendorId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -39,7 +40,7 @@ export const getVendorDetailsFromId = async (vendorId) => {
 }
 
 export const updateVendor = async (details) => {
-    const docRef = doc(db, "vendor_v2", details.id);
+    const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, details.id);
     try {
         await setDoc(docRef, details)
         return { status: "success", msg: "Vendor Update Successfully" }
@@ -53,7 +54,7 @@ export const updateVendor = async (details) => {
 export const handleVendorDelete = async (vendorIds, docDetails) => {
     try {
         vendorIds.forEach(async (vendor) => {
-            const docRef = doc(db, "vendor_v2", vendor);
+            const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, vendor);
             let dataSnap = await getDoc(docRef);
 
             if (dataSnap.exists()) {
@@ -76,7 +77,7 @@ export const handleVendorDelete = async (vendorIds, docDetails) => {
 export const handleNewVendor = async (vendorIds, docDetails) => {
     try {
         vendorIds.forEach(async (vendor) => {
-            const docRef = doc(db, "vendor_v2", vendor);
+            const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, vendor);
             let docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 let data = docSnap.data();
@@ -101,7 +102,7 @@ export const handleNewVendor = async (vendorIds, docDetails) => {
 
 export const addNewVendor = async (details)=>{
     try{
-    const docRef = await addDoc(collection(db,"vendor_v2"),details);
+    const docRef = await addDoc(collection(db,`${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`),details);
     details.id = docRef.id;
    
     await updateVendor(details);
