@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { collection, getDocs, orderBy , query, getDoc , doc, where } from "firebase/firestore"; 
-import { umrahPackagesCollection , iraqPackagesCollection , holidayPackagesCollection } from "@/config/collections.js";
+import {navCollection, umrahPackagesCollection , iraqPackagesCollection , holidayPackagesCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import { updatePackageData } from "./updateData.js";
 
@@ -116,4 +116,36 @@ export const getPackageWithId = async (collection , packageId)=>{
             return {status:"warning" , msg:"Something went wrong cannot get package"}
         }
     }
+}
+
+
+export const getNavLinks = async ()=>{
+    console.log('kmkmkmkm2222');
+    try{
+        const q = query(navCollection,orderBy("order"));
+        const docs = await getDocs(q);
+        let data = [];
+        docs.forEach(doc=>data.push(doc.data()));
+        return data;
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const getNavLinkFromId = async (linkId) => {
+    try {
+        const docRef = doc(db, "naav_menu_v2", linkId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            return docSnap.data();
+        } else {
+            return [];
+        }
+    } catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get vendor details" }
+        }
+    }
+
 }

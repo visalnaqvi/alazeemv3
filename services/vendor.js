@@ -103,13 +103,13 @@ export const addNewVendor = async (details)=>{
     try{
     const docRef = await addDoc(collection(db,"vendor_v2"),details);
     details.id = docRef.id;
-    console.log("kkkk",docRef.id)
+   
     await updateVendor(details);
     return {status:"success",msg:"New Vendor Added Successfully"}
 }
     catch (err){
         if(err){
-            console.log("llololo",err)
+         
             return {status:"warning" , msg:"Something went wrong add new vendor"}
         }
     }

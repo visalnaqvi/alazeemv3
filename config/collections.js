@@ -5,3 +5,4 @@ export const iraqPackagesCollection = collection(db, "iraqPackages_v2")
 export const holidayPackagesCollection = collection(db, "holiday_packages_v2")
 export const vendorCollection = collection(db, "vendor_v2");
 export const userCollection = collection(db,"users_v2");
+export const navCollection = collection(db,"naav_menu_v2");

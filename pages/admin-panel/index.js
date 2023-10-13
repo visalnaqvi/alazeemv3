@@ -23,6 +23,10 @@ const AdminPanel = ()=>{
         {
             title:"Vendors",
             link:"vendors"
+        },
+        {
+            title:"Header Links",
+            link:"links"
         }
     ]
     return(

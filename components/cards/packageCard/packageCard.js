@@ -1,9 +1,12 @@
+import FlightPopUp from "@/components/flights/container/popUp";
 import IconList from "../../lists/iconList";
 import styles from "./packageCard.module.css"
+import { useState } from "react";
 
 
 const PackageCard = ({tour , type , subType}) => {
 
+    const [isFlightsOpen , setIsFlightsOpen] = useState(false)
  
     return (
         <div className={`${styles.card}  ${styles[type]} ${styles[subType]}`}>
@@ -24,8 +27,13 @@ const PackageCard = ({tour , type , subType}) => {
             </div>}
             <div className={styles.footer}>
                 <p className={styles.footertext}>At Just Rs. {tour.price}/-</p>
-                <button className={styles.footerButton}>View Flight</button>
+                <button onClick={()=>{
+                    if(tour.flights?.length > 0){
+                        setIsFlightsOpen(true);
+                    }
+                }} className={styles.footerButton}>View Flight</button>
             </div>
+            {isFlightsOpen && <FlightPopUp setIsFlightsOpen={setIsFlightsOpen} details={tour.flights} />}
         </div>
     )
 }

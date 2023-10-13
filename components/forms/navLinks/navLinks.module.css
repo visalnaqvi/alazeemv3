@@ -1,0 +1,28 @@
+.wrapper{
+    width: 50%;
+}
+
+.formItem{
+    margin: 20px;
+}
+
+.input{
+    display: block;
+    padding: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: 1px solid #dbdbdb;
+    width: 95%;
+    /* background-color: var(--primary-blue-light); */
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px #00000010;
+}
+
+.label{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.optionsIinput{
+    width: 90%;
+}

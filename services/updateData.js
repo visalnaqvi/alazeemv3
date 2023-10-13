@@ -22,6 +22,8 @@ const getCollectionName = (packageId)=>{
         case "hajjUmrah" : return "umrahPackages_v2";
 
         case "iraq" : return "iraqPackages_v2";
+        
+        case "links" : return "naav_menu_v2";
 
         default : return "";
     }
@@ -51,6 +53,21 @@ export const addNewPackage = async (details , packageId)=>{
     catch (err){
         if(err){
             return {status:"warning" , msg:"Something went wrong add new package"}
+        }
+    }
+}
+
+export const updateNavLink = async (details , packageId ) =>{
+    const collectionName = getCollectionName(packageId);
+
+    const docRef = doc(db , collectionName , details.id);
+    try{
+        await setDoc(docRef , details);
+        return {status:"success",msg:"Package Updated Successfully"}
+    }catch (err){
+        if(err){
+            console.log(err);
+            return {status:"warning" , msg:"Something went wrong cannot update database"};
         }
     }
 }

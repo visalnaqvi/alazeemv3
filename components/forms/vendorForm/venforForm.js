@@ -62,7 +62,7 @@ const VendorForm = ({ details }) => {
         let datatoSend = { ...newDetails };
 
         datatoSend.packages = [...finalP];
-        console.log("llll", datatoSend)
+     
 
           let msg = newDetails.id ? await updateVendor(datatoSend) : await addNewVendor(datatoSend)
 

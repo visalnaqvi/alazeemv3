@@ -1,4 +1,4 @@
-import { getAdminPackages } from "@/services/getData";
+import { getAdminPackages, getNavLinks } from "@/services/getData";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import AdminPanelCard from "@/components/cards/adminPanelCard/adminPanelCard";
@@ -16,6 +16,10 @@ const PackagesList = ()=>{
      },[packageid])
 
     const fetchData = async () =>{
+        if(packageid=="links"){
+            setPackages(await getNavLinks());
+            return;
+        }
         setPackages(await getAdminPackages(packageid));
     }
 

@@ -30,22 +30,34 @@ const generateToken =  (payload)=>{
 }
 
 export const checkStorageForAdminToken = ()=>{
-    let token = localStorage.getItem("token");
-    if(!token){
-        return false;
+    try{
+        let token = localStorage.getItem("token");
+        if(!token){
+            return false;
+        }
+        const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
+     
+        return payload.payload.role == 'admin';
+    }catch(err){
+            localStorage.removeItem("token")
     }
-    const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
-    console.log("payyyyy",payload)
-    return payload.payload.role == 'admin';
+    
 }
 
 export const checkStorageForToken = ()=>{
-    let token = localStorage.getItem("token");
-    if(token){
-        const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
-        console.log("payyyyy",payload)
-        return payload.payload;
+    try{
+        let token = localStorage.getItem("token");
+        if(token){
+            const payload = jwt.verify(token , "XPJ2u7E8XJ02TTDOdlKXBtyQfgJRjknN" );
+          
+            return payload.payload;
+        }
+    }catch(err){
+        if(err.name=="TokenExpiredError"){
+            localStorage.removeItem("token")
+        }
     }
+    
 
     return null;
    

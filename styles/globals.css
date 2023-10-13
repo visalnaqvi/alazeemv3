@@ -207,3 +207,12 @@ a{
     font-size: 5rem;
     font-weight: 700;
 }
+
+.cancle-icon{
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    top: 30px;
+    cursor: pointer;
+    right: 60px;
+}

@@ -1,0 +1,17 @@
+.table{
+    background-color: var(--primary-blue-light);
+}
+
+.table .tableHead{
+    background-color: var(--primary-blue);
+    color: #fff;
+    font-family: 600;
+}
+
+.tableRow td{
+    padding: 10px;
+}
+
+/* .table .tableRow:nth-child(odd) {
+    background-color: var(--primary-blue);
+} */

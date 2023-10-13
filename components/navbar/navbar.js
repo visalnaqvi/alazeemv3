@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth"
+import { getNavLinks } from "@/services/getData"
 const NavBar = () => {
 
     const [menuState, setMenuState] = useState({
@@ -19,9 +20,10 @@ const NavBar = () => {
     const [singlePackageId, setsinglePackageId] = useState("")
     const [isNew, setIsNew] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
-
+    const [navLinks, setNavLinks] = useState({})
     const [user, setUser] = useState({})
     useEffect(() => {
+        fetchNavLinks();
         let user = checkStorageForToken();
         setUser(user);
         let { packageid, singlePackageId } = router.query;
@@ -40,7 +42,7 @@ const NavBar = () => {
             }
             setIsLoading(false);
         }
-        console.log("pllplp", pathname)
+      
         setIsNew(singlePackageId == "new")
         switch (pathname) {
             case "/": setMenuState({ home: true, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false });
@@ -61,19 +63,28 @@ const NavBar = () => {
         }
     }, [router])
 
+    const fetchNavLinks = async()=>{
+       let data = await getNavLinks();
+       setNavLinks(data.filter(d=>d.active==true))
+    }
+
     return (
       <div> {isLoading ?<div className="mainLoading"><p>Loading...</p></div>: <div>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
-                <Image src={logo} width={120} height={50} alt="al azeem logo" />
+                <Image src={logo} width={180} height={60} alt="al azeem logo" />
                 <div className={styles.mainMenu}>
                     <ul className="body-wrapper">
-                        <li className={`${menuState["home"] && styles.active}`}><Link href="/">Home</Link></li>
-                        <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
+                        {
+                          navLinks && navLinks.length > 0 &&  navLinks.map((link,i)=>(
+                                <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
+                            ))
+                        }
+                        {/* <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
                         <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages/karbala-iraq-ziyarat">Iraq Ziyarat</Link></li>
-                        <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li>
+                        <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li> */}
                     </ul>
                 </div>
-                <div className="body-wrapper" style={{ width: "20%" }}>
+                <div className="body-wrapper" style={{ width: `${(user && user.role=='admin')?"40%":"20%"}` }}>
                     <div className={styles.facebook}>
                         <a className="body-wrapper" target="blank" href="https://www.facebook.com/AlAzeemTravels/"><ImFacebook2 /></a>
                     </div>
@@ -82,6 +93,9 @@ const NavBar = () => {
                         router.reload()
                     }} className="primary-btn blue" style={{ marginTop: "0" }}>Sing Out</button> :
                         <Link href="/login"><button className="primary-btn blue" style={{ marginTop: "0" }}>Log In</button></Link>}
+
+{user && user.role == 'admin' &&
+                        <Link href="/admin-panel"><button className="primary-btn blue" style={{ marginTop: "0" , marginLeft:"10px" }}>Admin Panel</button></Link>}
                 </div>
             </div>
             {packageid && <div className="body-wrapper justify-between margin">

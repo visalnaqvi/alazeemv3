@@ -6,12 +6,14 @@ import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
+import FlightsTable from "@/components/flights/table/flightsTable";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
     const [newVendor, setNewVendors] = useState([])
     const [toastMessage, setToastMessage] = useState({ msg: "" });
     const [newSelectedVendor, setNewSelectedVendor] = useState({ title: "" });
+    const [newFlight , setNewFlight] = useState({})
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
@@ -29,7 +31,6 @@ const PackageEditForm = ({ details, packageid }) => {
     })
 
     useEffect(() => {
-        console.log("-----------",details)
             setNewDetails(details);
        
         getVendor();
@@ -86,10 +87,6 @@ const PackageEditForm = ({ details, packageid }) => {
     }, [newVendor])
 
     useEffect(()=>{
-        console.log("something" , newDetails.hotels.length)
-    })
-
-    useEffect(()=>{
       
         if(packageid=='iraq' && !details.id){
             setNewDetails({...details , type:"something"})
@@ -116,16 +113,31 @@ const PackageEditForm = ({ details, packageid }) => {
                         <label className={styles.label} htmlFor="feature">Features</label>
                         {
                             newDetails.features.map((feature, i) => (
-                                <div key={i} className={styles.formItem}>
+                                <div key={i} className={`${styles.formItem} body-wrapper justify-start`}>
                                     <input onChange={(e) => {
                                         const updatedFeatures = [...newDetails.features];
                                         updatedFeatures[i] = e.target.value;
                                         setNewDetails({ ...newDetails, features: [...updatedFeatures] })
                                     }
-                                    } className={styles.input} type="text" value={feature} placeholder="Enter New Feature" />
+                                    } className={`${styles.input} ${styles.optionsIinput}`} type="text" value={feature} placeholder="Enter New Feature" />
+                                    <div className="delete-icon" id={i} onClick={async (e) => {
+                                    
+                                    let newFeatures = newDetails.features.filter((f,i) => {
+                                        return i != e.target.id;
+                                    });
+                                    setNewDetails({...newDetails , features:[...newFeatures]})
+                                }}>
+                                    <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
+                                </div>
                                 </div>
                             ))
                         }
+                    </div>
+                    <div className={styles.formItem}>
+                    <button className="primary-btn blue" onClick={(e)=>{
+                        e.preventDefault()
+                        setNewDetails({...newDetails , features:[...newDetails.features , "Add New Feature"]})
+                    }}>Add New Feature</button>
                     </div>
                     {
                         newDetails.type &&
@@ -276,7 +288,62 @@ const PackageEditForm = ({ details, packageid }) => {
                     <br></br>
                 </form>
             </div>
+            <div style={{width:"50%"}}>
             <PackageCard tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
+            
+          
+
+         
+           {
+                newDetails.flights?.length > 0 && 
+                <div>
+                      <p className="subHeading">Selected Flights</p>
+                    {newDetails.flights.map((flight , i)=>(
+                        <div key={i} className="body-wrapper justify-start">
+                            <input disabled type="text" className={`${styles.input} ${styles.optionsIinput}`} value={flight.title} />
+                            <div className="delete-icon" id={i} onClick={async (e) => {
+                                    
+                                    let newFlights = newDetails.flights.filter((f,i) => {
+                                        return i != e.target.id;
+                                    });
+                                    setNewDetails({...newDetails , flights:[...newFlights]})
+                                }}>
+                                    <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
+                                </div>
+                        </div>
+                    ))
+}
+                </div>
+            }
+            <form>
+                <p className="subHeading">Add New Flight</p>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="flighttitle">Flight Name</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, title: e.target.value }) }} className={styles.input} type="text" id="flighttitle" placeholder="Enter Flight Title" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="from">From</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, from: e.target.value }) }} className={styles.input} type="text" id="from" placeholder="Enter From" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="to">Destination</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, destination: e.target.value }) }} className={styles.input} type="text" id="to" placeholder="Enter Destination" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="filghtdeparturedate">Departure Date and Time</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, departureDate: e.target.value }) }} className={styles.input} type="text" id="filghtdeparturedate" placeholder="Enter Departure Date and time" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="flightlandingdate">Landing Date and Time</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, landingDate: e.target.value }) }} className={styles.input} type="text" id="flightlandingdate" placeholder="Enter Landing Date and time" />
+                    </div>
+                    <button className="primary-btn blue" onClick={(e)=>{
+                        e.preventDefault()
+                        let newFlightsToAdd = newDetails.flights?.length>0 ? [...newDetails.flights , newFlight] : [newFlight];
+                        setNewDetails({...newDetails , flights:[...newFlightsToAdd]})
+                    }}>Add Flight</button>
+            </form>
+            </div>
         </div>
     )
 }

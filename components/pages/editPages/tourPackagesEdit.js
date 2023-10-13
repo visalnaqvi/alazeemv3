@@ -34,9 +34,7 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
         setIsLoading(false);
     }
 
-    useEffect(()=>{
-        console.log("package Details",packageDetails);
-    })
+   
 
     return(
         <div className="margin"> 
