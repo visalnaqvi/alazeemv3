@@ -1,12 +1,13 @@
 import Image from "next/image"
 import logo from "../../public/logo.png"
 import styles from "./navBar.module.css"
-import { ImFacebook2 } from "react-icons/im"
+import { GiHamburgerMenu } from "react-icons/gi"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth"
 import { getNavLinks } from "@/services/getData"
+import { useWindowSize } from "@uidotdev/usehooks";
 const NavBar = () => {
 
     const [menuState, setMenuState] = useState({
@@ -22,6 +23,7 @@ const NavBar = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [navLinks, setNavLinks] = useState({})
     const [user, setUser] = useState({})
+    const [isVisible , setIsVisible] = useState(true);
     useEffect(() => {
         fetchNavLinks();
         let user = checkStorageForToken();
@@ -95,12 +97,21 @@ const NavBar = () => {
         let data = await getNavLinks();
         setNavLinks(data.filter(d => d.active == true))
     }
+    const size = useWindowSize();
 
+    useEffect(()=>{
+        setIsVisible(size.width>=1040)
+    },[size])
     return (
         <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : <div>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
+            <div onClick={()=>{
+                setIsVisible(!isVisible)
+            }} className={styles.hamMenu}>
+            <GiHamburgerMenu style={{pointerEvents:"none"}} />
+            </div>
                 <Image src={logo} width={180} height={60} alt="al azeem logo" />
-                <div className={styles.mainMenu}>
+               <div className={`${styles.mainMenu} ${!isVisible && styles.notVisible}`}>
                     <ul className="body-wrapper">
                         {
                             navLinks && navLinks.length > 0 && navLinks.map((link, i) => (
@@ -113,9 +124,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className={`${(user && user.role == 'admin') ? styles.w40 : styles.w20} body-wrapper`}>
-                    <div className={styles.facebook}>
-                        <a className="body-wrapper" target="blank" href="https://www.facebook.com/AlAzeemTravels/"><ImFacebook2 /></a>
-                    </div>
+                    
                     {user ? <button onClick={() => {
                         localStorage.removeItem("token")
                         router.reload()

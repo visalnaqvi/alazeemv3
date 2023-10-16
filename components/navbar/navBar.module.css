@@ -2,6 +2,7 @@
     padding: 10px 20px;
     box-shadow: 0 10px 20px #00000020;
     margin-bottom: 30px !important;
+    position: relative;
 }
 
 .mainMenu{
@@ -44,11 +45,38 @@
     width: 40% !important;
 }
 
+.hamMenu{
+    font-size: 1.6rem;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+.notVisible{
+    display: none !important;
+}
+
 @media only screen and (max-width:1040px) {
     .mainMenu{
-        display: none;
+        position: absolute;
+        z-index: 100;
+        background-color: #fff;
+        top: 100%;
+        right: 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
     }
 
+    .hamMenu{
+        display: flex;
+    }
+
+    .mainMenu > ul > li{
+        width: 100%;
+    }
     .w20 , .w40{
         width: 100% !important;
         justify-content: flex-end !important;
