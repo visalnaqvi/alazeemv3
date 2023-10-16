@@ -28,6 +28,7 @@ export const getVendorDetailsFromId = async (vendorId) => {
 
         if (docSnap.exists()) {
             return docSnap.data();
+            
         } else {
             return [];
         }
@@ -78,6 +79,7 @@ export const handleNewVendor = async (vendorIds, docDetails) => {
     try {
         vendorIds.forEach(async (vendor) => {
             const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, vendor);
+           
             let docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 let data = docSnap.data();

@@ -52,6 +52,10 @@ const PackageEditForm = ({ details, packageid }) => {
             newVendorsIds.push(v.id)
         })
 
+        if(newSelectedVendor.title){
+            newVendorsIds.push(newSelectedVendor.id);
+        }
+        console.log(newVendorsIds)
         if (newDetails.id) {
             msg = await updatePackageData(newDetails, packageid)
         } else {

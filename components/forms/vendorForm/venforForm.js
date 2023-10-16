@@ -20,9 +20,8 @@ const VendorForm = ({ details }) => {
 
     const [toastMsg, setToastMsg] = useState({ msg: "" });
     useEffect(() => {
-        setNewDetails(details)
         fetchData();
-    }, [details])
+    }, [])
 
     const fetchData = async () => {
         try {
@@ -36,10 +35,17 @@ const VendorForm = ({ details }) => {
             iraqPackage.forEach((p) => {
                 finalPakacges.push(p);
             })
-
+            if(details.packages && details.packages.length>0){
+                details.packages.forEach(p=>{
+                    let index = finalPakacges.findIndex(fp => fp.id == p.id)
+                    p.title = finalPakacges[index].title;
+                })
+            }
             setTourPackages(finalPakacges)
+            setNewDetails(details)
         } catch (err) {
             if (err) {
+                console.log(err)
                 return setToastMsg({ status: "warning", msg: "Something went wrong cannot get data from databse" })
             }
         }
@@ -47,9 +53,17 @@ const VendorForm = ({ details }) => {
 
     }
 
+    useEffect(()=>{
+        console.log("something" , newDetails)
+    },[newDetails])
+
     const handleSubmit = async () => {
+        
         let oldP = newDetails.packages;
         let newP = addedPackages;
+        if(newAddedPackge.title){
+            newP = [...newP , newAddedPackge]
+        }
         let finalP = []
         if(oldP){
             oldP.forEach(p => finalP.push(p))
