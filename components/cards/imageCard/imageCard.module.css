@@ -1,5 +1,5 @@
 .wrapper{
-    width: 80%;
+    width: 90%;
     background-color: #f8f8f8;
     margin: 30px auto;
     border-radius: 10px;
@@ -11,4 +11,42 @@
 
 .imageCardSection.content{
     padding: 30px;
+}
+
+@media only screen and (max-width:1300px){
+    .wrapper{
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width:1090px){
+    .wrapper{
+        width: 99%;
+    }
+
+    .imageCardSection{
+        width: 100% ;
+    }
+
+    .imageCardSection.content{
+        padding-top: 0;
+    }
+
+    .wrapper > img{
+        border-radius: 10px;
+        margin: 30px;
+        margin-right: auto;
+        box-shadow: 10px 10px 20px #00000040;
+    }
+}
+
+@media only screen and (max-width:600px){
+    
+
+    .wrapper > img{
+        border-radius: 0px;
+        margin: 0px;
+        margin-bottom: 30px;
+
+    }
 }

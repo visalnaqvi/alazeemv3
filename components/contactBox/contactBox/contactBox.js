@@ -11,8 +11,10 @@ const ContactBox = ()=>{
             </div>
             <div className={styles.contactBoxSection}>
                 <p><strong>OR CLASS US NOW ON</strong></p><br></br>
+                <div>
                 <button>+919205184001</button>
                 <button>+9198110042458</button>
+                </div>
             </div>
         </div>
     );

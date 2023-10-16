@@ -3,24 +3,29 @@ import CarouselComp from "@/components/carousel/carousel"
 import services from "../data/services.js"
 import features from "../data/features.js"
 import Map from "../components/map/map.js"
+import { useWindowSize } from "@uidotdev/usehooks";
 import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 export default function Home() {
-  const images = [
-    {
-      mobile:"/hajjUmrahSlider/1.webp",
-      desktop:"/sliders/homePageSlider/slider.webp"
-    },
-    {
-      mobile:"/hajjUmrahSlider/2.webp",
-      desktop:"/sliders/homePageSlider/slider1.webp"
-    },
-    {
-      mobile:"/hajjUmrahSlider/3.webp",
-      desktop:"/sliders/homePageSlider/slider2.webp"
-    }]
+  const desktopImages = [
+    "/sliders/homePageSlider/desktop/slider_1.png",
+    "/sliders/homePageSlider/desktop/slider_2.png",
+    "/sliders/homePageSlider/desktop/slider_3.png",
+
+]
+
+const mobileImages = [
+  "/sliders/homePageSlider/mobile/slider_1_mb.png",
+  "/sliders/homePageSlider/mobile/slider_2_mb.png",
+
+]
+const size = useWindowSize();
   return (
     <div>
-        <CarouselComp width={1000} height={500} images={images} />
+      {
+        size.width > 700 ?
+        <CarouselComp width={2000} height={550} images={desktopImages} /> :
+        <CarouselComp width={700} height={200} images={mobileImages} />
+      }
         <div className="margin">
           <h2 className="subHeading">Our foundation</h2>
           <p className="content">We present before you AL-AZEEM TOUR & TRAVELS as one stop platform for all your travel needs.With a focus on customer service, at Al-Azeem Tour we offer a fantastic range of trips to meet your budget , ambitions and expectations. All of us here in the Al-Azeem team, work tirelessly to ensure that your trip is carefree, successful and enjoyable experience from start to finish. That means attention to your travel plans, accommodation, specialist inclusions and leisure time as well as to health and safety, financial protection and travel insurance.Specialist knowledge and experience is only half of the story. What distinguishes ous is our passion for the trips we organise, for the destinations that we feature. We feature trips around the worldand our latest inclusion is tour to Saudi Arabia.</p>

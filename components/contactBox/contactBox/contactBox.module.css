@@ -15,6 +15,7 @@
 .contactBoxSection:last-child{
     width: 30%;
     text-align: center;
+    min-width: 250px;
 }
 
 .contactBoxSection button{
@@ -25,6 +26,7 @@
     font-weight: bold;
     color: #003b7f;
     width: 60%;
+    min-width: 250px;
     margin-bottom: 10px;
     border: 2px solid #fff;
     transition: 0.5s ease;
@@ -39,4 +41,20 @@
 .contactBoxSection:first-child button{
     width: auto;
     margin-top: 20px;
+}
+
+@media only screen and (max-width:895px) {
+    .contactBoxSection{
+        width: 100% !important;
+        text-align: left !important;
+    }
+    .contactBoxSection button{
+        width: 30%;
+        margin-right: 10px;
+    }
+
+    .contactBoxSection:last-child{
+        display: flex;
+        flex-direction: column;
+    }
 }

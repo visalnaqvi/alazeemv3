@@ -10,7 +10,7 @@ const CarouselComp = ({images , pageTitle , width , height})=>{
   
                    {
                     images.map((image , i)=>(
-                        <Image width={width} height={height} alt='Kabba' key={i} src={image.desktop} />
+                        <Image width={width} height={height} alt='Kabba' key={i} src={image} />
                     ))
                    }
 

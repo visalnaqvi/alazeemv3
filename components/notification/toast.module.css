@@ -2,6 +2,7 @@
     position: fixed;
     top: 100px;
     padding: 20px;
+    pointer-events: none;
     z-index: 1000;
 }
 
@@ -30,6 +31,7 @@
     margin-left: 10px;
     padding: 18px;
     cursor: pointer;
+    pointer-events: all;
 }
 
 .icon:hover{

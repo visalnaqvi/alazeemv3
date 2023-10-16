@@ -28,19 +28,12 @@ const HajjUmrah = ()=>{
         }
     }
 
-    const images = [
-        {
-          mobile:"/hajjUmrahSlider/1.webp",
-          desktop:"/sliders/hajjUmrahSlider/1.webp"
-        },
-        {
-          mobile:"/hajjUmrahSlider/2.webp",
-          desktop:"/sliders/hajjUmrahSlider/2.webp"
-        },
-        {
-          mobile:"/hajjUmrahSlider/3.webp",
-          desktop:"/sliders/hajjUmrahSlider/3.webp"
-        }]
+    const desktopImages = [
+        "/sliders/hajjUmrahSlider/desktop/slider_1.png",
+        "/sliders/hajjUmrahSlider/desktop/slider_2.png",
+        "/sliders/hajjUmrahSlider/desktop/slider_3.png",
+    
+    ]
 
         const onClose = ()=>{
             setToastMsg({msg:""})
@@ -48,7 +41,7 @@ const HajjUmrah = ()=>{
     return (
         <div>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
-            <CarouselComp width={900} height={500} images={images} pageTitle={pageTitle} />
+            <CarouselComp width={900} height={500} images={desktopImages} pageTitle={pageTitle} />
             <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
             <div className="body-wrapper">

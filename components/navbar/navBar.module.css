@@ -35,3 +35,22 @@
 .mainMenu ul li.active{
     background-color: #00000010;
 }
+
+.w20{
+    width: 20% !important;
+}
+
+.w40{
+    width: 40% !important;
+}
+
+@media only screen and (max-width:1040px) {
+    .mainMenu{
+        display: none;
+    }
+
+    .w20 , .w40{
+        width: 100% !important;
+        justify-content: flex-end !important;
+    }
+}
