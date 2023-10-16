@@ -1,7 +1,7 @@
 import Image from "next/image"
 import logo from "../../public/logo.png"
 import styles from "./navBar.module.css"
-import { GiHamburgerMenu } from "react-icons/gi"
+import { GiHamburgerMenu , GiCancel } from "react-icons/gi"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Link from "next/link"
@@ -108,7 +108,7 @@ const NavBar = () => {
             <div onClick={()=>{
                 setIsVisible(!isVisible)
             }} className={styles.hamMenu}>
-            <GiHamburgerMenu style={{pointerEvents:"none"}} />
+            {isVisible ? <GiCancel style={{pointerEvents:"none"}} /> :<GiHamburgerMenu style={{pointerEvents:"none"}} />}
             </div>
                 <Image src={logo} width={180} height={60} alt="al azeem logo" />
                <div className={`${styles.mainMenu} ${!isVisible && styles.notVisible}`}>

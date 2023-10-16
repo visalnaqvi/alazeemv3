@@ -1,15 +1,17 @@
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import background from "../../../public/backgroundImages/iraqZiyaratShia.jpeg"
+import background_mb from "../../../public/backgroundImages/iraqZiyaratShia_mb.png"
 import ziyarat from "../../../data/shiaZiyarat.js"
 import IconLongList from "@/components/lists/iconLongList.js";
 import Image from "next/image";
+import SingleImage from "@/components/carousel/singleImage";
 
 const ShiaZiyarat = ({iraqPackages , fetchData})=>{
     return(
         <>
-        <div className="backgroundImgWrapper">
-                <Image className="backgroundImg" width={"100%"} height={500} src={background} alt="iraq ziyarat packages" />
-            </div>
+        
+                <SingleImage url={[background , background_mb]} />
+    
             <div className="margin">
                 <div className="body-wrapper">
                     {

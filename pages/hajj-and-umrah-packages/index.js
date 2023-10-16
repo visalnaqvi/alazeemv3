@@ -5,6 +5,7 @@ import CarouselComp from "@/components/carousel/carousel.js"
 import IconList from "@/components/lists/iconList.js"
 import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 import Toast from "@/components/notification/toast.js"
+import { useWindowSize } from "@uidotdev/usehooks";
 
 
 const HajjUmrah = ()=>{
@@ -29,19 +30,30 @@ const HajjUmrah = ()=>{
     }
 
     const desktopImages = [
-        "/sliders/hajjUmrahSlider/desktop/slider_1.png",
-        "/sliders/hajjUmrahSlider/desktop/slider_2.png",
-        "/sliders/hajjUmrahSlider/desktop/slider_3.png",
+        "/sliders/hajjUmrahSlider/1.webp",
+        "/sliders/hajjUmrahSlider/2.webp",
+        "/sliders/hajjUmrahSlider/3.webp",
     
     ]
 
+
+    const mobileImages = [
+        "/sliders/hajjUmrahSlider/1_mb.png",
+        "/sliders/hajjUmrahSlider/2_mb.png",
+        "/sliders/hajjUmrahSlider/3_mb.png",
+    
+    ]
         const onClose = ()=>{
             setToastMsg({msg:""})
         }
+        const size = useWindowSize();
     return (
         <div>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
-            <CarouselComp width={900} height={500} images={desktopImages} pageTitle={pageTitle} />
+            {
+        size.width > 700 ?
+            <CarouselComp width={900} height={500} images={desktopImages} pageTitle={pageTitle} />:
+            <CarouselComp width={900} height={350} images={mobileImages} pageTitle={pageTitle} />}
             <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
             <div className="body-wrapper">

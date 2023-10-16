@@ -2,14 +2,12 @@ import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import background from "../../../public/backgroundImages/iraqZiyaratSunni.jpeg"
 import ziyarat from "../../../data/sunniZiyarat"
 import IconLongList from "@/components/lists/iconLongList.js";
-import Image from "next/image";
+import SingleImage from "@/components/carousel/singleImage";
 
 const SunniPackages = ({iraqPackages , fetchData})=>{
     return(
         <>
-        <div className="backgroundImgWrapper">
-                <Image className="backgroundImg" width={"100%"} height={500} src={background} alt="iraq ziyarat packages" />
-            </div>
+        <SingleImage url={[background , background]} />
             <div className="margin">
                 <div className="body-wrapper">
                     {
