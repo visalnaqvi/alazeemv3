@@ -6,6 +6,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
+import FlightsTable from "@/components/flights/table/flightsTable";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
@@ -44,28 +45,32 @@ const PackageEditForm = ({ details, packageid }) => {
         setToastMessage({ msg: "" })
     }
 
-   
-    const handleSubmit = async () => {
-        let msg={msg:"something"};
+    const updateVendor = async ()=>{
+        console.log("inside vendor doing vendor operations balle balle")
         let newVendorsIds = []
         newVendor.forEach(v => {
             newVendorsIds.push(v.id)
         })
-
         if(newSelectedVendor.title){
             newVendorsIds.push(newSelectedVendor.id);
         }
-        console.log(newVendorsIds)
+
+        return await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
+    }
+   
+    const handleSubmit = async (data) => {
+        let msg={msg:"something"};
+        if(!data){
+           updateVendor()
+        }
+        
+
         if (newDetails.id) {
             msg = await updatePackageData(newDetails, packageid)
         } else {
             msg = await addNewPackage(newDetails, packageid)
         }
-        if (newVendorsIds.length == 0) {
-            setToastMessage(msg);
-            return;
-        }
-        msg = await handleNewVendor(newVendorsIds, { id: details.id, title: details.title })
+      
         setToastMessage(msg);
 
     }
@@ -84,7 +89,21 @@ const PackageEditForm = ({ details, packageid }) => {
         }
     },[details , packageid])
 
+
+    const delteFlight = (targetId)=>{
+        
+        let newFlights = newDetails.flights.filter((f,i) => {
+            return i != targetId;
+        });
+        setNewDetails({...newDetails , flights:[...newFlights]})
+    }
+
+    useEffect(()=>{
+        console.log("somertign2",newDetails);
+    },[newDetails])
+
     return (
+        <div>
         <div className="body-wrapper">
             {toastMessage.msg && <Toast onClose={onClose} type={toastMessage.status} message={toastMessage.msg} />}
             <div className={styles.wrapper}>
@@ -291,10 +310,6 @@ const PackageEditForm = ({ details, packageid }) => {
                             <input disabled type="text" className={`${styles.input} ${styles.optionsIinput}`} value={flight.title} />
                             <div className="delete-icon" id={i} onClick={async (e) => {
                                     
-                                    let newFlights = newDetails.flights.filter((f,i) => {
-                                        return i != e.target.id;
-                                    });
-                                    setNewDetails({...newDetails , flights:[...newFlights]})
                                 }}>
                                     <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
                                 </div>
@@ -303,35 +318,43 @@ const PackageEditForm = ({ details, packageid }) => {
 }
                 </div>
             }
-            <form>
+            
+            </div>
+        </div>
+        {
+            newDetails.flights && <FlightsTable details={newDetails.flights} admin={true} onDelete={delteFlight} />
+        }
+        <form>
                 <p className="subHeading">Add New Flight</p>
+                <div className="body-wrapper">
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="flighttitle">Flight Name</label>
+                        <label className={styles.label} htmlFor="flighttitle">Flight</label>
                         <input onChange={(e) => { setNewFlight({ ...newFlight, title: e.target.value }) }} className={styles.input} type="text" id="flighttitle" placeholder="Enter Flight Title" />
                     </div>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="from">From</label>
-                        <input onChange={(e) => { setNewFlight({ ...newFlight, from: e.target.value }) }} className={styles.input} type="text" id="from" placeholder="Enter From" />
+                        <label className={styles.label} htmlFor="date">Date</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, date: e.target.value }) }} className={styles.input} type="text" id="date" placeholder="Enter Date" />
                     </div>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="to">Destination</label>
-                        <input onChange={(e) => { setNewFlight({ ...newFlight, destination: e.target.value }) }} className={styles.input} type="text" id="to" placeholder="Enter Destination" />
+                        <label className={styles.label} htmlFor="sector">Sector</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, sector: e.target.value }) }} className={styles.input} type="text" id="sector" placeholder="Enter Sector" />
                     </div>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="filghtdeparturedate">Departure Date and Time</label>
-                        <input onChange={(e) => { setNewFlight({ ...newFlight, departureDate: e.target.value }) }} className={styles.input} type="text" id="filghtdeparturedate" placeholder="Enter Departure Date and time" />
+                        <label className={styles.label} htmlFor="filghtdeparturedate">Time</label>
+                        <input onChange={(e) => { setNewFlight({ ...newFlight, time: e.target.value }) }} className={styles.input} type="text" id="filghtdeparturedate" placeholder="Enter time" />
                     </div>
-                    <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="flightlandingdate">Landing Date and Time</label>
-                        <input onChange={(e) => { setNewFlight({ ...newFlight, landingDate: e.target.value }) }} className={styles.input} type="text" id="flightlandingdate" placeholder="Enter Landing Date and time" />
                     </div>
                     <button className="primary-btn blue" onClick={(e)=>{
                         e.preventDefault()
-                        let newFlightsToAdd = newDetails.flights?.length>0 ? [...newDetails.flights , newFlight] : [newFlight];
+                        let newFlightsToAdd = newDetails.flights?.length>0 ? [...newDetails.flights , newFlight] : [{...newFlight}];
+                        console.log("newFlightToAdd",newFlightsToAdd)
                         setNewDetails({...newDetails , flights:[...newFlightsToAdd]})
+                        let data = newDetails;
+                        data.flights = newFlightsToAdd
+                        handleSubmit(data);
                     }}>Add Flight</button>
+                    <br></br>
             </form>
-            </div>
         </div>
     )
 }

@@ -1,14 +1,16 @@
 import styles from "./flightTable.module.css"
-const FlightsTable = ({details})=>{
+import {RiDeleteBin5Fill} from "react-icons/ri"
+const FlightsTable = ({details , admin=false , onDelete})=>{
+
     return(
         <table className={styles.table}>
             <thead className={styles.tableHead}>
                 <tr className={styles.tableRow}>
-                    <td>Flight Name</td>
-                    <td>Flight From</td>
-                    <td>Destination</td>
-                    <td>Departure Date and Time</td>
-                    <td>Landing Date and Time</td>
+                    <td>Flight</td>
+                    <td>Date</td>
+                    <td>Sector</td>
+                    <td>Time</td>
+                    {admin && <td>Action</td>}
                 </tr>
             </thead>
             <tbody>
@@ -16,10 +18,16 @@ const FlightsTable = ({details})=>{
                     details.map((flight,i)=>(
                         <tr key={i} className={styles.tableRow}>
                             <td>{flight.title}</td>
-                            <td>{flight.from}</td>
-                            <td>{flight.destination}</td>
-                            <td>{flight.departureDate}</td>
-                            <td>{flight.landingDate}</td>
+                            <td>{flight.date}</td>
+                            <td>{flight.sector}</td>
+                            <td>{flight.time}</td>
+                            {
+                                admin &&  <div className="delete-icon" id={i} onClick={async (e) => {
+                                    onDelete(i)
+                                }}>
+                                    <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
+                                </div>
+                            }
                         </tr>
                     ))
                 }
