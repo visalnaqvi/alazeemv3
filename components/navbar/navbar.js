@@ -55,7 +55,7 @@ const NavBar = () => {
                 karbalaZiyarat: false
             });
                 break;
-            case "/hajj-and-umrah-packages": setMenuState({
+            case "/umrahPackage": setMenuState({
                 home: false,
                 hajjUmrah: true,
                 iraqZiyarat: false,
