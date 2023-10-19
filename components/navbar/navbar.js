@@ -46,6 +46,9 @@ const NavBar = () => {
         }
 
         setIsNew(singlePackageId == "new")
+        if(asPath=="/iraqZiyarat"){
+            router.push("/iraq-ziyarat-packages/karbala-iraq-ziyarat")
+        }
         switch (asPath) {
             case "/": setMenuState({
                 home: true,
