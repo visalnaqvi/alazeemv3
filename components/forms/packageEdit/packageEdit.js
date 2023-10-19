@@ -352,7 +352,7 @@ const PackageEditForm = ({ details, packageid }) => {
                         let data = newDetails;
                         data.flights = newFlightsToAdd
                         handleSubmit(data);
-                    }}>Add New Flight</button>
+                    }}>Add Flight</button>
                     <br></br>
                     <br></br>
                     <br></br>
