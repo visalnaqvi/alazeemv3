@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./contactBox.module.css"
 const ContactBox = ()=>{
     return(
@@ -12,8 +13,8 @@ const ContactBox = ()=>{
             <div className={styles.contactBoxSection}>
                 <p><strong>OR CLASS US NOW ON</strong></p><br></br>
                 <div>
-                <button>+919205184001</button>
-                <button>+9198110042458</button>
+                <Link href="tel:9205184001"><button>+91 9205184001</button></Link>
+                <Link href="tel:9811042458"><button>+91 9811042458</button></Link>
                 </div>
             </div>
         </div>
