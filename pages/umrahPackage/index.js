@@ -56,21 +56,21 @@ const HajjUmrah = ()=>{
             <CarouselComp width={900} height={350} images={mobileImages} pageTitle={pageTitle} />}
             <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
-            <div className="body-wrapper">
+            {umrahPackages.length > 0 ? <div className="body-wrapper">
             {
                 umrahPackages.map((pkg,i)=>(
                     <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
                 ))
             }
-            </div>
+            </div>:<p className="subHeading">Loading Packages...</p>}
             <h2 className="boldHeading center">Iraq Ziyarat Packages</h2>
-            <div className="body-wrapper">
+            {iraqPackages.length> 0 ? <div className="body-wrapper">
             {
                 iraqPackages.map((pkg,i)=>(
                     <PackageCard type="iraq" subType="sunni" tour={pkg} key={i} />
                 ))
             }
-            </div>
+            </div>: <p className="subHeading">Loading Packages...</p>}
             <br></br>
             <ContactBox></ContactBox>
             <h2 className="subHeading">Umrah Visa</h2>
