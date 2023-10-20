@@ -21,7 +21,8 @@ const HajjUmrah = ()=>{
     const fetchData = async ()=>{
         try{setUmrahPackages(await getUmrahPackages());
         setIraqPackages(await getIraqPackages("sunni"));
-        setPageTitle(await getPageTitle("hajjUmrah"))}
+        // setPageTitle(await getPageTitle("hajjUmrah"))
+    }
         catch (err){
             if(err){
                 setToastMsg({status:"warning" , msg:"Something went wrong cannot get package"})
@@ -52,8 +53,8 @@ const HajjUmrah = ()=>{
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             {
         size.width > 700 ?
-            <CarouselComp width={900} height={500} images={desktopImages} pageTitle={pageTitle} />:
-            <CarouselComp width={900} height={350} images={mobileImages} pageTitle={pageTitle} />}
+            <CarouselComp width={900} height={500} images={desktopImages}  />:
+            <CarouselComp width={900} height={350} images={mobileImages} />}
             <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
             {umrahPackages.length > 0 ? <div className="body-wrapper">
