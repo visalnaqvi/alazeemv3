@@ -112,7 +112,7 @@ const PackageEditForm = ({ details, packageid }) => {
             <div className={styles.wrapper}>
                 <form>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="title">Packate Title</label>
+                        <label className={styles.label} htmlFor="title">PackageTitle</label>
                         <input onChange={(e) => { setNewDetails({ ...newDetails, title: e.target.value }) }} className={styles.input} type="text" id="title" value={newDetails.title} placeholder="Enter Package Title" />
                     </div>
                     <div className={styles.formItem}>
@@ -176,7 +176,7 @@ const PackageEditForm = ({ details, packageid }) => {
                                     newDetails.category == 'dulex' ?<input onChange={()=>setNewDetails({...newDetails , category:"dulex"})} defaultChecked  type="radio" id="dulex_type" name="category_type" value="dulex" /> :
                                     <input onChange={()=>setNewDetails({...newDetails , category:"dulex"})}  type="radio" id="dulex_type" name="category_type" value="dulex" />
                                 }
-                                <label className={styles.label} htmlFor="dulex_type">Dulex</label>
+                                <label className={styles.label} htmlFor="dulex_type">Deluex</label>
                             </div>
                             <div className={styles.formItem}>
                                {

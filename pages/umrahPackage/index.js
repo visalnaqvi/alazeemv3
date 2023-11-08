@@ -58,6 +58,7 @@ const HajjUmrah = ()=>{
             <CarouselComp width={900} height={500} images={desktopImages}  />:
             <CarouselComp width={900} height={350} images={mobileImages} />}
             <div className="margin">
+              
             {pageTitle && pageTitle.showCategory ? <div>
             {umrahPackages.length > 0 ? 
             <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages}/>:<p className="subHeading">Loading Packages...</p>}
@@ -74,6 +75,7 @@ const HajjUmrah = ()=>{
             </div>:<p className="subHeading">Loading Packages...</p>}
 
             </div>}
+           
             <h2 className="boldHeading center">Iraq Ziyarat Packages</h2>
             {iraqPackages.length> 0 ? <div className="body-wrapper">
             {

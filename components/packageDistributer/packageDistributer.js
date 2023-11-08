@@ -21,7 +21,8 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
         console.log("economy package:",ecoPackages);
     },[ecoPackages])
     return(
-        <>
+        <div className={`body-wrapper column ${titles.isEcoTop && "reverse"}`}>
+            <div>
         <h2 className="boldHeading center">{titles.dulexTitle}</h2>
         <div className="body-wrapper">
             {
@@ -30,6 +31,8 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
                 ))
             }
         </div>
+        </div>
+        <div>
         <h2 className="boldHeading center">{titles.ecoTitle}</h2>
         <div className="body-wrapper">
             {
@@ -38,7 +41,8 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
                 ))
             }
         </div>
-        </>
+        </div>
+        </div>
     )
 }
 

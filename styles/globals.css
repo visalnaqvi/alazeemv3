@@ -66,6 +66,10 @@ a{
     justify-content: flex-end;
 }
 
+.body-wrapper.column.reverse{
+    flex-direction: column-reverse;
+}
+
 .margin{
     width: 93%;
     margin: auto;

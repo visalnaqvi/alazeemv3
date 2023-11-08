@@ -18,7 +18,7 @@ const NavLinksForm = ({details}) =>{
 
     const handleSettingSubmit = async ()=>{
         console.log("someting final",newDetails)
-        let msg = await updatePageSetting(newDetails , "links" )
+        let msg = await updatePageSetting(newDetails)
         setToastMessage(msg)
     }
 
@@ -34,7 +34,7 @@ const NavLinksForm = ({details}) =>{
                {details.id=="hajjUmrahSetting"? 
                 <form>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="dulexTitle">Dulex Title</label>
+                        <label className={styles.label} htmlFor="dulexTitle">Deluxe Title</label>
                         <input onChange={(e) => { setNewDetails({ ...newDetails, dulexTitle: e.target.value }) }} className={styles.input} type="text" id="dulexTitle" value={newDetails.dulexTitle} placeholder="Enter Title" />
                     </div>
                     <div className={styles.formItem}>
@@ -49,6 +49,16 @@ const NavLinksForm = ({details}) =>{
                         <div className={`${styles.formItem}`}>
                             <label className={styles.label} htmlFor="showCategory-false">Do not show category</label>
                            {details.showCategory ? <input onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="status" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="status" />}
+                        </div>
+                    </div>
+                    <div className="body-wrapper justify-start">
+                        <div className={`${styles.formItem}`}>
+                            <label className={styles.label} htmlFor="isEcoTop-true">Show Economy On Top</label>
+                            {details.isEcoTop ? <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="status" /> : <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="topRow" />}
+                        </div>
+                        <div className={`${styles.formItem}`}>
+                            <label className={styles.label} htmlFor="isEcoTop-false">Show Deluxe On Top</label>
+                           {details.isEcoTop ? <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="status" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="topRow" />}
                         </div>
                     </div>
                     <button className="primary-btn blue" onClick={(e)=>{
