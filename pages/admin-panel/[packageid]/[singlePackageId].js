@@ -14,6 +14,7 @@ const SinglePackgeEdit = ()=>{
         case "iraq" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId} />);
         case "vendors" : return(<VendorEdit vendorId={singlePackageId} />)
         case "links" : return(<NavLinksEdit linkId={singlePackageId} />)
+        case "page-setting" : return(<NavLinksEdit linkId={singlePackageId} />)
         default : return (<h1>Page Not Found</h1>);
     }
 

@@ -6,6 +6,7 @@ import IconList from "@/components/lists/iconList.js"
 import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 import Toast from "@/components/notification/toast.js"
 import { useWindowSize } from "@uidotdev/usehooks";
+import PackageDistributer from "@/components/packageDistributer/packageDistributer.js"
 
 
 const HajjUmrah = ()=>{
@@ -19,9 +20,10 @@ const HajjUmrah = ()=>{
     },[])
 
     const fetchData = async ()=>{
-        try{setUmrahPackages(await getUmrahPackages());
+        try{
+        setUmrahPackages(await getUmrahPackages());
         setIraqPackages(await getIraqPackages("sunni"));
-        // setPageTitle(await getPageTitle("hajjUmrah"))
+        setPageTitle(await getPageTitle("hajjUmrah"))
     }
         catch (err){
             if(err){
@@ -55,8 +57,14 @@ const HajjUmrah = ()=>{
         size.width > 700 ?
             <CarouselComp width={900} height={500} images={desktopImages}  />:
             <CarouselComp width={900} height={350} images={mobileImages} />}
-            <h2 className="boldHeading center">Umrah Packages</h2>
             <div className="margin">
+            {pageTitle && pageTitle.showCategory ? <div>
+            {umrahPackages.length > 0 ? 
+            <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages}/>:<p className="subHeading">Loading Packages...</p>}
+            </div>
+            :
+            <div>
+            <h2 className="boldHeading center">Umrah Packages</h2>
             {umrahPackages.length > 0 ? <div className="body-wrapper">
             {
                 umrahPackages.map((pkg,i)=>(
@@ -64,6 +72,8 @@ const HajjUmrah = ()=>{
                 ))
             }
             </div>:<p className="subHeading">Loading Packages...</p>}
+
+            </div>}
             <h2 className="boldHeading center">Iraq Ziyarat Packages</h2>
             {iraqPackages.length> 0 ? <div className="body-wrapper">
             {

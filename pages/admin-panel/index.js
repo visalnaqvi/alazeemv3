@@ -27,6 +27,10 @@ const AdminPanel = ()=>{
         {
             title:"Header Links",
             link:"links"
+        },
+        {
+            title:"Page Setting",
+            link:"page-setting"
         }
     ]
     return(

@@ -23,8 +23,11 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
 
     const AdminPanelCollectionCard = <div className={styles.wrapper}>
         <h2 className={`boldHeading  ${styles.cardTitle}`}>{card.title}</h2>
-        <div className="body-wrapper justify-start">
-        <Link href={packageid == "vendors" ? `${packageid}/${card.id}` : `admin-panel/${card.link}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>
+        <div className="body-wrapper justify-start">  
+        {
+            packageid=="page-setting" ? <Link href={`${packageid}/${card.id}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>
+        :  
+        <Link href={packageid == "vendors" ? `${packageid}/${card.id}` : `admin-panel/${card.link}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>}  
         {packageid=="vendors" && <button onClick={async ()=>{
             if(window.confirm("pkka delete krna hai?")){
                 await deletePackage(card.id , packageid)
@@ -36,6 +39,8 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
    
     switch (packageid) {
         case "vednors": return (AdminPanelCollectionCard);
+
+        case "page-setting": return (AdminPanelCollectionCard);
 
         case "hajjUmrah": return (TourEditCard);
 

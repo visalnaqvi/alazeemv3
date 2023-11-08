@@ -18,6 +18,7 @@ const PackageEditForm = ({ details, packageid }) => {
         title: "",
         price: "",
         order: "",
+        category:"",
         hotels: [],
         features: [
             "All Meals and Laudary",
@@ -63,6 +64,8 @@ const PackageEditForm = ({ details, packageid }) => {
         if(!data){
            updateVendor()
         }
+
+        console.log(newDetails)
         
 
         if (newDetails.id) {
@@ -166,6 +169,23 @@ const PackageEditForm = ({ details, packageid }) => {
                             </div>
                         </div>
                     }
+                    <div className={styles.formItem}>
+                            <label className={styles.label}>Select Category</label>
+                            <div className={styles.formItem}>
+                                {
+                                    newDetails.category == 'dulex' ?<input onChange={()=>setNewDetails({...newDetails , category:"dulex"})} defaultChecked  type="radio" id="dulex_type" name="category_type" value="dulex" /> :
+                                    <input onChange={()=>setNewDetails({...newDetails , category:"dulex"})}  type="radio" id="dulex_type" name="category_type" value="dulex" />
+                                }
+                                <label className={styles.label} htmlFor="dulex_type">Dulex</label>
+                            </div>
+                            <div className={styles.formItem}>
+                               {
+                                newDetails.type == 'economy' ? <input onChange={()=>setNewDetails({...newDetails , category:"economy"})} defaultChecked type="radio" id="economy_type" name="category_type" value="economy" /> :
+                                <input onChange={()=>setNewDetails({...newDetails , category:"economy"})} type="radio" id="economy_type" name="category_type" value="economy" />
+                               }
+                                <label className={styles.label} htmlFor="economy_type">Economy</label>
+                            </div>
+                        </div>
                     {newDetails.title && 
                     <div>
                     {newDetails.hotels.length == 2 ?
@@ -301,7 +321,7 @@ const PackageEditForm = ({ details, packageid }) => {
           
 
          
-           {
+           {/* {
                 newDetails.flights?.length > 0 && 
                 <div>
                       <p className="subHeading">Selected Flights</p>
@@ -317,7 +337,7 @@ const PackageEditForm = ({ details, packageid }) => {
                     ))
 }
                 </div>
-            }
+            } */}
             
             </div>
         </div>
