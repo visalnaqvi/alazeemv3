@@ -35,7 +35,7 @@ const NavLinksForm = ({details}) =>{
                         <input onChange={(e) => { setNewDetails({ ...newDetails, dulexTitle: e.target.value }) }} className={styles.input} type="text" id="dulexTitle" value={newDetails.dulexTitle} placeholder="Enter Title" />
                     </div>
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="ecoTitle">Dulex Title</label>
+                        <label className={styles.label} htmlFor="ecoTitle">Economy Title</label>
                         <input onChange={(e) => { setNewDetails({ ...newDetails, ecoTitle: e.target.value }) }} className={styles.input} type="text" id="ecoTitle" value={newDetails.ecoTitle} placeholder="Enter Title" />
                     </div>
                     <div className={styles.formItem}>
@@ -45,21 +45,21 @@ const NavLinksForm = ({details}) =>{
                     <div className="body-wrapper justify-start">
                         <div className={`${styles.formItem}`}>
                             <label className={styles.label} htmlFor="showCategory-true">Show Category</label>
-                            {details.showCategory ? <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, showCategory: true }) }} className={styles.input} type="radio" id="showCategory-true" name="status" /> : <input onChange={(e) => { setNewDetails({ ...newDetails, showCategory: true }) }} className={styles.input} type="radio" id="showCategory-true" name="status" />}
+                            {details.showCategory ? <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, showCategory: true }) }} className={styles.input} type="radio" id="showCategory-true" name="showCategory" /> : <input onChange={(e) => { setNewDetails({ ...newDetails, showCategory: true }) }} className={styles.input} type="radio" id="showCategory-true" name="showCategory" />}
                         </div>
                         <div className={`${styles.formItem}`}>
                             <label className={styles.label} htmlFor="showCategory-false">Do not show category</label>
-                           {details.showCategory ? <input onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="status" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="status" />}
+                           {details.showCategory ? <input onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="showCategory" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, showCategory: false }) }} className={styles.input} type="radio" id="showCategory-false" name="showCategory" />}
                         </div>
                     </div>
                     <div className="body-wrapper justify-start">
                         <div className={`${styles.formItem}`}>
                             <label className={styles.label} htmlFor="isEcoTop-true">Show Economy On Top</label>
-                            {details.isEcoTop ? <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="status" /> : <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="topRow" />}
+                            {details.isEcoTop ? <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="topRow" /> : <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: true }) }} className={styles.input} type="radio" id="isEcoTop-true" name="topRow" />}
                         </div>
                         <div className={`${styles.formItem}`}>
                             <label className={styles.label} htmlFor="isEcoTop-false">Show Deluxe On Top</label>
-                           {details.isEcoTop ? <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="status" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="topRow" />}
+                           {details.isEcoTop ? <input onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="topRow" /> : <input defaultChecked onChange={(e) => { setNewDetails({ ...newDetails, isEcoTop: false }) }} className={styles.input} type="radio" id="isEcoTop-false" name="topRow" />}
                         </div>
                     </div>
                     <button className="primary-btn blue" onClick={(e)=>{
@@ -67,6 +67,11 @@ const NavLinksForm = ({details}) =>{
                         handleSettingSubmit();
                     }}>Submit</button>
                 </form>:
+
+
+
+
+
                 <form>
                 <div className={styles.formItem}>
                     <label className={styles.label} htmlFor="title">Link Title</label>
