@@ -4,25 +4,34 @@ import { useEffect, useState } from "react";
 const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
     const [dulexPackages , setDulexPackages] = useState([]);
     const [ecoPackages , setEcoPackages] = useState([]);
+    const [ramzanPackages , setRamzanPackages] = useState([]);
     useEffect(()=>{
         console.log("all packages:",umrahPackages)
         if(umrahPackages){
             let dulex_pack = umrahPackages.filter((pack)=>pack.category=="dulex")
             let eco_pack = umrahPackages.filter((pack)=>pack.category=="economy")
+            let ramzan_pack = umrahPackages.filter((pack)=>pack.category=="ramzan")
             setDulexPackages(dulex_pack);
             setEcoPackages(eco_pack);
+            setRamzanPackages(ramzan_pack)
         }
     },[umrahPackages])
 
-    useEffect(()=>{
-        console.log("dulex package:",dulexPackages);
-    },[dulexPackages])
-    useEffect(()=>{
-        console.log("economy package:",ecoPackages);
-    },[ecoPackages])
     return(
         <div className={`body-wrapper column ${titles.isEcoTop && "reverse"}`}>
-            <div>
+         { ramzanPackages.length>0 && <div style={{width:"100%"}}>
+                
+                <h2 className="boldHeading center">{titles.ramzanTitle}</h2>
+                <div className="body-wrapper">
+                    {
+                        ramzanPackages.map((pkg,i)=>(
+                            <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
+                        ))
+                    }
+                </div>
+                </div>}
+            {dulexPackages.length>0 && <div>
+                
         <h2 className="boldHeading center">{titles.dulexTitle}</h2>
         <div className="body-wrapper">
             {
@@ -31,8 +40,8 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
                 ))
             }
         </div>
-        </div>
-        <div>
+        </div>}
+        {ecoPackages.length > 0 && <div>
         <h2 className="boldHeading center">{titles.ecoTitle}</h2>
         <div className="body-wrapper">
             {
@@ -41,7 +50,8 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
                 ))
             }
         </div>
-        </div>
+        </div>}
+        
         </div>
     )
 }

@@ -8,7 +8,6 @@ const NavLinksForm = ({details}) =>{
     const [newDetails , setNewDetails] = useState({})
 
     useEffect(()=>{
-        console.log("kkkkkkkkkkkk",details)
         setNewDetails(details);
     },[details])
 
@@ -17,13 +16,11 @@ const NavLinksForm = ({details}) =>{
     }
 
     const handleSettingSubmit = async ()=>{
-        console.log("someting final",newDetails)
         let msg = await updatePageSetting(newDetails)
         setToastMessage(msg)
     }
 
     const handleSubmit = async ()=>{
-        console.log("someting final",newDetails)
         let msg = await updateNavLink(newDetails , "links" )
         setToastMessage(msg)
     }
@@ -40,6 +37,10 @@ const NavLinksForm = ({details}) =>{
                     <div className={styles.formItem}>
                         <label className={styles.label} htmlFor="ecoTitle">Dulex Title</label>
                         <input onChange={(e) => { setNewDetails({ ...newDetails, ecoTitle: e.target.value }) }} className={styles.input} type="text" id="ecoTitle" value={newDetails.ecoTitle} placeholder="Enter Title" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="ramzanTitle">Ramzan Title</label>
+                        <input onChange={(e) => { setNewDetails({ ...newDetails, ramzanTitle: e.target.value }) }} className={styles.input} type="text" id="ramzanTitle" value={newDetails.ramzanTitle} placeholder="Enter Title" />
                     </div>
                     <div className="body-wrapper justify-start">
                         <div className={`${styles.formItem}`}>

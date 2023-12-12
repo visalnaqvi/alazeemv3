@@ -185,6 +185,13 @@ const PackageEditForm = ({ details, packageid }) => {
                                }
                                 <label className={styles.label} htmlFor="economy_type">Economy</label>
                             </div>
+                            <div className={styles.formItem}>
+                               {
+                                newDetails.type == 'ramzan' ? <input onChange={()=>setNewDetails({...newDetails , category:"ramzan"})} defaultChecked type="radio" id="ramzan_type" name="ramzan_type" value="ramzan" /> :
+                                <input onChange={()=>setNewDetails({...newDetails , category:"ramzan"})} type="radio" id="ramzan_type" name="ramzan_type" value="ramzan" />
+                               }
+                                <label className={styles.label} htmlFor="ramzan_type">Ramzan</label>
+                            </div>
                         </div>
                     {newDetails.title && 
                     <div>

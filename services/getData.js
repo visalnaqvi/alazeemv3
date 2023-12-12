@@ -52,7 +52,6 @@ export const getIraqPackages = async (type) => {
 export const getPageTitle = async (id) => {
     const docRef = doc(db, "page_titles", id);
     const docSnap = await getDoc(docRef);
-    console.log("dataaaaaaaaaaaaaaaaaa",docSnap)
     if (docSnap.exists()) {
         return docSnap.data()
     } else {
