@@ -8,6 +8,7 @@ import Link from "next/link"
 import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth"
 import { getNavLinks } from "@/services/getData"
 import { useWindowSize } from "@uidotdev/usehooks";
+import ForExPopUp from "../flights/container/forexPopUp"
 const NavBar = () => {
 
     const [menuState, setMenuState] = useState({
@@ -24,6 +25,8 @@ const NavBar = () => {
     const [navLinks, setNavLinks] = useState({})
     const [user, setUser] = useState({})
     const [isVisible , setIsVisible] = useState(true);
+
+    const [isPopUpOpen , setisPopUpOpen] = useState(false)
     useEffect(() => {
         fetchNavLinks();
         let user = checkStorageForToken();
@@ -121,6 +124,10 @@ const NavBar = () => {
                                 <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
                             ))
                         }
+                        <li  onClick={()=>{
+                setisPopUpOpen(true)
+            }}>FOREX</li>
+                        {isPopUpOpen && <ForExPopUp setIsFlightsOpen={setisPopUpOpen}/>}
                         {/* <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
                         <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages/karbala-iraq-ziyarat">Iraq Ziyarat</Link></li>
                         <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li> */}
