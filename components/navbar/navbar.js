@@ -26,7 +26,6 @@ const NavBar = () => {
     const [user, setUser] = useState({})
     const [isVisible , setIsVisible] = useState(true);
 
-    const [isPopUpOpen , setisPopUpOpen] = useState(false)
     useEffect(() => {
         fetchNavLinks();
         let user = checkStorageForToken();
@@ -58,7 +57,8 @@ const NavBar = () => {
                 hajjUmrah: false,
                 iraqZiyarat: false,
                 holidayPackages: false,
-                karbalaZiyarat: false
+                karbalaZiyarat: false,
+                forex:false
             });
                 break;
             case "/umrahPackage": setMenuState({
@@ -66,7 +66,8 @@ const NavBar = () => {
                 hajjUmrah: true,
                 iraqZiyarat: false,
                 holidayPackages: false,
-                karbalaZiyarat: false
+                karbalaZiyarat: false,
+                forex:false
             });
                 break;
             case "/iraq-ziyarat-packages/iraq-ziyarat": setMenuState({
@@ -74,7 +75,8 @@ const NavBar = () => {
                 hajjUmrah: false,
                 iraqZiyarat: true,
                 holidayPackages: false,
-                karbalaZiyarat: false
+                karbalaZiyarat: false,
+                forex:false
             });
                 break;
             case "/iraq-ziyarat-packages/karbala-iraq-ziyarat": setMenuState({
@@ -82,7 +84,8 @@ const NavBar = () => {
                 hajjUmrah: false,
                 iraqZiyarat: false,
                 holidayPackages: false,
-                karbalaZiyarat: true
+                karbalaZiyarat: true,
+                forex:false
             });
                 break;
             case "/holiday-packages": setMenuState({
@@ -90,7 +93,17 @@ const NavBar = () => {
                 hajjUmrah: false,
                 iraqZiyarat: false,
                 holidayPackages: true,
-                karbalaZiyarat: false
+                karbalaZiyarat: false,
+                forex:false
+            });
+                break;
+            case "/forex": setMenuState({
+                home: false,
+                hajjUmrah: false,
+                iraqZiyarat: false,
+                holidayPackages: false,
+                karbalaZiyarat: false,
+                forex:true
             });
                 break;
             default: setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false })
@@ -124,10 +137,8 @@ const NavBar = () => {
                                 <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
                             ))
                         }
-                        <li  onClick={()=>{
-                setisPopUpOpen(true)
-            }}>FOREX</li>
-                        {isPopUpOpen && <ForExPopUp setIsFlightsOpen={setisPopUpOpen}/>}
+                        <li className={menuState[`forex`] && styles.active}><Link href={`forex`}>FOREX</Link></li>
+                        
                         {/* <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
                         <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages/karbala-iraq-ziyarat">Iraq Ziyarat</Link></li>
                         <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li> */}
