@@ -53,9 +53,7 @@ const VendorForm = ({ details }) => {
 
     }
 
-    useEffect(()=>{
-        console.log("something" , newDetails)
-    },[newDetails])
+
 
     const handleSubmit = async () => {
         

@@ -28,6 +28,14 @@ const PackageEditForm = ({ details, packageid }) => {
             "Round Trip Transport",
             "Flight by Saudi Air"
         ],
+        isBold:[
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
         date: ""
     })
 
@@ -47,7 +55,6 @@ const PackageEditForm = ({ details, packageid }) => {
     }
 
     const updateVendor = async ()=>{
-        console.log("inside vendor doing vendor operations balle balle")
         let newVendorsIds = []
         newVendor.forEach(v => {
             newVendorsIds.push(v.id)
@@ -65,7 +72,6 @@ const PackageEditForm = ({ details, packageid }) => {
            updateVendor()
         }
 
-        console.log(newDetails)
         
 
         if (newDetails.id) {
@@ -101,9 +107,6 @@ const PackageEditForm = ({ details, packageid }) => {
         setNewDetails({...newDetails , flights:[...newFlights]})
     }
 
-    useEffect(()=>{
-        console.log("somertign2",newDetails);
-    },[newDetails])
 
     return (
         <div>
@@ -130,12 +133,25 @@ const PackageEditForm = ({ details, packageid }) => {
                                         setNewDetails({ ...newDetails, features: [...updatedFeatures] })
                                     }
                                     } className={`${styles.input} ${styles.optionsIinput}`} type="text" value={feature} placeholder="Enter New Feature" />
+                                    {newDetails.isBold[i] ? <input checked type="checkbox" name="isBold" id="isBold" onChange={(e)=>{
+                                        let updatedIsBold = [...newDetails.isBold]
+                                        updatedIsBold[i] = e.target.checked
+                                        setNewDetails({...newDetails , isBold:[...updatedIsBold]})
+                                    }}/>:<input type="checkbox" name="isBold" id="isBold" onChange={(e)=>{
+                                        let updatedIsBold = [...newDetails.isBold]
+                                        updatedIsBold[i] = e.target.checked
+                                        setNewDetails({...newDetails , isBold:[...updatedIsBold]})
+                                    }}/>}<label htmlFor="isBold">Bold?</label>
                                     <div className="delete-icon" id={i} onClick={async (e) => {
                                     
                                     let newFeatures = newDetails.features.filter((f,i) => {
                                         return i != e.target.id;
                                     });
-                                    setNewDetails({...newDetails , features:[...newFeatures]})
+
+                                    let newIsBold = newDetails.isBold.filter((f,i) => {
+                                        return i != e.target.id;
+                                    });
+                                    setNewDetails({...newDetails , features:[...newFeatures] , isBold:[...newIsBold]})
                                 }}>
                                     <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
                                 </div>
@@ -146,7 +162,10 @@ const PackageEditForm = ({ details, packageid }) => {
                     <div className={styles.formItem}>
                     <button className="primary-btn blue" onClick={(e)=>{
                         e.preventDefault()
-                        setNewDetails({...newDetails , features:[...newDetails.features , "Add New Feature"]})
+                        setNewDetails({...newDetails ,
+                             features:[...newDetails.features , "Add New Feature"],
+                             isBold:[...newDetails.isBold, false]
+                            })
                     }}>Add New Feature</button>
                     </div>
                     {
@@ -374,7 +393,6 @@ const PackageEditForm = ({ details, packageid }) => {
                     <button className="primary-btn blue" onClick={(e)=>{
                         e.preventDefault()
                         let newFlightsToAdd = newDetails.flights?.length>0 ? [...newDetails.flights , newFlight] : [{...newFlight}];
-                        console.log("newFlightToAdd",newFlightsToAdd)
                         setNewDetails({...newDetails , flights:[...newFlightsToAdd]})
                         let data = newDetails;
                         data.flights = newFlightsToAdd

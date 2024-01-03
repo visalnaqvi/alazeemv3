@@ -31,12 +31,6 @@ const PackageCard = ({tour , type , subType , fetchData}) => {
             setVendorString(vendorString)
         }
     },[vendors])
-
-    useEffect(()=>{
-        if(vendors.length>0){
-            console.log("vendors string",vendorString)
-        }
-    },[vendorString,vendors])
  
     return (
        
@@ -59,7 +53,7 @@ const PackageCard = ({tour , type , subType , fetchData}) => {
             <div className={styles.content}>
                 <h2>{tour.title}</h2>
                 <h3 className={styles.callToActionYellow}>Departure: {tour.date}</h3>
-                <IconList items={tour.features} />
+                <IconList items={tour.features} isBold={tour.isBold} />
             </div>
            {tour.hotels.length != 0 && <div className={styles.beforeFooter}>
                 <div className={styles.beforeFooterSection}>

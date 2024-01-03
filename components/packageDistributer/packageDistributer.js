@@ -6,7 +6,6 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
     const [ecoPackages , setEcoPackages] = useState([]);
     const [ramzanPackages , setRamzanPackages] = useState([]);
     useEffect(()=>{
-        console.log("all packages:",umrahPackages)
         if(umrahPackages){
             let dulex_pack = umrahPackages.filter((pack)=>pack.category=="dulex")
             let eco_pack = umrahPackages.filter((pack)=>pack.category=="economy")

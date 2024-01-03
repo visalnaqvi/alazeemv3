@@ -230,6 +230,16 @@ a{
     margin-right: 100px;
 }
 
+.higlight{
+    background-color: #ffe863;
+    display:inline-flex;
+    padding: 5px;
+    padding-right: 20px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
 @media only screen and (max-width:560px) {
     .boldHeading.button{
         margin-bottom: 0;
