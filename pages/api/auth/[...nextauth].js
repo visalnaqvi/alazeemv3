@@ -13,6 +13,7 @@ export const authOptions = {
       //   timeout: 5000
       // }
     }),
-  ]
+  ],
+  secret: process.env.NEXTAUTH_SECRET, 
 }
 export default NextAuth(authOptions)
