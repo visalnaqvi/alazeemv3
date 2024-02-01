@@ -13,15 +13,14 @@ const Resigter = ()=>{
     }, [isUserSignedIn])
     return(
         <div className='flex gap-8 justify-center'>
-                        <div onClick={(e) => {
+                        <button onClick={(e) => {
                             if (isUserSignedIn) {
                                 signOut();
                             } else {
                                 e.preventDefault();
-                                signIn('google');
+                                signIn('facebook');
                             }
-                        }} className='border-[1px]  border-[rgba(113,113,113,.4)] border-solid rounded-md cursor-pointer flex items-center px-10 lg:px-12 py-2'><span className='pl-2'>Google</span></div>
-                        <div className='border-[1px]  border-[rgba(113,113,113,.4)] border-solid rounded-md cursor-pointer flex items-center px-10 lg:px-12 py-1'><span className='pl-2'>Facebook</span></div>
+                        }} className='border-[1px]  border-[rgba(113,113,113,.4)] border-solid rounded-md cursor-pointer flex items-center px-10 lg:px-12 py-2'><span className='pl-2'>Facebook</span></button>
                     </div>
     )
 }
