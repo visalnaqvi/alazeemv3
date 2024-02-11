@@ -18,7 +18,9 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
     },[umrahPackages])
 
     return(
-        <div className={`body-wrapper column ${titles.isEcoTop && "reverse"}`}>
+        <div className={`body-wrapper column
+        //  ${titles.isEcoTop && "reverse"}
+         `}>
          { ramzanPackages.length>0 && <div style={{width:"100%"}}>
                 
                 <h2 className="boldHeading center">{titles.ramzanTitle}</h2>
