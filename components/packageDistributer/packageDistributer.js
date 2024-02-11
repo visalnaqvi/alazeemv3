@@ -15,10 +15,10 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
             setRamzanPackages(ramzan_pack)
         }
     },[umrahPackages])
-
+   //  ${titles.isEcoTop && "reverse"}
     return(
         <div className={`body-wrapper column
-        //  ${titles.isEcoTop && "reverse"}
+     
          `}>
          { ramzanPackages.length>0 && <div style={{width:"100%"}}>
                 
@@ -31,7 +31,9 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
                     }
                 </div>
                 </div>}
-            {dulexPackages.length>0 && <div>
+
+
+        {dulexPackages.length>0 && <div style={{width:"100%"}}>
                 
         <h2 className="boldHeading center">{titles.dulexTitle}</h2>
         <div className="body-wrapper">
