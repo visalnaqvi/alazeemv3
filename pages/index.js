@@ -5,6 +5,7 @@ import features from "../data/features.js"
 import Map from "../components/map/map.js"
 import { useWindowSize } from "@uidotdev/usehooks";
 import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
+import Head from "next/head.js"
 export default function Home() {
   const desktopImages = [
     "/sliders/homePageSlider/desktop/slider_1.png",
@@ -20,7 +21,11 @@ const mobileImages = [
 ]
 const size = useWindowSize();
   return (
+   
     <div>
+       <Head>
+      <title>Al Azeem Tours and Travles | Home</title>
+    </Head>
       {
         size.width > 700 ?
         <CarouselComp width={2000} height={550} images={desktopImages} /> :

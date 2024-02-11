@@ -18,6 +18,14 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
             "Round Trip Transport",
             "Flight by Saudi Air"
         ],
+        isBold:[
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
         date:""
     });
     useEffect(()=>{
@@ -33,7 +41,6 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
         setIsLoading(false);
     }
 
-   
 
     return(
         <div className="margin"> 

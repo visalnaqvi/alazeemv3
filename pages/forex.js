@@ -1,10 +1,13 @@
 import SingleImage from "@/components/carousel/singleImage";
 import background from "../public/backgroundImages/forex.webp";
 import background_mb from "../public/backgroundImages/forex.webp";
+import Head from "next/head";
 const Forex = ()=>{
     return(
         <>
-        
+        <Head>
+        <title>Al Azeem Tours and Travles | FOREX</title>
+        </Head>
                 <SingleImage url={[background , background_mb]} />
     
             <div className="margin">

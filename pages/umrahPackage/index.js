@@ -7,6 +7,7 @@ import ContactBox from "@/components/contactBox/contactBox/contactBox.js"
 import Toast from "@/components/notification/toast.js"
 import { useWindowSize } from "@uidotdev/usehooks";
 import PackageDistributer from "@/components/packageDistributer/packageDistributer.js"
+import Head from "next/head.js"
 
 
 const HajjUmrah = ()=>{
@@ -52,6 +53,9 @@ const HajjUmrah = ()=>{
         const size = useWindowSize();
     return (
         <div>
+            <Head>
+            <title>Uram and Hajj Tour Packages</title>
+            </Head>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             {
         size.width > 700 ?
