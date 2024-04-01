@@ -17,20 +17,18 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
     },[umrahPackages])
    //  ${titles.isEcoTop && "reverse"}
     return(
-        <div className={`body-wrapper column
-     
-         `}>
-         { ramzanPackages.length>0 && <div style={{width:"100%"}}>
-                
-                <h2 className="boldHeading center">{titles.ramzanTitle}</h2>
-                <div className="body-wrapper">
-                    {
-                        ramzanPackages.map((pkg,i)=>(
-                            <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
-                        ))
-                    }
-                </div>
-                </div>}
+        <div className={`body-wrapper column`}>
+                  {ecoPackages.length > 0 && <div>
+        <h2 className="boldHeading center">{titles.ecoTitle}</h2>
+        <div className="body-wrapper">
+            {
+                ecoPackages.map((pkg,i)=>(
+                    <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
+                ))
+            }
+        </div>
+        </div>}
+        
 
 
         {dulexPackages.length>0 && <div style={{width:"100%"}}>
@@ -44,16 +42,19 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
             }
         </div>
         </div>}
-        {ecoPackages.length > 0 && <div>
-        <h2 className="boldHeading center">{titles.ecoTitle}</h2>
-        <div className="body-wrapper">
-            {
-                ecoPackages.map((pkg,i)=>(
-                    <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
-                ))
-            }
-        </div>
-        </div>}
+
+        { ramzanPackages.length>0 && <div style={{width:"100%"}}>
+                
+                <h2 className="boldHeading center">{titles.ramzanTitle}</h2>
+                <div className="body-wrapper">
+                    {
+                        ramzanPackages.map((pkg,i)=>(
+                            <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
+                        ))
+                    }
+                </div>
+                </div>}
+  
         
         </div>
     )
