@@ -58,7 +58,8 @@ const NavBar = () => {
                 iraqZiyarat: false,
                 holidayPackages: false,
                 karbalaZiyarat: false,
-                forex:false
+                forex:false,
+                hajjPackage:false,
             });
                 break;
             case "/umrahPackage": setMenuState({
@@ -67,7 +68,8 @@ const NavBar = () => {
                 iraqZiyarat: false,
                 holidayPackages: false,
                 karbalaZiyarat: false,
-                forex:false
+                forex:false,
+                hajjPackage:false,
             });
                 break;
             case "/iraq-ziyarat-packages/iraq-ziyarat": setMenuState({
@@ -76,7 +78,8 @@ const NavBar = () => {
                 iraqZiyarat: true,
                 holidayPackages: false,
                 karbalaZiyarat: false,
-                forex:false
+                forex:false,
+                hajjPackage:false,
             });
                 break;
             case "/iraq-ziyarat-packages/karbala-iraq-ziyarat": setMenuState({
@@ -85,7 +88,8 @@ const NavBar = () => {
                 iraqZiyarat: false,
                 holidayPackages: false,
                 karbalaZiyarat: true,
-                forex:false
+                forex:false,
+                hajjPackage:false,
             });
                 break;
             case "/holiday-packages": setMenuState({
@@ -94,7 +98,8 @@ const NavBar = () => {
                 iraqZiyarat: false,
                 holidayPackages: true,
                 karbalaZiyarat: false,
-                forex:false
+                forex:false,
+                hajjPackage:false,
             });
                 break;
             case "/forex": setMenuState({
@@ -103,10 +108,21 @@ const NavBar = () => {
                 iraqZiyarat: false,
                 holidayPackages: false,
                 karbalaZiyarat: false,
-                forex:true
+                forex:true,
+                hajjPackage:false,
             });
                 break;
-            default: setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false })
+                case "/hajjPackage": setMenuState({
+                    home: false,
+                    hajjUmrah: false,
+                    iraqZiyarat: false,
+                    holidayPackages: false,
+                    karbalaZiyarat: false,
+                    forex:false,
+                    hajjPackage:true,
+                });
+                    break;
+            default: setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false , hajjPackage:false })
                 break;
 
         }
@@ -114,6 +130,7 @@ const NavBar = () => {
 
     const fetchNavLinks = async () => {
         let data = await getNavLinks();
+        console.log("dataaaa" , data)
         setNavLinks(data.filter(d => d.active == true))
     }
     const size = useWindowSize();

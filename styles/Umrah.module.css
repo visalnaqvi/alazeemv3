@@ -1,0 +1,1368 @@
+.mainUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.leftMainUp{
+    width: 50%;
+}
+
+.bodyImage , .bodyImagemb,.bodyImagemb2 {
+    background-image: url(../public/images/umrah/body.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 350px;
+}
+.bodyImagemb{
+    width: 100%;
+    height: 300px;
+    margin: 20px 0;
+    display: none;
+}
+.bodyImagemb2{
+    background-image: url(../public/images/umrah/bady2.jpeg);
+    width: 100%;
+    background-position: bottom;
+    margin-top: 40px;
+    height: 500px;
+}
+.body{
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.ul{
+    list-style-type: disc;
+    width: 80%;
+    margin: auto;
+}
+
+.ul span{
+    font-weight: 600;
+    font-style: italic;
+}
+
+.imgBox{
+    width: 100%;
+    height: auto;
+}
+
+.imgBoxBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderBox{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.mobiC{
+    display: none;
+}
+
+.carousel .slide{
+    padding: 30px 0;
+}
+
+.displayBox{
+    height: 60vh;
+    background-image: url(../public/images/umrah/2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+/* .displayBoxHoliday{
+    background-image: url(../public/HolidayPackages.jpeg);
+    background-size: contain;
+    height:80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 15px;
+    border-radius: 10px;
+} */
+
+/* .iraqImage{
+    background-image: url(../public/iraqZiyarat.jpeg);
+    height: 75vh;
+    background-size: contain;
+    box-shadow: 5px 5px 10px #00000030;
+    background-size: cover;
+    background-position: center left;
+} */
+
+
+
+/* .baitulMuqadas{
+    background-image: url(../public/BaitulMuqadas.jpeg);
+    height: 70vh;
+    background-size: contain;
+} */
+
+.pkgBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flexBox{
+    display: flex;
+    margin-top: 30px;
+}
+
+.timelineCardTop{
+    background-color: #00C981;
+   text-align: center;
+   color: #fff;
+   font-size: 30px;
+}
+
+.sideBorderBox{
+    box-shadow: 8px 0px 20px #00000020;
+    margin: 25px 0;
+    padding: 20px 10px;
+    border-left: 4px solid #00C981;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+.baitulMuqadasFlex , .baitulMuqadasFlexOut{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.baitulMuqadasFlex{
+    width: 50%;
+}
+
+.baitulMuqadasWrap .timelineCardTop{
+    padding: 10px 10px;   
+    background-image: linear-gradient(to right, #00C981, #009461);
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.baitulMuqadasWrap .timelineCard{
+    width: 50%;
+    margin: 5px;
+}
+
+.baitulMuqadasWrap .timelineCardBottom{
+    background-color: #eee;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* .baitulMuqadasWrap .hajCardWrap{
+    overflow: hidden;
+    width:70%;
+    margin: auto;
+    background-image: url(../public/MasjidAlAqsa.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+    padding-bottom: 20px;
+    min-width: 920px;
+} */
+
+.baitulMuqadasWrap .contact{
+    top: 0;
+    right: 0;
+    bottom: unset;
+    left: unset;
+}
+
+.baitulMuqadasWrap .contactBox{
+    border-radius: 0;
+    border-bottom-left-radius: 25px;
+}
+
+.baitulMuqadasWrap .contactBox .chead{
+    font-size: 1.2rem;
+}
+
+.baitulMuqadasWrap .contactBox .ctag{
+    font-size: 0.8rem;
+}
+
+.baitulMuqadasPrice{
+    background-color: #ffe863;
+    color: #000;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-align: right;
+    margin-left: auto;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-weight: 800;
+}
+
+.ulCont{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+}
+
+.ulCont ul{
+    margin-right: 20px;
+}
+.timelineCardBottom{
+   text-align: center;
+   font-size: 30px;
+   padding: 10px;
+}
+
+.hajCard{
+    display: flex;
+}
+
+.hajCardWrap{
+    position: relative;
+    margin: 20px;
+    padding: 30px 10px;
+    border: 1px solid #dbdbdb;
+    box-shadow: 5px 5px 20px #00000030;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.hajCard .left{
+    width: 70%;
+}
+
+.hajCard .iraqInnerWrap{
+    width: 100%;
+}
+
+.hajCard .right{
+    width: 30%;
+}
+
+.hajCardWrap h1{
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.tag{
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.infoWrap{
+    /* display: flex;
+    justify-content: start;
+    align-items: center; */
+    margin-bottom: 30px;
+}
+
+.infoWrapCard{
+    width: 100%;
+    margin: 10px 0;
+    background-color: #00C981;
+    padding: 10px;
+    color: #fff;
+    margin-right: 20px;
+    box-shadow: 3px 3px 10px #00000050;
+    border-radius: 10PX;
+}
+
+.infoHead{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.infoText{
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.underline{
+    width: 50%;
+    height: 2px;
+    border-radius: 5px;
+    background-color: #ffe863;
+    margin-bottom: 10px;
+}
+
+.hajInnerWrapper{
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* .innerWrapLeft{
+    width: 70%;
+}
+
+.innerWrapRight{
+    width: 30%;
+} */
+
+
+.hajCard h2{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    /* text-align: center; */
+}
+
+.nul{
+    margin-bottom: 30px;
+}
+
+.nul li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.img{
+    margin-right: 10px;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.pricing{
+    margin-top: 50px;
+}
+
+.pricing .infoWrapCard{
+    background-color: #ffe863;
+    padding: 15px;
+    color: #000;
+    box-shadow: 5px 5px 10px #00000020;
+    margin-left: -50%;
+    width: 150%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hajCardWrap{
+    padding-bottom: 65px;
+}
+.contact{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  
+}
+.contactBox{
+    background-color: #00C981;
+    padding: 10px 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 10px;
+}
+.ctag{
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.chead{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.quicLinks{
+    margin: 40px 30px;
+
+}
+
+.quicLinks p{
+    font-weight: 700;
+}
+
+.quicLinks a{
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.quicLinks a:hover{
+    background-color: #f8f8f8;
+}
+
+.urhamHead{
+    font-size: 35px;
+    font-weight: 800;
+    padding: 30px 0;
+    text-align: center;
+}
+
+
+.table{
+    width: 100%;
+    border-spacing: 0px;
+    position: relative;
+}
+
+/* .table tr{
+    background-image: linear-gradient(#f0f0f0,#f8f8f8);
+} */
+
+.table tr td{
+    vertical-align: top;
+    margin: 0;
+    padding: 10px;
+    padding-top: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.tableHeading{
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-right: 0 30px;
+    width: 40%;
+}
+
+.baitulMuqadasTable .tableHeading{
+    width: 25%;
+}
+
+.tableHead{
+   
+    z-index: 1;
+    top: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.tableHead td{
+    padding: 10px 10px;   
+    background-image: linear-gradient(to right, #00C981, #009461);
+}
+
+.hajjpkgtableinumrah .table .tableHeadHajj td{
+    background-color: #00C981;
+    color: #fff;
+}
+
+.iraqInfo{
+    width: 70%;
+}
+
+.mobileViewIraq{
+    display: none;
+}
+
+.mobileViewIraq .hajCardWrap{
+    box-shadow: none;
+}
+
+.mobileViewIraq .hajCardWrap ul{
+    width: 90%;
+    margin: auto;
+}
+
+.mobileViewIraq .hajCardWrap h2{
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+.mobileViewIraq .underline{
+    display: none;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.mobileViewIraq .cardHeading{
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    color: #fff;
+    background-image: linear-gradient(to right, #00C981, #009461);
+}
+
+.iraqInfo{
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+.iraqInfo .infoWrapCard{
+    background-image: linear-gradient(to right, #00C981, #009461);
+
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    /* color: #000; */
+    box-shadow: 5px 5px 10px #00000030;
+}
+
+.iraqInfo .infoWrapCard .underline{
+    margin: 10px auto;
+    width: 90%;
+}
+.mobileViewIraq  .infoWrapCard{
+    margin: 20px auto;
+    width: 90%;
+    box-shadow: none;
+    color: #000;
+    background-color: #f8f8f8;
+    border-left: 5px solid #00C981;
+    border-radius: 10px;
+}
+
+.mobileViewIraq  .infoWrapCard .infoHead{
+    font-size: 1.3rem;
+}
+
+.mobileViewIraq  .infoWrapCard .infoText{
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+.pad{
+    margin-top: 30px;
+    font-size: 1.5rem;
+}
+
+.mobileViewIraq .iraqInfo .underline{
+    margin-bottom: 5px;
+}
+
+.hajjPkgContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.hajjPkgContainer .tag{
+    font-size: 0.9rem;
+    text-decoration: underline;
+    margin-bottom: 0;
+}
+
+.hajjPkgContainer h3{
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.hajjPkgBox{
+    width: 48%;
+    overflow: hidden;
+    background-image: linear-gradient(to left, #00C981, #009461);
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px #00000030;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details .circle{
+    margin: 0 10px;
+    height: 5px;
+    width: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.detailsLeft{
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.detailsRight{
+    width: 30%;
+}
+
+.hajjPkgBox button{
+    padding: 10px 25px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    font-size: 1rem;
+    color: #009461;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    margin-bottom: 5px;
+    width: 100%;
+    margin-top: -20px;
+}
+
+.hajjPkgBox button:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
+
+.HajjBoxLeft{
+    padding: 10px;
+}
+
+.wrapOfSideBar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.mainContent{
+    width: 75%;
+}
+
+.sideBar::-webkit-scrollbar {
+    display: none;
+  }
+
+.sideBar{
+    padding-top: 20px;
+    width: 25%;
+    position: sticky;
+    top: 0;
+    border-left: 1px solid #dbdbdb;
+    padding-left: 10px;
+    height: 100vh;
+    background-color: #f8f8f8;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.mainContent .body{
+    width: 100%;
+    padding: 0 20px;
+}
+
+.HolidayCardWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+
+.HolidayCard{
+    width: 100%;
+    margin: 10px 10px 0 0;
+    width: 33%;
+    box-shadow: 5px 5px 20px 5px  #00000020;
+}
+
+.HolidayCardImg{
+    height: 150px;
+    background-size: cover;
+}
+/* 
+.HolidayCardImgOne{
+    background-image: url(../public/MughalGardens.jpg);
+}
+
+.HolidayCardImgTwo{
+    background-image: url(../public/Khilanmarg.jpg);
+}
+
+.HolidayCardImgThree{
+    background-image: url(../public/Pahalgam.jpg);
+}
+
+.HolidayCardImgFour{
+    background-image: url(../public/Sonamarg.jpg);
+}
+
+.HolidayCardImgFive{
+    background-image: url(../public/Doodhpathri.jpg);
+}
+
+.HolidayCardImgSix{
+    background-image: url(../public/MUNNAR.jpg);
+}
+
+.HolidayCardImgSeven{
+    background-image: url(../public/THEKKADY.jpg);
+}
+
+.HolidayCardImgEight{
+    background-image: url(../public/ALAPPEYHB.webp);
+}
+
+.HolidayCardImgNine{
+    background-image: url(../public/Hadimbatemple.jpg);
+}
+
+.HolidayCardImgTen{
+    background-image: url(../public/Solangvalley.jpg);
+}
+
+.HolidayCardImg11{
+    background-image: url(../public/JoginiWaterfalls.jpg);
+}
+
+.HolidayCardImg12{
+    background-image: url(../public/ManuTemple.jpg);
+}
+
+.HolidayCardImg13{
+    background-image: url(../public/ManaliGompa.jpg);
+}
+
+.HolidayCardImg14{
+    background-image: url(../public/BhriguLake.jpg);
+}
+
+.HolidayCardImg15{
+    background-image: url(../public/RohtangPass.jpg);
+} */
+
+.HolidayCardHeading{
+    font-size: 1.2rem ;
+    margin: 8px 0;
+    font-weight: 800;
+}
+
+
+.HolidayCardText{
+    font-size: 0.9rem;
+    
+}
+
+.HolidayCardBottom{
+    padding: 10px;
+    padding-top: 0;
+}
+.hajjpkgtableinumrah {
+    background-color: #fff;
+    width: 70%;
+    margin: 30px auto;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    box-shadow: 5px 5px 20px #00000030;
+}
+
+.hajjpkgtableinumrah  .hajjnewpkgHeading{
+    font-size: 33px;
+    text-align: center;
+}
+
+.hajjpkgtableinumrah .greenUnderline{
+    height: 8px;
+    width: 100%;
+    background-color: #009461;
+    margin-top: 10px;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgSubHeading{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    font-style: italic;
+    text-align: center;
+}
+
+.hajjnewpkgSubHeadingWarn{
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgInfo{
+    margin: 10px 0;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgInfo{
+    /* background-color: #ffe863; */
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard{
+    background-color: #00C98120;
+    padding: 10px;
+    border-radius: 10px;
+    width: 49%;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgInfo p{
+    font-size: 18px;
+    line-height: 30px;
+    margin: 5px 0;
+}
+
+.hajjpkgtableinumrah .hajjnewpkgInfo span{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.newpkgwrap{
+    background-color: #f8f8f8;
+}
+
+.newpkgbutton{
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color: #00C981;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.hajjpkgtableinumrah table {margin: 20px 0;
+    table-layout: fixed ;
+    border: 1px solid #dbdbdb;
+    width: 100% ;
+    border-right: none;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .hajjpkgtableinumrah table td {
+    width: 25% ;
+    border-right: 1px solid #dbdbdb;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .pricingHajjInTable{
+    text-align: center;
+    vertical-align : middle;
+    align-items: center;
+    align-self: center;
+    border-right: 1px solid #dbdbdb;
+  }
+
+  .dsiplayonMobile{
+    display: none;
+  }
+
+  .newziyaratpkg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .newziyaratpkgwrapper{
+    padding: 20px;
+    padding-bottom: 0;
+    background-image: url('../public/newiraqziyaratshade.png');
+    background-size: 90%;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: top right;
+  } */
+
+  .newziyaratpkgheading{
+    font-size: 35px;
+    font-weight: 800;
+    color: #1d1d1d;
+  }
+
+  .newziyaratpkgsubheading{
+    font-weight: 800;
+    margin: 10px auto;
+  }
+
+  .newirajpkgfooter{
+    background-color: #009461;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+  }
+
+  .newirajpkgprice{
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #ffe863;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+  }
+
+  .newiraqcontact{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px #00000050;
+    font-weight: 800;
+    color: #009461;
+    font-size: 20px;
+  }
+
+  .newiraqpkgicon{
+    margin-right: 10px;
+    padding-top: 5px;
+  }
+
+  .newiraqpkguls{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 20px 0;
+  }
+
+  .newirajpkglefttul{
+    width: 48%;
+  }
+
+  .newirajpkgpricespan{
+    margin-right: 10px;
+  }
+@media only screen and (max-width:980px){
+    .baitulMuqadas{
+        height: 50vh;
+    }
+
+    .baitulMuqadasWrap .hajCardWrap{
+        background-size: cover;
+    }
+
+    .ulCont{
+        width: 70%;
+    }
+
+    .newirajpkgpricespan{
+        font-size: 20px;
+    }
+    .newirajpkgprice{
+        display: block;
+    }
+
+    .newiraqcontact{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+    }
+
+   
+    
+}
+
+@media only screen and (max-width:942px){
+   
+    .mainContent{
+        width: 100%;
+    }
+    
+    .newirajpkgfooter{
+        display: block;
+        text-align: center;
+    }
+
+    .newirajpkgprice{
+        margin-bottom: 10px;
+    }
+    
+    .sideBar{
+        display: none;
+    }
+    
+    .hajjPkgContainer{
+        flex-direction: column;
+    }
+
+    .hajjPkgBox{
+        width: 96%;
+        margin-top: 15px;
+    }
+
+    .baitulMuqadasWrap .hajCardWrap{
+        width: 90%;
+        min-width: auto;
+    }
+    
+    .baitulMuqadasFlexOut{
+        flex-direction: column;
+    }
+
+    .baitulMuqadasFlex{
+        width: 100%;
+    }
+
+ 
+
+    .newiraqpkguls{
+        display: block;
+        width: 100%;
+    }
+
+    .newirajpkglefttul{
+        width: 100%;
+    }
+
+ 
+}
+
+@media only screen and (max-width:870px){
+    .newziyaratpkgwrapper{
+        background-size:160% ;
+    }
+    .baitulMuqadasFlexOut{
+        margin-bottom: 120px;
+    }
+    .ulCont{
+        width: 100%;
+    }
+    .baitulMuqadasWrap .contact{
+        top: unset;
+        bottom: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .baitulMuqadasWrap .contactBox{
+        border-radius: 0;
+        border-top-left-radius: 20px;
+        margin-top: 10px;
+    }
+
+    .HolidayCardWrapper{
+        flex-direction: column;
+    }
+
+    .HolidayCard{
+        width: 100%;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgInfo{
+        flex-direction: column;
+
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .newpkgbutton{
+        width: 100%;
+    }
+
+    .overflowX{
+        overflow-x: scroll;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgHeading{
+        font-size: 23px;
+        font-weight: 600;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgSubHeading{
+        font-size: 16px;
+    }
+
+    
+    .hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard{
+        background-color: #fff;
+        padding: 0;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard:first-child{
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 10px;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard p{
+        font-size: 18px;
+    }
+
+    .hajjpkgtableinumrah .hajjnewpkgInfo .hajjnewpktinfocard span{
+        font-size: 15px;
+    }
+
+}
+
+
+@media only screen and (max-width:650px){
+    
+
+    .hideonmobile{
+        display: none;
+    }
+    .newziyaratpkgwrapper{
+        background-size:200% ;
+        padding-bottom: 10px;
+        background-position: bottom right;
+    }
+
+    .iraqInfo{
+        width: 100%;
+    }
+    .table{
+        display: none;
+    }
+
+    .hajjpkgtableinumrah .table{
+        display: block;
+    }
+    .mobileViewIraq{
+        display: block;
+    }
+    .quicLinks{
+        text-align: center;
+        margin: 20px;
+    }
+    .quicLinks a{
+        display: block;
+        text-align: start;
+    }
+
+    .hajCardWrap{
+        margin: 30px 0;
+        padding: 20px 10px;
+    }
+    .hajCard{
+        flex-direction: column;
+    }
+
+    .hajCard .left{
+        width: 100%;
+    }
+    
+    .hajCard .right{
+        width: 100%;
+    }
+
+    .pricing .infoWrapCard{
+        width: 100%;
+        margin: 5px 0;
+        flex-direction: column;
+    }
+
+    .nul .img{
+        display: none;
+    }
+
+    .nul li{
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 10px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .ulCont ul li{
+        line-height: 10px;
+        font-size: 1rem;
+        margin: 10px;
+    }
+/* .baitulMuqadasWrap .hajCardWrap{
+    background-image: url(../public/MasjidAlAqsaMobile2.png);
+    background-size: contain;
+} */
+    .ulCont ul{
+        margin: 0;
+    }
+    .ulCont{
+        flex-direction: column;
+       align-items: flex-start;
+       margin: 0;
+    }
+
+    .mobileViewIraq .nul li{
+        border-bottom: 1px solid #dbdbdb;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .mobileViewIraq .hajCardWrap{
+        border: none;
+        margin: 0;
+        padding:10px 0;
+    }
+
+   .iraqInfo{
+    flex-direction: column;
+   }
+
+   .iraqInfo .infoWrapCard{
+    padding: 20px 10px;
+   }
+
+    .pad{
+        margin-top: 0;
+    }
+
+    .contact{
+        display: none;
+    }
+    
+    .deskC{
+        display: none;
+    }
+    .mobiC{
+        display: block;
+    }
+    .bodyImage{
+        display: none;
+    }
+    .leftMainUp{
+        width: 95%;
+    }
+    .bodyImagemb{
+        display: block;
+    }
+    .body{
+        padding: 15px;
+        width: 100%;
+    }
+    .imgBoxBox{
+        flex-direction: column;
+    }
+    .displayBox{
+        height: 30vh;
+        margin: 0;
+        border-radius: 0;
+        background-image: url(../public/images/umrah/1.jpg);
+    }
+
+    .displayBoxHoliday{
+        height: 30vh;
+   
+    }
+/* 
+    .iraqImage{
+        background-image: url(../public/iraqZiyaratMobile.png);
+        background-size: cover;
+        background-position: left;
+        height: 40vh;
+    } */
+
+    /* .baitulMuqadas{
+        background-size: cover;
+        background-position: left;
+        height: 40vh;
+        background-image: url(../public/BaitulMuqadas.jpeg);
+    } */
+
+    .details{
+        justify-content: flex-end;
+        margin-top: -20px;
+    }
+   .detailsLeft{
+    display: none;
+   }
+
+   .detailsRight{
+    width: 40%;
+   }
+
+   .hajjPkgBox .tag{
+    width: 55%;
+   }
+
+   .hajjPkgBox button{
+    padding: 8px;
+    font-size: 0.8rem;
+    margin: 10px 0;
+   }
+
+    .HajjBoxLeft{
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+   
+
+    .hajjPkgContainer h3{
+        font-size: 1.3rem;
+    }
+
+    .hajjPkgContainer .tag{
+        font-size: 0.9rem;
+    }
+
+    .hajjPkgContainer .tag{
+        text-decoration: none;
+    }
+
+    .hajjpkgtableinumrah{
+        width: 98%;
+    }
+
+}
+
+@media only screen and (max-width:552px) {
+    .hajjPkgBox button{
+        margin-top: -100px;
+    }
+    .baitulMuqadasWrap .timelineCardTop{
+        font-size: 0.7rem;
+    }
+    .baitulMuqadasWrap .timelineCardBottom{
+        font-size: 0.9rem;
+    }
+    .hideMobile{
+        display: none;
+    }
+
+   
+
+    .hajjpkgtableinumrah .table{
+        width: 600px;
+    }
+    
+}
+
+
+@media only screen and (max-width:460px) {
+    .small{
+        font-size: 0.9rem;
+    }
+
+    .baitulMuqadasWrap .contactBox .ctag{
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width:420px) {
+    .hajjPkgBox h3{
+        font-size: 1rem;
+    }
+    .hajjPkgBox .tag{
+        font-size: 0.8rem;
+    }
+
+    .baitulMuqadasWrap .contactBox .chead{
+        font-size: 1.2rem;
+    }
+
+    .small{
+        font-size: 0.7rem;
+    }
+
+
+   
+}
+
