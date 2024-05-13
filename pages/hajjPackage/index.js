@@ -57,7 +57,7 @@ const HajjUmrah = ()=>{
     return (
         <div>
             <Head>
-            <title>Hajj Tour Packages</title>
+            <title>Hajj Tour Packages 2024</title>
             </Head>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             {
