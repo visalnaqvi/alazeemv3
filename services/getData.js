@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { getDocs, orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection, iraqPackagesCollection, holidayPackagesCollection } from "@/config/collections.js";
+import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -25,7 +25,27 @@ export const getUmrahPackages = async () => {
     }
 
 }
+export const getHajjPackages = async () => {
+    try {
+        const q = query(hajjCollection, orderBy("order"));
 
+        const hajjSnapshot = await getDocs(q);
+
+        let hajjPackages = []
+
+        hajjSnapshot.forEach(doc => {
+            hajjPackages.push(doc.data());
+        })
+
+
+        return hajjPackages;
+    } catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get package" }
+        }
+    }
+
+}
 export const getIraqPackages = async (type) => {
     try {
         const q = type == "all" ? query(iraqPackagesCollection, orderBy("order")) : query(iraqPackagesCollection, where("type", "==", type));
@@ -105,6 +125,8 @@ export const getAdminPackages = async (packageid) => {
 
         case "page-setting": return await getPageDocument();
 
+        case "hajj": return await getHajjPackages();
+
         default: return [];
 
     }
@@ -119,6 +141,8 @@ export const getPackageWithId = async (collection, packageId) => {
             case "iraq": collectionRef = `${process.env.NEXT_PUBLIC_IRAQ_COLLECTION}`;
                 break;
             case "holiday": collectionRef = `${process.env.NEXT_PUBLIC_HOLIDAY_COLLECTION}`;
+                break;
+            case "hajj": collectionRef = `${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`;
                 break;
             default: return;
         }

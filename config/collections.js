@@ -8,6 +8,7 @@ export const holidayPackagesCollection = collection(db, `${process.env.NEXT_PUBL
 export const vendorCollection = collection(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`);
 export const userCollection = collection(db,`${process.env.NEXT_PUBLIC_USERS_COLLECTION}`);
 export const navCollection = collection(db,`${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`);
+export const hajjCollection = collection(db,`${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`);
 
 export const getCollectionName = (packageId)=>{
     switch(packageId){
@@ -18,6 +19,8 @@ export const getCollectionName = (packageId)=>{
         case "links" : return `${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`;
 
         case "vendors" : return `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`;
+
+        case "hajj": return `${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`
 
         default : return "";
     }

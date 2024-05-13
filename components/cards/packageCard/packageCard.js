@@ -65,8 +65,18 @@ const PackageCard = ({tour , type , subType , fetchData}) => {
                     <p className={styles.beforeHeaderSectionContent}>{tour.hotels[1]}</p>
                 </div>
             </div>}
+            {tour.pricing && tour.pricing.length != 0 && <div className={styles.beforeFooter}>
+               {tour.pricing.map((p,i)=>(
+                <div key={i} className={styles.beforeFooterSection}>
+                    <p className={styles.pricingHeading}>{p.room}</p>
+                    <p className={styles.pricingFinal}> {p.amtTax}</p>
+                    <p className={styles.pricingAmount}>Price {p.amount} +<br></br> Tax {p.tax}</p>
+                </div>
+               )) }
+                
+            </div>}
             <div className={styles.footer}>
-                <p className={styles.footertext}>At Just Rs. {tour.price}/-</p>
+                {tour.pricing && tour.pricing.length != 0 ? <p></p> : <p className={styles.footertext}>At Just Rs. {tour.price}/-</p>}
                 <button onClick={()=>{
                     if(tour.flights?.length > 0){
                         setIsFlightsOpen(true);

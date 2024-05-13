@@ -7,6 +7,7 @@ import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
 import FlightsTable from "@/components/flights/table/flightsTable";
+import PricingTable from "@/components/flights/table/pricingTable";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
@@ -14,6 +15,7 @@ const PackageEditForm = ({ details, packageid }) => {
     const [toastMessage, setToastMessage] = useState({ msg: "" });
     const [newSelectedVendor, setNewSelectedVendor] = useState({ title: "" });
     const [newFlight , setNewFlight] = useState({})
+    const [pricing , setPricing] = useState({})
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
@@ -107,6 +109,14 @@ const PackageEditForm = ({ details, packageid }) => {
         setNewDetails({...newDetails , flights:[...newFlights]})
     }
 
+    const deltePrice = (targetId)=>{
+        
+        let newPrice = newDetails.pricing.filter((f,i) => {
+            return i != targetId;
+        });
+        setNewDetails({...newDetails , pricing:[...newPrice]})
+    }
+  
 
     return (
         <div>
@@ -398,6 +408,41 @@ const PackageEditForm = ({ details, packageid }) => {
                         data.flights = newFlightsToAdd
                         handleSubmit(data);
                     }}>Add Flight</button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+            </form>
+            {
+            newDetails.pricing && <PricingTable details={newDetails.pricing} admin={true} onDelete={deltePrice} />
+        }
+            <form>
+                <p className="subHeading">Add Pricing</p>
+                <div className="body-wrapper">
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="flighttitle">Room Sharing</label>
+                        <input onChange={(e) => { setPricing({ ...pricing, room: e.target.value }) }} className={styles.input} type="text" id="flighttitle" placeholder="enter room sharing" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="date">Amount</label>
+                        <input onChange={(e) => { setPricing({ ...pricing, amount: e.target.value }) }} className={styles.input} type="text" id="date" placeholder="Enter Amount" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="sector">Tax</label>
+                        <input onChange={(e) => { setPricing({ ...pricing, tax: e.target.value }) }} className={styles.input} type="text" id="sector" placeholder="Enter Tax" />
+                    </div>
+                    <div className={styles.formItem}>
+                        <label className={styles.label} htmlFor="filghtdeparturedate">Amount+Tax</label>
+                        <input onChange={(e) => { setPricing({ ...pricing, amtTax: e.target.value }) }} className={styles.input} type="text" id="filghtdeparturedate" placeholder="Enter Total Amount" />
+                    </div>
+                    </div>
+                    <button className="primary-btn blue" onClick={(e)=>{
+                        e.preventDefault()
+                        let newPricingToAdd = newDetails.pricing?.length>0 ? [...newDetails.pricing , pricing] : [{...pricing}];
+                        setNewDetails({...newDetails , pricing:[...newPricingToAdd]})
+                        let data = newDetails;
+                        data.pricing = newPricingToAdd
+                        handleSubmit(data);
+                    }}>Add Pricing</button>
                     <br></br>
                     <br></br>
                     <br></br>

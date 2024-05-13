@@ -9,9 +9,10 @@ const SinglePackgeEdit = ()=>{
     const {packageid , singlePackageId} = router.query;
 
     
-    switch(packageid){
+    switch(packageid){      
         case "hajjUmrah" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId}/>);
         case "iraq" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId} />);
+        case "hajj" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId} />);
         case "vendors" : return(<VendorEdit vendorId={singlePackageId} />)
         case "links" : return(<NavLinksEdit linkId={singlePackageId} />)
         case "page-setting" : return(<NavLinksEdit linkId={singlePackageId} />)

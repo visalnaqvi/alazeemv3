@@ -16,7 +16,7 @@
     background-size: contain;
 }
 
-.card.hajjUmrah .content{
+.card.hajjUmrah .content , .card.hajj .content{
     background-image: url("../../../public/cardBackgrounds/hajjumrahDesktop.png");
 }
 
@@ -117,4 +117,19 @@
     font-size: 20px;
     margin: 0 10px;
     cursor: pointer;
+}
+
+.pricingHeading{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pricingAmount{
+    font-size: 0.8rem;
+}
+
+.pricingFinal{
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--light-yellow) ;
 }
