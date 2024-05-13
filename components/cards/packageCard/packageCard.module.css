@@ -124,8 +124,12 @@
     font-weight: 600;
 }
 
-.pricingAmount{
+.pricingAmount , .pricingAmountMo{
     font-size: 0.8rem;
+}
+
+.pricingAmountMo{
+    display: none;
 }
 
 .pricingFinal{
@@ -142,5 +146,13 @@
     .beforeFooterSection{
         margin: 10px 0;
         width: 100%;
+    }
+
+    .pricingAmount{
+        display: none;
+    }
+
+    .pricingAmountMo{
+        display: block;
     }
 }

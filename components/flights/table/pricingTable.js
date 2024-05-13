@@ -7,7 +7,7 @@ const PricingTable = ({details , admin=false , onDelete})=>{
             <thead className={styles.tableHead}>
                 <tr className={styles.tableRow}>
                     <td>Room Sharing</td>
-                    <td>Cost</td>
+                    <td>Base Price</td>
                     <td>Tax</td>
                     <td>Total Price</td>
                     {admin && <td>Action</td>}

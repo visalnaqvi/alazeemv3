@@ -69,8 +69,9 @@ const PackageCard = ({tour , type , subType , fetchData}) => {
                {tour.pricing.map((p,i)=>(
                 <div key={i} className={styles.beforeFooterSection}>
                     <p className={styles.pricingHeading}>{p.room}</p>
-                    <p className={styles.pricingFinal}> {p.amtTax}</p>
-                    <p className={styles.pricingAmount}>Price {p.amount} + Tax {p.tax}</p>
+                    <p className={styles.pricingFinal}> {p.amount}</p>
+                    <p className={styles.pricingAmountMo}>{p.tax} {p.amtTax}</p>
+                    <p className={styles.pricingAmount}>{p.tax} <br></br> {p.amtTax}</p>
                 </div>
                )) }
                 
