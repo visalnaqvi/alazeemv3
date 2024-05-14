@@ -57,8 +57,59 @@ const HajjUmrah = ()=>{
     return (
         <div>
             <Head>
-            <title>Hajj Tour Packages 2024</title>
-            </Head>
+      <meta
+          name="keywords"
+          content="Haj Package,
+          Haj 2024,
+          Haj,
+          Best Travel Agency for Haj,
+          Haj Umrah Package,
+          Haj Quota from India,
+          Private Haj from Delhi,
+          Private Haj From India,
+          Haj Committee,
+          Haj Committee of India,
+          hajj,
+          hajj 2024 packages,
+          hajj umrah package,
+          hajj and umrah,
+          al hajj,
+          hajj and umrah packages,
+          hajj umrah,
+          hajj and umrah travel,
+          hajj price,
+          hajj booking,
+          hajj and umrah travel agency,
+          hajj travel packages,
+          hajj 2023 package,
+          hajj and umrah travel agency near me,
+          tickets to hajj,
+          hajj clothing,
+          hajj pilgrims,
+          cheapest hajj packages,
+          hajj 2023 prices,
+          ihram for hajj,
+          day arafah,
+          days of arafah,
+          eid al haj,
+          haj & umrah,
+          haj bhavan,
+          hajcommittee,
+          "
+        />
+      <meta
+          name="description"
+          content="Best Tour and Travels Agency in Delhi Laxmi Nagar.Hajj Umrah Tour Package available. Hajj Umrah economic tour packages. Including Hotel Booking , Travel Planning etc.Umrah Package by Al Azeem Tours and Travel"
+        />
+       
+        <title>
+          Best Hajj 2024 Packages by AA Travels (Al-Azeem)
+        </title>
+        <link rel="icon" href="%PUBLIC_URL%/logo192.png" />
+       
+        <link rel="icon" href="/logo512.png" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+      </Head>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
             {
         size.width > 700 ?
