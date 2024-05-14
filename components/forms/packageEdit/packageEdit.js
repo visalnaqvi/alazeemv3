@@ -261,8 +261,8 @@ const PackageEditForm = ({ details, packageid }) => {
                     }
 
                     <div className={styles.formItem}>
-                        <label className={styles.label} htmlFor="price">Price</label>
-                        <input onChange={(e) => { setNewDetails({ ...newDetails, price: e.target.value }) }} className={styles.input} type="text" id="price" value={newDetails.price} placeholder="Enter Price" />
+                        <label className={styles.label} htmlFor="price">Bottom Line</label>
+                        <input onChange={(e) => { setNewDetails({ ...newDetails, price: e.target.value }) }} className={styles.input} type="text" id="price" value={newDetails.price} placeholder="Enter Bottom Line" />
                     </div>
                     <div className={styles.formItem}>
 
