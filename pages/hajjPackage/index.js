@@ -472,6 +472,7 @@ away from haram shareef.</p>
         
       </div> */}
 <br></br>
+<div className="margin">
 <h2 className="subHeading">WHAT IS HAJJ?</h2>
             <p className="content" >Hajj is the annual Islamic pilgrimage to Mecca, the Holiest city for Muslims, and a mandatory religious duty for Muslims that must be carried out at least once in their lifetime by all adult Muslims who are physically and financially capable of undertaking the journey, and can support their families during their absence. It is one of the Five Pillars of Islam, alongside Shahada (faith), Salat (prayer), Zakat (charity), and Sawm (fasting during Ramadan).</p>
 <br></br>
@@ -493,6 +494,7 @@ away from haram shareef.</p>
 <br></br>
 <p className="content">Overall, <strong>Al Azeem Travels</strong> play a crucial role in simplifying the travel planning process for individuals and businesses, providing expertise, convenience, and peace of mind to travellers.</p>
        <br></br>
+       </div>
        </div>
     )
 }
