@@ -77,7 +77,7 @@ const PackageCard = ({tour , type , subType , fetchData}) => {
                 
             </div>}
             <div className={styles.footer}>
-                {tour.pricing && tour.pricing.length != 0 ? <p></p> : <p className={styles.footertext}>At Just Rs. {tour.price}/-</p>}
+                <p className={styles.footertext}>{tour.price}</p>
                 <button onClick={()=>{
                     if(tour.flights?.length > 0){
                         setIsFlightsOpen(true);

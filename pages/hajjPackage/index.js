@@ -421,6 +421,27 @@ away from haram shareef.</p>
         
       </div> */}
 <br></br>
+<h2 className="subHeading">WHAT IS HAJJ?</h2>
+            <p className="content" >Hajj is the annual Islamic pilgrimage to Mecca, the Holiest city for Muslims, and a mandatory religious duty for Muslims that must be carried out at least once in their lifetime by all adult Muslims who are physically and financially capable of undertaking the journey, and can support their families during their absence. It is one of the Five Pillars of Islam, alongside Shahada (faith), Salat (prayer), Zakat (charity), and Sawm (fasting during Ramadan).</p>
+<br></br>
+<p className="content">The pilgrimage occurs during the Islamic month of Dhu al-Hijjah, from the 8th to the 12th or 13th day of Dhu al-Hijjah. It is a demonstration of the solidarity of the Muslim people and their submission to Allah. The pilgrimage also serves as a time for Muslims to seek forgiveness and purification, to strengthen their faith, and to reflect on their lives.</p>
+
+<br></br>
+<p className="content">During the Hajj, pilgrims perform a series of rituals, like stay at Mina, stay at Arafat and Stay at Muzdalifah including circling the Kaaba performing a series of rituals at the Kaaba, walking between the hills of Safa and Marwa, and throwing pebbles at three pillars that represent Satan.</p>
+      
+<br></br>
+<p className="content">The Hajj is a deeply significant and spiritually enriching experience for Muslims around the world, fostering a sense of unity and connection among believers. It is a time when Muslims from diverse backgrounds come together in worship, transcending differences of nationality, race, and culture.</p>
+      
+<br></br>
+<p className="content"> <strong>Al Azeem Travels</strong> offers travel-related services to individuals and businesses. These services can include booking flights, arranging accommodations, organizing tours and excursions, providing travel insurance, and offering assistance with visa applications and other travel documentation. Al Azeem Travels expertise in Huj Umrah and Iraq Iran Syria Pilgrim Packages. We provide the best services and Hotels</p>
+     
+     
+<br></br>
+<p className="content"><strong>Al Azeem Travels</strong> often have expertise in specific destinations or types of travel, such as luxury travel, adventure travel, or corporate travel. They can help clients plan and customize their trips based on their preferences, budget, and requirements.</p>
+       
+<br></br>
+<p className="content">Overall, <strong>Al Azeem Travels</strong> play a crucial role in simplifying the travel planning process for individuals and businesses, providing expertise, convenience, and peace of mind to travellers.</p>
+       <br></br>
        </div>
     )
 }
