@@ -29,7 +29,7 @@ const FlightFare = ()=>{
                data.length>0 && data.map((row,i)=>(
                     <table className={styles.table} key={i}>
                         <tr className={styles.titleRow}>
-                            <td className={styles.td} colSpan={5}>
+                            <td className={styles.td} colSpan={row.data[0].length}>
                                 {row.title}
                             </td>
                         </tr>

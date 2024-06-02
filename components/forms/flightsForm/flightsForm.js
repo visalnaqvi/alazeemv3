@@ -63,16 +63,33 @@ const FlightForm = ({ details, packageid }) => {
 
                         {
                             newDetails.data && newDetails.data.map((row, Ri) => (
-                                <div key={Ri} className="body-wrapper justify-start">
+                                <div key={Ri} className="body-wrapper justify-start" style={{margin:"20px 0"}}>
                                     {
                                         row.map((col , i)=>(
+                                            
+                                            
                                             <div className={styles.inputWrapper} key={i} >
+                                                {
+                                                Ri==0 && 
+                                                    <div className="delete-icon" onClick={() => {
+                                            let newData = newDetails.data
+                                            newData.forEach((d)=>{
+                                                d.splice(i, 1);
+                                            })
+                                            
+                                            setNewDetails({...newDetails , data:newData})
+                                        }}>
+                                            <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
+                                        </div>
+                                              
+                                            }
                                                 <input className={styles.input} name="col" type="text" value={col} onChange={(e)=>{
                                                     let updatedData = newDetails.data;
                                                     updatedData[Ri][i] = e.target.value
                                                     setNewDetails({...newDetails , data:updatedData})
                                                 }} />
                                             </div>
+                                           
                                         ))
                                     }
                                     <div className="delete-icon" onClick={()=>{
@@ -112,6 +129,15 @@ const FlightForm = ({ details, packageid }) => {
                         let newData = [...newDetails.data , ["sector" , "date" ,"flight" , "seats" , "fare"]]
                         setNewDetails({...newDetails , data:newData})
                     }}>Add New Row</button>
+                    <button style={{marginRight:"20px"}} className="primary-btn blue" onClick={(e) => {
+                        e.preventDefault();
+                        let newData = newDetails.data;
+                        if(newDetails?.data[0]?.length==8){
+                            return
+                        }
+                        newData.forEach(d=>{d.push("enter data")})
+                        setNewDetails({...newDetails , data:newData})
+                    }}>Add New Column</button>
                     <button className="primary-btn blue" onClick={(e) => {
                         e.preventDefault();
                         handleSubmit();
