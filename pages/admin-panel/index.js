@@ -25,16 +25,16 @@ const AdminPanel = ()=>{
             link:"hajj"
         },
         {
+            title:"Fligh Fare",
+            link:"flight-fare"
+        },
+        {
             title:"Vendors",
             link:"vendors"
         },
         {
             title:"Header Links",
             link:"links"
-        },
-        {
-            title:"Fligh Fare",
-            link:"flight-fare"
         },
         {
             title:"Page Setting",
