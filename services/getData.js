@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { getDocs, orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection } from "@/config/collections.js";
+import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -46,6 +46,30 @@ export const getHajjPackages = async () => {
     }
 
 }
+
+export const getFlightFare = async () => {
+    try {
+        const q = query(flightCollection, orderBy("order"));
+
+        const snapshot = await getDocs(q);
+
+        let flights = []
+
+        snapshot.forEach(doc => {
+            flights.push(doc.data());
+        })
+
+
+        return flights;
+    } catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get package" }
+        }
+    }
+
+}
+
+
 export const getIraqPackages = async (type) => {
     try {
         const q = type == "all" ? query(iraqPackagesCollection, orderBy("order")) : query(iraqPackagesCollection, where("type", "==", type));
@@ -127,6 +151,8 @@ export const getAdminPackages = async (packageid) => {
 
         case "hajj": return await getHajjPackages();
 
+        case "flight-fare": return await getFlightFare();
+
         default: return [];
 
     }
@@ -144,6 +170,8 @@ export const getPackageWithId = async (collection, packageId) => {
                 break;
             case "hajj": collectionRef = `${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`;
                 break;
+            case "flight-fare": collectionRef = `${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`;
+            break;
             default: return;
         }
 

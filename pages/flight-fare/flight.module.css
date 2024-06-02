@@ -1,0 +1,35 @@
+.wrapper{
+    margin-bottom: 100px;
+}
+
+.table{
+    width: 80%;
+    margin: 0 auto 40px auto;
+}
+
+.td{
+    padding: 10px;
+    border: 2px solid #fff;
+    background-color: var(--primary-blue-light);
+    text-transform: capitalize;
+}
+
+.header .td{
+    background-color: var(--primary-blue);
+    color: #fff;
+    font-weight: 600;
+}
+
+.titleRow .td{
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: var(--light-yellow);
+    padding: 10px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width:600px){
+    .table{
+        width: 100%;
+    }
+}

@@ -40,6 +40,8 @@ export const getVendorDetailsFromId = async (vendorId) => {
 
 }
 
+
+
 export const updateVendor = async (details) => {
     const docRef = doc(db, `${process.env.NEXT_PUBLIC_VENDOR_COLLECTION}`, details.id);
     try {

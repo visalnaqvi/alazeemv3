@@ -44,7 +44,7 @@ export const addNewPackage = async (details , packageId)=>{
 }
     catch (err){
         if(err){
-            return {status:"warning" , msg:"Something went wrong add new package"}
+            return {status:"warning" , msg:"Something went wrong add new package = "+err.message}
         }
     }
 }

@@ -42,6 +42,8 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
 
         case "page-setting": return (AdminPanelCollectionCard);
 
+        case "flight-fare": return (TourEditCard);
+
         case "hajjUmrah": return (TourEditCard);
         
         case "hajj": return (TourEditCard);

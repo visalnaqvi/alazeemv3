@@ -25,7 +25,7 @@ const NavBar = () => {
     const [navLinks, setNavLinks] = useState({})
     const [user, setUser] = useState({})
     const [isVisible , setIsVisible] = useState(true);
-
+    const [buttonText , setButtonText] = useState("")
     useEffect(() => {
         fetchNavLinks();
         let user = checkStorageForToken();
@@ -138,6 +138,18 @@ const NavBar = () => {
     useEffect(()=>{
         setIsVisible(size.width>=1040)
     },[size])
+
+
+    useEffect(()=>{
+        switch (packageid){
+            case "vendors" : setButtonText("Venors")
+                                break;
+            case "flight-fare" : setButtonText("Flight Fare")
+                                break;
+            default : setButtonText("Package")
+                            break;
+        }
+    })
     return (
         <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : <div>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
@@ -175,7 +187,7 @@ const NavBar = () => {
             </div>
             {packageid && <div className="body-wrapper justify-between margin">
                 <button onClick={() => { router.back() }} style={{ float: "right", marginBottom: "20px" }} className="primary-btn blue">Back</button>
-                {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{ marginBottom: "20px" }} className="primary-btn blue">Add New {packageid == "vendors" ? "Vendor" : "Package"}</button></Link>}
+                {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{ marginBottom: "20px" }} className="primary-btn blue">Add New {buttonText}</button></Link>}
             </div>}
         </div>}</div>
     )

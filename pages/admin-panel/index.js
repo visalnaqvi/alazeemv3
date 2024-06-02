@@ -33,6 +33,10 @@ const AdminPanel = ()=>{
             link:"links"
         },
         {
+            title:"Fligh Fare",
+            link:"flight-fare"
+        },
+        {
             title:"Page Setting",
             link:"page-setting"
         }
