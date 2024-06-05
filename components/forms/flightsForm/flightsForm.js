@@ -4,6 +4,7 @@ import styles from "./flightsForm.module.css"
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import Toast from "@/components/notification/toast";
 import { FaArrowAltCircleUp , FaArrowAltCircleDown } from "react-icons/fa";
+import Input from "./Input/input";
 const FlightForm = ({ details, packageid }) => {
 
     const [newDetails, setNewDetails] = useState({
@@ -56,14 +57,14 @@ const FlightForm = ({ details, packageid }) => {
                 <form>
                     <div className={styles.formItem}>
                         <label className={styles.label} htmlFor="title">Title</label>
-                        <input onChange={(e) => { setNewDetails({ ...newDetails, title: e.target.value }) }} className={styles.input} type="text" id="title" value={newDetails.title} placeholder="Add New Title" />
+                        <input onChange={(e) => { setNewDetails({ ...newDetails, title: e.target.value }) }} className={styles.input} style={{width:"100%"}} type="text" id="title" value={newDetails.title} placeholder="Add New Title" />
                     </div>
                     <div className={styles.formItem}>
                         <label className={styles.label}>Flights</label>
 
                         {
                             newDetails.data && newDetails.data.map((row, Ri) => (
-                                <div key={Ri} className="body-wrapper justify-start" style={{margin:"20px 0"}}>
+                                <div key={Ri} className="body-wrapper justify-start" style={{margin:"20px 0" , overflow:"visible"}}>
                                     {
                                         row.map((col , i)=>(
                                             
@@ -83,11 +84,13 @@ const FlightForm = ({ details, packageid }) => {
                                         </div>
                                               
                                             }
-                                                <input className={styles.input} name="col" type="text" value={col} onChange={(e)=>{
-                                                    let updatedData = newDetails.data;
-                                                    updatedData[Ri][i] = e.target.value
-                                                    setNewDetails({...newDetails , data:updatedData})
-                                                }} />
+                                            <Input 
+                                                styles={styles} 
+                                                setNewDetails={setNewDetails} 
+                                                newDetails={newDetails}
+                                                col={col}
+                                                Ri={Ri}
+                                                i={i} />
                                             </div>
                                            
                                         ))

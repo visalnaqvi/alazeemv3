@@ -7,9 +7,28 @@
 }
 
 .inputWrapper{
-    width: 150px;
+    width: 160px;
+    overflow: visible;
 }
 
+.positionWrap{
+    position: relative;
+    overflow: visible
+}
+
+
+.numberInput{
+    width: 50px;
+}
+
+.numberWrapper{
+    background-color: #f8f8f8;
+    position: absolute;
+    top: -110%;
+    right: 0%;
+    z-index: 1000;
+    padding: 5px;
+}
 
 .input{
     display: block;
@@ -17,10 +36,16 @@
     font-size: 1.2rem;
     outline: none;
     border: 1px solid #dbdbdb;
-    width: 100%;
+    width: 140px;
     /* background-color: var(--primary-blue-light); */
     border-radius: 4px;
     box-shadow: 10px 10px 20px #00000010;
+}
+
+.options{
+    width: 20px;
+    transform: translateX(-20px);
+    cursor: pointer;
 }
 
 .label{
