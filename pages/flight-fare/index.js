@@ -153,6 +153,7 @@ Delhi to Sharaj Air Fare,
                     </div>
                ))
             }
+            <div style={{textAlign:"justify"}}>
                         <p className="content" >Dubai, a city synonymous with ambition and innovation, rises like a mirage from the Arabian desert, boasting a skyline adorned with architectural marvels. This global metropolis, nestled in the United Arab Emirates, seamlessly blends tradition with modernity, offering a captivating glimpse into the future while cherishing its rich heritage.</p>
                         <br></br>
                         <p className="content" >At the heart of Dubai lies its relentless pursuit of excellence, evident in its record-breaking structures like the Burj Khalifa, piercing the sky at over 828 meters, and the Palm Jumeirah, an engineering feat visible from space. These iconic landmarks stand as testaments to Dubai&apos;s audacious vision and unwavering determination to push boundaries.</p>
@@ -166,6 +167,7 @@ Delhi to Sharaj Air Fare,
                         <p className="content" >Beyond its gleaming facades and bustling streets, Dubai&apos;s soul lies in the warmth and hospitality of its people. Embracing visitors with open arms, Dubai offers a tapestry of experiences, from exhilarating desert safaris to cultural festivals celebrating its rich heritage.</p>
                         <br></br>
                         <p className="content" >In essence, Dubai is more than just a city—it&apos;s a symbol of boundless possibilities, where dreams are transformed into reality against the backdrop of endless sands and shimmering skylines. As it continues to write its story on the world stage, Dubai remains an unparalleled destination where the extraordinary becomes the norm, and the impossible is merely a challenge waiting to be conquered.</p>
+                        </div>
         </div>
         </>
     )
