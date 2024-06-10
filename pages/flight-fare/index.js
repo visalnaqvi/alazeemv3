@@ -131,7 +131,8 @@ Delhi to Sharaj Air Fare,
         <div className={`margin ${styles.wrapper}`}>
             {
                data.length>0 && data.map((row,i)=>(
-                    <table className={styles.table} key={i}>
+                <div key={i} style={{overflowX:"scroll"}}>
+                    <table className={styles.table}>
                         <tr className={styles.titleRow}>
                             <td className={styles.td} colSpan={row.data[0].length}>
                                 {row.title}
@@ -149,6 +150,7 @@ Delhi to Sharaj Air Fare,
                             ))
                         }
                     </table>
+                    </div>
                ))
             }
                         <p className="content" >Dubai, a city synonymous with ambition and innovation, rises like a mirage from the Arabian desert, boasting a skyline adorned with architectural marvels. This global metropolis, nestled in the United Arab Emirates, seamlessly blends tradition with modernity, offering a captivating glimpse into the future while cherishing its rich heritage.</p>

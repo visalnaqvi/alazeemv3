@@ -32,4 +32,9 @@
     .table{
         width: 100%;
     }
+
+    .td{
+        border: none;
+        font-size: 12px;
+    }
 }
