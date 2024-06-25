@@ -98,7 +98,9 @@ export default function Visa() {
     
 
     const getLi = (text , i)=>{
-        return <li key={i}><div className="body-wrapper justify-start"><Image style={{marginRight:"10px"}} src={"/icons/check.png"} width={20} height={20} /><p>{text}</p></div></li>
+        return <li key={i}><div className="body-wrapper justify-start">
+            <Image style={{marginRight:"10px"}} src={"/icons/check.png"} width={20} height={20} />
+            <p style={{width:"90%"}}>{text}</p></div></li>
     }
 
 
