@@ -21,7 +21,7 @@ export default function Visa() {
     const attractions = [
         {
             title: "Burj Khalifa",
-            content: "The tallest building in the world, standing at 828 meters. It is a symbol of Dubai's rapid growth and ambition."
+            content: "The tallest building in the world, standing at 828 meters. It is a symbol of Dubai&apos;s rapid growth and ambition."
         },
         {
             title: "Palm Jumeirah",
@@ -29,7 +29,7 @@ export default function Visa() {
         },
         {
             title: "Dubai Mall",
-            content: "One of the world's largest shopping malls, featuring over 1,200 retail outlets, an indoor ice rink, and an aquarium."
+            content: "One of the world&apos;s largest shopping malls, featuring over 1,200 retail outlets, an indoor ice rink, and an aquarium."
         },
         {
             title: "Desert Safari",
@@ -146,7 +146,7 @@ export default function Visa() {
                     }
                 </ul>
                 <br></br>
-                <p className="content">The city's economy is diverse, with major sectors including tourism, aviation, real estate, and financial services. Dubai is famous for Tourism and giving e visa for 30 days 60 days visa and 90 days visa. </p>
+                <p className="content">The city&apos;s economy is diverse, with major sectors including tourism, aviation, real estate, and financial services. Dubai is famous for Tourism and giving e visa for 30 days 60 days visa and 90 days visa. </p>
                 <br></br>
                     <p className="content">Documents Required</p>
                     <ul className="content">
@@ -167,7 +167,7 @@ export default function Visa() {
                         }
                     </ul>
 <br />
-                    <p className="content">Thailand's economy is diverse, with strong sectors in tourism, agriculture, and manufacturing. The country is predominantly Buddhist, and its culture is a blend of ancient traditions and modern influences. Thailand visa is provided by VSF as per the travel ternary </p>
+                    <p className="content">Thailand&apos;s economy is diverse, with strong sectors in tourism, agriculture, and manufacturing. The country is predominantly Buddhist, and its culture is a blend of ancient traditions and modern influences. Thailand visa is provided by VSF as per the travel ternary </p>
                     <br />
                     <p className="content">Documents Required </p>
                     <ul className="content">
@@ -187,7 +187,7 @@ export default function Visa() {
                         }
                     </ul>
                     <br />
-                    <p className="content">Azerbaijan's economy is primarily driven by oil and gas exports, but it is also focusing on developing sectors like agriculture, tourism, and technology. The country is known for its hospitality, traditional music (mugham), and cuisine, which includes dishes like plov and kebabs. Azerbaijan's unique blend of modernity and tradition makes it a fascinating destination. E visa is Available for Azerbaijan urgent visa is also available issued in 3 hours and normal visa takes 3 or 4 days. Only passport JPJ front and back page reuired. And address for stay also required</p>
+                    <p className="content">Azerbaijan&apos;s economy is primarily driven by oil and gas exports, but it is also focusing on developing sectors like agriculture, tourism, and technology. The country is known for its hospitality, traditional music (mugham), and cuisine, which includes dishes like plov and kebabs. Azerbaijan&apos;s unique blend of modernity and tradition makes it a fascinating destination. E visa is Available for Azerbaijan urgent visa is also available issued in 3 hours and normal visa takes 3 or 4 days. Only passport JPJ front and back page reuired. And address for stay also required</p>
                     <h2 className="boldHeading button">SAUDI ARABIA VISA (Tourist & Umrah Visa)</h2>
                     <p>
                     Saudi Arabia, located on the Arabian Peninsula, is known for its vast deserts, rich cultural heritage, and significant role in the global oil industry. Key highlights include:
@@ -202,7 +202,7 @@ export default function Visa() {
                             }
                         </ul>
                         <br />
-                    <p className="content">Saudi Arabia's economy is heavily based on oil exports, but it is undergoing significant changes to reduce dependency on oil and promote other sectors. The country's cultural landscape is deeply influenced by Islamic traditions, making it a unique blend of ancient heritage and modern development. Saudi Arabia is providing Tourist visa for 30 days and 90 Days Multiple Entry Visa, and Umrah Visa is e visa for 90 days from the date of issue</p>
+                    <p className="content">Saudi Arabia&apos;s economy is heavily based on oil exports, but it is undergoing significant changes to reduce dependency on oil and promote other sectors. The country&apos;s cultural landscape is deeply influenced by Islamic traditions, making it a unique blend of ancient heritage and modern development. Saudi Arabia is providing Tourist visa for 30 days and 90 Days Multiple Entry Visa, and Umrah Visa is e visa for 90 days from the date of issue</p>
 
                     <br />
                     <p className="content">Documents Required</p>
@@ -263,8 +263,8 @@ export default function Visa() {
 </ul>
 </div>
 <br/>
-<p className="content">Please note that the availability and specific requirements for e-visas can change, so it's always best to check with us.</p>
-<h2 className="boldHeading button">Countries Don’t Have E Visa Facility</h2>
+<p className="content">Please note that the availability and specific requirements for e-visas can change, so it&apos;s always best to check with us.</p>
+<h2 className="boldHeading button">Countries Don&apos;t Have E Visa Facility</h2>
 <p className="content">
 While many countries offer e-visa facilities, several do not provide this option, requiring travelers to apply for visas through embassies or consulates. Here is a list of some countries that currently do not have e-visa facilities:
 </p>
@@ -294,7 +294,7 @@ While many countries offer e-visa facilities, several do not provide this option
     <li>18. Yemen</li>
 </ul>
 </div>
-<p className="content">Visa policies frequently change, so it's advisable to check the latest information from us </p><br />
+<p className="content">Visa policies frequently change, so it&apos;s advisable to check the latest information from us </p><br />
 
             </div>
         </>
