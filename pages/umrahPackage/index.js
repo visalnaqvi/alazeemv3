@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getUmrahPackages , getIraqPackages, getPageTitle } from "../../services/getData.js"
+import { getUmrahPackages , getIraqPackages, getPageTitle , getCitiesFromTags } from "../../services/getData.js"
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import CarouselComp from "@/components/carousel/carousel.js"
 import IconList from "@/components/lists/iconList.js"
@@ -15,6 +15,8 @@ const HajjUmrah = ()=>{
     const [umrahPackages , setUmrahPackages] = useState([])
     const [iraqPackages , setIraqPackages] = useState([])
     const [pageTitle , setPageTitle] = useState({})
+    const [tagsCities , setTagsCities] = useState([])
+    const [tagsCitiesActive , setTagsCitiesActive] = useState("Delhi")
     const [toastMsg , setToastMsg] = useState({msg:""})
     useEffect(()=>{
        fetchData();
@@ -24,7 +26,8 @@ const HajjUmrah = ()=>{
         try{
         setUmrahPackages(await getUmrahPackages());
         setIraqPackages(await getIraqPackages("sunni"));
-        setPageTitle(await getPageTitle("hajjUmrah"))
+        setPageTitle(await getPageTitle("hajjUmrah"));
+        setTagsCities(await getCitiesFromTags());
     }
         catch (err){
             if(err){
@@ -32,6 +35,10 @@ const HajjUmrah = ()=>{
             }
         }
     }
+
+    useEffect(()=>{
+        console.log("--->>" , tagsCities)
+    },[tagsCities])
 
     const desktopImages = [
         "/sliders/hajjUmrahSlider/1.webp",
@@ -62,10 +69,22 @@ const HajjUmrah = ()=>{
             <CarouselComp width={900} height={500} images={desktopImages}  />:
             <CarouselComp width={900} height={350} images={mobileImages} />}
             <div className="margin">
-              
+                {
+                    tagsCities.length>0 && <div style={{marginTop:"30px" , display:"flex" , justifyContent:"center" , alignItems:"center"}}>
+                      <div style={{marginRight:"10px" , fontSize:"20px"}}>Flights From : </div>
+                      
+                      <div style={{display:"flex" , justifyContent:"start" , alignItems:"center"}}>  {
+                            tagsCities.map((c,i)=>(
+                                <div style={{backgroundColor:`${tagsCitiesActive==c?"#2192ff":"#eeeeee"}` , color:`${tagsCitiesActive==c?"#ffffff":"#000000"}` , padding:"10px 20px" , margin:"1px" , width:"100px" , textAlign:"center" , borderRadius:"5px" , cursor:"pointer"}} key={i} onClick={()=>{setTagsCitiesActive(c)}}>{c}</div>
+                            ))
+                        }</div>
+                    </div>
+                }
             {pageTitle && pageTitle.showCategory ? <div>
             {umrahPackages.length > 0 ? 
-            <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages}/>:<p className="subHeading">Loading Packages...</p>}
+            <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages.filter((pack)=>{
+                console.log("balle" , pack)
+                return pack.tags.includes(tagsCitiesActive)})}/>:<p className="subHeading">Loading Packages...</p>}
             </div>
             :
             <div>

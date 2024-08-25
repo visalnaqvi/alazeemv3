@@ -10,6 +10,7 @@ export const userCollection = collection(db,`${process.env.NEXT_PUBLIC_USERS_COL
 export const navCollection = collection(db,`${process.env.NEXT_PUBLIC_NAVLINK_COLLECTION}`);
 export const hajjCollection = collection(db,`${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`);
 export const flightCollection = collection(db,`${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`);
+export const tagsCollection = collection(db,`${process.env.NEXT_PUBLIC_TAGS_COLLECTION}`);
 
 export const getCollectionName = (packageId)=>{
     switch(packageId){

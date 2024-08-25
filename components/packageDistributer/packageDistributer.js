@@ -16,6 +16,11 @@ const PackageDistributer = ({titles , umrahPackages , fetchData})=>{
         }
     },[umrahPackages])
    //  ${titles.isEcoTop && "reverse"}
+   if(ramzanPackages.length==0 && ecoPackages.length==0 && dulexPackages.length==0){
+    return (
+        <div style={{fontSize:'20px' , fontWeight:600 , textAlign:"center" , marginTop:"40px" , marginBottom:"100px" , width:"100%", height:"100px" , display:"flex" , justifyContent:"center" , alignItems:"center" , backgroundColor:"#f8f8f8" , borderRadius:"5px"}}>No Umrah Packages Found</div>
+    )
+   }
     return(
         <div className={`body-wrapper column`}>
                   {ecoPackages.length > 0 && <div>

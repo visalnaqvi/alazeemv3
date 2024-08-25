@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
-import { getDocs, orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection } from "@/config/collections.js";
+import { getDocs, setDoc ,  orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
+import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -18,6 +18,30 @@ export const getUmrahPackages = async () => {
 
 
         return umrahPackages;
+    } catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get package" }
+        }
+    }
+
+}
+
+export const getCitiesFromTags = async () => {
+    try {
+        const docRef = doc(db, process.env.NEXT_PUBLIC_TAGS_COLLECTION, "tags");
+
+        // Fetch the document
+        const docSnap = await getDoc(docRef);
+    
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const citiesArray = data.cities;
+          console.log(citiesArray)
+          return citiesArray;
+        } else {
+          console.log("No such document!");
+          return null;
+        }
     } catch (err) {
         if (err) {
             return { status: "warning", msg: "Something went wrong cannot get package" }

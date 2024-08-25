@@ -10,6 +10,7 @@ const TourPackagesEdit = ({singlePackageId , packageid})=>{
         price:"",
         order:"",
         hotels:[],
+        tags:[],
         features:[
             "All Meals and Laudary",
             "Air Ticket and Visa",

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./packageEdit.module.css";
 import PackageCard from "@/components/cards/packageCard/packageCard";
 import { getAllVendorsList, getPackageVendor, getVendorFromPackageId, handleNewVendor, handleVendorDelete } from "@/services/vendor";
+import { getCitiesFromTags } from "@/services/getData.js"
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
-import { BsCheck } from "react-icons/bs"
+import { BsCheck } from "react-icons/bs" 
 import Toast from "@/components/notification/toast";
 import FlightsTable from "@/components/flights/table/flightsTable";
 import PricingTable from "@/components/flights/table/pricingTable";
@@ -16,12 +17,14 @@ const PackageEditForm = ({ details, packageid }) => {
     const [newSelectedVendor, setNewSelectedVendor] = useState({ title: "" });
     const [newFlight , setNewFlight] = useState({})
     const [pricing , setPricing] = useState({})
+    const [activeTags , setActiveTags] = useState([])
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
         order: "",
         category:"",
         hotels: [],
+        tags:[],
         features: [
             "All Meals and Laudary",
             "Air Ticket and Visa",
@@ -41,11 +44,37 @@ const PackageEditForm = ({ details, packageid }) => {
         date: ""
     })
 
+    useEffect(()=>{
+        fetchData();
+     },[])
+
+     const fetchData = async ()=>{
+        try{
+            setActiveTags(await getCitiesFromTags());
+    }
+        catch (err){
+            if(err){
+                setToastMsg({status:"warning" , msg:"Something went wrong cannot get package"})
+            }
+        }
+    }
+
     useEffect(() => {
             setNewDetails(details);
        
         getVendor();
     }, [details])
+
+    useEffect(()=>{
+        console.log(newDetails)
+    } , [newDetails])
+
+    const handleSelectChange = (e) => {
+        const selectedTag = e.target.value;
+    
+        // Update the tags array to only hold the selected value
+        setNewDetails({...newDetails , tags:[selectedTag]});
+      };
 
     const getVendor = async () => {
         setAllVendors(await getAllVendorsList())
@@ -198,6 +227,20 @@ const PackageEditForm = ({ details, packageid }) => {
                             </div>
                         </div>
                     }
+
+                    {/* Add the drop down Here */}
+                    <div className={styles.formItem}>
+                    <label className={styles.label}>Selected City - {newDetails.tags.length>0?newDetails.tags[0]:"No City Selected"}</label>
+<br></br>
+                    <select onChange={handleSelectChange}>
+                    <option value="">-- Change a City --</option>
+                    {activeTags.map((tag, index) => (
+                    <option key={index} value={tag}>
+                        {tag}
+                    </option>
+                    ))}
+      </select>
+                    </div>
                     <div className={styles.formItem}>
                             <label className={styles.label}>Select Category</label>
                             <div className={styles.formItem}>
