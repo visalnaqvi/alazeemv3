@@ -240,6 +240,14 @@ a{
     font-weight: 600;
 }
 
+.list-wrapper{
+    display: flex;
+}
+
+.list-wrapper ul{
+    width: 50%;
+}
+
 @media only screen and (max-width:560px) {
     .boldHeading.button{
         margin-bottom: 0;
@@ -247,5 +255,9 @@ a{
     
     .contact-button{
         margin-bottom: 30px;
+    }
+
+    .list-wrapper{
+        display: block;
     }
 }
