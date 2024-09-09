@@ -70,7 +70,7 @@ const ShiaZiyarat = ()=>{
                 <br></br>
                 <p className="content"><strong>Cappadocia:</strong>Known for its surreal landscapes, fairy chimneys, rock-hewn churches, and cave dwellings, Cappadocia is also famous for hot air balloon rides offering breathtaking views of the region.</p>
                 <br></br>
-                <p className="content"><strong>Pamukkale and Hierapolis:</strong>Pamukkale, also known as "Cotton Castle," is famous for its terraces of mineral-rich thermal waters. Nearby Hierapolis, an ancient Roman spa city, adds historical depth to this natural wonder.</p>
+                <p className="content"><strong>Pamukkale and Hierapolis:</strong>Pamukkale, also known as &quot;Cotton Castle,&quot; is famous for its terraces of mineral-rich thermal waters. Nearby Hierapolis, an ancient Roman spa city, adds historical depth to this natural wonder.</p>
                 <br></br>
                 <h2 className="boldHeading">2.	Cultural and Culinary Attractions:</h2>
                 <p className="content">Turkey boasts a rich and diverse cultural heritage that spans multiple civilizations. This diversity is reflected in its cuisine, which includes a variety of dishes such as kebabs, mezes, baklava, and Turkish tea and coffee. Local markets, like the Grand Bazaar in Istanbul, offer a vibrant shopping experience with goods ranging from spices to carpets and jewellery.</p>
@@ -83,7 +83,7 @@ const ShiaZiyarat = ()=>{
                 <br></br>
                 <h2 className="boldHeading">4.	Natural Beauty and Outdoor Activities:</h2>
                 <p className="content">
-                    <strong>Mount Ararat:</strong>The highest peak in Turkey, Mount Ararat, is a popular destination for climbers and adventurers. It is also traditionally associated with the story of Noah's Ark.</p>
+                    <strong>Mount Ararat:</strong>The highest peak in Turkey, Mount Ararat, is a popular destination for climbers and adventurers. It is also traditionally associated with the story of Noah&quot;s Ark.</p>
                 <br></br>
                 <p className="content"><strong>Lake Van and Nemrut Mountain:</strong>Lake Van, the largest lake in Turkey, and Nemrut Mountain, with its giant statues and royal tombs, are significant attractions in eastern Turkey.</p>
                 <br></br>
