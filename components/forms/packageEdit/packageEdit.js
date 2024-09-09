@@ -234,7 +234,7 @@ const PackageEditForm = ({ details, packageid }) => {
 <br></br>
                     <select onChange={handleSelectChange}>
                     <option value="">-- Change a City --</option>
-                    {activeTags.map((tag, index) => (
+                    {activeTags && activeTags.length>0 && activeTags.map((tag, index) => (
                     <option key={index} value={tag}>
                         {tag}
                     </option>

@@ -12,6 +12,7 @@ const SinglePackgeEdit = ()=>{
     
     switch(packageid){      
         case "hajjUmrah" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId}/>);
+        case "turkey" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId}/>);
         case "iraq" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId} />);
         case "hajj" : return (<TourPackagesEdit packageid={packageid} singlePackageId={singlePackageId} />);
         case "vendors" : return(<VendorEdit vendorId={singlePackageId} />)
