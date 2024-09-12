@@ -1,15 +1,12 @@
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import background from "../public/backgroundImages/turkey.png"
 import background_mb from "../public/backgroundImages/turkey.png"
-import ziyarat from "../data/shiaZiyarat.js"
-import IconLongList from "@/components/lists/iconLongList.js";
-import Image from "next/image";
 import SingleImage from "@/components/carousel/singleImage";
 
 import { useEffect, useState } from "react"
 import { getTurkeyPackages } from "../services/getData.js"
+import Head from "next/head.js"
 
-import Toast from "@/components/notification/toast.js"
 import { useRouter } from "next/router.js"
 
 const ShiaZiyarat = ()=>{
