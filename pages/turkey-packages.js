@@ -41,7 +41,53 @@ const ShiaZiyarat = ()=>{
     }
     return(
         <>
-        
+         <Head>
+                <title>Turkey Holiday Packages - Al Azeem Tours and Travel</title>
+                <meta name="keywords" content="Turkey tour package,
+Turkey holiday packages,
+Turkey tours,
+Istanbul holiday package,
+Turkey travel packages,
+Turkey packages,
+Istanbul tour package,
+Turkey vacation package,
+Turkey trip packages,
+10 days Turkey tour packages,
+Istanbul packages,
+Cappadocia tour package,
+turkey itinerary 10 days,
+Istanbul vacation packages,
+Istanbul travel package,
+Turkey Istanbul tours,
+trip to Turkey cost,
+Cappadocia travel packages,
+4 day Istanbul tour package,
+Turkey tour packages for couple,
+Istanbul city tour package,
+Ephesus Turkey tours,
+Turkey Istanbul package holidays,
+Turkey Istanbul package,
+Istanbul tour package for couple,
+Cappadocia Turkey tour package,
+package trip to Turkey,
+Turkey budget trip,
+8 days Turkey itinerary,
+Turkey travel tour packages,
+Istanbul Turkey vacation packages,
+Turkey itinerary 9 days,
+trips to Istanbul packages,
+package trip to Istanbul,
+Turkey tour trip,
+travel packages to Istanbul Turkey,
+Cappadocia package tour,
+package Istanbul holidays,
+package holidays in Istanbul,
+trip to Istanbul from India,
+Turkey Greece packages,
+Turkey Greece tour package,
+Turkey trips cost,
+"></meta>
+            </Head>
                 <SingleImage url={[background , background_mb]} />
     
             <div className="margin">
