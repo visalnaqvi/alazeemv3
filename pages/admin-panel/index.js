@@ -17,6 +17,10 @@ const AdminPanel = ()=>{
             link:"iraq"
         },
         {
+            title:"Turkey Packages",
+            link:"turkey"
+        },
+        {
             title:"Holiday Packages",
             link:"holiday"
         },

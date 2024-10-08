@@ -28,6 +28,10 @@
     background-image: url("../../../public/cardBackgrounds/iraqZiyaratbg.png");
 }
 
+.card.turkey .content{
+    background-image: url("../../../public/cardBackgrounds/tur.png");
+}
+
 .card h2{
     font-weight: 700;
     font-size: 1.4rem;

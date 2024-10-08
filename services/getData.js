@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { getDocs, setDoc ,  orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection } from "@/config/collections.js";
+import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection , turkeyCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -62,6 +62,28 @@ export const getHajjPackages = async () => {
 
 
         return hajjPackages;
+    } catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get package" }
+        }
+    }
+
+}
+
+export const getTurkeyPackages = async () => {
+    try {
+        const q = query(turkeyCollection, orderBy("order"));
+
+        const tuekySnapshot = await getDocs(q);
+
+        let turkeyPackages = []
+
+        tuekySnapshot.forEach(doc => {
+            turkeyPackages.push(doc.data());
+        })
+
+
+        return turkeyPackages;
     } catch (err) {
         if (err) {
             return { status: "warning", msg: "Something went wrong cannot get package" }
@@ -192,6 +214,8 @@ export const getPackageWithId = async (collection, packageId) => {
             case "holiday": collectionRef = `${process.env.NEXT_PUBLIC_HOLIDAY_COLLECTION}`;
                 break;
             case "hajj": collectionRef = `${process.env.NEXT_PUBLIC_HAJJ_COLLECTION}`;
+                break;
+            case "turkey": collectionRef = `${process.env.NEXT_PUBLIC_TURKEY_COLLECTION}`;
                 break;
             case "flight-fare": collectionRef = `${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`;
             break;
