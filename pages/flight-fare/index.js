@@ -21,9 +21,6 @@ const FlightFare = ()=>{
     setData(details)
    }
 
-   useEffect(()=>{
-    console.log("dataaaa" , data);
-   },[data])
     return (
         <>
          <Head>

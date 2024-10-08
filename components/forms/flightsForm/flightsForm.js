@@ -17,7 +17,6 @@ const FlightForm = ({ details, packageid }) => {
     const [toastMsg, setToastMsg] = useState({ msg: "" });
     
     const handleSubmit = async (data) => {
-        console.log(newDetails)
         let msg={msg:"something"};
         let finalData = {
             title:newDetails.title,
@@ -29,7 +28,6 @@ const FlightForm = ({ details, packageid }) => {
             finalData[`${i}`]=d
         })
 
-        console.log("final data" , finalData)
         if (newDetails.id) {
             msg = await updatePackageData(finalData, packageid)
         } else {

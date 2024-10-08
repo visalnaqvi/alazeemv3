@@ -130,7 +130,6 @@ const NavBar = () => {
 
     const fetchNavLinks = async () => {
         let data = await getNavLinks();
-        console.log("dataaaa" , data)
         setNavLinks(data.filter(d => d.active == true))
     }
     const size = useWindowSize();

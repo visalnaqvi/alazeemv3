@@ -36,7 +36,6 @@ export const getCitiesFromTags = async () => {
         if (docSnap.exists()) {
           const data = docSnap.data();
           const citiesArray = data.cities;
-          console.log(citiesArray)
           return citiesArray;
         } else {
           console.log("No such document!");

@@ -65,9 +65,7 @@ const PackageEditForm = ({ details, packageid }) => {
         getVendor();
     }, [details])
 
-    useEffect(()=>{
-        console.log(newDetails)
-    } , [newDetails])
+
 
     const handleSelectChange = (e) => {
         const selectedTag = e.target.value;

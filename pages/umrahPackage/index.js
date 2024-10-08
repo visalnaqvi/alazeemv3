@@ -36,10 +36,6 @@ const HajjUmrah = ()=>{
         }
     }
 
-    useEffect(()=>{
-        console.log("--->>" , tagsCities)
-    },[tagsCities])
-
     const desktopImages = [
         "/sliders/hajjUmrahSlider/1.webp",
         "/sliders/hajjUmrahSlider/2.webp",
@@ -83,7 +79,6 @@ const HajjUmrah = ()=>{
             {pageTitle && pageTitle.showCategory ? <div>
             {umrahPackages.length > 0 ? 
             <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages.filter((pack)=>{
-                console.log("balle" , pack)
                 return pack.tags.includes(tagsCitiesActive)})}/>:<p className="subHeading">Loading Packages...</p>}
             </div>
             :

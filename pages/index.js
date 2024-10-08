@@ -24,7 +24,8 @@ const size = useWindowSize();
    
     <div>
        <Head>
-      <title>Al Azeem Tours and Travles | Home</title>
+      <title>Al Azeem Tours and Travles | Explore Top Destinations</title>
+      
     </Head>
       {
         size.width > 700 ?
@@ -33,7 +34,7 @@ const size = useWindowSize();
       }
         <div className="margin">
           <div className="body-wrapper justify-between">
-            <h2 className="subHeading">Our foundation</h2>
+            <h1 className="subHeading">Al Azeem Tours and Travles</h1>
             <a className="contact-button" href="tel:+919811136987"><button className="primary-btn blue">Contact Us On: +919811136987</button></a>
           </div>
             <p className="content">We present before you AL-AZEEM TOUR & TRAVELS as one stop platform for all your travel needs.With a focus on customer service, at Al-Azeem Tour we offer a fantastic range of trips to meet your budget , ambitions and expectations. All of us here in the Al-Azeem team, work tirelessly to ensure that your trip is carefree, successful and enjoyable experience from start to finish. That means attention to your travel plans, accommodation, specialist inclusions and leisure time as well as to health and safety, financial protection and travel insurance.Specialist knowledge and experience is only half of the story. What distinguishes ous is our passion for the trips we organise, for the destinations that we feature. We feature trips around the worldand our latest inclusion is tour to Saudi Arabia.</p>

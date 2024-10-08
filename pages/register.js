@@ -7,10 +7,6 @@ const Resigter = ()=>{
     const { data: session } = useSession();
     const isUserSignedIn = session?.user;
  
-
-    useEffect(() => {
-        console.log("user data after login", isUserSignedIn);
-    }, [isUserSignedIn])
     return(
         <div className='flex gap-8 justify-center'>
                         <button onClick={(e) => {

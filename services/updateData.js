@@ -51,7 +51,6 @@ export const addNewPackage = async (details , packageId)=>{
 
 export const updatePageSetting = async (details ) =>{
   
-    console.log("somethin", details)
     const docRef = doc(db , "page_titles" , "hajjUmrah");
     try{
         await setDoc(docRef , details);
