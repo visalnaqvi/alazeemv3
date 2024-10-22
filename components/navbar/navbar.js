@@ -9,6 +9,7 @@ import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth
 import { getNavLinks } from "@/services/getData"
 import { useWindowSize } from "@uidotdev/usehooks";
 import ForExPopUp from "../flights/container/forexPopUp"
+import Script from 'next/script'
 const NavBar = () => {
 
     const [menuState, setMenuState] = useState({
@@ -151,6 +152,15 @@ const NavBar = () => {
     })
     return (
         <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : <div>
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-16748530223" />
+            <Script id="google-analytics">
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-16748530223');
+                `}
+            </Script>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
             <div onClick={()=>{
                 setIsVisible(!isVisible)
