@@ -1,6 +1,30 @@
 import Link from "next/link";
 import styles from "./contactBox.module.css"
+import {useRouter} from "next/router"
+import { useEffect, useState } from "react"
+
 const ContactBox = ()=>{
+    const router = useRouter();
+    const [isFlag,setIsFlag] = useState(false)
+    useEffect(()=>{
+        if(router.asPath=='/iraq-ziyarat-packages/iraq-ziyarat'){
+            setIsFlag(true)
+        }
+    },[router])
+
+    function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-16748530223/dxyxCML-998ZEK-UqbI-',
+            'event_callback': callback,
+            'phone_conversion_number': '9205184001',
+        });
+        return false;
+      }
     return(
         <div className={`body-wrapper ${styles.wrapper}`}>
             <div className={styles.contactBoxSection}>
@@ -13,8 +37,8 @@ const ContactBox = ()=>{
             <div className={styles.contactBoxSection}>
                 {/* <p><strong>OR CLASS US NOW ON</strong></p><br></br> */}
                 <div>
-                <Link href="tel:9205184001"><button>+91 9205184001</button></Link>
-                <Link href="tel:9811042458"><button>+91 9811042458</button></Link>
+                <Link onClick={()=>{gtag_report_conversion()}} href="tel:9205184001"><button>+91 9205184001</button></Link>
+                <Link onClick={()=>{gtag_report_conversion()}} href="tel:9811042458"><button>+91 9811042458</button></Link>
                 </div>
             </div>
         </div>

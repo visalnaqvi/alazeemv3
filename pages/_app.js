@@ -3,11 +3,21 @@ import "../styles/globals.css"
 import QuickContacts from "@/components/contactBox/quickContact/quickContact"
 import ContactBox from "@/components/contactBox/contactBox/contactBox"
 import { SessionProvider } from "next-auth/react"
+import Script from 'next/script'
 
 const noAuthRoutes = ['/welcome', '/newLogin', '/register'];
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-16748530223" />
+            <Script id="google-analytics">
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-16748530223');
+                `}
+            </Script>
     <NavBar />
     <main>
       <Component {...pageProps} />

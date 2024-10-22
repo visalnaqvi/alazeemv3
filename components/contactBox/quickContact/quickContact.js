@@ -9,7 +9,6 @@ const QuickContacts = ()=>{
     const [isFlag,setIsFlag] = useState(false)
     useEffect(()=>{
         if(router.asPath=='/iraq-ziyarat-packages/iraq-ziyarat'){
-            console.log("innn")
             setIsFlag(true)
         }
     },[router])
@@ -20,6 +19,19 @@ const QuickContacts = ()=>{
             });
         }
     };
+    function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-16748530223/dxyxCML-998ZEK-UqbI-',
+            'event_callback': callback,
+            'phone_conversion_number': '9205184001',
+        });
+        return false;
+      }
 
     const handleWhatsAppClick = (url) => {
         if (typeof window !== 'undefined' && window.gtag) {
@@ -58,7 +70,7 @@ const QuickContacts = ()=>{
             </div></Link>}
 
            {isFlag ? <Link href="tel:9205184001">
-                <div className={`${styles.icon} ${styles.call} body-wrapper`} onClick={handlePhoneClick}>
+                <div className={`${styles.icon} ${styles.call} body-wrapper`} onClick={()=>{gtag_report_conversion()}}>
                     <AiTwotonePhone />
                 </div>
             </Link>:
