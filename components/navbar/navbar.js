@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth"
 import { getNavLinks } from "@/services/getData"
+import { IoSearch } from "react-icons/io5";
 import { useWindowSize } from "@uidotdev/usehooks";
 import ForExPopUp from "../flights/container/forexPopUp"
 const NavBar = () => {
@@ -16,6 +17,31 @@ const NavBar = () => {
         hajjUmrah: false,
         iraqZiyarat: false,
     })
+
+
+    const pages = [
+       { key:"Home",link:"/"},
+       { key:"Karbala Ziyarat",link:"/iraq-ziyarat-packages/karbala-iraq-ziyarat"},
+       { key:"Hajj Umrah",link:"/umrahPackage"},
+       { key:"Iraq Ziyarat",link:"/iraq-ziyarat-packages/iraq-ziyarat"},
+       { key:"Holiday Packages",link:"/holiday-packages"},
+       { key:"Hajj Package",link:"/hajjPackage"},
+       { key:"Flight Fare",link:"/flight-fare"},
+       { key:"Visa Assistance",link:"/visa"},
+       { key:"Turkey",link:"/turkey-packages"},
+       { key:"FOREX",link:"/forex"},
+    ]
+const [isSuggVis,setIsSuggVis] = useState(false)
+
+const handleSearch = (e) => {
+    const searchValue = e.target.value.toLowerCase(); // Convert to lowercase for case-insensitive search
+    const filteredPages = pages.filter(p => p.key.toLowerCase().includes(searchValue));
+    setSearchedPages(filteredPages);
+    setIsSuggVis(true)
+  };
+
+    const [searchedPages , setSearchedPages] = useState(pages)
+
 
     const router = useRouter()
     const [packageid, setPackageId] = useState("")
@@ -27,7 +53,7 @@ const NavBar = () => {
     const [isVisible , setIsVisible] = useState(true);
     const [buttonText , setButtonText] = useState("")
     useEffect(() => {
-        fetchNavLinks();
+        // fetchNavLinks();
         let user = checkStorageForToken();
         setUser(user);
         let { packageid, singlePackageId } = router.query;
@@ -60,6 +86,9 @@ const NavBar = () => {
                 karbalaZiyarat: false,
                 forex:false,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
             case "/umrahPackage": setMenuState({
@@ -70,6 +99,9 @@ const NavBar = () => {
                 karbalaZiyarat: false,
                 forex:false,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
             case "/iraq-ziyarat-packages/iraq-ziyarat": setMenuState({
@@ -80,6 +112,9 @@ const NavBar = () => {
                 karbalaZiyarat: false,
                 forex:false,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
             case "/iraq-ziyarat-packages/karbala-iraq-ziyarat": setMenuState({
@@ -90,6 +125,9 @@ const NavBar = () => {
                 karbalaZiyarat: true,
                 forex:false,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
             case "/holiday-packages": setMenuState({
@@ -100,6 +138,9 @@ const NavBar = () => {
                 karbalaZiyarat: false,
                 forex:false,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
             case "/forex": setMenuState({
@@ -110,6 +151,9 @@ const NavBar = () => {
                 karbalaZiyarat: false,
                 forex:true,
                 hajjPackage:false,
+                flightFare:false,
+                visal:false,
+                trukey:false,
             });
                 break;
                 case "/hajjPackage": setMenuState({
@@ -120,8 +164,50 @@ const NavBar = () => {
                     karbalaZiyarat: false,
                     forex:false,
                     hajjPackage:true,
+                    flightFare:false,
+                    visal:false,
+                    trukey:false,
                 });
                     break;
+            case "/flight-fare": setMenuState({
+                home: false,
+                hajjUmrah: false,
+                iraqZiyarat: false,
+                holidayPackages: false,
+                karbalaZiyarat: false,
+                forex:false,
+                hajjPackage:false,
+                flightFare:true,
+                visal:false,
+                trukey:false,
+            });
+            break;
+            case "/visa": setMenuState({
+                home: false,
+                hajjUmrah: false,
+                iraqZiyarat: false,
+                holidayPackages: false,
+                karbalaZiyarat: false,
+                forex:false,
+                hajjPackage:false,
+                flightFare:false,
+                visal:true,
+                trukey:false,
+            });
+                break;
+        case "/turkey-packages": setMenuState({
+            home: false,
+            hajjUmrah: false,
+            iraqZiyarat: false,
+            holidayPackages: false,
+            karbalaZiyarat: false,
+            forex:false,
+            hajjPackage:false,
+            flightFare:false,
+            visal:false,
+            trukey:true,
+        });
+            break;
             default: setMenuState({ home: false, hajjUmrah: false, iraqZiyarat: false, holidayPackages: false , hajjPackage:false })
                 break;
 
@@ -150,27 +236,53 @@ const NavBar = () => {
         }
     })
     return (
-        <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : <div>
+        <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : 
+        <div>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
             <div onClick={()=>{
                 setIsVisible(!isVisible)
             }} className={styles.hamMenu}>
             {isVisible ? <GiCancel style={{pointerEvents:"none"}} /> :<GiHamburgerMenu style={{pointerEvents:"none"}} />}
             </div>
-                <Image src={logo} width={180} height={60} alt="al azeem logo" />
+                <Image src={logo} width={150} height={60} alt="al azeem logo" />
                <div className={`${styles.mainMenu} ${!isVisible && styles.notVisible}`}>
                     <ul className="body-wrapper">
-                        {
+                        {/* {
                             navLinks && navLinks.length > 0 && navLinks.map((link, i) => (
                                 <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
                             ))
-                        }
-                        <li className={menuState[`forex`] && styles.active}><Link href={`forex`}>FOREX</Link></li>
+                        } */}
+                        <li className={menuState[`home`] && styles.active}><Link href={`/`}>Home</Link></li>
+                        <li className={menuState[`karbalaZiyarat`] && styles.active}><Link href={`/iraq-ziyarat-packages/karbala-iraq-ziyarat`}>Karbala Ziyarat</Link></li>
+                        <li className={menuState[`hajjUmrah`] && styles.active}><Link href={`/umrahPackage`}>Hajj Umrah</Link></li>
+                        <li className={menuState[`iraqZiyarat`] && styles.active}><Link href={`/iraq-ziyarat-packages/iraq-ziyarat`}>Iraq Ziyarat</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['holidayPackages'] && styles.active}`}><Link href={`/holiday-packages`}>Holiday Packages</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['hajjPackage'] && styles.active}`}><Link href={`/hajjPackage`}>Hajj Package</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['flightFare'] && styles.active}`}><Link href={`/flight-fare`}>Flight Fare</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['visa'] && styles.active}`}><Link href={`/visa`}>Visa Assistance</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['turkey'] && styles.active}`}><Link href={`/turkey-packages`}>Turkey</Link></li>
+                        <li className={`${styles.itemsD} ${menuState['forex'] && styles.active}`}><Link href={`forex`}>FOREX</Link></li>
                         
                         {/* <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
                         <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages/karbala-iraq-ziyarat">Iraq Ziyarat</Link></li>
                         <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li> */}
                     </ul>
+                </div>
+                <div className={styles.searchWrapper}>
+                    <div className={`${styles.searchBar} body-wrapper`}>
+                    {/* <div className={styles.searchIcon}><IoSearch /></div> */}
+                    <input onChange={handleSearch} onBlur={()=>{setTimeout(()=>{setIsSuggVis(false)},1000)}} type="search" placeholder="Search Anything Here"></input>
+                    </div>
+                    {isSuggVis && searchedPages.length>0 && <div className={styles.sugg}>
+                        {
+                            searchedPages.map((p,i)=>(
+                                <div onClick={()=>{router.push(p.link)}} className={styles.searchCard}>
+                                    <p className={styles.searchText}>{p.key}</p>
+                                    <p className={styles.searchLink}>{p.link}</p>
+                                </div>
+                            ))
+                        }
+                    </div>}
                 </div>
                 <div className={`${(user && user.role == 'admin') ? styles.w40 : styles.w20} body-wrapper`}>
                     
@@ -188,7 +300,29 @@ const NavBar = () => {
                 <button onClick={() => { router.back() }} style={{ float: "right", marginBottom: "20px" }} className="primary-btn blue">Back</button>
                 {!isNew && !singlePackageId && <Link href={`${packageid}/new`}><button style={{ marginBottom: "20px" }} className="primary-btn blue">Add New {buttonText}</button></Link>}
             </div>}
-        </div>}</div>
+            <div className={styles.lowerNavWrapper}>
+            <div className={styles.lowerNav}>
+            <div className={`${styles.mainMenu} ${!isVisible && styles.notVisible}`}>
+                    <ul className="body-wrapper">
+                        {/* {
+                            navLinks && navLinks.length > 0 && navLinks.map((link, i) => (
+                                <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
+                            ))
+                        } */}
+                        <li className={menuState[`holidayPackages`] && styles.active}><Link href={`/holiday-packages`}>Holiday Packages</Link></li>
+                        <li className={menuState[`hajjPackage`] && styles.active}><Link href={`/hajjPackage`}>Hajj Package</Link></li>
+                        <li className={menuState[`flightFare`] && styles.active}><Link href={`/flight-fare`}>Flight Fare</Link></li>
+                        <li className={menuState[`visa`] && styles.active}><Link href={`/visa`}>Visa Assistance</Link></li>
+                        <li className={menuState[`turkey`] && styles.active}><Link href={`/turkey-packages`}>Turkey</Link></li>
+                        <li className={menuState[`forex`] && styles.active}><Link href={`forex`}>FOREX</Link></li>
+                        
+                    </ul>
+                </div>
+
+            </div>
+            </div>
+        </div>}
+        </div>
     )
 }
 
