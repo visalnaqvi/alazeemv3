@@ -202,12 +202,13 @@ Travel Agent"
             <SingleImage url={[background, background_mb]} />
 
             <div className="margin">
-                <div className="body-wrapper justify-between">
                     <div>
-                    <h1 className="boldHeading button">Dubai Visa From India - Trusted Travel Agent for Dubai Visa Services</h1>
+                    <h1 className="boldHeading button" style={{marginBottom:"0"}}>Dubai Visa From India - Trusted Travel Agent for Dubai Visa Services</h1>
+                    <h2 className="subHeading button" style={{marginTop:"0",fontSize:"25px"}}>Apply for a Dubai Tourist Visa with Al Azeem Travels</h2>
                     </div>
                     <a className="contact-button" href="tel:+919811136987"><button className="primary-btn blue">Contact Us On: +919811136987</button></a>
-                </div>
+                    <br></br>
+                    <br></br>
                 <p className="content">AL AZEEM TOUR & TRAVELS is a travel agency affiliated to IATA dedicated to provide memorable travel experiences around the world. Our agency mission is to provide seamless, enriching travel experiences that cater to the unique needs and desires of each client. Our agency aim to provide the best services to remove the stress and complexity from travel planning with the help of our experience staff. Below services provided by our agency</p>
                 <br></br>
 
