@@ -25,7 +25,7 @@ const IraqZiyarat = () => {
     }
     const fetchData = async () => {
         try { 
-            setIraqPackages(await getIraqPackages(isShia ? "shia" : "sunni")); 
+        setIraqPackages(await getIraqPackages(isShia ? "shia" : "sunni")); 
         setIsLoading(false)
     }
         catch (err) {

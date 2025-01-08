@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { getDocs, setDoc ,  orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection , turkeyCollection } from "@/config/collections.js";
+import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection , turkeyCollection, getCollectionName } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -117,13 +117,14 @@ export const getFlightFare = async () => {
 
 export const getIraqPackages = async (type) => {
     try {
-        const q = type == "all" ? query(iraqPackagesCollection, orderBy("order")) : query(iraqPackagesCollection, where("type", "==", type));
+        const q = query(iraqPackagesCollection, orderBy("order"));
 
         const iraqSnapshot = await getDocs(q);
 
         let iraqPackages = []
-
+        console.log("snap shot",iraqSnapshot)
         iraqSnapshot.forEach(doc => {
+            console.log("doc" , doc.data())
             iraqPackages.push(doc.data());
         })
 
