@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
-import { getDocs, setDoc ,  orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection,hajjCollection, iraqPackagesCollection, holidayPackagesCollection,flightCollection , tagsCollection , turkeyCollection, getCollectionName } from "@/config/collections.js";
+import { getDocs, setDoc, orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
+import { navCollection, umrahPackagesCollection, hajjCollection, iraqPackagesCollection, holidayPackagesCollection, flightCollection, tagsCollection, turkeyCollection, getCollectionName } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -32,14 +32,14 @@ export const getCitiesFromTags = async () => {
 
         // Fetch the document
         const docSnap = await getDoc(docRef);
-    
+
         if (docSnap.exists()) {
-          const data = docSnap.data();
-          const citiesArray = data.cities;
-          return citiesArray;
+            const data = docSnap.data();
+            const citiesArray = data.cities;
+            return citiesArray;
         } else {
-          console.log("No such document!");
-          return null;
+            console.log("No such document!");
+            return null;
         }
     } catch (err) {
         if (err) {
@@ -122,10 +122,12 @@ export const getIraqPackages = async (type) => {
         const iraqSnapshot = await getDocs(q);
 
         let iraqPackages = []
-        console.log("snap shot",iraqSnapshot)
+        console.log("snap shot", iraqSnapshot)
         iraqSnapshot.forEach(doc => {
-            console.log("doc" , doc.data())
-            iraqPackages.push(doc.data());
+            console.log("doc", doc.data())
+            if (doc.data().type && doc.data().type == type) {
+                iraqPackages.push(doc.data());
+            }
         })
 
 
@@ -171,9 +173,9 @@ export const getHolidayPackages = async (city) => {
 
 }
 
-export const getPageDocument = async ()=>{
+export const getPageDocument = async () => {
     try {
-        const q = query(collection(db,"page_titles"));
+        const q = query(collection(db, "page_titles"));
         const docs = await getDocs(q);
         let data = [];
         docs.forEach(doc => data.push(doc.data()));
@@ -219,7 +221,7 @@ export const getPackageWithId = async (collection, packageId) => {
             case "turkey": collectionRef = `${process.env.NEXT_PUBLIC_TURKEY_COLLECTION}`;
                 break;
             case "flight-fare": collectionRef = `${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`;
-            break;
+                break;
             default: return;
         }
 
