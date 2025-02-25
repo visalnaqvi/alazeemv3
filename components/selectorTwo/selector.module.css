@@ -1,0 +1,20 @@
+.wrapper{
+    display: flex;
+    border: 1px solid #eeeeee;
+    background-color: #b9b9b9;
+}
+
+.wrapper button{
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    margin: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+.active{
+    background-color: var(--primary-blue);
+    color: #ffffff;
+}

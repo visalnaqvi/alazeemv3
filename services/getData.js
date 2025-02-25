@@ -185,11 +185,11 @@ export const getPageDocument = async () => {
     }
 }
 
-export const getAdminPackages = async (packageid) => {
+export const getAdminPackages = async (packageid, type) => {
     switch (packageid) {
         case "hajjUmrah": return await getUmrahPackages();
 
-        case "iraq": return await getIraqPackages("all");
+        case "iraq": return await getIraqPackages(type);
 
         case "holiday": return await getHolidayPackages("all");
 
