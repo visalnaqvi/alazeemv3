@@ -463,7 +463,7 @@ away from haram shareef.</p>
         <div className={styl.contact}>
          
             <p className={style.ctag}>CALL US NOW FOR MORE INFORMATION</p>
-            <p className={styl.chead}>9205184001, 9811042458</p>
+            <p className={styl.chead}>9205184001, 9717040012</p>
          
         </div>
      
