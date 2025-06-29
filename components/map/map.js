@@ -4,6 +4,7 @@ const Map = () => {
         <>
             <h2 className="subHeading center">Visit Us</h2>
             <p className="content center"><strong style={{ color: "#000" }}>Address :</strong>1/56 D Basement Lalita Park Laxmi Nagar Delhi 92</p>
+            <p className="content center"><strong style={{ color: "#000" }}>Okhla Branch:</strong> 334E, 3rd Floor, Batla House Chowk, Jamia Nagar, Okhla, Upper Rajdhani Medical Store, New Delhi, Delhi-110025</p>
             <p className="content center"><strong style={{ color: "#000" }}>Mr Shariq (Agent) :</strong>12/136 noorullah road Prayagraj (Allahabad) , Mob +91-9205184001</p>
 
             <div className={styles.wrapper}>

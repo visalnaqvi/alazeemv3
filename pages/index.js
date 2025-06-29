@@ -58,9 +58,9 @@ export default function Home() {
         }
       </div>
 
-      <h2 className="subHeading center">Visit Us</h2>
+      {/* <h2 className="subHeading center">Visit Us</h2>
       <p className="content center"><strong style={{ color: "#000" }}>Laxmi Nagar Branch:</strong> 1/53, Ist Floor, Lalita Park, Laxmi Nagar, Delhi-92</p>
-      <p className="content center"><strong style={{ color: "#000" }}>Okhla Branch:</strong> 334E, 3rd Floor, Batla House Chowk, Jamia Nagar, Okhla, Upper Rajdhani Medical Store, New Delhi, Delhi-110025</p>
+      <p className="content center"><strong style={{ color: "#000" }}>Okhla Branch:</strong> 334E, 3rd Floor, Batla House Chowk, Jamia Nagar, Okhla, Upper Rajdhani Medical Store, New Delhi, Delhi-110025</p> */}
 
       <br></br>
     </div>
