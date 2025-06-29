@@ -3,9 +3,7 @@ import "../styles/globals.css"
 import QuickContacts from "@/components/contactBox/quickContact/quickContact"
 import ContactBox from "@/components/contactBox/contactBox/contactBox"
 import { SessionProvider } from "next-auth/react"
-import Script from 'next/script'
-import Head from 'next/head'
-
+import Map from "../components/map/map.js"
 const noAuthRoutes = ['/welcome', '/newLogin', '/register'];
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -17,6 +15,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <main>
         <Component {...pageProps} />
       </main>
+      <Map />
+      <br />
+      <br />
       <ContactBox />
       <QuickContacts />
     </SessionProvider>
