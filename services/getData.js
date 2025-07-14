@@ -6,7 +6,7 @@ import dotenv from "dotenv"
 dotenv.config()
 export const getUmrahPackages = async () => {
     try {
-        const q = query(umrahPackagesCollection, orderBy("order"));
+        const q = query(umrahPackagesCollection, orderBy("startDate"));
 
         const umrahSnapshot = await getDocs(q);
 
