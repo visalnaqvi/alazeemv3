@@ -40,7 +40,7 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
             day: "2-digit",
             month: "short", // "Jul" instead of "07"
             year: "numeric",
-        }).replace(/ /g, '-'); // Convert spaces to dashes like 01-Jul-2025
+        }); // Convert spaces to dashes like 01-Jul-2025
     };
 
     return (
@@ -63,7 +63,7 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
             </div>}
             <div className={styles.content}>
                 <h2>{tour.title}</h2>
-                <h3 className={styles.callToActionYellow}>Date: {formatDate(tour.startDate)} to {formatDate(tour.endDate)}</h3>
+                <h3 className={styles.callToActionYellow}>Date: {formatDate(tour.startDate)} - {formatDate(tour.endDate)}</h3>
                 <IconList items={tour.features} isBold={tour.isBold} />
             </div>
             {tour.hotels.length != 0 && <div className={styles.beforeFooter}>
