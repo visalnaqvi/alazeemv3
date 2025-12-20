@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./packageEdit.module.css";
 import PackageCard from "@/components/cards/packageCard/packageCard";
 import { getAllVendorsList, getPackageVendor, getVendorFromPackageId, handleNewVendor, handleVendorDelete } from "@/services/vendor";
-import { getCitiesFromTags } from "@/services/getData.js"
+import { getAvailableSections, getCitiesFromTags } from "@/services/getData.js"
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
@@ -18,11 +18,13 @@ const PackageEditForm = ({ details, packageid }) => {
     const [newFlight, setNewFlight] = useState({})
     const [pricing, setPricing] = useState({})
     const [activeTags, setActiveTags] = useState([])
+    const [sections , setSections] = useState([])
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
         order: "",
         category: "",
+        sectionData: [],
         hotels: [],
         tags: [],
         features: [
@@ -52,6 +54,7 @@ const PackageEditForm = ({ details, packageid }) => {
     const fetchData = async () => {
         try {
             setActiveTags(await getCitiesFromTags());
+            setSections(await getAvailableSections())
         }
         catch (err) {
             if (err) {
@@ -145,6 +148,14 @@ const PackageEditForm = ({ details, packageid }) => {
         setNewDetails({ ...newDetails, pricing: [...newPrice] })
     }
 
+    const isSectionSelected = (sectionId) =>
+        newDetails?.sectionData?.some(s => s.id === sectionId);
+
+    const getSectionPrice = (sectionId) =>
+        newDetails?.sectionData?.find(s => s.id == sectionId)?.price || "";
+
+        const getSectionTitle = (sectionId) =>
+        sections?.find(s => s.id == sectionId)?.title || "";
 
     return (
         <div>
@@ -260,9 +271,95 @@ const PackageEditForm = ({ details, packageid }) => {
                                 ))}
                             </select>
                         </div>
-                        <div className={styles.formItem}>
+                        {/* <div className={styles.formItem}>
                             <label className={styles.label}>Select Category</label>
-                            <div className={styles.formItem}>
+                            {
+                                secitons.map((section , index)=>(
+                                    <div className={styles.formItem} key={index}>
+                                
+                                    <input onChange={() => setNewDetails({ ...newDetails, sectionId: section.id })} defaultChecked={newDetails.sectionId == section.id} type="radio" id={section.id} name="category_type" value={section.id} />
+                                        
+                                
+                                <label className={styles.label} style={{marginLeft:"10px"}}htmlFor={section.id}>{section.title}</label>
+                            </div>
+                                ))
+                            }
+                                                    </div> */}
+
+                                                    <div className={styles.formItem}>
+  <label className={styles.label}>Select Category</label>
+
+  {sections.map((section) => {
+    const checked = isSectionSelected(section.id);
+
+    return (
+      <div
+        key={section.id}
+        className={styles.formItem}
+        style={{ display: "flex", alignItems: "center", gap: "10px" }}
+      >
+        {/* Checkbox */}
+        <input
+          type="checkbox"
+          id={section.id}
+          checked={checked}
+          onChange={(e) => {
+            if (e.target.checked) {
+              // add section
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: [
+                  ...prev.sectionData,
+                  { id: section.id, price: "" }
+                ]
+              }));
+            } else {
+              // remove section
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.filter(
+                  s => s.id !== section.id
+                )
+              }));
+            }
+          }}
+        />
+
+        <label
+          htmlFor={section.id}
+          className={styles.label}
+          style={{ minWidth: "120px" }}
+        >
+          {section.title}
+        </label>
+
+        {/* Price input – only when selected */}
+        {checked && (
+          <input
+            type="text"
+            placeholder="Price"
+            value={getSectionPrice(section.id)}
+            onChange={(e) => {
+              const value = e.target.value;
+
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.map(s =>
+                  s.id === section.id
+                    ? { ...s, price: value }
+                    : s
+                )
+              }));
+            }}
+            className={styles.priceInput}
+          />
+        )}
+      </div>
+    );
+  })}
+</div>
+
+                            {/* <div className={styles.formItem}>
                                 {
                                     newDetails.category == 'dulex' ? <input onChange={() => setNewDetails({ ...newDetails, category: "dulex" })} defaultChecked type="radio" id="dulex_type" name="category_type" value="dulex" /> :
                                         <input onChange={() => setNewDetails({ ...newDetails, category: "dulex" })} type="radio" id="dulex_type" name="category_type" value="dulex" />
@@ -282,8 +379,8 @@ const PackageEditForm = ({ details, packageid }) => {
                                         <input onChange={() => setNewDetails({ ...newDetails, category: "ramzan" })} type="radio" id="ramzan_type" name="ramzan_type" value="ramzan" />
                                 }
                                 <label className={styles.label} htmlFor="ramzan_type">Ramzan</label>
-                            </div>
-                        </div>
+                            </div> */}
+
                         {newDetails.title &&
                             <div>
                                 {newDetails.hotels.length == 2 ?
@@ -414,7 +511,7 @@ const PackageEditForm = ({ details, packageid }) => {
                     </form>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <PackageCard tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
+                    <PackageCard getSectionTitle={getSectionTitle} tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
 
 
 

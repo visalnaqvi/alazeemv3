@@ -1,6 +1,6 @@
 import db from "../config/firebase.js"
 import { getDocs, setDoc, orderBy, query, getDoc, doc, where, collection } from "firebase/firestore";
-import { navCollection, umrahPackagesCollection, hajjCollection, iraqPackagesCollection, holidayPackagesCollection, flightCollection, tagsCollection, turkeyCollection, getCollectionName } from "@/config/collections.js";
+import { navCollection, umrahPackagesCollection, hajjCollection, iraqPackagesCollection, holidayPackagesCollection, flightCollection, tagsCollection, turkeyCollection, getCollectionName ,avaliableSectionsCollection } from "@/config/collections.js";
 import { getAllVendorsList } from "./vendor.js";
 import dotenv from "dotenv"
 dotenv.config()
@@ -24,6 +24,26 @@ export const getUmrahPackages = async () => {
         }
     }
 
+}
+
+export const getAvailableSections = async () => {
+    try{
+        const q = query(avaliableSectionsCollection , orderBy("order"));
+
+        const sectionsSnapshot = await getDocs(q);
+
+        let secitons = []
+
+        sectionsSnapshot.forEach(doc => {
+            secitons.push({...doc.data() , id:doc.id, active:false});
+        })
+
+        return secitons;
+    }catch (err) {
+        if (err) {
+            return { status: "warning", msg: "Something went wrong cannot get sections" }
+        }
+    }
 }
 
 export const getCitiesFromTags = async () => {

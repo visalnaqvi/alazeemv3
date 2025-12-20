@@ -8,7 +8,7 @@ import Link from "next/link";
 import { checkStorageForAdminToken } from "@/services/auth";
 import { deletePackage } from "@/services/deleteData";
 
-const PackageCard = ({ tour, type, subType, fetchData }) => {
+const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
 
     const [isFlightsOpen, setIsFlightsOpen] = useState(false)
     const [vendors, setVendors] = useState({ title: "" })
@@ -75,6 +75,11 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
                     <p className={styles.beforeHeaderSectionHeading}>Madina Hotel</p>
                     <p className={styles.beforeHeaderSectionContent}>{tour.hotels[1]}</p>
                 </div>
+                {tour.sectionData && tour.sectionData.length > 2 && <button onClick={() => {
+                    if (tour.flights?.length > 0) {
+                        setIsFlightsOpen(true);
+                    }
+                }} className={styles.flightButton}>View Flight</button>}
             </div>}
             {tour.pricing && tour.pricing.length != 0 && <div className={styles.beforeFooter}>
                 {tour.pricing.map((p, i) => (
@@ -87,6 +92,23 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
                 ))}
 
             </div>}
+            {getSectionTitle && tour.sectionData && tour.sectionData.length > 0 ? <div className={styles.footer}>
+                <div className={styles.sectionWrapper}>
+                    {
+                        tour.sectionData.map((d,i)=>(
+                            <div key={i} className={styles.sectionCard} style={i!=0?{borderLeft:"1px solid #ffffff90" , paddingLeft:"15px"}:{}}>
+                                <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
+                                <p className={styles.sectionPrice}>{d.price}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+                {tour?.sectionData?.length <= 2 && <button onClick={() => {
+                    if (tour.flights?.length > 0) {
+                        setIsFlightsOpen(true);
+                    }
+                }} className={styles.footerButton}>View Flight</button>}
+            </div>:
             <div className={styles.footer}>
                 <p className={styles.footertext}>{tour.price}</p>
                 <button onClick={() => {
@@ -94,7 +116,7 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
                         setIsFlightsOpen(true);
                     }
                 }} className={styles.footerButton}>View Flight</button>
-            </div>
+            </div>}
             {isFlightsOpen && <FlightPopUp setIsFlightsOpen={setIsFlightsOpen} details={tour.flights} />}
         </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getUmrahPackages, getIraqPackages, getPageTitle, getCitiesFromTags } from "../../services/getData.js"
+import { getUmrahPackages, getIraqPackages, getPageTitle, getCitiesFromTags, getAvailableSections } from "../../services/getData.js"
 import PackageCard from "@/components/cards/packageCard/packageCard.js"
 import CarouselComp from "@/components/carousel/carousel.js"
 import IconList from "@/components/lists/iconList.js"
@@ -18,6 +18,8 @@ const HajjUmrah = () => {
     const [tagsCities, setTagsCities] = useState([])
     const [tagsCitiesActive, setTagsCitiesActive] = useState("Delhi")
     const [toastMsg, setToastMsg] = useState({ msg: "" })
+        const [sections , setSections] = useState([])
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -28,6 +30,7 @@ const HajjUmrah = () => {
             setIraqPackages(await getIraqPackages("sunni"));
             setPageTitle(await getPageTitle("hajjUmrah"));
             setTagsCities(await getCitiesFromTags());
+            setSections(await getAvailableSections())
         }
         catch (err) {
             if (err) {
@@ -78,7 +81,7 @@ const HajjUmrah = () => {
                 }
                 {pageTitle && pageTitle.showCategory ? <div>
                     {umrahPackages.length > 0 ?
-                        <PackageDistributer titles={pageTitle} fetchData={fetchData} umrahPackages={umrahPackages.filter((pack) => {
+                        <PackageDistributer titles={pageTitle} sections={sections} fetchData={fetchData} umrahPackages={umrahPackages.filter((pack) => {
                             return pack.tags.includes(tagsCitiesActive)
                         })} /> : <p className="subHeading">Loading Packages...</p>}
                 </div>

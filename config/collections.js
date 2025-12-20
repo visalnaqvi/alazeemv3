@@ -12,6 +12,7 @@ export const hajjCollection = collection(db,`${process.env.NEXT_PUBLIC_HAJJ_COLL
 export const turkeyCollection = collection(db,`${process.env.NEXT_PUBLIC_TURKEY_COLLECTION}`);
 export const flightCollection = collection(db,`${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`);
 export const tagsCollection = collection(db,`${process.env.NEXT_PUBLIC_TAGS_COLLECTION}`);
+export const avaliableSectionsCollection = collection(db,`${process.env.NEXT_PUBLIC_SECTIONS_COLLECTION}`);
 
 export const getCollectionName = (packageId)=>{
     switch(packageId){
@@ -28,6 +29,8 @@ export const getCollectionName = (packageId)=>{
         case "flight-fare": return `${process.env.NEXT_PUBLIC_FLIGHT_COLLECTION}`;
 
         case "turkey": return `${process.env.NEXT_PUBLIC_TURKEY_COLLECTION}`;
+        
+        case "sections": return `${process.env.NEXT_PUBLIC_SECTIONS_COLLECTION}`;
 
         default : return "";
     }
