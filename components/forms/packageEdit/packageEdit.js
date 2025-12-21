@@ -154,6 +154,18 @@ const PackageEditForm = ({ details, packageid }) => {
     const getSectionPrice = (sectionId) =>
         newDetails?.sectionData?.find(s => s.id == sectionId)?.price || "";
 
+        const getSectionMadinaHotel = (sectionId) =>
+        newDetails?.sectionData?.find(s => s.id == sectionId)?.madinaHotel || "";
+
+                const getSectionMadinaHotelShuttel = (sectionId) =>
+        newDetails?.sectionData?.find(s => s.id == sectionId)?.madinaShuttel || false;
+
+                                const getSectionMakkahHotelShuttel = (sectionId) =>
+        newDetails?.sectionData?.find(s => s.id == sectionId)?.makkahShuttel || false;
+
+            const getSectionMakkaHotel = (sectionId) =>
+        newDetails?.sectionData?.find(s => s.id == sectionId)?.makkahHotel || "";
+
         const getSectionTitle = (sectionId) =>
         sections?.find(s => s.id == sectionId)?.title || "";
 
@@ -296,7 +308,7 @@ const PackageEditForm = ({ details, packageid }) => {
       <div
         key={section.id}
         className={styles.formItem}
-        style={{ display: "flex", alignItems: "center", gap: "10px" }}
+        
       >
         {/* Checkbox */}
         <input
@@ -332,9 +344,10 @@ const PackageEditForm = ({ details, packageid }) => {
         >
           {section.title}
         </label>
-
+<form>
         {/* Price input – only when selected */}
         {checked && (
+           <label >Price
           <input
             type="text"
             placeholder="Price"
@@ -353,7 +366,101 @@ const PackageEditForm = ({ details, packageid }) => {
             }}
             className={styles.priceInput}
           />
+          </label>
         )}
+
+        {checked && (
+            <form style={{marginTop:"10px"}}>
+            <label >Makkah Hotel
+          <input
+            type="text"
+            placeholder="Makkah Hotel"
+            value={getSectionMakkaHotel(section.id)}
+            onChange={(e) => {
+              const value = e.target.value;
+
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.map(s =>
+                  s.id === section.id
+                    ? { ...s, makkahHotel: value }
+                    : s
+                )
+              }));
+            }}
+            className={styles.priceInput}
+          />
+          </label>
+          <br></br>
+          <label htmlFor={section.id+"makkahHotelShuttelService"}>
+          <input
+            type="checkbox"
+            id={section.id+"makkahHotelShuttelService"}
+            checked={getSectionMakkahHotelShuttel(section.id)}
+            onChange={(e) => {
+              const value = e.target.checked;
+
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.map(s =>
+                  s.id === section.id
+                    ? { ...s, makkahShuttel: value }
+                    : s
+                )
+              }));
+            }}
+            className={styles.priceInput}
+          /> Shuttel Service
+          </label>
+          </form>
+        )}
+
+        {checked && (
+            <form style={{marginTop:"10px"}}><label >Madina Hotel
+          <input
+            type="text"
+            placeholder="Madina Hotel"
+            value={getSectionMadinaHotel(section.id)}
+            onChange={(e) => {
+              const value = e.target.value;
+
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.map(s =>
+                  s.id === section.id
+                    ? { ...s, madinaHotel: value }
+                    : s
+                )
+              }));
+            }}
+            className={styles.priceInput}
+          />
+          </label>
+          <br></br>
+          <label htmlFor={section.id+"madinaHotelShuttelService"}>
+          <input
+            type="checkbox"
+            id={section.id+"madinaHotelShuttelService"}
+            checked={getSectionMadinaHotelShuttel(section.id)}
+            onChange={(e) => {
+              const value = e.target.checked;
+
+              setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData.map(s =>
+                  s.id === section.id
+                    ? { ...s, madinaShuttel: value }
+                    : s
+                )
+              }));
+            }}
+            className={styles.priceInput}
+          /> Shuttel Service
+          </label>
+          </form>
+        )}
+
+        </form>
       </div>
     );
   })}

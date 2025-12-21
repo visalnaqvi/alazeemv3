@@ -37,7 +37,6 @@ export const updatePackageData = async (details, packageId) => {
 }
 
 export const addNewPackage = async (details, packageId) => {
-    console.log("detailssss", details)
     try {
         const collectionName = getCollectionName(packageId)
         const docRef = await addDoc(collection(db, collectionName), details);

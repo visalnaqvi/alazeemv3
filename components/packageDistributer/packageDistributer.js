@@ -12,18 +12,14 @@ const PackageDistributer = ({ titles, umrahPackages, fetchData,sections }) => {
             // let dulex_pack = umrahPackages.filter((pack) => pack.category == "dulex")
             // let eco_pack = umrahPackages.filter((pack) => pack.category == "economy")
             // let ramzan_pack = umrahPackages.filter((pack) => pack.category == "ramzan")
-            console.log("sections fetch======?>>>" , sections)
             let pkgs = []
             sections.forEach(section => {
                 let pkg = umrahPackages.filter((pack)=>pack.sectionData.some(s => s.id === section.id))
-                console.log("sections", section.title ," pkgs found======?>>>" , pkg)
                 pkgs.push({sectionTitle:section.title , data:pkg})
             });
 
-            console.log("final pkgs=========>>>>" , pkgs)
             setPkgStruct(pkgs)
 
-            console.log(umrahPackages)
             // temp(umrahPackages)
             // setDulexPackages(dulex_pack);
             // setEcoPackages(eco_pack);

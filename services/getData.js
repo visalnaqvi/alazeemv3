@@ -142,9 +142,7 @@ export const getIraqPackages = async (type) => {
         const iraqSnapshot = await getDocs(q);
 
         let iraqPackages = []
-        console.log("snap shot", iraqSnapshot)
         iraqSnapshot.forEach(doc => {
-            console.log("doc", doc.data())
             if (doc.data().type && doc.data().type == type) {
                 iraqPackages.push(doc.data());
             }

@@ -14,6 +14,7 @@
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: contain;
+    position: relative;
 }
 
 .card.hajjUmrah .content , .card.hajj .content{
@@ -71,14 +72,19 @@
 }
 
 
-.footer{
+.footer , .footerSectionData{
     background-color: var(--dark-green);
-    padding: 10px 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+
+
+.footerSectionData{
+    background-image: linear-gradient(90deg , var(--dark-green) , #00af70);
+}
 .footertext{
     font-size: 1.3rem;
     color: #fff;
@@ -99,8 +105,8 @@
 
 .flightButton{
     position: absolute;
-    top: -50%;
-    right: 2%;
+    bottom: 10px;
+    right: 10px;
 }
 
 .footerButton:hover{
@@ -149,27 +155,84 @@
     font-weight: 800;
     color: var(--light-yellow) ;
 }
+.shuttelicon span{
+    color: rgb(219, 219, 127);
+    
+}
+.shuttelicon{
+    display: flex;
+    color: #fff;
+    font-size: 0.8rem;
+    background: linear-gradient(
+        110deg,
+        #2ecc71 40%,
+        #7bed9f 50%,
+        #2ecc71 60%
+    );
+    animation: shimmer 4s infinite linear;
+    padding: 0 8px;
+    border-radius: 50px;
+    display: inline-block;
+    background-size: 200% 100%;
+}
 
 .sectionTitle{
-    font-size: 0.9rem;
-    color: #fff;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(
+        110deg,
+        #2ecc71 40%,
+        #7bed9f 50%,
+        #2ecc71 60%
+    );
+    display: inline-block;
+    background-size: 200% 100%;
+    padding: 0 8px;
+    border-radius: 50px;
+    animation: shimmer 4s infinite linear;
+    margin-top: 3px;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
 }
 
 .sectionPrice{
     font-size: 1.3rem;
     color: #fff;
     font-weight: 600;
+    margin-left: 5px;
 }
 
 .sectionWrapper{
-    display: flex;
-    align-items: center;
     width: 100%;
+    position: relative;
 }
 
-.sectionCard{
-    margin-right:15px;
+.sectionDataCardHolder{
     width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+.sectionCard{
+    width: 100%;
+    padding: 5px;
+}
+
+.sectionHotel{
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.sectionSubHeading{
+    color: #ffffff;
+    font-size: 0.9rem;
 }
 @media only screen and (max-width:600px){
     .beforeFooter{

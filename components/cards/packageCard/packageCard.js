@@ -7,6 +7,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai"
 import Link from "next/link";
 import { checkStorageForAdminToken } from "@/services/auth";
 import { deletePackage } from "@/services/deleteData";
+import { FaCheck } from "react-icons/fa";
 
 const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
 
@@ -65,8 +66,13 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                 <h2>{tour.title}</h2>
                 <h3 className={styles.callToActionYellow}>Date: {formatDate(tour.startDate)} - {formatDate(tour.endDate)}</h3>
                 <IconList items={tour.features} isBold={tour.isBold} />
+                  {tour.sectionData && tour.sectionData.length != 0 && <button onClick={() => {
+                    if (tour.flights?.length > 0) {
+                        setIsFlightsOpen(true);
+                    }
+                }} className={styles.flightButton}>View Flight</button>}
             </div>
-            {tour.hotels.length != 0 && <div className={styles.beforeFooter}>
+            {tour?.sectionData?.length == 0 && tour.hotels.length != 0 && <div className={styles.beforeFooter}>
                 <div className={styles.beforeFooterSection}>
                     <p className={styles.beforeHeaderSectionHeading}>Makkah Hotel</p>
                     <p className={styles.beforeHeaderSectionContent}>{tour.hotels[0]}</p>
@@ -75,11 +81,7 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                     <p className={styles.beforeHeaderSectionHeading}>Madina Hotel</p>
                     <p className={styles.beforeHeaderSectionContent}>{tour.hotels[1]}</p>
                 </div>
-                {tour.sectionData && tour.sectionData.length > 2 && <button onClick={() => {
-                    if (tour.flights?.length > 0) {
-                        setIsFlightsOpen(true);
-                    }
-                }} className={styles.flightButton}>View Flight</button>}
+                
             </div>}
             {tour.pricing && tour.pricing.length != 0 && <div className={styles.beforeFooter}>
                 {tour.pricing.map((p, i) => (
@@ -92,18 +94,40 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                 ))}
 
             </div>}
-            {getSectionTitle && tour.sectionData && tour.sectionData.length > 0 ? <div className={styles.footer}>
+            {getSectionTitle && tour.sectionData && tour.sectionData.length > 0 ? <div className={styles.footerSectionData}>
                 <div className={styles.sectionWrapper}>
                     {
                         tour.sectionData.map((d,i)=>(
-                            <div key={i} className={styles.sectionCard} style={i!=0?{borderLeft:"1px solid #ffffff90" , paddingLeft:"15px"}:{}}>
-                                <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
+                            <div className={styles.sectionDataCardHolder} style={i!=0?{marginTop:"5px" , paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
+                            <div key={i} className={styles.sectionCard}>
+
                                 <p className={styles.sectionPrice}>{d.price}</p>
+                                <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
+
+                                
+                            </div>
+
+                            {d.makkahHotel && d.makkahHotel != "" && <div key={i} className={styles.sectionCard}>
+                                <p className={styles.sectionHotel}>{d.makkahHotel}</p>
+                                <p className={styles.sectionSubHeading}>Makkah Hotel Distance</p>
+                                {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel Service</div>:
+                                <div className={styles.shuttelicon}><span><FaCheck /></span>5min Walking Distance</div>}
+
+                                
+                            </div>}
+
+                            {d.madinaHotel && d.madinaHotel != "" && <div key={i} className={styles.sectionCard}>
+                                <p className={styles.sectionHotel}>{d.madinaHotel}</p>
+                                <p className={styles.sectionSubHeading}>Madina Hotel Distance</p>
+                                {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel Service</div>:
+                                <div className={styles.shuttelicon}><span><FaCheck /></span>5min Walking Distance</div>}
+                            </div>}
                             </div>
                         ))
                     }
+                  
                 </div>
-                {tour?.sectionData?.length <= 2 && <button onClick={() => {
+                {tour?.sectionData?.length == 0 && <button onClick={() => {
                     if (tour.flights?.length > 0) {
                         setIsFlightsOpen(true);
                     }

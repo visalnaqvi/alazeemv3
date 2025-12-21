@@ -20,10 +20,6 @@ const NavLinksForm = ({details}) =>{
         setNewDetails(await getAvailableSections())
     }
 
-    useEffect(()=>{
-        console.log("sections details===>>>>" , newDetails)
-    } , [newDetails])
-
     const onClose = () => {
         setToastMessage({ msg: "" })
     }
