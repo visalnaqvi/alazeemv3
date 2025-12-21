@@ -18,6 +18,10 @@ main{
     --primary-blue-light:#e1f2ff;
 }
 
+.full-width{
+    width: 100%;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;

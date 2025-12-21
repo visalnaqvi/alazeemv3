@@ -45,18 +45,19 @@ const PackageDistributer = ({ titles, umrahPackages, fetchData,sections }) => {
         <div className={`body-wrapper column`}>
             {
                 pkgStruct.map((pkg,index)=>(
-                    <div key={index}>
-                        {pkg.data.length > 0 && <div>
-                                        <h2 className="boldHeading center">{pkg.sectionTitle}</h2>  
+                    <div key={index} className="full-width">
+                        {pkg.data.length > 0 && 
+                        <div className="full-width">
+                            <h2 className="boldHeading center">{pkg.sectionTitle}</h2>  
 
-                <div className="body-wrapper">
-                    {
-                        pkg.data.map((pkg, i) => (
-                            <PackageCard getSectionTitle={getSectionTitle} fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
-                        ))
-                    }
-                </div>
-            </div>}
+                            <div className="body-wrapper">
+                                {
+                                    pkg.data.map((pkg, i) => (
+                                        <PackageCard getSectionTitle={getSectionTitle} fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
+                                    ))
+                                }
+                            </div>
+                        </div>}
                     </div>
                 ))
             }
