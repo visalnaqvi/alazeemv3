@@ -98,8 +98,8 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                 <div className={styles.sectionWrapper}>
                     {
                         tour.sectionData.map((d,i)=>(
-                            <div className={styles.sectionDataCardHolder} style={i!=0?{marginTop:"5px" , paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
-                            <div className={styles.pricingWrapper}><div key={i} className={styles.sectionCard}>
+                            <div key={i}  className={styles.sectionDataCardHolder} style={i!=0?{marginTop:"5px" , paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
+                            <div className={styles.pricingWrapper}><div className={styles.sectionCard}>
 
                                 <p className={styles.sectionPrice}>{d.price}</p>
                                 <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
@@ -107,7 +107,7 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                                 
                             </div></div>
 <div className={styles.hotelHotelWrapper}>
-                            {d.makkahHotel && d.makkahHotel != "" && <div key={i} className={styles.sectionCard}>
+                            {d.makkahHotel && d.makkahHotel != "" && <div className={styles.sectionCard}>
                                 <p className={styles.sectionHotel}>{d.makkahHotel}</p>
                                 <p className={styles.sectionSubHeading}>Makkah Hotel Distance</p>
                                 {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
@@ -116,7 +116,7 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                                 
                             </div>}
 
-                            {d.madinaHotel && d.madinaHotel != "" && <div key={i} className={styles.sectionCard}>
+                            {d.madinaHotel && d.madinaHotel != "" && <div className={styles.sectionCard}>
                                 <p className={styles.sectionHotel}>{d.madinaHotel}</p>
                                 <p className={styles.sectionSubHeading}>Madina Hotel Distance</p>
                                 {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
