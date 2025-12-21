@@ -99,29 +99,30 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                     {
                         tour.sectionData.map((d,i)=>(
                             <div className={styles.sectionDataCardHolder} style={i!=0?{marginTop:"5px" , paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
-                            <div key={i} className={styles.sectionCard}>
+                            <div className={styles.pricingWrapper}><div key={i} className={styles.sectionCard}>
 
                                 <p className={styles.sectionPrice}>{d.price}</p>
                                 <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
 
                                 
-                            </div>
-
+                            </div></div>
+<div className={styles.hotelHotelWrapper}>
                             {d.makkahHotel && d.makkahHotel != "" && <div key={i} className={styles.sectionCard}>
                                 <p className={styles.sectionHotel}>{d.makkahHotel}</p>
                                 <p className={styles.sectionSubHeading}>Makkah Hotel Distance</p>
-                                {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel Service</div>:
-                                <div className={styles.shuttelicon}><span><FaCheck /></span>5min Walking Distance</div>}
-
+                                {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
+                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>}
+                                
                                 
                             </div>}
 
                             {d.madinaHotel && d.madinaHotel != "" && <div key={i} className={styles.sectionCard}>
                                 <p className={styles.sectionHotel}>{d.madinaHotel}</p>
                                 <p className={styles.sectionSubHeading}>Madina Hotel Distance</p>
-                                {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel Service</div>:
-                                <div className={styles.shuttelicon}><span><FaCheck /></span>5min Walking Distance</div>}
+                                {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
+                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>}
                             </div>}
+                            </div>
                             </div>
                         ))
                     }

@@ -155,10 +155,6 @@
     font-weight: 800;
     color: var(--light-yellow) ;
 }
-.shuttelicon span{
-    color: rgb(219, 219, 127);
-    
-}
 .shuttelicon{
     display: flex;
     color: #fff;
@@ -210,18 +206,26 @@
 }
 
 .sectionWrapper{
-    width: 100%;
     position: relative;
+    width: 100%;
 }
 
 .sectionDataCardHolder{
     width: 100%;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
+}
+.hotelHotelWrapper{
+    width: 66%;
+    display: flex;
+}
+.pricingWrapper{
+    width: 33%;
 }
 .sectionCard{
-    width: 100%;
     padding: 5px;
+    width: 100%;
 }
 
 .sectionHotel{
@@ -233,6 +237,44 @@
 .sectionSubHeading{
     color: #ffffff;
     font-size: 0.9rem;
+}
+@media only screen and (max-width:630px){
+.sectionDataCardHolder{
+    flex-direction: column;
+}
+.hotelHotelWrapper{
+    width: 100%;
+    display: flex;
+}
+.pricingWrapper{
+    width: 100%;
+}
+.pricingWrapper .sectionCard{
+    display: flex;
+}
+
+.pricingWrapper .sectionCard .sectionTitle{
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pricingWrapper .sectionCard .sectionPrice{
+    font-size: 1.4rem;
+}
+}
+
+@media only screen and (max-width:430px){
+    /* .shuttelicon span{
+        display: none;
+    } */
+    .sectionSubHeading{
+        font-size: 0.7rem;
+    }
+    .hideMob{
+        display: none;
+    }
 }
 @media only screen and (max-width:600px){
     .beforeFooter{
