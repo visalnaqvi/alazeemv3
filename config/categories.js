@@ -1,0 +1,1 @@
+export const CATEGORIES = ["budget", "economy", "dulex", "ramzan"];

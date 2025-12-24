@@ -14,7 +14,7 @@ const PackageDistributer = ({ titles, umrahPackages, fetchData,sections }) => {
             // let ramzan_pack = umrahPackages.filter((pack) => pack.category == "ramzan")
             let pkgs = []
             sections.forEach(section => {
-                let pkg = umrahPackages.filter((pack)=>pack.sectionData.some(s => s.id === section.id))
+                let pkg = umrahPackages.filter((pack)=>pack.sectionData.some(s => section.categories.includes(s.id)))
                 pkgs.push({sectionTitle:section.title , data:pkg})
             });
 
@@ -53,7 +53,7 @@ const PackageDistributer = ({ titles, umrahPackages, fetchData,sections }) => {
                             <div className="body-wrapper">
                                 {
                                     pkg.data.map((pkg, i) => (
-                                        <PackageCard getSectionTitle={getSectionTitle} fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
+                                        <PackageCard fetchData={fetchData} type="hajjUmrah" tour={pkg} key={i} />
                                     ))
                                 }
                             </div>

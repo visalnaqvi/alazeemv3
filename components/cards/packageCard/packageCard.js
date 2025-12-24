@@ -9,7 +9,7 @@ import { checkStorageForAdminToken } from "@/services/auth";
 import { deletePackage } from "@/services/deleteData";
 import { FaCheck } from "react-icons/fa";
 
-const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
+const PackageCard = ({ tour, type, subType, fetchData }) => {
 
     const [isFlightsOpen, setIsFlightsOpen] = useState(false)
     const [vendors, setVendors] = useState({ title: "" })
@@ -94,35 +94,55 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                 ))}
 
             </div>}
-            {getSectionTitle && tour.sectionData && tour.sectionData.length > 0 ? <div className={styles.footerSectionData}>
+            {tour.sectionData && tour.sectionData.length > 0 && <div className={styles.footerSectionData}>
                 <div className={styles.sectionWrapper}>
+                    <div className={`${styles.sectionDataCardHolder} ${styles.tableHeader}`}>
+                            <div className={styles.sectionCard}>
+                                <p className={styles.sectionPrice}>Package</p>       
+                            </div>
+                             <div className={styles.sectionCard}>
+                                <p className={styles.sectionPrice}>Price</p>       
+                            </div>
+                            <div className={styles.sectionCard}>
+                                <p className={styles.sectionPrice}>Makkah Hotel</p>
+                                     
+                            </div>
+                            <div className={styles.sectionCard}>
+                                <p className={styles.sectionPrice}>Madina Hotel</p>
+                            </div>
+                    </div>
                     {
                         tour.sectionData.map((d,i)=>(
-                            <div key={i}  className={styles.sectionDataCardHolder} style={i!=0?{marginTop:"5px" , paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
-                            <div className={styles.pricingWrapper}><div className={styles.sectionCard}>
+                            <div key={i}  className={styles.sectionDataCardHolder} style={i>=0?{paddingTop:"5px" , borderTop:"1px solid #ffffff90"}:{}}>
+                            <div className={styles.sectionCard}>
 
-                                <p className={styles.sectionPrice}>{d.price}</p>
-                                <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p>
+                                {/* <p className={styles.sectionPrice}>{d.price}</p> */}
+                                <p className={styles.sectionPrice}>{d.id}</p>
 
                                 
-                            </div></div>
-<div className={styles.hotelHotelWrapper}>
+                            </div>
+                             <div className={styles.sectionCard}>
+
+                                <p className={styles.sectionPrice}>{d.price}</p>
+                                {/* <p className={styles.sectionTitle}>{getSectionTitle(d.id)}</p> */}
+
+                                
+                            </div>
                             {d.makkahHotel && d.makkahHotel != "" && <div className={styles.sectionCard}>
-                                <p className={styles.sectionHotel}>{d.makkahHotel}</p>
-                                <p className={styles.sectionSubHeading}>Makkah Hotel Distance</p>
-                                {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
-                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>}
+                                <p className={styles.sectionPrice}>{d.makkahHotel}</p>
+                                {/* <p className={styles.sectionSubHeading}>Makkah Hotel Distance</p> */}
+                                {/* {d.makkahShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
+                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>} */}
                                 
                                 
                             </div>}
 
                             {d.madinaHotel && d.madinaHotel != "" && <div className={styles.sectionCard}>
-                                <p className={styles.sectionHotel}>{d.madinaHotel}</p>
-                                <p className={styles.sectionSubHeading}>Madina Hotel Distance</p>
-                                {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
-                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>}
+                                <p className={styles.sectionPrice}>{d.madinaHotel}</p>
+                                {/* <p className={styles.sectionSubHeading}>Madina Hotel Distance</p> */}
+                                {/* {d.madinaShuttel ? <div className={styles.shuttelicon}><span><FaCheck /></span>24x7 Shuttel <span className={styles.hideMob}>Service</span></div>:
+                                <div className={styles.shuttelicon}><FaCheck />5min <span className={styles.hideMob}>Walking</span> Distance</div>} */}
                             </div>}
-                            </div>
                             </div>
                         ))
                     }
@@ -133,15 +153,23 @@ const PackageCard = ({ getSectionTitle , tour, type, subType, fetchData }) => {
                         setIsFlightsOpen(true);
                     }
                 }} className={styles.footerButton}>View Flight</button>}
+            </div>}
+            {tour.sectionData && tour.sectionData.length > 0 ?
+            
+             <div className={styles.footer2}>
+                <p className={styles.footertextSection}>Budget Package 24x7 Shuttel Bus Service</p>
             </div>:
-            <div className={styles.footer}>
+         <div className={styles.footer}>
                 <p className={styles.footertext}>{tour.price}</p>
                 <button onClick={() => {
                     if (tour.flights?.length > 0) {
                         setIsFlightsOpen(true);
                     }
                 }} className={styles.footerButton}>View Flight</button>
-            </div>}
+            </div>
+
+                      }
+
             {isFlightsOpen && <FlightPopUp setIsFlightsOpen={setIsFlightsOpen} details={tour.flights} />}
         </div>
 

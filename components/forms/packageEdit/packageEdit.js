@@ -9,6 +9,7 @@ import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
 import FlightsTable from "@/components/flights/table/flightsTable";
 import PricingTable from "@/components/flights/table/pricingTable";
+import { CATEGORIES } from "@/config/categories";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
@@ -18,7 +19,8 @@ const PackageEditForm = ({ details, packageid }) => {
     const [newFlight, setNewFlight] = useState({})
     const [pricing, setPricing] = useState({})
     const [activeTags, setActiveTags] = useState([])
-    const [sections , setSections] = useState([])
+    // const [sections , setSections] = useState([])
+    const sections = CATEGORIES
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
@@ -54,7 +56,7 @@ const PackageEditForm = ({ details, packageid }) => {
     const fetchData = async () => {
         try {
             setActiveTags(await getCitiesFromTags());
-            setSections(await getAvailableSections())
+            // setSections(await getAvailableSections())
         }
         catch (err) {
             if (err) {
@@ -289,10 +291,10 @@ const PackageEditForm = ({ details, packageid }) => {
                                 secitons.map((section , index)=>(
                                     <div className={styles.formItem} key={index}>
                                 
-                                    <input onChange={() => setNewDetails({ ...newDetails, sectionId: section.id })} defaultChecked={newDetails.sectionId == section.id} type="radio" id={section.id} name="category_type" value={section.id} />
+                                    <input onChange={() => setNewDetails({ ...newDetails, sectionId: section })} defaultChecked={newDetails.sectionId == section} type="radio" id={section} name="category_type" value={section} />
                                         
                                 
-                                <label className={styles.label} style={{marginLeft:"10px"}}htmlFor={section.id}>{section.title}</label>
+                                <label className={styles.label} style={{marginLeft:"10px"}}htmlFor={section}>{section.title}</label>
                             </div>
                                 ))
                             }
@@ -302,18 +304,18 @@ const PackageEditForm = ({ details, packageid }) => {
   <label className={styles.label}>Select Category</label>
 
   {sections.map((section) => {
-    const checked = isSectionSelected(section.id);
+    const checked = isSectionSelected(section);
 
     return (
       <div
-        key={section.id}
+        key={section}
         className={styles.formItem}
         
       >
         {/* Checkbox */}
         <input
           type="checkbox"
-          id={section.id}
+          id={section}
           checked={checked}
           onChange={(e) => {
             if (e.target.checked) {
@@ -322,7 +324,7 @@ const PackageEditForm = ({ details, packageid }) => {
                 ...prev,
                 sectionData: [
                   ...prev.sectionData,
-                  { id: section.id, price: "" }
+                  { id: section, price: "" }
                 ]
               }));
             } else {
@@ -330,7 +332,7 @@ const PackageEditForm = ({ details, packageid }) => {
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.filter(
-                  s => s.id !== section.id
+                  s => s.id !== section
                 )
               }));
             }
@@ -338,11 +340,11 @@ const PackageEditForm = ({ details, packageid }) => {
         />
 
         <label
-          htmlFor={section.id}
+          htmlFor={section}
           className={styles.label}
           style={{ minWidth: "120px" }}
         >
-          {section.title}
+          {section}
         </label>
 <form>
         {/* Price input – only when selected */}
@@ -351,14 +353,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Price"
-            value={getSectionPrice(section.id)}
+            value={getSectionPrice(section)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section.id
+                  s.id === section
                     ? { ...s, price: value }
                     : s
                 )
@@ -375,14 +377,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Makkah Hotel"
-            value={getSectionMakkaHotel(section.id)}
+            value={getSectionMakkaHotel(section)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section.id
+                  s.id === section
                     ? { ...s, makkahHotel: value }
                     : s
                 )
@@ -392,18 +394,18 @@ const PackageEditForm = ({ details, packageid }) => {
           />
           </label>
           <br></br>
-          <label htmlFor={section.id+"makkahHotelShuttelService"}>
+          <label htmlFor={section+"makkahHotelShuttelService"}>
           <input
             type="checkbox"
-            id={section.id+"makkahHotelShuttelService"}
-            checked={getSectionMakkahHotelShuttel(section.id)}
+            id={section+"makkahHotelShuttelService"}
+            checked={getSectionMakkahHotelShuttel(section)}
             onChange={(e) => {
               const value = e.target.checked;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section.id
+                  s.id === section
                     ? { ...s, makkahShuttel: value }
                     : s
                 )
@@ -420,14 +422,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Madina Hotel"
-            value={getSectionMadinaHotel(section.id)}
+            value={getSectionMadinaHotel(section)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section.id
+                  s.id === section
                     ? { ...s, madinaHotel: value }
                     : s
                 )
@@ -437,18 +439,18 @@ const PackageEditForm = ({ details, packageid }) => {
           />
           </label>
           <br></br>
-          <label htmlFor={section.id+"madinaHotelShuttelService"}>
+          <label htmlFor={section+"madinaHotelShuttelService"}>
           <input
             type="checkbox"
-            id={section.id+"madinaHotelShuttelService"}
-            checked={getSectionMadinaHotelShuttel(section.id)}
+            id={section+"madinaHotelShuttelService"}
+            checked={getSectionMadinaHotelShuttel(section)}
             onChange={(e) => {
               const value = e.target.checked;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section.id
+                  s.id === section
                     ? { ...s, madinaShuttel: value }
                     : s
                 )
@@ -618,7 +620,7 @@ const PackageEditForm = ({ details, packageid }) => {
                     </form>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <PackageCard getSectionTitle={getSectionTitle} tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
+                    <PackageCard tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
 
 
 
