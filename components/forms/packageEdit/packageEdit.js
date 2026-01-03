@@ -19,7 +19,7 @@ const PackageEditForm = ({ details, packageid }) => {
     const [newFlight, setNewFlight] = useState({})
     const [pricing, setPricing] = useState({})
     const [activeTags, setActiveTags] = useState([])
-    // const [sections , setSections] = useState([])
+    const [headings , setHeadings] = useState([])
     const sections = CATEGORIES
     const [newDetails, setNewDetails] = useState({
         title: "",
@@ -46,7 +46,8 @@ const PackageEditForm = ({ details, packageid }) => {
             false
         ],
         startDate: "",
-        endDate: ""
+        endDate: "",
+        sectionId:[]
     })
 
     useEffect(() => {
@@ -56,7 +57,7 @@ const PackageEditForm = ({ details, packageid }) => {
     const fetchData = async () => {
         try {
             setActiveTags(await getCitiesFromTags());
-            // setSections(await getAvailableSections())
+            setHeadings(await getAvailableSections())
         }
         catch (err) {
             if (err) {
@@ -299,7 +300,56 @@ const PackageEditForm = ({ details, packageid }) => {
                                 ))
                             }
                                                     </div> */}
+ <div className={styles.formItem}>
+  <label className={styles.label}>Select Heading</label>
+<form>
+{
+    headings.map((head , i)=>(
+        <div
+        key={head.id}
+        className={styles.formItem}
+        
+      >
+        {/* Checkbox */}
+        <input
+          type="checkbox"
+          id={head.id}
+          checked={newDetails.sectionId.includes(head.id)}
+          onChange={(e) => {
+            if (e.target.checked) {
+              // add section
+              setNewDetails(prev => ({
+                ...prev,
+                sectionId: [
+                  ...prev.sectionId,
+                  head.id
+                ]
+              }));
+            } else {
+              // remove section
+              setNewDetails(prev => ({
+                ...prev,
+                sectionId: prev.sectionId.filter(
+                  s => s !== head.id
+                )
+              }));
+            }
+          }}
+        />
 
+        <label
+          htmlFor={head.id}
+          className={styles.label}
+          style={{ minWidth: "120px", fontWeight:300 }}
+        >
+          {head.title}
+        </label>
+        </div>
+    ))
+   
+}
+ </form>
+  </div>
                                                     <div className={styles.formItem}>
   <label className={styles.label}>Select Category</label>
 

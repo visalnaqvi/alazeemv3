@@ -14,9 +14,9 @@ const PackageDistributer = ({ titles, umrahPackages, fetchData,sections }) => {
             // let ramzan_pack = umrahPackages.filter((pack) => pack.category == "ramzan")
             let pkgs = []
             sections.forEach(section => {
-                let pkg = umrahPackages.filter((pack)=>pack.sectionData.some(s => section.categories.includes(s.id)))
+                let pkg = umrahPackages.filter((pack)=>pack.sectionId.includes(section.id))
                 pkgs.push({sectionTitle:section.title , data:pkg})
-            });
+            });     
 
             setPkgStruct(pkgs)
 
