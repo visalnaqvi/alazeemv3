@@ -29,7 +29,8 @@ const TourPackagesEdit = ({ singlePackageId, packageid }) => {
         ],
         startDate: "",
         endDate: "",
-        sectionId:[]
+        sectionId:[],
+        sectionData:[],
     });
     useEffect(() => {
         if (singlePackageId && singlePackageId != "new" && packageid) {
