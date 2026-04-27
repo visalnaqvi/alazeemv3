@@ -27,7 +27,7 @@ const PackageEditForm = ({ details, packageid }) => {
         order: "",
         category: "",
         sectionData: [],
-        hotels: [],
+        hotels: ["", ""],
         tags: [],
         features: [
             "All Meals and Laudary",
@@ -314,7 +314,7 @@ const PackageEditForm = ({ details, packageid }) => {
         <input
           type="checkbox"
           id={head.id}
-          checked={newDetails.sectionId.includes(head.id)}
+          checked={newDetails?.sectionId?.includes(head?.id)}
           onChange={(e) => {
             if (e.target.checked) {
               // add section
@@ -560,14 +560,14 @@ const PackageEditForm = ({ details, packageid }) => {
                                             return
                                         }
                                         setNewDetails({ ...newDetails, hotels: ["", ""] })
-                                    }} defaultChecked type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} />}
+                                    }} defaultChecked={false} type="checkbox" name="show_hotels" id="show_hotels" value={"hotels"} />}
 
                                 <label className={styles.label} htmlFor="shia_type">Do not show hotels</label>
                             </div>}
                         {
                             newDetails.hotels.length >= 0 && newDetails.hotels.map((hotel, i) => (
                                 <div key={i} className={styles.formItem}>
-                                    <label className={styles.label} htmlFor={`${i == 0 ? "makkah" : "madina"}-hotels`}>{i == 0 ? "Makkah" : "Madina"} Hotels</label>
+                                    <label className={styles.label} htmlFor={`${i == 0 ? "makkah" : "madina"}-hotels`}>{i == 0 ? "Makkah" : "Madina"} Hotels (Old Format)</label>
                                     <input onChange={(e) => {
                                         const updatedHotels = [...newDetails.hotels];
                                         updatedHotels[i] = e.target.value;
@@ -579,7 +579,7 @@ const PackageEditForm = ({ details, packageid }) => {
                         }
 
                         <div className={styles.formItem}>
-                            <label className={styles.label} htmlFor="price">Bottom Line</label>
+                            <label className={styles.label} htmlFor="price">Price (Old Format)</label>
                             <input onChange={(e) => { setNewDetails({ ...newDetails, price: e.target.value }) }} className={styles.input} type="text" id="price" value={newDetails.price} placeholder="Enter Bottom Line" />
                         </div>
                         <div className={styles.formItem}>
