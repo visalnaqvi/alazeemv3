@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react"
-import { getIraqPackages } from "../../services/getData.js"
+import { getIraqPackages, getAvailableSections } from "../../services/getData.js"
 
 import Toast from "@/components/notification/toast.js"
 import ShiaZiyarat from "@/components/pages/iraqPages/shiaPakcages.js"
@@ -11,6 +11,7 @@ const IraqZiyarat = () => {
     const [iraqPackages, setIraqPackages] = useState([])
     const [toastMsg, setToastMsg] = useState({ msg: "" })
     const [isLoading , setIsLoading] = useState(true);
+    const [sections , setSections] = useState([])
     const router = useRouter();
 
     const { type } = router.query;
@@ -26,6 +27,7 @@ const IraqZiyarat = () => {
     const fetchData = async () => {
         try { 
         setIraqPackages(await getIraqPackages(isShia ? "shia" : "sunni")); 
+        setSections(await getAvailableSections("iraq"))
         setIsLoading(false)
     }
         catch (err) {
@@ -86,7 +88,7 @@ arbaeen package"></meta>
        {isLoading?<p className="boldHeading">Loading...</p>: <div>
             {toastMsg.msg && <Toast message={toastMsg.msg} type={toastMsg.status} onClose={onClose} />}
 
-            {isShia ? <ShiaZiyarat fetchData={fetchData} iraqPackages={iraqPackages} /> : <SunniPackages fetchData={fetchData} iraqPackages={iraqPackages} />}
+            {isShia ? <ShiaZiyarat fetchData={fetchData} iraqPackages={iraqPackages} sections={sections} /> : <SunniPackages fetchData={fetchData} iraqPackages={iraqPackages} sections={sections} />}
             <br></br>
         </div>}
         </div>

@@ -26,25 +26,27 @@ export const getUmrahPackages = async () => {
 
 }
 
-export const getAvailableSections = async () => {
-    try{
-        const q = query(avaliableSectionsCollection , orderBy("order"));
+export const getAvailableSections = async (page) => {
+    try {
+        const constraints = [orderBy("order")];
 
+        if (page) {
+            constraints.unshift(where("page", "==", page));
+        }
+
+        const q = query(avaliableSectionsCollection, ...constraints);
         const sectionsSnapshot = await getDocs(q);
 
-        let secitons = []
-
+        const sections = [];
         sectionsSnapshot.forEach(doc => {
-            secitons.push({...doc.data() , id:doc.id, active:false});
-        })
+            sections.push({ ...doc.data(), id: doc.id, active: false });
+        });
 
-        return secitons;
-    }catch (err) {
-        if (err) {
-            return { status: "warning", msg: "Something went wrong cannot get sections" }
-        }
+        return sections;
+    } catch (err) {
+        return { status: "warning", msg: "Something went wrong, cannot get sections" };
     }
-}
+};
 
 export const getCitiesFromTags = async () => {
     try {

@@ -6,6 +6,8 @@ import { getAvailableSections } from "@/services/getData";
 import { deletePackage } from "@/services/deleteData";
 import { CATEGORIES } from "@/config/categories";
 
+const SECTION_SETTINGS = ["hajjUmrahSetting", "iraqSetting"]; // easy to extend later
+
 const NavLinksForm = ({details}) => {
     const [toastMessage, setToastMessage] = useState({msg: ""});
     const [sections, setSections] = useState([]);
@@ -15,15 +17,18 @@ const NavLinksForm = ({details}) => {
         order: 0,
         categories: []
     });
-    
-    
+
+    // Derive page string once — used in all add/edit/fetch operations
+    const currentPage = details.id === "hajjUmrahSetting" ? "hajjUmrah" : "iraq";
 
     useEffect(() => {
         getSections();
     }, [details]);
 
     const getSections = async () => {
-        setSections(await getAvailableSections());
+        if (SECTION_SETTINGS.includes(details.id)) {
+            setSections(await getAvailableSections(currentPage));
+        }
     };
 
     const onClose = () => {
@@ -35,7 +40,8 @@ const NavLinksForm = ({details}) => {
         const msg = await addNewPackage({
             title: "New Section",
             order: sections.length + 1,
-            categories: []
+            categories: [],
+            page: currentPage  // ✅ was missing before
         }, "sections");
         await getSections();
         setToastMessage(msg);
@@ -70,7 +76,8 @@ const NavLinksForm = ({details}) => {
             title: formData.title,
             order: formData.order,
             categories: formData.categories,
-            id: sectionId
+            id: sectionId,
+            page: currentPage  // ✅ uses shared variable
         }, "sections");
         
         setToastMessage(msg);
@@ -93,8 +100,8 @@ const NavLinksForm = ({details}) => {
         setToastMessage(msg);
     };
 
-    // Render sections management
-    if (details.id === "hajjUmrahSetting") {
+    // Render sections management for both hajjUmrahSetting and iraqSetting
+    if (SECTION_SETTINGS.includes(details.id)) {  // ✅ was only checking hajjUmrahSetting
         return (
             <div className="body-wrapper">
                 {toastMessage.msg && <Toast onClose={onClose} type={toastMessage.status} message={toastMessage.msg} />}
@@ -111,7 +118,6 @@ const NavLinksForm = ({details}) => {
                             <form key={section.id} style={{backgroundColor: "#eeeeee", padding: "20px", margin: "20px 0"}}>
                                 <p><strong>Section {index + 1}</strong></p>
                                 
-                                {/* Title Input */}
                                 <div className={styles.formItem}>
                                     <label className={styles.label} htmlFor={`title-${section.id}`}>Title</label>
                                     <input 
@@ -125,7 +131,6 @@ const NavLinksForm = ({details}) => {
                                     />
                                 </div>
                                 
-                                {/* Order Input */}
                                 <div className={styles.formItem}>
                                     <label className={styles.label} htmlFor={`order-${section.id}`}>Order</label>
                                     <input 
@@ -139,7 +144,6 @@ const NavLinksForm = ({details}) => {
                                     />
                                 </div>
                                 
-                                {/* Categories Multi-Select */}
                                 <div className={styles.formItem}>
                                     <label className={styles.label}>Categories</label>
                                     <div style={{display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "8px"}}>
@@ -177,7 +181,6 @@ const NavLinksForm = ({details}) => {
                                     </div>
                                 </div>
                                 
-                                {/* Action Buttons */}
                                 <div style={{marginTop: "15px", display: "flex", gap: "10px"}}>
                                     {isEditing ? (
                                         <>
@@ -224,7 +227,7 @@ const NavLinksForm = ({details}) => {
         );
     }
 
-    // Render regular nav links form
+    // Render regular nav links form for everything else
     return (
         <div className="body-wrapper">
             {toastMessage.msg && <Toast onClose={onClose} type={toastMessage.status} message={toastMessage.msg} />}

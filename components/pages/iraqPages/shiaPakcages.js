@@ -5,8 +5,20 @@ import ziyarat from "../../../data/shiaZiyarat.js"
 import IconLongList from "@/components/lists/iconLongList.js";
 import Image from "next/image";
 import SingleImage from "@/components/carousel/singleImage";
-
+import { useEffect, useState } from "react"
 const ShiaZiyarat = ({iraqPackages , fetchData})=>{
+    const [pkgStruct , setPkgStruct] = useState([])
+        useEffect(() => {
+            if (iraqPackages) {
+                let pkgs = []
+                sections.forEach(section => {
+                    let pkg = iraqPackages.filter((pack)=>pack.sectionId.includes(section.id))
+                    pkgs.push({sectionTitle:section.title , data:pkg})
+                });     
+    
+                setPkgStruct(pkgs)
+            }
+        }, [iraqPackages])
     return(
         <>
         
@@ -15,10 +27,28 @@ const ShiaZiyarat = ({iraqPackages , fetchData})=>{
             <div className="margin">
                 <div className="body-wrapper">
                     {
+                        pkgStruct.map((pkg,index)=>(
+                            <div key={index} className="full-width">
+                                {pkg.data.length > 0 && 
+                                <div className="full-width">
+                                    <h2 className="boldHeading center">{pkg.sectionTitle}</h2>  
+
+                                    <div className="body-wrapper">
+                                        {
+                                            pkg.data.map((pkg, i) => (
+                                                <PackageCard fetchData={fetchData}  type="iraq" subType="sunni" tour={pkg} key={i} />
+                                            ))
+                                        }
+                                    </div>
+                                </div>}
+                            </div>
+                        ))
+                    }
+                    {/* {
                         iraqPackages.map((pkg, i) => (
                             <PackageCard fetchData={fetchData} type="iraq" subType="shia" tour={pkg} key={i} />
                         ))
-                    }
+                    } */}
                 </div>
                 <h2 className="boldHeading">KARBALA (IRAQ ZIYARAT)</h2>
                 <p className="content">Karbala is a significant city in central Iraq, known for its historical and religious importance, particularly within the Islamic faith, specifically for the Shia Muslim community. The city is located about 100 kilometres southwest of the capital city, Baghdad. It holds great significance due to the events associated with the Battle of Karbala, which took place in 680 AD.</p>

@@ -12,7 +12,8 @@ const NavLinksEdit = ({linkId})=>{
     const fetchData = async ()=>{
         if(linkId=="hajjUmrahSetting"){
             setLinkDetails(await getPageTitle("hajjUmrah"))
-            
+        }else if(linkId=="iraqSetting") {
+            setLinkDetails(await getPageTitle("iraqSetting"))
         }else{
             setLinkDetails(await getNavLinkFromId(linkId));
         }

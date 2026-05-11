@@ -18,7 +18,8 @@ const HajjUmrah = () => {
     const [tagsCities, setTagsCities] = useState([])
     const [tagsCitiesActive, setTagsCitiesActive] = useState("Delhi")
     const [toastMsg, setToastMsg] = useState({ msg: "" })
-        const [sections , setSections] = useState([])
+    const [sections , setSections] = useState([])
+    const [iraqSections , setIraqSections] = useState([])
 
     useEffect(() => {
         fetchData();
@@ -30,7 +31,8 @@ const HajjUmrah = () => {
             setIraqPackages(await getIraqPackages("sunni"));
             setPageTitle(await getPageTitle("hajjUmrah"));
             setTagsCities(await getCitiesFromTags());
-            setSections(await getAvailableSections())
+            setSections(await getAvailableSections("hajjUmrah"))
+            setIraqSections(await getAvailableSections("iraq"))
         }
         catch (err) {
             if (err) {
@@ -57,6 +59,20 @@ const HajjUmrah = () => {
         setToastMsg({ msg: "" })
     }
     const size = useWindowSize();
+
+    const [pkgStruct , setPkgStruct] = useState([])
+        useEffect(() => {
+            if (iraqPackages) {
+                let pkgs = []
+                iraqSections.forEach(section => {
+                    let pkg = iraqPackages.filter((pack)=>pack.sectionId.includes(section.id))
+                    pkgs.push({sectionTitle:section.title , data:pkg})
+                });     
+    
+                setPkgStruct(pkgs)
+            }
+        }, [iraqPackages])
+
     return (
         <div>
             <Head>
@@ -98,11 +114,24 @@ const HajjUmrah = () => {
 
                     </div>}
 
-                <h2 className="boldHeading center">Iraq Ziyarat Packages</h2>
-                {iraqPackages.length > 0 ? <div className="body-wrapper">
+                {/* <h2 className="boldHeading center">Iraq Ziyarat Packages</h2> */}
+                {pkgStruct.length > 0 ? <div className="body-wrapper">
                     {
-                        iraqPackages.map((pkg, i) => (
-                            <PackageCard type="iraq" subType="sunni" tour={pkg} key={i} />
+                        pkgStruct.map((pkg,index)=>(
+                            <div key={index} className="full-width">
+                                {pkg.data.length > 0 && 
+                                <div className="full-width">
+                                    <h2 className="boldHeading center">{pkg.sectionTitle}</h2>  
+
+                                    <div className="body-wrapper">
+                                        {
+                                            pkg.data.map((pkg, i) => (
+                                                <PackageCard fetchData={fetchData}  type="iraq" subType="sunni" tour={pkg} key={i} />
+                                            ))
+                                        }
+                                    </div>
+                                </div>}
+                            </div>
                         ))
                     }
                 </div> : <p className="subHeading">Loading Packages...</p>}
