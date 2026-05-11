@@ -115,7 +115,7 @@ const HajjUmrah = () => {
                     </div>}
 
                 {/* <h2 className="boldHeading center">Iraq Ziyarat Packages</h2> */}
-                {pkgStruct.length > 0 ? <div className="body-wrapper">
+                {iraqPackages.length > 0 ? <div className="body-wrapper">
                     {
                         pkgStruct.map((pkg,index)=>(
                             <div key={index} className="full-width">
