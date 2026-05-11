@@ -71,7 +71,7 @@ const HajjUmrah = () => {
     
                 setPkgStruct(pkgs)
             }
-        }, [iraqPackages])
+        }, [iraqPackages , iraqSections])
 
     return (
         <div>
