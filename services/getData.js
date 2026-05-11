@@ -137,7 +137,7 @@ export const getFlightFare = async () => {
 
 export const getIraqPackages = async (type) => {
     try {
-        const q = query(iraqPackagesCollection, orderBy("order"));
+        const q = query(iraqPackagesCollection, orderBy("startDate"));
 
         const iraqSnapshot = await getDocs(q);
 
