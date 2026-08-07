@@ -265,7 +265,7 @@ export const getNavLinks = async () => {
         const q = query(navCollection, orderBy("order"));
         const docs = await getDocs(q);
         let data = [];
-        docs.forEach(doc => data.push(doc.data()));
+        docs.forEach(doc => data.push({ ...doc.data(), id: doc.id }));
         return data;
     } catch (err) {
         console.log(err)
@@ -278,7 +278,7 @@ export const getNavLinkFromId = async (linkId) => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            return docSnap.data();
+            return { ...docSnap.data(), id: docSnap.id };
         } else {
             return [];
         }

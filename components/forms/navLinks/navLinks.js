@@ -10,7 +10,7 @@ const SECTION_SETTINGS = ["hajjUmrahSetting", "iraqSetting"]; // easy to extend 
 
 const NavLinksForm = ({details}) => {
     const [toastMessage, setToastMessage] = useState({msg: ""});
-    const [sections, setSections] = useState([]);
+    const [sections, setSections] = useState(() => ({ ...details }));
     const [editingId, setEditingId] = useState(null);
     const [formData, setFormData] = useState({
         title: "",
@@ -22,7 +22,11 @@ const NavLinksForm = ({details}) => {
     const currentPage = details.id === "hajjUmrahSetting" ? "hajjUmrah" : "iraq";
 
     useEffect(() => {
-        getSections();
+        if (SECTION_SETTINGS.includes(details.id)) {
+            getSections();
+        } else {
+            setSections({ ...details });
+        }
     }, [details]);
 
     const getSections = async () => {
@@ -96,6 +100,12 @@ const NavLinksForm = ({details}) => {
 
     const handleLinkSubmit = async (e) => {
         e.preventDefault();
+
+        if (!sections.id) {
+            setToastMessage({ status: "warning", msg: "Cannot update link: missing link ID" });
+            return;
+        }
+
         const msg = await updateNavLink(sections, "links");
         setToastMessage(msg);
     };
@@ -250,8 +260,8 @@ const NavLinksForm = ({details}) => {
                         <div className={styles.formItem}>
                             <label className={styles.label} htmlFor="active-true">Active</label>
                             <input 
-                                defaultChecked={details.active}
-                                onChange={() => setSections({...sections, active: true})}
+                                checked={sections.active === true}
+                                onChange={() => setSections(current => ({...current, active: true}))}
                                 className={styles.input}
                                 type="radio"
                                 id="active-true"
@@ -261,8 +271,8 @@ const NavLinksForm = ({details}) => {
                         <div className={styles.formItem}>
                             <label className={styles.label} htmlFor="active-false">Inactive</label>
                             <input 
-                                defaultChecked={!details.active}
-                                onChange={() => setSections({...sections, active: false})}
+                                checked={sections.active === false}
+                                onChange={() => setSections(current => ({...current, active: false}))}
                                 className={styles.input}
                                 type="radio"
                                 id="active-false"
