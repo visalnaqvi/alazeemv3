@@ -30,6 +30,7 @@ const TourPackagesEdit = ({ singlePackageId, packageid }) => {
         startDate: "",
         endDate: "",
         sectionId:[],
+        groupTagIds:[],
         sectionData:[],
     });
     useEffect(() => {

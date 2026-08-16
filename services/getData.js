@@ -13,7 +13,7 @@ export const getUmrahPackages = async () => {
         let umrahPackages = []
 
         umrahSnapshot.forEach(doc => {
-            umrahPackages.push(doc.data());
+            umrahPackages.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -79,7 +79,7 @@ export const getHajjPackages = async () => {
         let hajjPackages = []
 
         hajjSnapshot.forEach(doc => {
-            hajjPackages.push(doc.data());
+            hajjPackages.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -101,7 +101,7 @@ export const getTurkeyPackages = async () => {
         let turkeyPackages = []
 
         tuekySnapshot.forEach(doc => {
-            turkeyPackages.push(doc.data());
+            turkeyPackages.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -123,7 +123,7 @@ export const getFlightFare = async () => {
         let flights = []
 
         snapshot.forEach(doc => {
-            flights.push(doc.data());
+            flights.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -137,7 +137,7 @@ export const getFlightFare = async () => {
 }
 
 
-export const getIraqPackages = async (type) => {
+export const getIraqPackages = async () => {
     try {
         const q = query(iraqPackagesCollection, orderBy("startDate"));
 
@@ -145,9 +145,7 @@ export const getIraqPackages = async (type) => {
 
         let iraqPackages = []
         iraqSnapshot.forEach(doc => {
-            if (doc.data().type && doc.data().type == type) {
-                iraqPackages.push(doc.data());
-            }
+            iraqPackages.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -180,7 +178,7 @@ export const getHolidayPackages = async (city) => {
         let holidayPackages = []
 
         holidaySnapshot.forEach(doc => {
-            holidayPackages.push(doc.data());
+            holidayPackages.push({ ...doc.data(), id: doc.data().id || doc.id });
         })
 
 
@@ -205,11 +203,11 @@ export const getPageDocument = async () => {
     }
 }
 
-export const getAdminPackages = async (packageid, type) => {
+export const getAdminPackages = async (packageid) => {
     switch (packageid) {
         case "hajjUmrah": return await getUmrahPackages();
 
-        case "iraq": return await getIraqPackages(type);
+        case "iraq": return await getIraqPackages();
 
         case "holiday": return await getHolidayPackages("all");
 

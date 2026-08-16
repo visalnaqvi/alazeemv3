@@ -27,7 +27,7 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
         {
             packageid=="page-setting" ? <Link href={`${packageid}/${card.id}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>
         :  
-        <Link href={packageid == "vendors" ? `${packageid}/${card.id}` : `admin-panel/${card.link}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>}  
+        <Link href={packageid == "vendors" ? `/admin-panel/${packageid}/${card.id}` : `/admin-panel/${card.link}`}><button className={`primary-btn blue ${styles.button}`}>Edit</button></Link>}
         {packageid=="vendors" && <button onClick={async ()=>{
             if(window.confirm("pkka delete krna hai?")){
                 await deletePackage(card.id , packageid)
@@ -49,6 +49,8 @@ const AdminPanelCard = ({ card, packageid, onUpClick, index, onDownClick }) => {
         case "turkey": return (TourEditCard);
         
         case "hajj": return (TourEditCard);
+
+        case "holiday": return (TourEditCard);
 
         case "iraq": return (TourEditCard);
 

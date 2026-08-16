@@ -1,0 +1,2198 @@
+{
+  "home": {
+    "seoTitle": "Al Azeem Tours and Travels | Explore Top Destinations",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "blocks": [
+      {
+        "id": "migrated-home-1",
+        "type": "image",
+        "url": "/sliders/homePageSlider/desktop/slider_1.png",
+        "sourcePath": "/sliders/homePageSlider/desktop/slider_1.png",
+        "storagePath": "",
+        "alt": "Al Azeem Tours and Travels",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-2",
+        "type": "heading",
+        "level": 1,
+        "text": "Al Azeem Tours and Travles"
+      },
+      {
+        "id": "migrated-home-3",
+        "type": "paragraph",
+        "text": "We present before you AL-AZEEM TOUR & TRAVELS as one stop platform for all your travel needs.With a focus on customer service, at Al-Azeem Tour we offer a fantastic range of trips to meet your budget, ambitions and expectations. All of us here in the Al-Azeem team, work tirelessly to ensure that your trip is carefree, successful and enjoyable experience from start to finish. That means attention to your travel plans, accommodation, specialist inclusions and leisure time as well as to health and safety, financial protection and travel insurance.Specialist knowledge and experience is only half of the story. What distinguishes ous is our passion for the trips we organise, for the destinations that we feature. We feature trips around the worldand our latest inclusion is tour to Saudi Arabia."
+      },
+      {
+        "id": "migrated-home-4",
+        "type": "heading",
+        "level": 2,
+        "text": "Our Services"
+      },
+      {
+        "id": "migrated-home-5",
+        "type": "heading",
+        "level": 2,
+        "text": "Why to choose Us?"
+      },
+      {
+        "id": "migrated-home-6",
+        "type": "paragraph",
+        "text": "Since established our primary aim was to provide quality tour and travel package services to business and leisure travelers. Supported by strong financial management, impressive customer satisfaction, and constant improvement, AL - AZEEM TOUR & TRAVELS has expanded to cover various facets of the industry. Our experience led to perfection in both our outbound and inbound units. All our tour packages are designed and planed keeping in mind your needs and comfortability. We will choose the best options available in market. And take care of all your needs."
+      },
+      {
+        "id": "migrated-home-7",
+        "type": "image",
+        "url": "/services/visa.png",
+        "sourcePath": "/services/visa.png",
+        "storagePath": "",
+        "alt": "Visa Facilitation",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-8",
+        "type": "heading",
+        "level": 3,
+        "text": "Visa Facilitation"
+      },
+      {
+        "id": "migrated-home-9",
+        "type": "paragraph",
+        "text": "Visa Facilitation is a distinguished service at AL-Azeem Tours and Travels. Other than being the preferred visa facilitation service provider in India to countries like Saudi Arabia and Iraq, our patrons trust us with visa & passport application processing services as an end-to-end solution"
+      },
+      {
+        "id": "migrated-home-10",
+        "type": "image",
+        "url": "/services/passport.png",
+        "sourcePath": "/services/passport.png",
+        "storagePath": "",
+        "alt": "Passport assistance",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-11",
+        "type": "heading",
+        "level": 3,
+        "text": "Passport assistance"
+      },
+      {
+        "id": "migrated-home-12",
+        "type": "paragraph",
+        "text": "We will take care of all your passport processing. Let us make it easy and efficient for you. So you can enjoy your vacation to the best."
+      },
+      {
+        "id": "migrated-home-13",
+        "type": "image",
+        "url": "/services/hotel.png",
+        "sourcePath": "/services/hotel.png",
+        "storagePath": "",
+        "alt": "Hotel Bookings",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-14",
+        "type": "heading",
+        "level": 3,
+        "text": "Hotel Bookings"
+      },
+      {
+        "id": "migrated-home-15",
+        "type": "paragraph",
+        "text": "Having a hard time to find a perfect hotel for you? Leave it to us we will find the most econmical and luxrious hotel for your relaxing and peaceful vacation with your family."
+      },
+      {
+        "id": "migrated-home-16",
+        "type": "image",
+        "url": "/services/ticket.png",
+        "sourcePath": "/services/ticket.png",
+        "storagePath": "",
+        "alt": "Air Ticketing",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-17",
+        "type": "heading",
+        "level": 3,
+        "text": "Air Ticketing"
+      },
+      {
+        "id": "migrated-home-18",
+        "type": "paragraph",
+        "text": "We will take care of all your tickets and travelling. Let it be an international vacation or a domestic one. All travelling tickets and costs are inculded in your packages"
+      },
+      {
+        "id": "migrated-home-19",
+        "type": "image",
+        "url": "/services/responsebleteam.webp",
+        "sourcePath": "/services/responsebleteam.webp",
+        "storagePath": "",
+        "alt": "Experienced management team",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-20",
+        "type": "heading",
+        "level": 3,
+        "text": "Experienced management team"
+      },
+      {
+        "id": "migrated-home-21",
+        "type": "paragraph",
+        "text": "Our team is highly experienced and have excellence in handling on tour challenges.They communicate openly with each other, sharing their thoughts, opinions, and ideas with members of their team; as well as taking into consideration what others have to say."
+      },
+      {
+        "id": "migrated-home-22",
+        "type": "image",
+        "url": "/services/knowledge.webp",
+        "sourcePath": "/services/knowledge.webp",
+        "storagePath": "",
+        "alt": "In-depth knowledge of the region’s travel needs",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-23",
+        "type": "heading",
+        "level": 3,
+        "text": "In-depth knowledge of the region’s travel needs"
+      },
+      {
+        "id": "migrated-home-24",
+        "type": "paragraph",
+        "text": "Let it be choosing a hotle to stay or a mode of travel. We have a good knowledge of every aspect of travelling. Knowing the in and outs of every option we have and what will be the best for for you to make your travel comfortable and smooth."
+      },
+      {
+        "id": "migrated-home-25",
+        "type": "image",
+        "url": "/services/teamwork.webp",
+        "sourcePath": "/services/teamwork.webp",
+        "storagePath": "",
+        "alt": "Wide network with trade, corporate and diplomatic community",
+        "caption": ""
+      },
+      {
+        "id": "migrated-home-26",
+        "type": "heading",
+        "level": 3,
+        "text": "Wide network with trade, corporate and diplomatic community"
+      },
+      {
+        "id": "migrated-home-27",
+        "type": "paragraph",
+        "text": "Our wide network helps us to get the best deal for you. We get the most economical and comfortable option for you."
+      }
+    ]
+  },
+  "umrah": {
+    "seoTitle": "Umrah Packages",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "blocks": [
+      {
+        "id": "migrated-umrah-1",
+        "type": "image",
+        "url": "/sliders/hajjUmrahSlider/1.webp",
+        "sourcePath": "/sliders/hajjUmrahSlider/1.webp",
+        "storagePath": "",
+        "alt": "Umrah packages",
+        "caption": ""
+      },
+      {
+        "id": "migrated-umrah-2",
+        "type": "paragraph",
+        "text": "Loading Packages..."
+      },
+      {
+        "id": "migrated-umrah-3",
+        "type": "heading",
+        "level": 2,
+        "text": "Umrah Packages"
+      },
+      {
+        "id": "migrated-umrah-4-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Umrah Packages"
+      },
+      {
+        "id": "migrated-umrah-4",
+        "type": "packages",
+        "source": "umrah",
+        "packageType": "all",
+        "city": "all",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-umrah-5-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Iraq Ziyarat Packages"
+      },
+      {
+        "id": "migrated-umrah-5",
+        "type": "packages",
+        "source": "iraq",
+        "city": "all",
+        "groupTagIds": [
+          "sunni"
+        ]
+      },
+      {
+        "id": "migrated-umrah-6",
+        "type": "paragraph",
+        "text": "Loading Packages..."
+      },
+      {
+        "id": "migrated-umrah-7",
+        "type": "paragraph",
+        "text": "Loading Packages..."
+      },
+      {
+        "id": "migrated-umrah-8",
+        "type": "heading",
+        "level": 2,
+        "text": "Umrah Visa"
+      },
+      {
+        "id": "migrated-umrah-9",
+        "type": "paragraph",
+        "text": "90 Days Umrah Visa or subject to change in days as per the Saudi Arabia Govt guidelines. Requirement of E visa Given Below"
+      },
+      {
+        "id": "migrated-umrah-10",
+        "type": "heading",
+        "level": 2,
+        "text": "WHAT IS UMRAH?"
+      },
+      {
+        "id": "migrated-umrah-11",
+        "type": "paragraph",
+        "text": "Umrah is a super spiritual journey for every single Muslim to acknowledge Allah (Subhanahu Wa Ta'ala - Glory to him, the exalted) as the indicator of peace and to commune with him to purge the impurities within. All pilgrim who proceeds on this holy journey, goes along the path to purifying their soul, heart mind and body from the sins committed in the past to be distinguished from others on Resurrection day. Essentially, the meaning of Umrah is to 'a visit' to the Holy Kaaba (the Sacred House of God) in Arabic and can be performed by all muslims, anytime in a yearr; unlike Hajj, which is an obligatory pilgrimage to Makkah, performed in every year within the first 10 days of the Islamic month of Dhul Hijjah."
+      },
+      {
+        "id": "migrated-umrah-12",
+        "type": "heading",
+        "level": 2,
+        "text": "UMRAH RITUALS - HOW TO PERFORM UMRAH"
+      },
+      {
+        "id": "migrated-umrah-13",
+        "type": "paragraph",
+        "text": "The acts of faith performed by all pilgrims during their spiritual journey to the Holy Kaaba are collectively known as the Umrah rituals.Following are the four acts of Umrah Al Mufradah that involve fulfilling some religious duties and rituals, each anchoring the pilgrim in the right moment towards complete atonement."
+      },
+      {
+        "id": "migrated-umrah-14",
+        "type": "heading",
+        "level": 2,
+        "text": "IHRAM FROM MIQAT - THE INTENTION TO PERFORM UMRAH"
+      },
+      {
+        "id": "migrated-umrah-15",
+        "type": "paragraph",
+        "text": "Before pilgrims wish to enter the Al Masjid Al Haram (the sacred boundary of Makkah) and move across to perform Umrah, they should wear Ihram in order to make haram and traverse the five different areas of Miqats in the Haram boundary:"
+      },
+      {
+        "id": "migrated-umrah-16",
+        "type": "heading",
+        "level": 2,
+        "text": "TAWAF - CIRCUMAMBULATION OF THE HOLY KAABA IN WORSHIP"
+      },
+      {
+        "id": "migrated-umrah-17",
+        "type": "paragraph",
+        "text": "After assuming a state of Ihram, the Muhrim performs the obligatory act of Tawaf in the Al Masjid Al Haram. The Muhrim must stop reciting the Talbiyah and start circumambulation the holy Kaaba seven times (as a reminder of the angels that circumambulate the celestial realms of Allah's house, al-Bayt al-Ma'mur),"
+      },
+      {
+        "id": "migrated-umrah-18",
+        "type": "paragraph",
+        "text": "They must circumambulate the Masjid Al Haram by starting from the Black Stone and completing it there at with the sincere intention of seeking closeness to Allah. The worship is validated only if the pilgrim recites the prescribed du'aa (supplication) during each one of the seven circumambulations."
+      },
+      {
+        "id": "migrated-umrah-19",
+        "type": "paragraph",
+        "text": "The last circumambulation ends exactly where the first one began, to ensure that the pilgrim completed all seven rounds without moving or falling behind a single step or more. And with the seventh round of circumambulation and performance of eight Istilam, the state of Tawaf concludes."
+      },
+      {
+        "id": "migrated-umrah-20",
+        "type": "paragraph",
+        "text": "Upon completion of Tawaf, pilgrims can go behind Maqam Ibrahim (the station of Ibrahim) and perform Salat of Tawaf to offer the two short rak'aa's and thereafter drink the holy Zamzam water from Well of Zamzam in the basement of the Sacred Mosque while supplicating to Allah."
+      },
+      {
+        "id": "migrated-umrah-21",
+        "type": "heading",
+        "level": 2,
+        "text": "SA'IY - WALKING SEVEN TIMES BETWEEN THE HILLS OF SAFA AND MARWAH IN WORSHIP"
+      },
+      {
+        "id": "migrated-umrah-22",
+        "type": "paragraph",
+        "text": "Umrah pilgrims intending to make Sa'iy must make their way out of the Al Masjid Al Haram towards the Masaa' (the place of Sa'iy) which commemorates the struggle Prophet Abraham's wife Hazarat Hajra went through to search for water for her son in between the hills of Safa in the south and Marwah in the North. In essence, Sa'iy is a great way to spend some time on self-reflection and self-realisation. Pilgrims start Sa'iy by going up the hill of Safa to see the holy Kaaba from the Safa door."
+      },
+      {
+        "id": "migrated-umrah-23",
+        "type": "paragraph",
+        "text": "The procedure continues with pilgrims going from Safa to Marwah and returning back to Safa, until the they complete seven laps in total. Each round is nearly 450m long. The seventh round will end at Marwah."
+      },
+      {
+        "id": "migrated-umrah-24",
+        "type": "heading",
+        "level": 2,
+        "text": "HALQ (SHAVING THE HEAD) OR TAQSIR (CLIPPING OR SHORTENING OF THE HAIR FOR MEN AND WOMEN)"
+      },
+      {
+        "id": "migrated-umrah-25",
+        "type": "paragraph",
+        "text": "Finally, the last step of your journey, shaving or clipping the hair in Mina. Men should get their head completely shaved, or get their hair clipped. While women are forbidden to shave their heads and only allowed to have a lock or strand of their hair clipped. The act of cutting the hair symbolizes one's detachment from physical appearances and complete subjection to Allah."
+      },
+      {
+        "id": "migrated-umrah-26",
+        "type": "paragraph",
+        "text": "All the prohibitions imposed on the conduct of pilgrims by Irham are lifted, upon completion of this last obligatory ritual. They can then remove Ihram sheets and change into their regular clothes."
+      }
+    ]
+  },
+  "hajj": {
+    "seoTitle": "Hajj Packages",
+    "seoDescription": "Best Tour and Travels Agency in Delhi Laxmi Nagar.Hajj Umrah Tour Package available. Hajj Umrah economic tour packages. Including Hotel Booking , Travel Planning etc.Umrah Package by Al Azeem Tours and Travel",
+    "seoKeywords": "Haj Package, Haj 2024, Haj, Best Travel Agency for Haj, Haj Umrah Package, Haj Quota from India, Private Haj from Delhi, Private Haj From India, Haj Committee, Haj Committee of India, hajj, hajj 2024 packages, hajj umrah package, hajj and umrah, al hajj, hajj and umrah packages, hajj umrah, hajj and umrah travel, hajj price, hajj booking, hajj and umrah travel agency, hajj travel packages, hajj 2023 package, hajj and umrah travel agency near me, tickets to hajj, hajj clothing, hajj pilgrims, cheapest hajj packages, hajj 2023 prices, ihram for hajj, day arafah, days of arafah, eid al haj, haj & umrah, haj bhavan, hajcommittee,",
+    "blocks": [
+      {
+        "id": "migrated-hajj-1",
+        "type": "image",
+        "url": "/sliders/hajjUmrahSlider/1.webp",
+        "sourcePath": "/sliders/hajjUmrahSlider/1.webp",
+        "storagePath": "",
+        "alt": "Hajj packages",
+        "caption": ""
+      },
+      {
+        "id": "migrated-hajj-2",
+        "type": "heading",
+        "level": 2,
+        "text": "Hajj Packages"
+      },
+      {
+        "id": "migrated-hajj-3-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Hajj Packages"
+      },
+      {
+        "id": "migrated-hajj-3",
+        "type": "packages",
+        "source": "hajj",
+        "packageType": "all",
+        "city": "all",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-hajj-4",
+        "type": "paragraph",
+        "text": "Loading Packages..."
+      },
+      {
+        "id": "migrated-hajj-5",
+        "type": "heading",
+        "level": 2,
+        "text": "WHAT IS HAJJ?"
+      },
+      {
+        "id": "migrated-hajj-6",
+        "type": "paragraph",
+        "text": "Hajj is the annual Islamic pilgrimage to Mecca, the Holiest city for Muslims, and a mandatory religious duty for Muslims that must be carried out at least once in their lifetime by all adult Muslims who are physically and financially capable of undertaking the journey, and can support their families during their absence. It is one of the Five Pillars of Islam, alongside Shahada (faith), Salat (prayer), Zakat (charity), and Sawm (fasting during Ramadan)."
+      },
+      {
+        "id": "migrated-hajj-7",
+        "type": "paragraph",
+        "text": "The pilgrimage occurs during the Islamic month of Dhu al-Hijjah, from the 8th to the 12th or 13th day of Dhu al-Hijjah. It is a demonstration of the solidarity of the Muslim people and their submission to Allah. The pilgrimage also serves as a time for Muslims to seek forgiveness and purification, to strengthen their faith, and to reflect on their lives."
+      },
+      {
+        "id": "migrated-hajj-8",
+        "type": "paragraph",
+        "text": "During the Hajj, pilgrims perform a series of rituals, like stay at Mina, stay at Arafat and Stay at Muzdalifah including circling the Kaaba performing a series of rituals at the Kaaba, walking between the hills of Safa and Marwa, and throwing pebbles at three pillars that represent Satan."
+      },
+      {
+        "id": "migrated-hajj-9",
+        "type": "paragraph",
+        "text": "The Hajj is a deeply significant and spiritually enriching experience for Muslims around the world, fostering a sense of unity and connection among believers. It is a time when Muslims from diverse backgrounds come together in worship, transcending differences of nationality, race, and culture."
+      },
+      {
+        "id": "migrated-hajj-10",
+        "type": "paragraph",
+        "text": "Al Azeem Travels offers travel-related services to individuals and businesses. These services can include booking flights, arranging accommodations, organizing tours and excursions, providing travel insurance, and offering assistance with visa applications and other travel documentation. Al Azeem Travels expertise in Huj Umrah and Iraq Iran Syria Pilgrim Packages. We provide the best services and Hotels"
+      },
+      {
+        "id": "migrated-hajj-11",
+        "type": "paragraph",
+        "text": "Al Azeem Travels often have expertise in specific destinations or types of travel, such as luxury travel, adventure travel, or corporate travel. They can help clients plan and customize their trips based on their preferences, budget, and requirements."
+      },
+      {
+        "id": "migrated-hajj-12",
+        "type": "paragraph",
+        "text": "Overall, Al Azeem Travels play a crucial role in simplifying the travel planning process for individuals and businesses, providing expertise, convenience, and peace of mind to travellers."
+      }
+    ]
+  },
+  "hajj-experimental": {
+    "seoTitle": "Hajj Packages (Extended)",
+    "seoDescription": "Best Tour and Travels Agency in Delhi Laxmi Nagar.Hajj Umrah Tour Package available. Hajj Umrah economic tour packages. Including Hotel Booking , Travel Planning etc.Umrah Package by Al Azeem Tours and Travel",
+    "seoKeywords": "Umrah package, Best umrah package, Cheapest umrah package, Umrah package from Delhi, December umrah packages, Jan umrah packages, Feb umrah packages, Ramzan umrah package, Cheapest Ramzan umrah package, Best Ramzan umrah package, Ramzan umrah package from Delhi, March umrah package, April umrah package, May umrah package, June umrah package, July umrah package, August umrah package, Sept umrah packages, Oct umrah package, Nov umrah package, Dec umrah packages, Cheapest Air fare to Jeddah, Umrah visa, Cheapest umrah visa, Best umrah operator, Haj package, best umrah packages from sri nagar, best umrah packages from Lucknow, umrah packages from Sri Nagar, umrah packages from Lucknow, Haj packages 2023,",
+    "blocks": [
+      {
+        "id": "migrated-hajj-experimental-1",
+        "type": "heading",
+        "level": 1,
+        "text": "HAJ 2024 - Tentative Haj 2024 Pkg"
+      },
+      {
+        "id": "migrated-hajj-experimental-2-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Hajj Packages"
+      },
+      {
+        "id": "migrated-hajj-experimental-2",
+        "type": "packages",
+        "source": "hajj",
+        "packageType": "all",
+        "city": "all",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-hajj-experimental-3",
+        "type": "paragraph",
+        "text": "SHORT PERIOD PACKAGE 17/18 Days"
+      },
+      {
+        "id": "migrated-hajj-experimental-4",
+        "type": "paragraph",
+        "text": "Departure"
+      },
+      {
+        "id": "migrated-hajj-experimental-5",
+        "type": "paragraph",
+        "text": "INSHALLAH on 10th JUNE DEL to JED (By Saudi Airlines or any other Airlines)"
+      },
+      {
+        "id": "migrated-hajj-experimental-6",
+        "type": "paragraph",
+        "text": "Arrival"
+      },
+      {
+        "id": "migrated-hajj-experimental-7",
+        "type": "paragraph",
+        "text": "27 June 24 or 28 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-8",
+        "type": "paragraph",
+        "text": "Stay"
+      },
+      {
+        "id": "migrated-hajj-experimental-9",
+        "type": "paragraph",
+        "text": "10th JUNE TO 27 June"
+      },
+      {
+        "id": "migrated-hajj-experimental-10",
+        "type": "heading",
+        "level": 2,
+        "text": "INCLUSIONS"
+      },
+      {
+        "id": "migrated-hajj-experimental-11",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Round trip Air fare (DEL/JED/MED-JED/DEL).",
+          "Surface transport (Jeddah / Makkah / Meena / Arafat / Muzdalfa / Madina / Jeddah) by AC bus",
+          "ACCOMADATION ON SHARING BASIS 4 TO 5 PERSON ACCORDING TO HOTEL ARRANGEMENT",
+          "HAJ VISA WITH INSURANCE",
+          "FULL BOARD INDIAN BUFFET MEALS (BREAKFAST, LUNCH & DINNER)",
+          "Laundry facilities (after Haj in Makkah and Madina)",
+          "LOCAL MAKKAH & MADINA ZIYARAT",
+          "5 LITER ZAM ZAM"
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-12",
+        "type": "heading",
+        "level": 2,
+        "text": "PKG EXCULDE"
+      },
+      {
+        "id": "migrated-hajj-experimental-13",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "QURBANI EXPENSES",
+          "EXTRA BAGGAGE ALLOWANCE (2 PIECES OF 23KG EACH+7 Kg + Zam Zam)",
+          "TAWAF AL-ZIYARAH WILL BE DONE ON OWN EXPENSES",
+          "ANYTHING NOT MENTIONED ABOVE."
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-14",
+        "type": "heading",
+        "level": 2,
+        "text": "DOCUMENTS REQUIRED"
+      },
+      {
+        "id": "migrated-hajj-experimental-15",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "PASSPORT MINIMUM VALIDILTY ONE YEAR VALIDITY",
+          "BOTH DOSES VACCINATION CERTIFICATE",
+          "4 PASSPORT SIZE PHOTOGRAPH WITH WHITE BACKGORUND",
+          "PAN CARD",
+          "ADHAR CARD",
+          "AGE BELOW 12 YEARS NOT ALLOWED"
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-16",
+        "type": "heading",
+        "level": 2,
+        "text": "Tour Itinerary (Tentative)"
+      },
+      {
+        "id": "migrated-hajj-experimental-17",
+        "type": "paragraph",
+        "text": "10 June 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-18",
+        "type": "paragraph",
+        "text": "Departure from Delhi"
+      },
+      {
+        "id": "migrated-hajj-experimental-19",
+        "type": "paragraph",
+        "text": "10 June 24 to 14 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-20",
+        "type": "paragraph",
+        "text": "Before Haj stay in Mecca (Aziziya/ Jabal-e-Noor Nuza) Approx 6 KM away from haram shareef."
+      },
+      {
+        "id": "migrated-hajj-experimental-21",
+        "type": "paragraph",
+        "text": "14 June 24 to 18 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-22",
+        "type": "paragraph",
+        "text": "Stay in Mina, Arafaat, Muzdalfa."
+      },
+      {
+        "id": "migrated-hajj-experimental-23",
+        "type": "paragraph",
+        "text": "19 June 24 to 22 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-24",
+        "type": "paragraph",
+        "text": "After Haj stay in Mecca (Aziziya/ Jabal-e-Noor Nuza) Approx 6 KM away from haram shareef."
+      },
+      {
+        "id": "migrated-hajj-experimental-25",
+        "type": "paragraph",
+        "text": "23 June 24 to 27 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-26",
+        "type": "paragraph",
+        "text": "Stay in Madina Al Munnawwara"
+      },
+      {
+        "id": "migrated-hajj-experimental-27",
+        "type": "paragraph",
+        "text": "27 June 24 or 28 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-28",
+        "type": "paragraph",
+        "text": "Departure from Madina/Jeddah to Delhi"
+      },
+      {
+        "id": "migrated-hajj-experimental-29",
+        "type": "paragraph",
+        "text": "ROOM CAPACITY"
+      },
+      {
+        "id": "migrated-hajj-experimental-30",
+        "type": "paragraph",
+        "text": "PKG COST (GST not Included)"
+      },
+      {
+        "id": "migrated-hajj-experimental-31",
+        "type": "paragraph",
+        "text": "4/5 Bed SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-32",
+        "type": "paragraph",
+        "text": "₹ 7,10,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-33",
+        "type": "paragraph",
+        "text": "3 BED SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-34",
+        "type": "paragraph",
+        "text": "₹ 7,85,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-35",
+        "type": "paragraph",
+        "text": "2 BED SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-36",
+        "type": "paragraph",
+        "text": "₹ 8,60,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-37",
+        "type": "paragraph",
+        "text": "(G.S.T. 5% And 5% TCS Extra and any Other Tax by Saudi Govt. Is applicable.)"
+      },
+      {
+        "id": "migrated-hajj-experimental-38",
+        "type": "paragraph",
+        "text": "CALL US NOW FOR MORE INFORMATION"
+      },
+      {
+        "id": "migrated-hajj-experimental-39",
+        "type": "paragraph",
+        "text": "9205184001, 9717040012"
+      },
+      {
+        "id": "migrated-hajj-experimental-40",
+        "type": "heading",
+        "level": 1,
+        "text": "HAJ 2024 - Tentative Haj 2024 Pkg"
+      },
+      {
+        "id": "migrated-hajj-experimental-41",
+        "type": "paragraph",
+        "text": "SHIFTING PACKAGE 37 DAYS"
+      },
+      {
+        "id": "migrated-hajj-experimental-42",
+        "type": "paragraph",
+        "text": "Departure"
+      },
+      {
+        "id": "migrated-hajj-experimental-43",
+        "type": "paragraph",
+        "text": "INSHALLAH 10 June 2024 (By Saudi Airlines or any other Airlines)"
+      },
+      {
+        "id": "migrated-hajj-experimental-44",
+        "type": "paragraph",
+        "text": "Arrival"
+      },
+      {
+        "id": "migrated-hajj-experimental-45",
+        "type": "paragraph",
+        "text": "17 July 2024 or 18 July 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-46",
+        "type": "paragraph",
+        "text": "Stay"
+      },
+      {
+        "id": "migrated-hajj-experimental-47",
+        "type": "paragraph",
+        "text": "10 June 2024 TO 17 July 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-48",
+        "type": "heading",
+        "level": 2,
+        "text": "INCLUSIONS"
+      },
+      {
+        "id": "migrated-hajj-experimental-49",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "Round trip Air fare (DEL/JED/MED-JED/DEL).",
+          "Surface transport (Jeddah / Makkah / Meena / Arafat / Muzdalfa / Madina / Jeddah) by AC bus",
+          "ACCOMADATION ON SHARING BASIS 4 TO 5 PERSON ACCORDING TO HOTEL ARRANGEMENT",
+          "HAJ VISA WITH INSURANCE",
+          "FULL BOARD INDIAN BUFFET MEALS (BREAKFAST, LUNCH & DINNER)",
+          "Laundry facilities (after Haj in Makkah and Madina)",
+          "LOCAL MAKKAH & MADINA ZIYARAT",
+          "5 LITER ZAM ZAM"
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-50",
+        "type": "heading",
+        "level": 2,
+        "text": "PKG EXCULDE"
+      },
+      {
+        "id": "migrated-hajj-experimental-51",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "QURBANI EXPENSES",
+          "EXTRA BAGGAGE ALLOWANCE (2 PIECES OF 23KG EACH+7 Kg + Zam Zam)",
+          "TAWAF AL-ZIYARAH WILL BE DONE ON OWN EXPENSES",
+          "ANYTHING NOT MENTIONED ABOVE."
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-52",
+        "type": "heading",
+        "level": 2,
+        "text": "DOCUMENTS REQUIRED"
+      },
+      {
+        "id": "migrated-hajj-experimental-53",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "PASSPORT MINIMUM VALIDILTY ONE YEAR VALIDITY",
+          "BOTH DOSES VACCINATION CERTIFICATE",
+          "4 PASSPORT SIZE PHOTOGRAPH WITH WHITE BACKGORUND",
+          "PAN CARD",
+          "ADHAR CARD",
+          "AGE BELOW 12 YEARS NOT ALLOWED"
+        ]
+      },
+      {
+        "id": "migrated-hajj-experimental-54",
+        "type": "heading",
+        "level": 2,
+        "text": "Tour Itinerary (Tentative)"
+      },
+      {
+        "id": "migrated-hajj-experimental-55",
+        "type": "paragraph",
+        "text": "10 June 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-56",
+        "type": "paragraph",
+        "text": "Departure from Delhi"
+      },
+      {
+        "id": "migrated-hajj-experimental-57",
+        "type": "paragraph",
+        "text": "10 June 24 to 14 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-58",
+        "type": "paragraph",
+        "text": "Before Haj stay in Mecca (Aziziya/ Jabal-e-Noor Nuza) Approx 6 KM away from haram shareef."
+      },
+      {
+        "id": "migrated-hajj-experimental-59",
+        "type": "paragraph",
+        "text": "14 June 24 to 18 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-60",
+        "type": "paragraph",
+        "text": "Stay in Mina, Arafaat, Muzdalfa"
+      },
+      {
+        "id": "migrated-hajj-experimental-61",
+        "type": "paragraph",
+        "text": "19 June 24 to 22 June 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-62",
+        "type": "paragraph",
+        "text": "After Haj stay in Mecca (Aziziya/ Jabal-e-Noor Nuza) Approx 6 KM away from haram shareef"
+      },
+      {
+        "id": "migrated-hajj-experimental-63",
+        "type": "paragraph",
+        "text": "23 June 2024 to 7 July 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-64",
+        "type": "paragraph",
+        "text": "Stay in Makkah in Star Hotel 400 mtrs -500 mtrs Near to Haram Sharif"
+      },
+      {
+        "id": "migrated-hajj-experimental-65",
+        "type": "paragraph",
+        "text": "7 July 24 to 16 July 24"
+      },
+      {
+        "id": "migrated-hajj-experimental-66",
+        "type": "paragraph",
+        "text": "Stay in Madina Al Munnawwara *category hotel. (Distance 150 to 200 mtr away from Haram)"
+      },
+      {
+        "id": "migrated-hajj-experimental-67",
+        "type": "paragraph",
+        "text": "17 July 2024 or 18 July 2024"
+      },
+      {
+        "id": "migrated-hajj-experimental-68",
+        "type": "paragraph",
+        "text": "Departure from Madina/Jeddah to Delhi"
+      },
+      {
+        "id": "migrated-hajj-experimental-69",
+        "type": "paragraph",
+        "text": "ROOM CAPACITY"
+      },
+      {
+        "id": "migrated-hajj-experimental-70",
+        "type": "paragraph",
+        "text": "PKG COST (GST not Included)"
+      },
+      {
+        "id": "migrated-hajj-experimental-71",
+        "type": "paragraph",
+        "text": "4/5 Bed SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-72",
+        "type": "paragraph",
+        "text": "₹ 7,10,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-73",
+        "type": "paragraph",
+        "text": "3 BED SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-74",
+        "type": "paragraph",
+        "text": "₹ 7,85,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-75",
+        "type": "paragraph",
+        "text": "2 BED SHARING"
+      },
+      {
+        "id": "migrated-hajj-experimental-76",
+        "type": "paragraph",
+        "text": "₹ 8,60,000 Per Person"
+      },
+      {
+        "id": "migrated-hajj-experimental-77",
+        "type": "paragraph",
+        "text": "(G.S.T. 5% And 5% TCS Extra and any Other Tax by Saudi Govt. Is applicable.)"
+      },
+      {
+        "id": "migrated-hajj-experimental-78",
+        "type": "paragraph",
+        "text": "CALL US NOW FOR MORE INFORMATION"
+      },
+      {
+        "id": "migrated-hajj-experimental-79",
+        "type": "paragraph",
+        "text": "9205184001, 9717040012"
+      }
+    ]
+  },
+  "iraq-shia": {
+    "seoTitle": "Karbala Ziyarat",
+    "seoDescription": "Explore the sacred journey of Ziyarat in Iraq with our exclusive tour package. Discover historical landmarks, spiritual sites, and enriching experiences. Join us on this pilgrimage for a meaningful and memorable Ziyarat tour in Iraq. Book your package today for an unforgettable spiritual journey.",
+    "seoKeywords": "Iraq Ziyarat, Iraq Ziarat, Iraq Ziyarat Travel Agent, Iraq Ziyarat Packages, Iraq Ziyarat Places, Iraq Ziyarat Visa for India, Iraq Ziyarat Packages From India, Iraq Ziyarat Packages from Delhi, Iran Iraq Ziyarat Package, Syria Ziyarat package, Iraq ziyarat Packages from Delhi, Iraq Ziarat Package from Delhi, Iran Iraq Ziarat Package from Delhi, Shaikh Abdul Qadir Jilani (RA) Ziyarat, Ziyarat Ghous E Azam, Imam Hussain Roza, Imam Hussain shrine Ziyarat, Best Ziyarat Package, Best Tour Operator, Ziyarat kafila from Delhi, Iraq Ziyarat packages from Lucknow, Iraq Ziyarat Package from Jammu and Srinagar, Iraq Ziyarat package from Jaipur, Iraq Ziyarat package from Kolkata, Iraq Ziyarat package from Punjab, iraq ziyarat packages, iraq ziyarat tours, ziyarat iraq package, baghdad ziyarat, iran iraq ziyarat packages from india, umrah and karbala package, baghdad sharif and umrah package, iraq ziarat packages, ziyarat trips to iraq, umrah with iraq ziyarat tour packages, iran iraq ziyarat tour, iran iraq ziyarat, iraq ziyarat tours from india, umrah karbala package, karbala group, karbala ziyarat, karbala group package, arbaeen package",
+    "blocks": [
+      {
+        "id": "migrated-iraq-shia-1",
+        "type": "image",
+        "url": "/backgroundImages/iraqZiyaratShia.jpeg",
+        "sourcePath": "/backgroundImages/iraqZiyaratShia.jpeg",
+        "storagePath": "",
+        "alt": "Karbala Iraq Ziyarat",
+        "caption": ""
+      },
+      {
+        "id": "migrated-iraq-shia-2",
+        "type": "heading",
+        "level": 2,
+        "text": "KARBALA (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-iraq-shia-3-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Karbala Ziyarat Packages"
+      },
+      {
+        "id": "migrated-iraq-shia-3",
+        "type": "packages",
+        "source": "iraq",
+        "city": "all",
+        "groupTagIds": [
+          "shia"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-4",
+        "type": "paragraph",
+        "text": "Karbala is a significant city in central Iraq, known for its historical and religious importance, particularly within the Islamic faith, specifically for the Shia Muslim community. The city is located about 100 kilometres southwest of the capital city, Baghdad. It holds great significance due to the events associated with the Battle of Karbala, which took place in 680 AD."
+      },
+      {
+        "id": "migrated-iraq-shia-5",
+        "type": "paragraph",
+        "text": "1. Battle of Karbala: The Battle of Karbala is a pivotal event in Islamic history. It occurred during the month of Muharram in the year 680 AD (61 AH) and was a confrontation between the forces of Imam Hussein ibn Ali, the grandson of Prophet Muhammad, and the Umayyad Caliphate's army led by Yazid I. The battle resulted in the martyrdom of Imam Hussein and his followers. This event is commemorated annually by Shia Muslims during the month of Muharram, especially on the day of Ashura. The battle symbolizes principles such as standing up against injustice, tyranny, and oppression."
+      },
+      {
+        "id": "migrated-iraq-shia-6",
+        "type": "paragraph",
+        "text": "2. Imam Hussein Shrine: One of the most prominent landmarks in Karbala is the Imam Hussein Shrine, which is a significant pilgrimage site for Shia Muslims around the world. The shrine is a grand mausoleum that houses the remains of Imam Hussein. Every year, millions of Shia pilgrims visit the shrine to pay their respects and participate in religious rituals. The annual pilgrimage, known as ARBEEN, is one of the largest peaceful gatherings in the world."
+      },
+      {
+        "id": "migrated-iraq-shia-7",
+        "type": "paragraph",
+        "text": "3. Religious Significance: Karbala is considered a holy city for Shia Muslims due to its association with Imam Hussein and his martyrdom. The city's historical and spiritual importance draws believers who seek to connect with the principles of justice, resistance, and devotion. Karbala's role in shaping the religious and cultural identity of Shia communities cannot be understated."
+      },
+      {
+        "id": "migrated-iraq-shia-8",
+        "type": "paragraph",
+        "text": "4. ABAEEN Pilgrimage: ARBAEEN is an annual pilgrimage that occurs 40 days after Ashura, marking the end of the mourning period for Imam Hussein's martyrdom. It is a massive event where millions of pilgrims, often on foot, journey to Karbala from various parts of the world. This pilgrimage reflects the unity, solidarity, and commitment of the Shia community to the values represented by Imam Hussein."
+      },
+      {
+        "id": "migrated-iraq-shia-9",
+        "type": "paragraph",
+        "text": "Karbala's historical significance and ongoing role as a centre of religious devotion make it a place of deep reverence for millions of Shia Muslims worldwide."
+      },
+      {
+        "id": "migrated-iraq-shia-10",
+        "type": "heading",
+        "level": 2,
+        "text": "NAJAF (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-iraq-shia-11",
+        "type": "paragraph",
+        "text": "Najaf, located in central Iraq, holds immense historical and cultural significance, particularly within the context of Islamic history. Here's an overview of its history:"
+      },
+      {
+        "id": "migrated-iraq-shia-12",
+        "type": "paragraph",
+        "text": "Ancient History: Najaf's history can be traced back to ancient times. It was initially a small agricultural settlement that grew around a natural oasis. The city's location near the Euphrates River made it a vital hub for trade and agriculture in Mesopotamia."
+      },
+      {
+        "id": "migrated-iraq-shia-13",
+        "type": "paragraph",
+        "text": "Islamic History: Najaf gained prominence due to its connection to Islam and its status as a significant religious centre. The city is renowned for its association with the First imam of Islam, Imam Ali ibn Abi Talib (600-661 AD), who is highly revered by Shia Muslims. Imam Ali's tomb, located in the city's heart, is a major pilgrimage site and one of the holiest places for Shia Muslims."
+      },
+      {
+        "id": "migrated-iraq-shia-14",
+        "type": "paragraph",
+        "text": "Theological Centre: Najaf has been a centre of Islamic scholarship for centuries. The city's seminaries have produced many renowned scholars, theologians, and jurists who have contributed significantly to Shia Islamic thought. These institutions attract students from various parts of the world, making Najaf a global hub for Islamic education."
+      },
+      {
+        "id": "migrated-iraq-shia-15",
+        "type": "paragraph",
+        "text": "Tourism: Najaf remains a significant pilgrimage site for Shia Muslims. Millions of pilgrims visit the city annually to pay their respects at the shrine of Imam Ali. The city's economy is closely tied to religious tourism."
+      },
+      {
+        "id": "migrated-iraq-shia-16",
+        "type": "heading",
+        "level": 2,
+        "text": "BAGDAD (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-iraq-shia-17",
+        "type": "paragraph",
+        "text": "Baghdad, the capital city of Iraq, has a rich and complex history that spans thousands of years. Here's a brief overview:"
+      },
+      {
+        "id": "migrated-iraq-shia-18",
+        "type": "paragraph",
+        "text": "Foundation: Baghdad was officially founded in the 8th century. In 762 AD, the Abbasid Caliph Al-Mansur chose the location for his new capital and named it Madinat al-Salam which means the City of Peace. This marked the beginning of Baghdad's significance as a major cultural, political, and economic centre in the Islamic world."
+      },
+      {
+        "id": "migrated-iraq-shia-19",
+        "type": "paragraph",
+        "text": "Golden Age: The Abbasid Caliphate's rule saw a “Golden Age“ in Baghdad during the 8th to 10th centuries. It became a hub for scholars, philosophers, mathematicians, and artists from diverse backgrounds. The House of Wisdom, an important centre of learning and translation, played a key role in preserving and translating ancient Greek, Persian, and Indian works into Arabic."
+      },
+      {
+        "id": "migrated-iraq-shia-20",
+        "type": "paragraph",
+        "text": "Modern Capital: Baghdad became the capital of the newly established Kingdom of Iraq in 1921. The city continued to experience growth and modernization throughout the 20th century, with significant developments and urban expansion."
+      },
+      {
+        "id": "migrated-iraq-shia-21",
+        "type": "paragraph",
+        "text": "Present Day: In the post-conflict era, Baghdad continues to rebuild and develop. It remains an important cultural and economic hub in the region, but it also faces challenges related to security, political stability, and infrastructure development."
+      },
+      {
+        "id": "migrated-iraq-shia-22",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      },
+      {
+        "id": "migrated-iraq-shia-23",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      },
+      {
+        "id": "migrated-iraq-shia-24",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - AL ALAWE RAILWAY YARD 5 KM"
+      },
+      {
+        "id": "migrated-iraq-shia-25",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. SHAIKH BEHLOL DANA (R.A.)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-26",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - KAZMAIN - 10 KM"
+      },
+      {
+        "id": "migrated-iraq-shia-27",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "2. SAYYED IMAM MOOSA KAZIM (R.A.) (7TH IMAM)",
+          "3. SAYYED IMAM MOHAMMAD TAQI (9TH IMAM)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-28",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD 60 KM FROM ASTANA"
+      },
+      {
+        "id": "migrated-iraq-shia-29",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "4. HAZRAT SALMAN FARSI (R.A.) SALMAN PARK",
+          "5. HUZAIFA BIN YAMAN (R.A.)",
+          "6. TAHIR BIN MOHAMMAD AL BAQIR (R.A.)",
+          "7. ABDUALLAH BIN JABIR AL ANSARI (R.A.)",
+          "8. DARYA -E- DAJLA"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-30",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - AL MIDAN 5KM FROM ASTANA"
+      },
+      {
+        "id": "migrated-iraq-shia-31",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "9. IMAM AHMED BIN HAMBAL (R.A.)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-32",
+        "type": "heading",
+        "level": 3,
+        "text": "NAJAF CITY - 220 KM FROM BAGDAD"
+      },
+      {
+        "id": "migrated-iraq-shia-33",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "10. HAZRAT ALI (R.A.)",
+          "11. PROPHET SALEH (R.A.)",
+          "12. PROPHET HOOD (R.A.)",
+          "13. WADI-US- SALAAM (World Largest graveyard 14sq KM) ( MANY PROPHETS AND ISLAMIC SCHOLARS RESTING PLACE)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-34",
+        "type": "heading",
+        "level": 3,
+        "text": "AULAD-E- MUSLIM"
+      },
+      {
+        "id": "migrated-iraq-shia-35",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "14. SAYED IBRAHIM BIN MUSLIM BIN AQEEL BIN ABU TALIB (R.A.)",
+          "15. SAYED MOHAMMAD BIN MUSLIM BIN AQEEL (R.A.)",
+          "16. MOHAMMAD BIN AQEEL",
+          "17. PROPHET AYUB (A.S.) AND HIS WIFE RAHIMA",
+          "18. SHIFA KA KUWA",
+          "19. RADDE SHAMS",
+          "20. JANAB-E- AUN AND JANAB-E- MOHAMMAD",
+          "21. JANAB-E-HOOR (R.A.)",
+          "22. BIRTH PLACE OF PROPHET IBRAHIM (A.S.)",
+          "23. WOH MUQAM JAHAN PAR NABI IBRAHIM (A.S.) KO AAG MAIN JALANE KE LIYA LAKDIYA JAMA KI GAYI THI"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-36",
+        "type": "heading",
+        "level": 3,
+        "text": "KUFA CITY-180KM SOUTH OF BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-shia-37",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "24. MASJID-E-KUFA",
+          "25. MIMBER (JIS MIMBER PAR HAZRAT ALI (R.A.) KAY UPAR HAMLA HUA THA)",
+          "26. HAZRAT IMAM BIN MUSLIM BIN AQEEL (R.A.)",
+          "27. JANAB E HANI BIN URWA (R.A.)",
+          "28. QABAR MUKHTAR SAQAFI",
+          "29. TOOFAN-E-NOOH JAHAN SAY SHRU HUA (KUWA)",
+          "30. MUSALLAH-E-NABI ADAM (A.S.)",
+          "31. MUSALLAH HAZRAT JIBRAIEL (A.S.)",
+          "32. HOUSE OF HAZRAT ALI (R.A.)",
+          "33. WELL OF HAZRAT ALI(R.A.)",
+          "34. JANAB-E-MISAMME TAMMAR(R.A.)",
+          "35. SAYYEDA KHATIJA (R.A.) (DAUGHTER OF HAZRAT ALI)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-38",
+        "type": "heading",
+        "level": 3,
+        "text": "KARBALAI MUQADDAS-110 KM SOUTH OF BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-shia-39",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "36. MAIDAN-E-KARBALA",
+          "37. NEHAR-E-FARAT",
+          "38. ROZA-E-IMAM HUSSAIN (R.A.)",
+          "39. ROZA-E-ABBAS ALAMBARDAR(R.A.)",
+          "40. HAZRAT HUSSAIN(R.A.) (SHAHADAT KI JAGAH)",
+          "41. ALI AKBAR(R.A.)",
+          "42. ALI ASGHAR (R.A.)",
+          "43. MUKAM-E-BAZU-E-ABBAS ALAMBARDAR",
+          "44. SHUHADA-E- KARBALA KI MAZAR",
+          "45. ZAINAB (R.A.) TEKRI"
+        ]
+      },
+      {
+        "id": "migrated-iraq-shia-40",
+        "type": "heading",
+        "level": 3,
+        "text": "SAMARRAH- THIS ZIYARAT IS EXTRA PAYABLE NOT INCLUDED IN PACKAGE 140KM FROM BAGDAD"
+      },
+      {
+        "id": "migrated-iraq-shia-41",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "46. IMAM ALI NAQI (R.A.) (10th IMAM)",
+          "47. IMAM HASAN ASKARI (R.A.) (11th IMAM)"
+        ]
+      }
+    ]
+  },
+  "iraq-sunni": {
+    "seoTitle": "Iraq Ziyarat",
+    "seoDescription": "Explore the sacred journey of Ziyarat in Iraq with our exclusive tour package. Discover historical landmarks, spiritual sites, and enriching experiences. Join us on this pilgrimage for a meaningful and memorable Ziyarat tour in Iraq. Book your package today for an unforgettable spiritual journey.",
+    "seoKeywords": "Iraq Ziyarat, Iraq Ziarat, Iraq Ziyarat Travel Agent, Iraq Ziyarat Packages, Iraq Ziyarat Places, Iraq Ziyarat Visa for India, Iraq Ziyarat Packages From India, Iraq Ziyarat Packages from Delhi, Iran Iraq Ziyarat Package, Syria Ziyarat package, Iraq ziyarat Packages from Delhi, Iraq Ziarat Package from Delhi, Iran Iraq Ziarat Package from Delhi, Shaikh Abdul Qadir Jilani (RA) Ziyarat, Ziyarat Ghous E Azam, Imam Hussain Roza, Imam Hussain shrine Ziyarat, Best Ziyarat Package, Best Tour Operator, Ziyarat kafila from Delhi, Iraq Ziyarat packages from Lucknow, Iraq Ziyarat Package from Jammu and Srinagar, Iraq Ziyarat package from Jaipur, Iraq Ziyarat package from Kolkata, Iraq Ziyarat package from Punjab, iraq ziyarat packages, iraq ziyarat tours, ziyarat iraq package, baghdad ziyarat, iran iraq ziyarat packages from india, umrah and karbala package, baghdad sharif and umrah package, iraq ziarat packages, ziyarat trips to iraq, umrah with iraq ziyarat tour packages, iran iraq ziyarat tour, iran iraq ziyarat, iraq ziyarat tours from india, umrah karbala package, karbala group, karbala ziyarat, karbala group package, arbaeen package",
+    "blocks": [
+      {
+        "id": "migrated-iraq-sunni-1",
+        "type": "image",
+        "url": "/backgroundImages/iraqZiyaratSunni.jpeg",
+        "sourcePath": "/backgroundImages/iraqZiyaratSunni.jpeg",
+        "storagePath": "",
+        "alt": "Iraq Ziyarat",
+        "caption": ""
+      },
+      {
+        "id": "migrated-iraq-sunni-2",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      },
+      {
+        "id": "migrated-iraq-sunni-3",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      },
+      {
+        "id": "migrated-iraq-sunni-4",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-5-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Iraq Ziyarat Packages"
+      },
+      {
+        "id": "migrated-iraq-sunni-5",
+        "type": "packages",
+        "source": "iraq",
+        "city": "all",
+        "groupTagIds": [
+          "sunni"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-6",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1.SHAIKH ABDUL QADIR JILANI (R.A.)",
+          "2. SHAIKH ABDUL JABBAR JILANI (R.A.)",
+          "3. SHAIKH MOHAMMAD SALEH (R.A.)",
+          "4. MADARSA OF ABDUL QADIR JILANI (R.A.)",
+          "5. SHAIKH SULEMAN ABU KHUMRAH ALRIFA (R.A.)",
+          "6. SHAIKH SHAHABUDIN UMAR SUHARWARDI (R.A.)",
+          "7. SHAIKH SYED IBRAHIM BAKAR BIN BAKAR (R.A.)",
+          "8. SHAIKH IMAM GAZZALI (R.A.)",
+          "9. MAZAR SHARIF (WHO DAKU JIS NAY GHOUS PAK KE BACHPAN MAIN US SE ASHRFI LOOTI THI)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-7",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - ADHAMIYAH -5 KM"
+      },
+      {
+        "id": "migrated-iraq-sunni-8",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "10. SHAIKH IMAM ABU AZAM HANIFA (R.A.)",
+          "11. SHAIKH HASAN NOORI (R.A.)",
+          "12. SHAIKH BISHAR BIN HAAFI (R.A.)",
+          "13. SHAIKH ABU BAKAR SHIBLI (R.A.)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-9",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - AL ALAWE RAILWAY YARD 5 KM"
+      },
+      {
+        "id": "migrated-iraq-sunni-10",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "14. SHAIKH BEHLOL DANA (R.A.)",
+          "15. SHAIKH SIRRI SAQTI (R.A.)",
+          "16. SHAIKH JUNAID AL BAGHDADI (R.A.)",
+          "17. PROPHET YUSHA BIN NOON(A.S.) COMPANION OF MUSA (A.S.)",
+          "18. SHAIKH IBRAHIM KHAWWAS (R.A.)",
+          "19. SHAIKH JUNOON MISRI (R.A.)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-11",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - 60TH ROAD - 5 KM"
+      },
+      {
+        "id": "migrated-iraq-sunni-12",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "20. SHAIKH MAROOF AL KHARKI (R.A.)",
+          "21. KUWA SHAIKH MAROOF KHARKI"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-13",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - KAZMAIN - 10 KM"
+      },
+      {
+        "id": "migrated-iraq-sunni-14",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "22. SAYYED IMAM MOOSA KAZIM (R.A.) (7TH IMAM)",
+          "23. SAYYED IMAM MOHAMMAD TAQI (9TH IMAM)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-15",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD 60 KM FROM ASTANA"
+      },
+      {
+        "id": "migrated-iraq-sunni-16",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "24. HAZRAT SALMAN FARSI (R.A.) SALMAN PARK",
+          "25. HUZAIFA BIN YAMAN (R.A.)",
+          "26. TAHIR BIN MOHAMMAD AL BAQIR (R.A.)",
+          "27. ABDUALLAH BIN JABIR AL ANSARI (R.A.)",
+          "28. DARYA -E- DAJLA"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-17",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - AL MIDAN 5KM FROM ASTANA"
+      },
+      {
+        "id": "migrated-iraq-sunni-18",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "29. IMAM AHMED BIN HAMBAL (R.A.)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-19",
+        "type": "heading",
+        "level": 3,
+        "text": "NAJAF CITY - 220 KM FROM BAGDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-20",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "30. HAZRAT ALI (R.A.)",
+          "31. PROPHET SALEH (R.A.)",
+          "32. PROPHET HOOD (R.A.)",
+          "33. WADI-US- SALAAM (World Largest graveyard 14sq KM) ( MANY PROPHETS AND ISLAMIC SCHOLARS RESTING PLACE)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-21",
+        "type": "heading",
+        "level": 3,
+        "text": "AULAD-E- MUSLIM "
+      },
+      {
+        "id": "migrated-iraq-sunni-22",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "34. SAYED IBRAHIM BIN MUSLIM BIN AQEEL BIN ABU TALIB (R.A.)",
+          "35. SAYED MOHAMMAD BIN MUSLIM BIN AQEEL (R.A.)",
+          "36. MOHAMMAD BIN AQEEL",
+          "37. PROPHET AYUB (A.S.) AND HIS WIFE RAHIMA",
+          "38. SHIFA KA KUWA",
+          "39. RADDE SHAMS",
+          "40. JANAB-E- AUN AND JANAB-E- MOHAMMAD",
+          "41. JANAB-E-HOOR (R.A.)",
+          "42. BIRTH PLACE OF PROPHET IBRAHIM (A.S.)",
+          "43. WOH MUQAM JAHAN PAR NABI IBRAHIM (A.S.) KO AAG MAIN JALANE KE LIYA LAKDIYA JAMA KI GAYI THI"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-23",
+        "type": "heading",
+        "level": 3,
+        "text": "KUFA CITY-180KM SOUTH OF BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-24",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "44. MASJID-E-KUFA",
+          "45. MIMBER (JIS MIMBER PAR HAZRAT ALI (R.A.) KAY UPAR HAMLA HUA THA)",
+          "46. HAZRAT IMAM BIN MUSLIM BIN AQEEL (R.A.)",
+          "47. JANAB E HANI BIN URWA (R.A.)",
+          "48. QABAR MUKHTAR SAQAFI",
+          "49. TOOFAN-E-NOOH JAHAN SAY SHRU HUA (KUWA)",
+          "50. MUSALLAH-E-NABI ADAM (A.S.)",
+          "51. MUSALLAH HAZRAT JIBRAIEL (A.S.)",
+          "52. HOUSE OF HAZRAT ALI (R.A.)",
+          "53. WELL OF HAZRAT ALI(R.A.)",
+          "54. JANAB-E-MISAMME TAMMAR(R.A.)",
+          "55. SAYYEDA KHATIJA (R.A.) (DAUGHTER OF HAZRAT ALI)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-25",
+        "type": "heading",
+        "level": 3,
+        "text": "KARBALAI MUQADDAS-110 KM SOUTH OF BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-26",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "56. MAIDAN-E-KARBALA",
+          "57. NEHAR-E-FARAT",
+          "58. ROZA-E-IMAM HUSSAIN (R.A.)",
+          "59. ROZA-E-ABBAS ALAMBARDAR(R.A.)",
+          "60. HAZRAT HUSSAIN(R.A.) (SHAHADAT KI JAGAH)",
+          "61. ALI AKBAR(R.A.)",
+          "62. ALI ASGHAR (R.A.)",
+          "63. MUKAM-E-BAZU-E-ABBAS ALAMBARDAR",
+          "64. SHUHADA-E- KARBALA KI MAZAR",
+          "65. ZAINAB (R.A.) TEKRI"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-27",
+        "type": "heading",
+        "level": 3,
+        "text": "SAMARRAH- TJIS ZIYARAT IS EXTRA PAYABLE NOT INCLUDED IN PACKAGE 140KM FROM BAGDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-28",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "66. IMAM ALI NAQI (R.A.) (10th IMAM)",
+          "67. IMAM HASAN ASKARI (R.A.) (11th IMAM)"
+        ]
+      },
+      {
+        "id": "migrated-iraq-sunni-29",
+        "type": "heading",
+        "level": 3,
+        "text": "BAGHDAD - THIS ZIYARAT IS EXTRA PAYABLE NOT INCLUDED IN THIS PACKAGE 530 KM FROM BAGHDAD"
+      },
+      {
+        "id": "migrated-iraq-sunni-30",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "68. ANAS BIN MALIK (R.A.)(COMPANION OF THE PROPHET)",
+          "69. KHWAJA HASAN BASRI (R.A.)",
+          "70. SAYYED SHAIKH AHMAD KABIR RIFAI (R.A.)"
+        ]
+      }
+    ]
+  },
+  "turkey-packages": {
+    "seoTitle": "Turkey Holiday Packages - Al Azeem Tours and Travel",
+    "seoDescription": "",
+    "seoKeywords": "Turkey tour package, Turkey holiday packages, Turkey tours, Istanbul holiday package, Turkey travel packages, Turkey packages, Istanbul tour package, Turkey vacation package, Turkey trip packages, 10 days Turkey tour packages, Istanbul packages, Cappadocia tour package, turkey itinerary 10 days, Istanbul vacation packages, Istanbul travel package, Turkey Istanbul tours, trip to Turkey cost, Cappadocia travel packages, 4 day Istanbul tour package, Turkey tour packages for couple, Istanbul city tour package, Ephesus Turkey tours, Turkey Istanbul package holidays, Turkey Istanbul package, Istanbul tour package for couple, Cappadocia Turkey tour package, package trip to Turkey, Turkey budget trip, 8 days Turkey itinerary, Turkey travel tour packages, Istanbul Turkey vacation packages, Turkey itinerary 9 days, trips to Istanbul packages, package trip to Istanbul, Turkey tour trip, travel packages to Istanbul Turkey, Cappadocia package tour, package Istanbul holidays, package holidays in Istanbul, trip to Istanbul from India, Turkey Greece packages, Turkey Greece tour package, Turkey trips cost,",
+    "blocks": [
+      {
+        "id": "migrated-turkey-packages-1",
+        "type": "image",
+        "url": "/backgroundImages/turkey.png",
+        "sourcePath": "/backgroundImages/turkey.png",
+        "storagePath": "",
+        "alt": "Turkey packages",
+        "caption": ""
+      },
+      {
+        "id": "migrated-turkey-packages-2",
+        "type": "paragraph",
+        "text": "Turkey, officially known as the Republic of Turkey, is a transcontinental country located mainly on the Anatolian Peninsula in Western Asia, with a smaller portion on the Balkan Peninsula in Southeastern Europe. It is bordered by eight countries: Greece and Bulgaria to the northwest; Georgia to the northeast; Armenia, Azerbaijan, and Iran to the east; and Iraq and Syria to the south. The country also has coastlines along the Aegean Sea to the west, the Mediterranean Sea to the south, and the Black Sea to the north."
+      },
+      {
+        "id": "migrated-turkey-packages-3",
+        "type": "paragraph",
+        "text": "Turkey is a major global tourist destination, attracting millions of visitors annually due to its unique blend of natural beauty, historical sites, cultural heritage, and diverse landscapes. That making it a prime spot for tourists from around the world."
+      },
+      {
+        "id": "migrated-turkey-packages-4",
+        "type": "heading",
+        "level": 2,
+        "text": "1. Historical and Archaeological Sites:"
+      },
+      {
+        "id": "migrated-turkey-packages-5-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Turkey Packages"
+      },
+      {
+        "id": "migrated-turkey-packages-5",
+        "type": "packages",
+        "source": "turkey",
+        "packageType": "all",
+        "city": "all",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-turkey-packages-6",
+        "type": "paragraph",
+        "text": "Istanbul: As a former capital of the Byzantine and Ottoman Empires, Istanbul is rich in historical landmarks. Key sites include the Hagia Sophia, Blue Mosque, Topkapi Palace, and Basilica Cistern"
+      },
+      {
+        "id": "migrated-turkey-packages-7",
+        "type": "paragraph",
+        "text": "Ephesus: Located in western Turkey, Ephesus is one of the best-preserved ancient cities in the Mediterranean region, showcasing remarkable ruins such as the Library of Celsus, the Great Theatre, and the Temple of Artemis (one of the Seven Wonders of the Ancient World)."
+      },
+      {
+        "id": "migrated-turkey-packages-8",
+        "type": "paragraph",
+        "text": "Cappadocia: Known for its surreal landscapes, fairy chimneys, rock-hewn churches, and cave dwellings, Cappadocia is also famous for hot air balloon rides offering breathtaking views of the region."
+      },
+      {
+        "id": "migrated-turkey-packages-9",
+        "type": "paragraph",
+        "text": "Pamukkale and Hierapolis: Pamukkale, also known as \"Cotton Castle,\" is famous for its terraces of mineral-rich thermal waters. Nearby Hierapolis, an ancient Roman spa city, adds historical depth to this natural wonder."
+      },
+      {
+        "id": "migrated-turkey-packages-10",
+        "type": "heading",
+        "level": 2,
+        "text": "2. Cultural and Culinary Attractions:"
+      },
+      {
+        "id": "migrated-turkey-packages-11",
+        "type": "paragraph",
+        "text": "Turkey boasts a rich and diverse cultural heritage that spans multiple civilizations. This diversity is reflected in its cuisine, which includes a variety of dishes such as kebabs, mezes, baklava, and Turkish tea and coffee. Local markets, like the Grand Bazaar in Istanbul, offer a vibrant shopping experience with goods ranging from spices to carpets and jewellery."
+      },
+      {
+        "id": "migrated-turkey-packages-12",
+        "type": "heading",
+        "level": 2,
+        "text": "3. Coastal Resorts and Beaches:"
+      },
+      {
+        "id": "migrated-turkey-packages-13",
+        "type": "paragraph",
+        "text": "Turkish Riviera (Turquoise Coast): The southwestern coast, known as the Turkish Riviera or Turquoise Coast, is famous for its beautiful beaches, clear turquoise waters, and luxury resorts. Popular destinations include Antalya, Bodrum, Marmaris, and Fethiye. These areas offer a mix of historical sites, beaches, and vibrant nightlife."
+      },
+      {
+        "id": "migrated-turkey-packages-14",
+        "type": "paragraph",
+        "text": "Bodrum and Marmaris: Known for their marinas, beaches, and nightlife, these towns are also rich in history, with ancient ruins and museums."
+      },
+      {
+        "id": "migrated-turkey-packages-15",
+        "type": "heading",
+        "level": 2,
+        "text": "4. Natural Beauty and Outdoor Activities:"
+      },
+      {
+        "id": "migrated-turkey-packages-16",
+        "type": "paragraph",
+        "text": "Mount Ararat: The highest peak in Turkey, Mount Ararat, is a popular destination for climbers and adventurers. It is also traditionally associated with the story of Noah\"s Ark."
+      },
+      {
+        "id": "migrated-turkey-packages-17",
+        "type": "paragraph",
+        "text": "Lake Van and Nemrut Mountain: Lake Van, the largest lake in Turkey, and Nemrut Mountain, with its giant statues and royal tombs, are significant attractions in eastern Turkey."
+      },
+      {
+        "id": "migrated-turkey-packages-18",
+        "type": "paragraph",
+        "text": "Outdoor Activities: Turkey offers diverse outdoor activities, including hiking, skiing (in regions like Uludağ and Palandöken), sailing along the coast, paragliding in Ölüdeniz, and white-water rafting in the rivers of the Black Sea region."
+      },
+      {
+        "id": "migrated-turkey-packages-19",
+        "type": "heading",
+        "level": 2,
+        "text": "5. Hot Springs and Thermal Resorts:"
+      },
+      {
+        "id": "migrated-turkey-packages-20",
+        "type": "paragraph",
+        "text": "Turkey has numerous hot springs and thermal resorts due to its geothermal activity, which is popular among tourists seeking health and wellness experiences. Pamukkale and Bursa are famous for their thermal baths."
+      }
+    ]
+  },
+  "turkey": {
+    "seoTitle": "Turkey",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "blocks": [
+      {
+        "id": "migrated-turkey-1",
+        "type": "image",
+        "url": "/backgroundImages/iraqZiyaratShia.jpeg",
+        "sourcePath": "/backgroundImages/iraqZiyaratShia.jpeg",
+        "storagePath": "",
+        "alt": "Karbala Iraq Ziyarat",
+        "caption": ""
+      },
+      {
+        "id": "migrated-turkey-2",
+        "type": "heading",
+        "level": 2,
+        "text": "KARBALA (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-turkey-3-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Karbala Ziyarat Packages"
+      },
+      {
+        "id": "migrated-turkey-3",
+        "type": "packages",
+        "source": "iraq",
+        "city": "all",
+        "groupTagIds": [
+          "shia"
+        ]
+      },
+      {
+        "id": "migrated-turkey-4",
+        "type": "paragraph",
+        "text": "Karbala is a significant city in central Iraq, known for its historical and religious importance, particularly within the Islamic faith, specifically for the Shia Muslim community. The city is located about 100 kilometres southwest of the capital city, Baghdad. It holds great significance due to the events associated with the Battle of Karbala, which took place in 680 AD."
+      },
+      {
+        "id": "migrated-turkey-5",
+        "type": "paragraph",
+        "text": "1. Battle of Karbala: The Battle of Karbala is a pivotal event in Islamic history. It occurred during the month of Muharram in the year 680 AD (61 AH) and was a confrontation between the forces of Imam Hussein ibn Ali, the grandson of Prophet Muhammad, and the Umayyad Caliphate's army led by Yazid I. The battle resulted in the martyrdom of Imam Hussein and his followers. This event is commemorated annually by Shia Muslims during the month of Muharram, especially on the day of Ashura. The battle symbolizes principles such as standing up against injustice, tyranny, and oppression."
+      },
+      {
+        "id": "migrated-turkey-6",
+        "type": "paragraph",
+        "text": "2. Imam Hussein Shrine: One of the most prominent landmarks in Karbala is the Imam Hussein Shrine, which is a significant pilgrimage site for Shia Muslims around the world. The shrine is a grand mausoleum that houses the remains of Imam Hussein. Every year, millions of Shia pilgrims visit the shrine to pay their respects and participate in religious rituals. The annual pilgrimage, known as ARBEEN, is one of the largest peaceful gatherings in the world."
+      },
+      {
+        "id": "migrated-turkey-7",
+        "type": "paragraph",
+        "text": "3. Religious Significance: Karbala is considered a holy city for Shia Muslims due to its association with Imam Hussein and his martyrdom. The city's historical and spiritual importance draws believers who seek to connect with the principles of justice, resistance, and devotion. Karbala's role in shaping the religious and cultural identity of Shia communities cannot be understated."
+      },
+      {
+        "id": "migrated-turkey-8",
+        "type": "paragraph",
+        "text": "4. ABAEEN Pilgrimage: ARBAEEN is an annual pilgrimage that occurs 40 days after Ashura, marking the end of the mourning period for Imam Hussein's martyrdom. It is a massive event where millions of pilgrims, often on foot, journey to Karbala from various parts of the world. This pilgrimage reflects the unity, solidarity, and commitment of the Shia community to the values represented by Imam Hussein."
+      },
+      {
+        "id": "migrated-turkey-9",
+        "type": "paragraph",
+        "text": "Karbala's historical significance and ongoing role as a centre of religious devotion make it a place of deep reverence for millions of Shia Muslims worldwide."
+      },
+      {
+        "id": "migrated-turkey-10",
+        "type": "heading",
+        "level": 2,
+        "text": "NAJAF (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-turkey-11",
+        "type": "paragraph",
+        "text": "Najaf, located in central Iraq, holds immense historical and cultural significance, particularly within the context of Islamic history. Here's an overview of its history:"
+      },
+      {
+        "id": "migrated-turkey-12",
+        "type": "paragraph",
+        "text": "Ancient History: Najaf's history can be traced back to ancient times. It was initially a small agricultural settlement that grew around a natural oasis. The city's location near the Euphrates River made it a vital hub for trade and agriculture in Mesopotamia."
+      },
+      {
+        "id": "migrated-turkey-13",
+        "type": "paragraph",
+        "text": "Islamic History: Najaf gained prominence due to its connection to Islam and its status as a significant religious centre. The city is renowned for its association with the First imam of Islam, Imam Ali ibn Abi Talib (600-661 AD), who is highly revered by Shia Muslims. Imam Ali's tomb, located in the city's heart, is a major pilgrimage site and one of the holiest places for Shia Muslims."
+      },
+      {
+        "id": "migrated-turkey-14",
+        "type": "paragraph",
+        "text": "Theological Centre: Najaf has been a centre of Islamic scholarship for centuries. The city's seminaries have produced many renowned scholars, theologians, and jurists who have contributed significantly to Shia Islamic thought. These institutions attract students from various parts of the world, making Najaf a global hub for Islamic education."
+      },
+      {
+        "id": "migrated-turkey-15",
+        "type": "paragraph",
+        "text": "Tourism: Najaf remains a significant pilgrimage site for Shia Muslims. Millions of pilgrims visit the city annually to pay their respects at the shrine of Imam Ali. The city's economy is closely tied to religious tourism."
+      },
+      {
+        "id": "migrated-turkey-16",
+        "type": "heading",
+        "level": 2,
+        "text": "BAGDAD (IRAQ ZIYARAT)"
+      },
+      {
+        "id": "migrated-turkey-17",
+        "type": "paragraph",
+        "text": "Baghdad, the capital city of Iraq, has a rich and complex history that spans thousands of years. Here's a brief overview:"
+      },
+      {
+        "id": "migrated-turkey-18",
+        "type": "paragraph",
+        "text": "Foundation: Baghdad was officially founded in the 8th century. In 762 AD, the Abbasid Caliph Al-Mansur chose the location for his new capital and named it Madinat al-Salam which means the City of Peace. This marked the beginning of Baghdad's significance as a major cultural, political, and economic centre in the Islamic world."
+      },
+      {
+        "id": "migrated-turkey-19",
+        "type": "paragraph",
+        "text": "Golden Age: The Abbasid Caliphate's rule saw a “Golden Age“ in Baghdad during the 8th to 10th centuries. It became a hub for scholars, philosophers, mathematicians, and artists from diverse backgrounds. The House of Wisdom, an important centre of learning and translation, played a key role in preserving and translating ancient Greek, Persian, and Indian works into Arabic."
+      },
+      {
+        "id": "migrated-turkey-20",
+        "type": "paragraph",
+        "text": "Modern Capital: Baghdad became the capital of the newly established Kingdom of Iraq in 1921. The city continued to experience growth and modernization throughout the 20th century, with significant developments and urban expansion."
+      },
+      {
+        "id": "migrated-turkey-21",
+        "type": "paragraph",
+        "text": "Present Day: In the post-conflict era, Baghdad continues to rebuild and develop. It remains an important cultural and economic hub in the region, but it also faces challenges related to security, political stability, and infrastructure development."
+      },
+      {
+        "id": "migrated-turkey-22",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      },
+      {
+        "id": "migrated-turkey-23",
+        "type": "paragraph",
+        "text": "Ziyarat"
+      }
+    ]
+  },
+  "holiday-packages": {
+    "seoTitle": "Holiday Packages",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "blocks": [
+      {
+        "id": "migrated-holiday-packages-1",
+        "type": "image",
+        "url": "/backgroundImages/HolidayPackages.jpeg",
+        "sourcePath": "/backgroundImages/HolidayPackages.jpeg",
+        "storagePath": "",
+        "alt": "Holiday packages",
+        "caption": ""
+      },
+      {
+        "id": "migrated-holiday-packages-2",
+        "type": "paragraph",
+        "text": "AA Tour & Travels duly recognized travel organization in Indian tourism industry. We are a professionally managed closely held agency and management control is vested with the firstgeneration promoter entrepreneurs. Transaction level operations are executed by a team of professionally qualified professionals, who are well versed with the complexities of travel & tourism trade. The team is well aware and equipped to cater to requirements of various market segments and understands the nuances of tourism in India and abroad. AA TOUR & TRAVELS to offer and organize all travel related services under one umbrella."
+      },
+      {
+        "id": "migrated-holiday-packages-3",
+        "type": "paragraph",
+        "text": "We are recognized by IATA. we have team of expert to give the best as per the need of valuable clients in inbound packages like Kashmir Packages, Kerala Packages, Himachal Packages, Goa packages, East Indian Tourist Spots as well as outbound Thailand (Bangkok), Singapore, Malaysia, Maldives Europe, Dubai and other Destinations. Some of tourist highlight spots given below."
+      },
+      {
+        "id": "migrated-holiday-packages-4",
+        "type": "heading",
+        "level": 2,
+        "text": "EXPLORE SRINAGAR"
+      },
+      {
+        "id": "migrated-holiday-packages-5-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Explore Srinagar"
+      },
+      {
+        "id": "migrated-holiday-packages-5",
+        "type": "packages",
+        "source": "holiday",
+        "packageType": "all",
+        "city": "SRINAGAR",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-holiday-packages-6-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Explore Kerala"
+      },
+      {
+        "id": "migrated-holiday-packages-6",
+        "type": "packages",
+        "source": "holiday",
+        "packageType": "all",
+        "city": "KERALA",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-holiday-packages-7-heading",
+        "type": "heading",
+        "level": 2,
+        "text": "Explore Himachal"
+      },
+      {
+        "id": "migrated-holiday-packages-7",
+        "type": "packages",
+        "source": "holiday",
+        "packageType": "all",
+        "city": "HIMACHAL",
+        "groupTagIds": []
+      },
+      {
+        "id": "migrated-holiday-packages-8",
+        "type": "heading",
+        "level": 2,
+        "text": "EXPLORE KERALA"
+      },
+      {
+        "id": "migrated-holiday-packages-9",
+        "type": "heading",
+        "level": 2,
+        "text": "EXPLORE MANALAI (HIMACHAL)"
+      }
+    ]
+  },
+  "flight-fare": {
+    "seoTitle": "Flight Fares - Al Azeem Tours and Travel",
+    "seoDescription": "",
+    "seoKeywords": "dubai fare, dubai ticket price, fly dubai flights, dubai flight tickets, dubai flight ticket price, dubai plane tickets, dubai air ticket price, dubai air ticket, dubai ticket price from delhi, dubai plane ticket price, dubai ticket from delhi, delhi to dubai flight fare, dubai flight price, air fare to dubai, dubai airlines ticket price, dubai tickets from mumbai, dubai flight booking, flights from dubai to mangalore, dubai ticket flight, dubai to thiruvananthapuram flight, air ticket delhi to dubai, cost of flights to dubai, flight ticket for dubai, flights from pune to dubai, fly tickets to dubai, india to dubai ticket, dubai air fare, dubai calicut flight, fares to dubai, air ticket for dubai, cheapest airline to dubai, plane tickets for dubai, price of flights to dubai, ticket rate calicut to dubai, ticket dubai price, chennai to dubai flight fare, air fare mumbai to dubai, ticket fare from kochi to dubai, ticket flight dubai, low cost flights to dubai, air fare delhi to dubai, ticket price to dubai from india, bargain flights to dubai, delhi to dubai fare, airline tickets for dubai, plane fare to dubai, flights to dubai united arab emirates, bangalore to dubai flight fare, mumbai to dubai flight charges, air ticket from india to dubai, cochin to dubai flight fare, air ticket price india to dubai, price of air ticket to dubai, air fare dubai to mumbai, ticket fare from mumbai to dubai, dubai uae flights, air fare ahmedabad to dubai, air fare for dubai, air fare from amritsar to dubai, air fare from chennai to dubai, air fare from hyderabad to dubai, air fare from kochi to dubai, air fare from pune to dubai, air fare from trivandrum to dubai, air fare of dubai, air ticket fare delhi to dubai, air ticket fare from delhi to dubai, air ticket fare from mumbai to dubai, air ticket price of dubai, air ticket rate from trivandrum to dubai, airline ticket price to dubai, chennai to dubai flight ticket fare, cochin to dubai ticket fare, cost of air ticket to dubai, cost of dubai flight ticket, cost of flight ticket to dubai, dubai air ticket cost, dubai dubai flight, dubai flight ticket cost, dubai tickets cost, dubai tickets from india price, flight booking in dubai, flight prices dubai, flight ticket price for dubai, flights dubai cheap, flights dubai uae, flights to dubai emirate, india to dubai flight ticket dare, delhi to Riyadh ticket , Delhi to Riyadh fare, Riyadh Ticket, Riyadh Ticket price, Delhi to Jeddah Ticket Price, Jeddah Ticket Price, Delhi to Sharajh Ticket Price, Sharjah Ticket Price, Sharjah Air fare, Delhi to Sharaj Air Fare,",
+    "blocks": [
+      {
+        "id": "migrated-flight-fare-1",
+        "type": "paragraph",
+        "text": "Dubai, a city synonymous with ambition and innovation, rises like a mirage from the Arabian desert, boasting a skyline adorned with architectural marvels. This global metropolis, nestled in the United Arab Emirates, seamlessly blends tradition with modernity, offering a captivating glimpse into the future while cherishing its rich heritage."
+      },
+      {
+        "id": "migrated-flight-fare-2",
+        "type": "flightFares",
+        "heading": "Flight Fares"
+      },
+      {
+        "id": "migrated-flight-fare-3",
+        "type": "paragraph",
+        "text": "At the heart of Dubai lies its relentless pursuit of excellence, evident in its record-breaking structures like the Burj Khalifa, piercing the sky at over 828 meters, and the Palm Jumeirah, an engineering feat visible from space. These iconic landmarks stand as testaments to Dubai's audacious vision and unwavering determination to push boundaries."
+      },
+      {
+        "id": "migrated-flight-fare-4",
+        "type": "paragraph",
+        "text": "Yet, Dubai isn't merely a city of skyscrapers. Its vibrant culture, influenced by a mosaic of nationalities, flavors every corner with diversity and dynamism. Traditional souks, bustling with the aroma of spices, coexist alongside ultra-modern shopping malls, offering a juxtaposition that reflects Dubai's multifaceted identity."
+      },
+      {
+        "id": "migrated-flight-fare-5",
+        "type": "paragraph",
+        "text": "In recent years, Dubai has emerged as a global hub for business, tourism, and innovation. Its strategic location, state-of-the-art infrastructure, and business-friendly policies have attracted multinational corporations and entrepreneurs from around the world, fostering a thriving economy and a melting pot of ideas."
+      },
+      {
+        "id": "migrated-flight-fare-6",
+        "type": "paragraph",
+        "text": "Moreover, Dubai's commitment to sustainability and environmental stewardship underscores its evolution as a responsible global citizen. Initiatives like the Dubai Clean Energy Strategy and the Sustainable City project epitomize its dedication to shaping a greener, more sustainable future for generations to come."
+      },
+      {
+        "id": "migrated-flight-fare-7",
+        "type": "paragraph",
+        "text": "Beyond its gleaming facades and bustling streets, Dubai's soul lies in the warmth and hospitality of its people. Embracing visitors with open arms, Dubai offers a tapestry of experiences, from exhilarating desert safaris to cultural festivals celebrating its rich heritage."
+      },
+      {
+        "id": "migrated-flight-fare-8",
+        "type": "paragraph",
+        "text": "In essence, Dubai is more than just a city—it's a symbol of boundless possibilities, where dreams are transformed into reality against the backdrop of endless sands and shimmering skylines. As it continues to write its story on the world stage, Dubai remains an unparalleled destination where the extraordinary becomes the norm, and the impossible is merely a challenge waiting to be conquered."
+      }
+    ]
+  },
+  "forex": {
+    "seoTitle": "Al Azeem Tours and Travels | FOREX",
+    "seoDescription": "",
+    "seoKeywords": "",
+    "blocks": [
+      {
+        "id": "migrated-forex-1",
+        "type": "image",
+        "url": "/backgroundImages/forex.webp",
+        "sourcePath": "/backgroundImages/forex.webp",
+        "storagePath": "",
+        "alt": "Foreign exchange services",
+        "caption": ""
+      },
+      {
+        "id": "migrated-forex-2",
+        "type": "heading",
+        "level": 2,
+        "text": "FOREX"
+      },
+      {
+        "id": "migrated-forex-3",
+        "type": "cta",
+        "text": "Contact Us On: +919811136987",
+        "href": "tel:+919811136987",
+        "newTab": false
+      },
+      {
+        "id": "migrated-forex-4",
+        "type": "paragraph",
+        "text": "Gupta forex & Allied Services is licensed as authorized dealer &lpar; unit of khanna Forex pvt ltd, new Delhi &rpar;. we are specialized in outward remittances as per guidelines of RBI. we offer best exchange rates for buying and selling of foreign currency, forex card. We are offering service to individuals, corporates, students, wholesale customers and money changers. our sister concern AL Azeem Tour & Travels ( IATA) do all travel related services like air ticketing ( domestic & international ), visa, inbound and outbound packages, hotel booking and other travel related solutions. We also specialized in arranging school picnics. 9811136987, 9811355086, 9717040012"
+      }
+    ]
+  },
+  "visa": {
+    "seoTitle": "Dubai Visa From India - Al Azeem Tours and Travel",
+    "seoDescription": "Looking for a Dubai Visa from India? Al Azeem Travels offers expert assistance as a trusted Dubai Visa agent in Delhi. Get the best Dubai tourist visa fees and Dubai visit visa prices today.",
+    "seoKeywords": "Dubai Visa, Dubai Visa From India, Dubai Visa Agent in Delhi, Travel Agent for Dubai Visa, Dubai Tourist Visa Fees, Dubai Visit Visa Price, Dubai Tourist Visa Price, Sharjah Visa, Sharjah Visa Agent, Azerbaijan Tourist Visa, Azerbaijan Tourist Visa Agent in Delhi, Azerbaijan Visa From India, Thailand Visa, Bangkok Visa, Thailand Visa Agent in Delhi, Thailand Visa from India, UK Visa, UK visa Agent In Delhi, UK Visa From India, Vietnam Visa, Vietnam Visa Agent, Vietnam Visa from India, Iraq Visa, Iraq Visa Agent in Delhi, Iraq Visa from India, Iran Visa, Iran Visa Agent in Delhi, Iran Visa From India, Saudi Arab Umrah Visa, Saudi Arab Tourist Visa, Saudi Arab Visa Agent, Umrah Visa Agent, Umrah Visa Agent in Delhi, Umrah Visa Price, UAE Visa, Oman Visa, Oman Visa Agent, Oman Visa from India, Qatar Visa, Qatar Visa from India, Qatar Visa Agent, Australia Visa, Australia Tourist Visa, Australia Tourist Visa Agent, US Visa, US Visa Agent, US Visa from India, Russia Visa, Russia Visa Agent, Russia Visa from India, Turkey Visa, Turkey Tourist Visa, Turkey Tourist Visa Agent, China Visa, China Visa Agent, China Visa from India, Egypt Visa, Egypt Visa Agent, Singapore Visa, Singapore Visa Agent, Malaysia Visa, Malaysia Tourist Visa agent, Malaysia Visa from India, Armenia Visa, Armenia Visa Agent, Schengen visa, Schengen visa Agent, Schengen visa from India, Schengen countries, France Visa, France Visa Agent, Italy Visa, Italy Visa Agent, Germany Visa, Germany Visa Agent, Germany Visa From India, Travel agent in Delhi, Travel Agent",
+    "blocks": [
+      {
+        "id": "migrated-visa-1",
+        "type": "image",
+        "url": "/backgroundImages/visa.jpg",
+        "sourcePath": "/backgroundImages/visa.jpg",
+        "storagePath": "",
+        "alt": "Visa services",
+        "caption": ""
+      },
+      {
+        "id": "migrated-visa-2",
+        "type": "heading",
+        "level": 1,
+        "text": "Dubai Visa From India - Trusted Travel Agent for Dubai Visa Services"
+      },
+      {
+        "id": "migrated-visa-3",
+        "type": "heading",
+        "level": 2,
+        "text": "Apply for a Dubai Tourist Visa with Al Azeem Travels"
+      },
+      {
+        "id": "migrated-visa-4",
+        "type": "paragraph",
+        "text": "AL AZEEM TOUR & TRAVELS is a travel agency affiliated to IATA dedicated to provide memorable travel experiences around the world. Our agency mission is to provide seamless, enriching travel experiences that cater to the unique needs and desires of each client. Our agency aim to provide the best services to remove the stress and complexity from travel planning with the help of our experience staff. Below services provided by our agency"
+      },
+      {
+        "id": "migrated-visa-5",
+        "type": "heading",
+        "level": 2,
+        "text": "Dubai / Sharjah Visa"
+      },
+      {
+        "id": "migrated-visa-6",
+        "type": "paragraph",
+        "text": "Dubai, one of the seven emirates that make up the United Arab Emirates (UAE), is renowned for its rapid development and modern architecture. Over the past few decades, it has transformed from a small fishing village to a global city known for its luxury shopping, ultramodern buildings, and vibrant nightlife."
+      },
+      {
+        "id": "migrated-visa-7",
+        "type": "paragraph",
+        "text": "Key highlights of Dubai include:"
+      },
+      {
+        "id": "migrated-visa-8",
+        "type": "paragraph",
+        "text": "The city's economy is diverse, with major sectors including tourism, aviation, real estate, and financial services. Dubai is famous for Tourism and giving e visa for 30 days 60 days visa and 90 days visa."
+      },
+      {
+        "id": "migrated-visa-9",
+        "type": "paragraph",
+        "text": "Documents Required"
+      },
+      {
+        "id": "migrated-visa-10",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Passport PDF Frond and Back Page",
+          "2. Photo with white back Ground",
+          "3. PAN card Photo"
+        ]
+      },
+      {
+        "id": "migrated-visa-11",
+        "type": "heading",
+        "level": 2,
+        "text": "Thailand Visa"
+      },
+      {
+        "id": "migrated-visa-12",
+        "type": "paragraph",
+        "text": "Thailand, located in Southeast Asia, is renowned for its rich culture, stunning beaches, and delicious cuisine. The country is a constitutional monarchy, with Bangkok as its vibrant capital. Key highlights include:"
+      },
+      {
+        "id": "migrated-visa-13",
+        "type": "paragraph",
+        "text": "Thailand's economy is diverse, with strong sectors in tourism, agriculture, and manufacturing. The country is predominantly Buddhist, and its culture is a blend of ancient traditions and modern influences. Thailand visa is provided by VSF as per the travel ternary"
+      },
+      {
+        "id": "migrated-visa-14",
+        "type": "paragraph",
+        "text": "Documents Required"
+      },
+      {
+        "id": "migrated-visa-15",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Photo with white back Ground",
+          "2. Original Passport",
+          "3. Original Booking Air Ticket",
+          "4. Bank Statement attested by bank with minimum balance 125000/-",
+          "5. Hotel Booking Original Voucher"
+        ]
+      },
+      {
+        "id": "migrated-visa-16",
+        "type": "heading",
+        "level": 2,
+        "text": "Azerbaijan Visa"
+      },
+      {
+        "id": "migrated-visa-17",
+        "type": "paragraph",
+        "text": "Azerbaijan, located at the crossroads of Eastern Europe and Western Asia, is known for its rich cultural heritage, diverse landscapes, and rapid modernization. The country is a republic with Baku as its capital. Key highlights include:"
+      },
+      {
+        "id": "migrated-visa-18",
+        "type": "paragraph",
+        "text": "Azerbaijan's economy is primarily driven by oil and gas exports, but it is also focusing on developing sectors like agriculture, tourism, and technology. The country is known for its hospitality, traditional music (mugham), and cuisine, which includes dishes like plov and kebabs. Azerbaijan's unique blend of modernity and tradition makes it a fascinating destination. E visa is Available for Azerbaijan urgent visa is also available issued in 3 hours and normal visa takes 3 or 4 days. Only passport JPJ front and back page reuired. And address for stay also required"
+      },
+      {
+        "id": "migrated-visa-19",
+        "type": "heading",
+        "level": 2,
+        "text": "SAUDI ARABIA VISA (Tourist & Umrah Visa)"
+      },
+      {
+        "id": "migrated-visa-20",
+        "type": "paragraph",
+        "text": "Saudi Arabia, located on the Arabian Peninsula, is known for its vast deserts, rich cultural heritage, and significant role in the global oil industry. Key highlights include:"
+      },
+      {
+        "id": "migrated-visa-21",
+        "type": "paragraph",
+        "text": "Saudi Arabia's economy is heavily based on oil exports, but it is undergoing significant changes to reduce dependency on oil and promote other sectors. The country's cultural landscape is deeply influenced by Islamic traditions, making it a unique blend of ancient heritage and modern development. Saudi Arabia is providing Tourist visa for 30 days and 90 Days Multiple Entry Visa, and Umrah Visa is e visa for 90 days from the date of issue"
+      },
+      {
+        "id": "migrated-visa-22",
+        "type": "paragraph",
+        "text": "Documents Required"
+      },
+      {
+        "id": "migrated-visa-23",
+        "type": "paragraph",
+        "text": "Umrah Visa"
+      },
+      {
+        "id": "migrated-visa-24",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Passport PDF Frond and Back Page",
+          "2. Photo with white back Ground",
+          "3. PAN card Photo"
+        ]
+      },
+      {
+        "id": "migrated-visa-25",
+        "type": "paragraph",
+        "text": "Tourist Visa (Sticker Visa)"
+      },
+      {
+        "id": "migrated-visa-26",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Original Passport",
+          "2. Bank Statement with seal and Signature",
+          "3. Photo with white back ground",
+          "4. PAN card"
+        ]
+      },
+      {
+        "id": "migrated-visa-27",
+        "type": "heading",
+        "level": 2,
+        "text": "E VISA FACILITY"
+      },
+      {
+        "id": "migrated-visa-28",
+        "type": "paragraph",
+        "text": "Many countries offer e-visa facilities to simplify the visa application process for travelers. Here is a list of some countries that provide e-visa services:"
+      },
+      {
+        "id": "migrated-visa-29",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Australia E Visa",
+          "2. Azerbaijan E Visa",
+          "3. Bahrain E Visa",
+          "4. Cambodia E Visa",
+          "5. Canada E Visa",
+          "6. Colombia E Visa",
+          "7. Djibouti E Visa",
+          "8. Egypt E Visa",
+          "9. Ethiopia E Visa",
+          "10. Georgia E Visa",
+          "11. Kenya E Visa",
+          "12. Kuwait E Visa",
+          "13. Laos E Visa",
+          "14. Malaysia E Visa",
+          "15. Myanmar E Visa",
+          "16. New Zealand E Visa"
+        ]
+      },
+      {
+        "id": "migrated-visa-30",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "17. Oman E Visa",
+          "18. Qatar E Visa",
+          "19. Russia E Visa",
+          "20. Saudi Arabia E Visa",
+          "21. Singapore E Visa",
+          "22. Sri Lanka E Visa",
+          "23. Tajikistan E Visa",
+          "24. Turkey E Visa",
+          "25. Uganda E Visa",
+          "26. Ukraine E Visa",
+          "27. United Arab Emirates (UAE)",
+          "28. Uzbekistan E Visa",
+          "29. Vietnam E Visa",
+          "30. Zambia E Visa",
+          "31. Zimbabwe E Visa"
+        ]
+      },
+      {
+        "id": "migrated-visa-31",
+        "type": "paragraph",
+        "text": "Please note that the availability and specific requirements for e-visas can change, so it's always best to check with us."
+      },
+      {
+        "id": "migrated-visa-32",
+        "type": "heading",
+        "level": 2,
+        "text": "Countries Don't Have E Visa Facility"
+      },
+      {
+        "id": "migrated-visa-33",
+        "type": "paragraph",
+        "text": "While many countries offer e-visa facilities, several do not provide this option, requiring travelers to apply for visas through embassies or consulates. Here is a list of some countries that currently do not have e-visa facilities:"
+      },
+      {
+        "id": "migrated-visa-34",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "1. Afghanistan",
+          "2. Algeria",
+          "3. Bhutan",
+          "4. Chad",
+          "5. Cuba",
+          "6. Democratic Republic of the Congo",
+          "7. Eritrea",
+          "8. Gabon",
+          "9. Iraq"
+        ]
+      },
+      {
+        "id": "migrated-visa-35",
+        "type": "list",
+        "ordered": false,
+        "items": [
+          "10. North Korea",
+          "11. Libya",
+          "12. Mali",
+          "13. Niger",
+          "14. South Sudan",
+          "15. Syria",
+          "16. Turkmenistan",
+          "17. Venezuela",
+          "18. Yemen"
+        ]
+      },
+      {
+        "id": "migrated-visa-36",
+        "type": "paragraph",
+        "text": "Visa policies frequently change, so it's advisable to check the latest information from us"
+      }
+    ]
+  }
+}

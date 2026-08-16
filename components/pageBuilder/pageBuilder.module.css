@@ -1,0 +1,191 @@
+.page {
+    width: min(1180px, calc(100% - 32px));
+    margin: 32px auto;
+}
+.contentBlock { width: 93%; margin-left: auto; margin-right: auto; }
+
+.paragraph {
+    color: #5a5a5a;
+    font-size: 1.1rem;
+    line-height: 35px;
+    white-space: pre-wrap;
+}
+.paragraph + .paragraph { margin-top: 24px; }
+.list { padding-left: 28px; line-height: 1.75; font-size: 17px; }
+.boldList { font-weight: 600; }
+.iconList { line-height: 1.75; }
+.imageBlock { width: 100%; }
+.imageWrap { width: 100%; }
+.image { display: block; height: auto; max-width: 100%; }
+.imageFullWidth { width: 100%; }
+.imageOriginal { width: auto; margin-left: auto; margin-right: auto; }
+.imageRounded { border-radius: 10px; }
+.imageShadow { box-shadow: 10px 10px 20px #00000030; }
+.sliderBlock { width: 100%; }
+.caption { text-align: center; color: #666; margin-top: 8px; }
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; min-width: 520px; }
+.table caption { font-weight: 700; margin-bottom: 10px; }
+.table th, .table td { border: 1px solid #d8d8d8; padding: 12px; text-align: left; }
+.table th { background: #f3f6f8; }
+.flightFareTableWrap { margin-bottom: 40px; overflow-x: auto; }
+.flightFareTable {
+    border-collapse: separate;
+    border-spacing: 2px;
+    margin: 0 auto;
+    min-width: 720px;
+    width: 80%;
+}
+.flightFareTable th, .flightFareTable td {
+    background-color: var(--primary-blue-light, #e1f2ff);
+    border: 2px solid #fff;
+    padding: 10px;
+    text-align: left;
+    text-transform: capitalize;
+}
+.flightFareTable .flightFareHeader th {
+    background-color: var(--primary-blue, #2192ff);
+    color: #fff;
+    font-weight: 600;
+}
+.flightFareTable .flightFareTitle {
+    background-color: var(--light-yellow, #ffe863);
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+.empty { padding: 50px 20px; text-align: center; color: #666; }
+
+.adminShell { width: min(1180px, calc(100% - 32px)); margin: 30px auto 80px; }
+.adminHeader { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.adminGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
+.adminCard, .editorCard { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.adminCard h2 { margin-top: 0; }
+.muted { color: #666; font-size: 14px; overflow-wrap: anywhere; }
+.status { text-transform: capitalize; font-weight: 700; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-weight: 700; margin-bottom: 6px; }
+.field input, .field textarea, .field select, .cellInput {
+    width: 100%; padding: 10px; border: 1px solid #bbb; border-radius: 5px; font: inherit; box-sizing: border-box;
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.alignmentField { border: 0; margin: 0 0 16px; padding: 0; }
+.alignmentField legend { font-weight: 700; margin-bottom: 8px; padding: 0; }
+.alignmentOptions { display: flex; gap: 18px; flex-wrap: wrap; }
+.alignmentOptions label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.alignmentOptions input { width: auto; margin: 0; }
+.blockEditor { border: 1px solid #d5d5d5; background: #fafafa; border-radius: 8px; padding: 16px; margin: 16px 0; }
+.blockEditorCollapsed { padding-top: 11px; padding-bottom: 11px; }
+.blockHeader { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.blockEditorCollapsed .blockHeader { margin-bottom: 0; }
+.blockToggle {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 9px;
+    min-width: 0;
+    padding: 5px 0;
+    text-align: left;
+}
+.blockToggle:focus-visible { outline: 3px solid var(--primary-blue-light, #dcefff); outline-offset: 3px; border-radius: 3px; }
+.blockToggleIcon { color: #596873; display: inline-block; font-size: 12px; transition: transform .15s ease; }
+.blockToggleIconExpanded { transform: rotate(90deg); }
+.blockEditorBody { min-width: 0; }
+.blockType { font-weight: 800; text-transform: capitalize; }
+.systemBlock { border: 2px dashed #9aa8b2; background: #f0f5f7; }
+.listRow, .tableRow { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+.listRow input { flex: 1; }
+.listOptionList { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+.listOptionList label { align-items: center; display: inline-flex; gap: 5px; }
+.editorTable { width: 100%; border-collapse: collapse; min-width: 600px; }
+.editorTable td, .editorTable th { border: 1px solid #ccc; padding: 6px; }
+.notice { padding: 12px 15px; border-radius: 5px; margin: 12px 0; }
+.success { background: #e5f6ed; color: #126b38; }
+.error { background: #ffe9e7; color: #9c2521; }
+.dragging { opacity: .45; }
+.cta { text-align: center; }
+.cta a { display: inline-block; text-decoration: none; }
+.dynamicBlock { margin: 28px auto; }
+.dynamicStatus { padding: 24px; text-align: center; color: #666; }
+.dynamicError { color: #9c2521; }
+.packageGroup { margin: 24px 0; }
+.packageGrid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 600px));
+    justify-content: center;
+    width: 100%;
+}
+.packageGrid > * { margin-left: 0; margin-right: 0; max-width: none; }
+.checkGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
+.checkGrid label { font-weight: 400; }
+.imagePreviewWrap { margin-bottom: 16px; width: 100%; }
+.imagePreview { max-height: 300px; object-fit: contain; }
+.imageOptionList { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+.sliderEditorList { display: grid; gap: 14px; margin: 16px 0; }
+.sliderEditorItem { border: 1px solid #d5d5d5; border-radius: 8px; background: #fff; padding: 14px; }
+.sliderEditorHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.sliderEditorPreview { aspect-ratio: 11 / 4; border-radius: 8px; display: block; margin-bottom: 14px; object-fit: cover; object-position: center; width: 100%; }
+.sliderMobileEditor { border-top: 1px solid #e0e0e0; margin: 8px 0 16px; padding-top: 16px; }
+.sliderMobilePreview { aspect-ratio: 16 / 9; max-width: 520px; }
+.sliderNotice { border-radius: 5px; margin: 12px 0; padding: 10px 12px; }
+.info { background: #eaf4ff; color: #165d8f; }
+.inlineError { color: #9c2521; display: block; font-size: 14px; margin-top: 6px; }
+
+.tabsBlock { margin-top: 28px; margin-bottom: 28px; }
+.tabsHeader { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.tabsLabel { font-size: 20px; font-weight: 500; }
+.tabList { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; }
+.tabButton {
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #ededed;
+    color: #111;
+    cursor: pointer;
+    font: inherit;
+    padding: 13px 20px;
+    transition: background-color .15s ease, color .15s ease;
+}
+.tabButton:hover { background: #dedede; }
+.tabButton:focus-visible { outline: 3px solid var(--primary-blue-light, #dcefff); outline-offset: 2px; }
+.activeTabButton, .activeTabButton:hover { background: var(--primary-blue, #2192ff); color: #fff; }
+.tabPanel { margin-top: 20px; }
+.tabPanel .contentBlock { width: 100%; }
+.tabPanel .packageGrid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 600px;
+    width: 100%;
+}
+.tabPanel > .block:first-child { margin-top: 0; }
+.tabPanel > .block:last-child { margin-bottom: 0; }
+
+.tabEditorList { display: grid; gap: 16px; margin-bottom: 16px; }
+.tabEditor { border: 1px solid #bdc9d0; border-radius: 8px; background: #fff; padding: 14px; }
+.tabEditorHeader { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.tabNameField { flex: 1 1 240px; }
+.tabNameField label { display: block; font-weight: 700; margin-bottom: 6px; }
+.tabNameField input { width: 100%; padding: 10px; border: 1px solid #bbb; border-radius: 5px; font: inherit; }
+.defaultTabChoice { display: flex; align-items: center; gap: 6px; min-height: 42px; font-weight: 600; }
+.nestedBlockList { border-top: 1px solid #e1e5e8; padding-top: 12px; }
+.nestedBlockList .blockEditor { margin: 12px 0; background: #f7f9fa; }
+.emptyTab { color: #666; padding: 18px 10px 6px; text-align: center; }
+
+@media (max-width: 700px) {
+    .page, .contentBlock, .adminShell { width: min(100% - 20px, 1180px); }
+    .packageGrid { grid-template-columns: minmax(0, 600px); }
+    .tabsHeader { align-items: stretch; flex-direction: column; }
+    .tabsLabel { font-size: 18px; }
+    .tabList { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px; }
+    .tabButton { flex: 0 0 auto; }
+    .tabEditorHeader { align-items: stretch; }
+    .flightFareTable { min-width: 620px; width: 100%; }
+    .flightFareTable th, .flightFareTable td { border: 0; font-size: 12px; }
+}

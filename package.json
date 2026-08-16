@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --runInBand",
+    "pages:migrate": "node scripts/migrate-pages-to-firebase.js",
+    "pages:migrate:apply": "node scripts/migrate-pages-to-firebase.js --apply",
+    "pages:migrate:content": "node scripts/migrate-pages-to-firebase.js --apply --skip-media",
+    "pages:migrate:seo": "node scripts/migrate-pages-to-firebase.js --apply --skip-media --refresh-seo",
+    "package-tags:migrate": "node scripts/migrate-package-tags.js",
+    "package-tags:migrate:apply": "node scripts/migrate-package-tags.js --apply"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.0",
@@ -24,5 +31,11 @@
     "react-icons": "^4.11.0",
     "react-responsive-carousel": "^3.2.23",
     "react-vertical-timeline-component": "^3.6.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
   }
 }

@@ -26,7 +26,7 @@ const VendorForm = ({ details }) => {
     const fetchData = async () => {
         try {
             let umrahPackages = await getUmrahPackages();
-            let iraqPackage = await getIraqPackages("all");
+            let iraqPackage = await getIraqPackages();
             let finalPakacges = [];
             umrahPackages.forEach((p) => {
                 finalPakacges.push(p)

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { checkStorageForAdminToken } from "@/services/auth";
 import { deletePackage } from "@/services/deleteData";
 import { FaCheck } from "react-icons/fa";
+import { getCategoryLabel } from "@/config/categories";
 
 const PackageCard = ({ tour, type, subType, fetchData }) => {
 
@@ -117,7 +118,7 @@ const PackageCard = ({ tour, type, subType, fetchData }) => {
                             <div className={styles.sectionCard}>
 
                                 {/* <p className={styles.sectionPrice}>{d.price}</p> */}
-                                <p className={styles.sectionPrice}>{d.id}</p>
+                                <p className={styles.sectionPrice}>{d.label || getCategoryLabel(d.id)}</p>
 
                                 
                             </div>

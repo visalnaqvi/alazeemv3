@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './imageCard.module.css'
-import { useWindowSize } from "@uidotdev/usehooks";
+import useWindowSize from "@/hooks/useWindowSize";
 const ImageCard = ({data})=>{
     const size = useWindowSize();
     return(

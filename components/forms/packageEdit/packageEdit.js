@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import styles from "./packageEdit.module.css";
 import PackageCard from "@/components/cards/packageCard/packageCard";
 import { getAllVendorsList, getPackageVendor, getVendorFromPackageId, handleNewVendor, handleVendorDelete } from "@/services/vendor";
-import { getAvailableSections, getCitiesFromTags } from "@/services/getData.js"
+import { getCitiesFromTags } from "@/services/getData.js"
 import { RiDeleteBin5Fill } from "react-icons/ri"
 import { addNewPackage, updatePackageData } from "@/services/updateData";
 import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
 import FlightsTable from "@/components/flights/table/flightsTable";
 import PricingTable from "@/components/flights/table/pricingTable";
-import { CATEGORIES } from "@/config/categories";
+import { addPackageCategory, addPackageTag, getPackageCategories, getPackageTags } from "@/services/packageTaxonomy";
+import { getIraqPackageVariant } from "@/services/packageBlocks";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
     const [allVendors, setAllVendors] = useState([])
@@ -19,8 +20,10 @@ const PackageEditForm = ({ details, packageid }) => {
     const [newFlight, setNewFlight] = useState({})
     const [pricing, setPricing] = useState({})
     const [activeTags, setActiveTags] = useState([])
-    const [headings , setHeadings] = useState([])
-    const sections = CATEGORIES
+    const [categories, setCategories] = useState([])
+    const [groupTags, setGroupTags] = useState([])
+    const [newCategoryName, setNewCategoryName] = useState("")
+    const [newTagName, setNewTagName] = useState("")
     const [newDetails, setNewDetails] = useState({
         title: "",
         price: "",
@@ -47,7 +50,8 @@ const PackageEditForm = ({ details, packageid }) => {
         ],
         startDate: "",
         endDate: "",
-        sectionId:[]
+        sectionId:[],
+        groupTagIds: []
     })
 
     useEffect(() => {
@@ -56,8 +60,14 @@ const PackageEditForm = ({ details, packageid }) => {
 
     const fetchData = async () => {
         try {
-            setActiveTags(await getCitiesFromTags());
-            setHeadings(await getAvailableSections())
+            const [cities, categoryOptions, tagOptions] = await Promise.all([
+                getCitiesFromTags(),
+                getPackageCategories(),
+                getPackageTags()
+            ]);
+            setActiveTags(Array.isArray(cities) ? cities : []);
+            setCategories(categoryOptions);
+            setGroupTags(tagOptions);
         }
         catch (err) {
             if (err) {
@@ -67,7 +77,12 @@ const PackageEditForm = ({ details, packageid }) => {
     }
 
     useEffect(() => {
-        setNewDetails(details);
+        setNewDetails({
+            ...details,
+            sectionData: Array.isArray(details.sectionData) ? details.sectionData : [],
+            sectionId: Array.isArray(details.sectionId) ? details.sectionId : [],
+            groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : []
+        });
 
         getVendor();
     }, [details])
@@ -79,6 +94,38 @@ const PackageEditForm = ({ details, packageid }) => {
 
         // Update the tags array to only hold the selected value
         setNewDetails({ ...newDetails, tags: [selectedTag] });
+    };
+
+    const handleAddCategory = async () => {
+        try {
+            const category = await addPackageCategory(newCategoryName);
+            setCategories(await getPackageCategories());
+            setNewDetails(prev => ({
+                ...prev,
+                sectionData: prev.sectionData?.some(item => item.id === category.id)
+                    ? prev.sectionData
+                    : [...(prev.sectionData || []), { id: category.id, label: category.label, price: "" }]
+            }));
+            setNewCategoryName("");
+        } catch (error) {
+            setToastMessage({ status: "warning", msg: error.message || "Unable to add category" });
+        }
+    };
+
+    const handleAddTag = async () => {
+        try {
+            const tag = await addPackageTag(newTagName);
+            setGroupTags(await getPackageTags());
+            setNewDetails(prev => ({
+                ...prev,
+                groupTagIds: prev.groupTagIds?.includes(tag.id)
+                    ? prev.groupTagIds
+                    : [...(prev.groupTagIds || []), tag.id]
+            }));
+            setNewTagName("");
+        } catch (error) {
+            setToastMessage({ status: "warning", msg: error.message || "Unable to add tag" });
+        }
     };
 
     const getVendor = async () => {
@@ -126,11 +173,13 @@ const PackageEditForm = ({ details, packageid }) => {
 
     useEffect(() => {
 
-        if (packageid == 'iraq' && !details.id) {
-            setNewDetails({ ...details, type: "something" })
-        }
         if (details.id) {
-            setNewDetails({ ...details })
+            setNewDetails({
+                ...details,
+                sectionData: Array.isArray(details.sectionData) ? details.sectionData : [],
+                sectionId: Array.isArray(details.sectionId) ? details.sectionId : [],
+                groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : []
+            })
         }
     }, [details, packageid])
 
@@ -168,9 +217,6 @@ const PackageEditForm = ({ details, packageid }) => {
 
             const getSectionMakkaHotel = (sectionId) =>
         newDetails?.sectionData?.find(s => s.id == sectionId)?.makkahHotel || "";
-
-        const getSectionTitle = (sectionId) =>
-        sections?.find(s => s.id == sectionId)?.title || "";
 
     return (
         <div>
@@ -252,27 +298,6 @@ const PackageEditForm = ({ details, packageid }) => {
                                 })
                             }}>Add New Feature</button>
                         </div>
-                        {
-                            newDetails.type &&
-                            <div className={styles.formItem}>
-                                <label className={styles.label}>Select Type</label>
-                                <div className={styles.formItem}>
-                                    {
-                                        newDetails.type == 'sunni' ? <input onChange={() => setNewDetails({ ...newDetails, type: "sunni" })} defaultChecked type="radio" id="sunni_type" name="package_type" value="sunni" /> :
-                                            <input onChange={() => setNewDetails({ ...newDetails, type: "sunni" })} type="radio" id="sunni_type" name="package_type" value="sunni" />
-                                    }
-                                    <label className={styles.label} htmlFor="sunni_type">Sunni</label>
-                                </div>
-                                <div className={styles.formItem}>
-                                    {
-                                        newDetails.type == 'shia' ? <input onChange={() => setNewDetails({ ...newDetails, type: "shia" })} defaultChecked type="radio" id="shia_type" name="package_type" value="shia" /> :
-                                            <input onChange={() => setNewDetails({ ...newDetails, type: "shia" })} type="radio" id="shia_type" name="package_type" value="shia" />
-                                    }
-                                    <label className={styles.label} htmlFor="shia_type">Shia</label>
-                                </div>
-                            </div>
-                        }
-
                         {/* Add the drop down Here */}
                         <div className={styles.formItem}>
                             <label className={styles.label}>Selected City - {newDetails.tags.length > 0 ? newDetails.tags[0] : "No City Selected"}</label>
@@ -301,71 +326,52 @@ const PackageEditForm = ({ details, packageid }) => {
                             }
                                                     </div> */}
  <div className={styles.formItem}>
-  <label className={styles.label}>Select Heading</label>
-<form>
-{
-    headings.map((head , i)=>(
-        <div
-        key={head.id}
-        className={styles.formItem}
-        
-      >
-        {/* Checkbox */}
-        <input
-          type="checkbox"
-          id={head.id}
-          checked={newDetails?.sectionId?.includes(head?.id)}
-          onChange={(e) => {
-            if (e.target.checked) {
-              // add section
-              setNewDetails(prev => ({
-                ...prev,
-                sectionId: [
-                  ...prev.sectionId,
-                  head.id
-                ]
-              }));
-            } else {
-              // remove section
-              setNewDetails(prev => ({
-                ...prev,
-                sectionId: prev.sectionId.filter(
-                  s => s !== head.id
-                )
-              }));
-            }
-          }}
-        />
-
-        <label
-          htmlFor={head.id}
-          className={styles.label}
-          style={{ minWidth: "120px", fontWeight:300 }}
-        >
-          {head.title}
-        </label>
-        </div>
-    ))
-   
-}
- </form>
+  <label className={styles.label}>Package Tags</label>
+  {groupTags.length === 0 && <p>No tags yet. Add the first tag below.</p>}
+  {groupTags.map(tag => (
+    <div key={tag.id} className={styles.formItem}>
+      <input
+        type="checkbox"
+        id={`package-tag-${tag.id}`}
+        checked={(newDetails.groupTagIds || []).includes(tag.id)}
+        onChange={(event) => setNewDetails(prev => ({
+          ...prev,
+          groupTagIds: event.target.checked
+            ? [...(prev.groupTagIds || []), tag.id]
+            : (prev.groupTagIds || []).filter(id => id !== tag.id)
+        }))}
+      />
+      <label htmlFor={`package-tag-${tag.id}`} className={styles.label} style={{ minWidth: "120px", fontWeight: 300 }}>
+        {tag.label}
+      </label>
+    </div>
+  ))}
+  <div className="body-wrapper justify-start">
+    <input
+      className={styles.input}
+      value={newTagName}
+      onChange={event => setNewTagName(event.target.value)}
+      placeholder="New tag name"
+    />
+    <button type="button" className="primary-btn blue" onClick={handleAddTag}>Add Tag</button>
   </div>
+ </div>
                                                     <div className={styles.formItem}>
   <label className={styles.label}>Select Category</label>
 
-  {sections.map((section) => {
-    const checked = isSectionSelected(section);
+  {categories.map((category) => {
+    const checked = isSectionSelected(category.id);
 
     return (
       <div
-        key={section}
+        key={category.id}
         className={styles.formItem}
         
       >
         {/* Checkbox */}
         <input
           type="checkbox"
-          id={section}
+          id={`category-${category.id}`}
           checked={checked}
           onChange={(e) => {
             if (e.target.checked) {
@@ -374,7 +380,7 @@ const PackageEditForm = ({ details, packageid }) => {
                 ...prev,
                 sectionData: [
                   ...prev.sectionData,
-                  { id: section, price: "" }
+                  { id: category.id, label: category.label, price: "" }
                 ]
               }));
             } else {
@@ -382,7 +388,7 @@ const PackageEditForm = ({ details, packageid }) => {
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.filter(
-                  s => s.id !== section
+                  s => s.id !== category.id
                 )
               }));
             }
@@ -390,11 +396,11 @@ const PackageEditForm = ({ details, packageid }) => {
         />
 
         <label
-          htmlFor={section}
+          htmlFor={`category-${category.id}`}
           className={styles.label}
           style={{ minWidth: "120px" }}
         >
-          {section}
+          {category.label}
         </label>
 <form>
         {/* Price input – only when selected */}
@@ -403,14 +409,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Price"
-            value={getSectionPrice(section)}
+            value={getSectionPrice(category.id)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section
+                  s.id === category.id
                     ? { ...s, price: value }
                     : s
                 )
@@ -427,14 +433,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Makkah Hotel"
-            value={getSectionMakkaHotel(section)}
+            value={getSectionMakkaHotel(category.id)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section
+                  s.id === category.id
                     ? { ...s, makkahHotel: value }
                     : s
                 )
@@ -444,18 +450,18 @@ const PackageEditForm = ({ details, packageid }) => {
           />
           </label>
           <br></br>
-          <label htmlFor={section+"makkahHotelShuttelService"}>
+          <label htmlFor={category.id+"makkahHotelShuttelService"}>
           <input
             type="checkbox"
-            id={section+"makkahHotelShuttelService"}
-            checked={getSectionMakkahHotelShuttel(section)}
+            id={category.id+"makkahHotelShuttelService"}
+            checked={getSectionMakkahHotelShuttel(category.id)}
             onChange={(e) => {
               const value = e.target.checked;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section
+                  s.id === category.id
                     ? { ...s, makkahShuttel: value }
                     : s
                 )
@@ -472,14 +478,14 @@ const PackageEditForm = ({ details, packageid }) => {
           <input
             type="text"
             placeholder="Madina Hotel"
-            value={getSectionMadinaHotel(section)}
+            value={getSectionMadinaHotel(category.id)}
             onChange={(e) => {
               const value = e.target.value;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section
+                  s.id === category.id
                     ? { ...s, madinaHotel: value }
                     : s
                 )
@@ -489,18 +495,18 @@ const PackageEditForm = ({ details, packageid }) => {
           />
           </label>
           <br></br>
-          <label htmlFor={section+"madinaHotelShuttelService"}>
+          <label htmlFor={category.id+"madinaHotelShuttelService"}>
           <input
             type="checkbox"
-            id={section+"madinaHotelShuttelService"}
-            checked={getSectionMadinaHotelShuttel(section)}
+            id={category.id+"madinaHotelShuttelService"}
+            checked={getSectionMadinaHotelShuttel(category.id)}
             onChange={(e) => {
               const value = e.target.checked;
 
               setNewDetails(prev => ({
                 ...prev,
                 sectionData: prev.sectionData.map(s =>
-                  s.id === section
+                  s.id === category.id
                     ? { ...s, madinaShuttel: value }
                     : s
                 )
@@ -516,6 +522,15 @@ const PackageEditForm = ({ details, packageid }) => {
       </div>
     );
   })}
+  <div className="body-wrapper justify-start">
+    <input
+      className={styles.input}
+      value={newCategoryName}
+      onChange={event => setNewCategoryName(event.target.value)}
+      placeholder="New category name"
+    />
+    <button type="button" className="primary-btn blue" onClick={handleAddCategory}>Add Category</button>
+  </div>
 </div>
 
                             {/* <div className={styles.formItem}>
@@ -670,7 +685,7 @@ const PackageEditForm = ({ details, packageid }) => {
                     </form>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <PackageCard tour={newDetails} type={packageid} subType={newDetails.type ? newDetails.type : ""} />
+                    <PackageCard tour={newDetails} type={packageid} subType={packageid === "iraq" ? getIraqPackageVariant(newDetails) : ""} />
 
 
 

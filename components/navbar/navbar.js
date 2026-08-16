@@ -6,8 +6,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import { checkStorageForAdminToken, checkStorageForToken } from "@/services/auth"
-import { getNavLinks } from "@/services/getData"
-import { useWindowSize } from "@uidotdev/usehooks";
+import { getNavigationItems } from "@/services/navigation"
 import ForExPopUp from "../flights/container/forexPopUp"
 const NavBar = () => {
 
@@ -22,9 +21,10 @@ const NavBar = () => {
     const [singlePackageId, setsinglePackageId] = useState("")
     const [isNew, setIsNew] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
-    const [navLinks, setNavLinks] = useState({})
+    const [navLinks, setNavLinks] = useState([])
     const [user, setUser] = useState({})
     const [isVisible , setIsVisible] = useState(true);
+    const [windowWidth, setWindowWidth] = useState(null);
     const [buttonText , setButtonText] = useState("")
     useEffect(() => {
         fetchNavLinks();
@@ -129,14 +129,21 @@ const NavBar = () => {
     }, [router])
 
     const fetchNavLinks = async () => {
-        let data = await getNavLinks();
-        setNavLinks(data.filter(d => d.active == true))
+        const data = await getNavigationItems({ visibleOnly: true });
+        setNavLinks(data)
     }
-    const size = useWindowSize();
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setWindowWidth(width);
+            setIsVisible(width >= 1040);
+        };
 
-    useEffect(()=>{
-        setIsVisible(size.width>=1040)
-    },[size])
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
 
     useEffect(()=>{
@@ -148,7 +155,7 @@ const NavBar = () => {
             default : setButtonText("Package")
                             break;
         }
-    })
+    }, [packageid])
     return (
         <div> {isLoading ? <div className="mainLoading"><p>Loading...</p></div> : <div>
             <div className={`${styles.navBar} body-wrapper justify-between`} style={{ flexWrap: "nowrap" }}>
@@ -161,12 +168,10 @@ const NavBar = () => {
                <div className={`${styles.mainMenu} ${!isVisible && styles.notVisible}`}>
                     <ul className="body-wrapper">
                         {
-                            navLinks && navLinks.length > 0 && navLinks.map((link, i) => (
-                                <li key={i} className={`${menuState[`${link.key}`] && styles.active}`}><Link href={`${link.link}`}>{link.title}</Link></li>
+                            navLinks.length > 0 && navLinks.map(link => (
+                                <li key={link.id} className={`${router.asPath.split("?")[0] === link.href && styles.active}`}><Link onClick={() => { if (windowWidth !== null && windowWidth < 1040) setIsVisible(false); }} href={link.href}>{link.label}</Link></li>
                             ))
                         }
-                        <li className={menuState[`forex`] && styles.active}><Link href={`forex`}>FOREX</Link></li>
-                        
                         {/* <li className={`${menuState["hajjUmrah"] && styles.active}`}><Link href="/hajj-and-umrah-packages">Hajj Umrah</Link></li>
                         <li className={`${menuState["iraqZiyarat"] && styles.active}`}><Link href="/iraq-ziyarat-packages/karbala-iraq-ziyarat">Iraq Ziyarat</Link></li>
                         <li className={`${menuState["holidayPackages"] && styles.active}`}><Link href="/holiday-packages">Holiday Packages</Link></li> */}

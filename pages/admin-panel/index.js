@@ -37,12 +37,16 @@ const AdminPanel = ()=>{
             link:"vendors"
         },
         {
-            title:"Header Links",
-            link:"links"
+            title:"Navigation",
+            link:"navigation"
         },
         {
-            title:"Page Setting",
-            link:"page-setting"
+            title:"Pages",
+            link:"pages"
+        },
+        {
+            title:"Package Tags",
+            link:"package-tags"
         }
     ]
     return(

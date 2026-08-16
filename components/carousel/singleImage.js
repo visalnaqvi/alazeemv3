@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useWindowSize } from "@uidotdev/usehooks";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const SingleImage = ({url})=>{
     const size = useWindowSize();
