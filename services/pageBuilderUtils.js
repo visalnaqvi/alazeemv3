@@ -6,7 +6,7 @@ export const createBlockId = () => {
 };
 
 export const TAB_CHILD_BLOCK_TYPES = [
-    "heading", "paragraph", "list", "image", "slider", "table", "cta", "packages", "flightFares"
+    "heading", "paragraph", "list", "image", "card", "slider", "table", "cta", "packages", "flightFares"
 ];
 
 export const PAGE_BLOCK_TYPES = [...TAB_CHILD_BLOCK_TYPES, "tabs"];
@@ -49,6 +49,18 @@ export const createBlock = type => {
             size: "fullWidth",
             rounded: false,
             shadow: false
+        };
+        case "card": return {
+            ...base,
+            heading: "",
+            content: "",
+            imageUrl: "",
+            imageStoragePath: "",
+            imageAlt: "",
+            imagePosition: "right",
+            buttonText: "",
+            buttonHref: "",
+            buttonNewTab: false
         };
         case "slider": return { ...base, images: [] };
         case "table": return { ...base, caption: "", headers: ["Column 1", "Column 2"], rows: [["", ""]] };
@@ -96,6 +108,15 @@ const validateBlockList = (blocks, prefix = "Block", allowTabs = true) => {
         if (block.type === "paragraph" && !block.text?.trim()) return `${name}: paragraph text is required.`;
         if (block.type === "list" && (!block.items?.length || block.items.some(item => !item?.trim()))) return `${name}: list items cannot be empty.`;
         if (block.type === "image" && (!block.url || !block.alt?.trim())) return `${name}: upload an image and add alt text.`;
+        if (block.type === "card") {
+            if (!block.heading?.trim()) return `${name}: card heading is required.`;
+            if (!block.content?.trim()) return `${name}: card content is required.`;
+            if (!block.imageUrl || !block.imageAlt?.trim()) return `${name}: upload a card image and add alt text.`;
+            const hasButton = Boolean(block.buttonText?.trim() || block.buttonHref?.trim());
+            if (hasButton && (!block.buttonText?.trim() || !/^(\/|https?:\/\/|mailto:|tel:|#)/i.test(block.buttonHref || ""))) {
+                return `${name}: card button text and a valid link are required when a button is added.`;
+            }
+        }
         if (block.type === "slider") {
             if (!Array.isArray(block.images) || block.images.length < 2 || block.images.length > 3) return `${name}: image sliders require 2 to 3 images.`;
             if (block.images.some(image => !image?.url || !image?.alt?.trim())) return `${name}: every slider image needs an image and alt text.`;

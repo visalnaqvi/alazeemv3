@@ -3,6 +3,7 @@ import { uploadPageImage } from "@/services/media";
 import { PACKAGE_SOURCES, getPackageSource } from "@/config/packageSources";
 import { loadPackageEditorOptions } from "@/services/packageBlocks";
 import { TAB_CHILD_BLOCK_TYPES, createBlock, createBlockId, getBlockTypeLabel, moveItem } from "@/services/pageBuilderUtils";
+import MediaLibraryPicker from "./MediaLibraryPicker";
 import styles from "./pageBuilder.module.css";
 
 const getNextTabLabel = tabs => {
@@ -52,6 +53,7 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
     const [sliderUploadStates, setSliderUploadStates] = useState({});
     const [sliderNotice, setSliderNotice] = useState(null);
     const [packageOptions, setPackageOptions] = useState({ tags: [], cities: [] });
+    const [mediaPicker, setMediaPicker] = useState(null);
     const blockRef = useRef(block);
     useEffect(() => { blockRef.current = block; }, [block]);
     const patch = values => onChange({ ...block, ...values });
@@ -81,6 +83,7 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
     );
     const setSliderUploadState = (key, state) => setSliderUploadStates(current => ({ ...current, [key]: state }));
     const getDefaultAlt = fileName => fileName.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim();
+    const openMediaPicker = (title, onSelect) => setMediaPicker({ title, onSelect });
     const uploadSliderFiles = async files => {
         if (!files.length) return;
         if (sliderImages.length + files.length > 3) {
@@ -237,6 +240,9 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                 setUploading(true);
                 try { patch(await uploadPageImage(pageKey, file)); } catch (error) { onError(error.message); } finally { setUploading(false); }
             }} />{uploading && <p>Uploading…</p>}</div>
+            <button type="button" className="primary-btn blue" onClick={() => openMediaPicker("Choose an image", image => patch({
+                url: image.url, storagePath: image.storagePath, alt: block.alt || getDefaultAlt(image.name)
+            }))}>Choose from uploaded images</button>
             <div className={styles.field}><label>Image URL</label><input value={block.url || ""} onChange={event => patch({ url: event.target.value, storagePath: "" })} placeholder="/images/photo.jpg or https://…" /></div>
             <div className={styles.field}><label>Alt text</label><input value={block.alt} onChange={event => patch({ alt: event.target.value })} /></div>
             <div className={styles.field}><label>Caption (optional)</label><input value={block.caption} onChange={event => patch({ caption: event.target.value })} /></div>
@@ -248,6 +254,43 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                 <label><input type="checkbox" checked={Boolean(block.rounded)} onChange={event => patch({ rounded: event.target.checked })} /> Rounded border</label>
                 <label><input type="checkbox" checked={Boolean(block.shadow)} onChange={event => patch({ shadow: event.target.checked })} /> Shadow</label>
             </div>
+        </>}
+        {block.type === "card" && <>
+            {block.imageUrl && <div className={styles.imagePreviewWrap}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={block.imageUrl} alt="Card image preview" className={`${styles.imagePreview} ${styles.cardEditorPreview}`} />
+            </div>}
+            <div className={styles.field}><label>Card heading</label><input value={block.heading || ""} onChange={event => patch({ heading: event.target.value })} /></div>
+            <div className={styles.field}><label>Card content</label><textarea value={block.content || ""} onChange={event => patch({ content: event.target.value })} /></div>
+            <div className={styles.field}><label htmlFor={`card-image-file-${block.id}`}>Card image file</label><input id={`card-image-file-${block.id}`} type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={async event => {
+                const file = event.target.files?.[0];
+                event.target.value = "";
+                if (!file) return;
+                setUploading(true);
+                try {
+                    const upload = await uploadPageImage(pageKey, file, { maxImageBytes: 8 * 1024 * 1024 });
+                    patch({ imageUrl: upload.url, imageStoragePath: upload.storagePath || "" });
+                } catch (error) { onError(error.message); } finally { setUploading(false); }
+            }} />
+                <span className={styles.muted}>JPEG, PNG, or WebP; maximum 8 MB.</span>
+                {uploading && <p>Uploading...</p>}
+            </div>
+            <button type="button" className="primary-btn blue" onClick={() => openMediaPicker("Choose a card image", image => patch({
+                imageUrl: image.url, imageStoragePath: image.storagePath, imageAlt: block.imageAlt || getDefaultAlt(image.name)
+            }))}>Choose from uploaded images</button>
+            <div className={styles.field}><label>Card image URL</label><input value={block.imageUrl || ""} onChange={event => patch({ imageUrl: event.target.value, imageStoragePath: "" })} placeholder="/images/photo.jpg or https://..." /></div>
+            <div className={styles.field}><label>Card image alt text</label><input value={block.imageAlt || ""} onChange={event => patch({ imageAlt: event.target.value })} /></div>
+            <fieldset className={styles.alignmentField}>
+                <legend>Desktop layout</legend>
+                <div className={styles.alignmentOptions}>
+                    <label><input type="radio" name={`card-layout-${block.id}`} value="right" checked={(block.imagePosition || "right") === "right"} onChange={event => patch({ imagePosition: event.target.value })} /> Content left, image right</label>
+                    <label><input type="radio" name={`card-layout-${block.id}`} value="left" checked={block.imagePosition === "left"} onChange={event => patch({ imagePosition: event.target.value })} /> Image left, content right</label>
+                </div>
+            </fieldset>
+            <p className={styles.muted}>On mobile, the image always appears above the content.</p>
+            <div className={styles.field}><label>Button text (optional)</label><input value={block.buttonText || ""} onChange={event => patch({ buttonText: event.target.value })} /></div>
+            <div className={styles.field}><label>Button link (optional)</label><input value={block.buttonHref || ""} onChange={event => patch({ buttonHref: event.target.value })} placeholder="/visa, https://..., tel:..., or mailto:..." /></div>
+            <label><input type="checkbox" checked={Boolean(block.buttonNewTab)} onChange={event => patch({ buttonNewTab: event.target.checked })} /> Open button link in a new tab</label>
         </>}
         {block.type === "slider" && <>
             <p className={styles.muted}>Add 2 to 3 desktop images. You can also add a separate mobile image for every slide; the desktop image is used as its fallback.</p>
@@ -275,6 +318,14 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                     disabled={uploading || sliderImages.length >= 3}
                     onClick={() => updateSliderImages(images => [...images, { id: createBlockId(), url: "", storagePath: "", mobileUrl: "", mobileStoragePath: "", alt: "" }])}
                 >Add image by URL</button>
+                <button
+                    type="button"
+                    className="primary-btn blue"
+                    disabled={uploading || sliderImages.length >= 3}
+                    onClick={() => openMediaPicker("Add a slider image", image => updateSliderImages(images => [...images, {
+                        id: createBlockId(), url: image.url, storagePath: image.storagePath, mobileUrl: "", mobileStoragePath: "", alt: getDefaultAlt(image.name)
+                    }]))}
+                >Add from uploaded images</button>
                 <span className={styles.muted}>{sliderImages.length} of 3 images added</span>
             </div>
             <div className={styles.sliderEditorList}>{sliderImages.map((image, imageIndex) => <section className={styles.sliderEditorItem} key={image.id || imageIndex}>
@@ -297,6 +348,9 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                         event.target.value = "";
                         if (file) uploadSlideImage(image, file);
                     }} />
+                    <button type="button" onClick={() => openMediaPicker(`Choose desktop image for slide ${imageIndex + 1}`, selected => updateSliderImage(image.id, {
+                        url: selected.url, storagePath: selected.storagePath, alt: image.alt || getDefaultAlt(selected.name)
+                    }))}>Choose from uploaded images</button>
                     {sliderUploadStates[`desktop-${image.id}`] === "uploading" && <span className={styles.muted}>Uploading desktop image...</span>}
                     {sliderUploadStates[`desktop-${image.id}`] === "error" && <span className={styles.inlineError}>Desktop upload failed. Choose the file again to retry.</span>}
                 </div>
@@ -315,6 +369,9 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                             event.target.value = "";
                             if (file) uploadSlideImage(image, file, true);
                         }} />
+                        <button type="button" onClick={() => openMediaPicker(`Choose mobile image for slide ${imageIndex + 1}`, selected => updateSliderImage(image.id, {
+                            mobileUrl: selected.url, mobileStoragePath: selected.storagePath
+                        }))}>Choose from uploaded images</button>
                         {sliderUploadStates[`mobile-${image.id}`] === "uploading" && <span className={styles.muted}>Uploading mobile image...</span>}
                         {sliderUploadStates[`mobile-${image.id}`] === "error" && <span className={styles.inlineError}>Mobile upload failed. Choose the file again to retry.</span>}
                     </div>
@@ -368,5 +425,10 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
             <button type="button" className="primary-btn blue" onClick={addTab}>Add tab</button>
         </>}
         </div>}
+        {mediaPicker && <MediaLibraryPicker
+            title={mediaPicker.title}
+            onClose={() => setMediaPicker(null)}
+            onSelect={image => { mediaPicker.onSelect(image); setMediaPicker(null); }}
+        />}
     </section>;
 }

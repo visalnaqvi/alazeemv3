@@ -39,6 +39,20 @@ const RenderedBlock = ({ block, systemComponents }) => {
         </div>
         {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
     </figure>;
+    if (block.type === "card") {
+        const hasButton = Boolean(block.buttonText?.trim() && block.buttonHref?.trim());
+        return <article className={`${styles.block} ${styles.contentBlock} ${styles.featureCard} ${block.imagePosition === "left" ? styles.featureCardImageLeft : ""}`}>
+            <div className={styles.featureCardImageWrap}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className={styles.featureCardImage} src={block.imageUrl} alt={block.imageAlt} />
+            </div>
+            <div className={styles.featureCardContent}>
+                <h2 className={styles.featureCardHeading}>{block.heading}</h2>
+                <p className={styles.featureCardText}>{block.content}</p>
+                {hasButton && <a href={block.buttonHref} target={block.buttonNewTab ? "_blank" : undefined} rel={block.buttonNewTab ? "noopener noreferrer" : undefined} className="primary-btn blue">{block.buttonText}</a>}
+            </div>
+        </article>;
+    }
     if (block.type === "slider") return <section className={`${styles.block} ${styles.sliderBlock}`} aria-label="Image slider">
         <CarouselComp images={Array.isArray(block.images) ? block.images : []} fixedFrame />
     </section>;

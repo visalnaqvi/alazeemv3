@@ -66,6 +66,22 @@ describe("PageRenderer", () => {
         expect(screen.getByRole("heading", { name: "Right heading" })).toHaveStyle({ textAlign: "right" });
     });
 
+    test("renders reversible cards with an optional button", () => {
+        render(<PageRenderer
+            page={{ title: "Cards" }}
+            version={{ blocks: [
+                { id: "card-one", type: "card", heading: "Umrah offer", content: "A complete travel package.", imageUrl: "/umrah.jpg", imageAlt: "The Kaaba", imagePosition: "right", buttonText: "View package", buttonHref: "/umrahPackage" },
+                { id: "card-two", type: "card", heading: "Simple card", content: "No action is needed.", imageUrl: "/simple.jpg", imageAlt: "A destination", imagePosition: "left", buttonText: "", buttonHref: "" }
+            ] }}
+        />);
+
+        expect(screen.getByRole("heading", { name: "Umrah offer" }).closest("article")).not.toHaveClass(styles.featureCardImageLeft);
+        expect(screen.getByRole("link", { name: "View package" })).toHaveAttribute("href", "/umrahPackage");
+        expect(screen.getByRole("heading", { name: "Simple card" }).closest("article")).toHaveClass(styles.featureCardImageLeft);
+        expect(screen.getAllByRole("link")).toHaveLength(1);
+        expect(screen.getByAltText("The Kaaba")).toHaveAttribute("src", "/umrah.jpg");
+    });
+
     test("renders icon lists with check icons and bold list text", () => {
         render(<PageRenderer
             page={{ title: "List styles" }}

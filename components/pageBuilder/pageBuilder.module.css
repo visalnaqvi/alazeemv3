@@ -23,6 +23,25 @@
 .imageShadow { box-shadow: 10px 10px 20px #00000030; }
 .sliderBlock { width: 100%; }
 .caption { text-align: center; color: #666; margin-top: 8px; }
+.featureCard {
+    background: #fff;
+    border: 1px solid #d9e0e5;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(26, 49, 66, .14);
+    display: grid;
+    grid-template-areas: "content image";
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+    margin-bottom: 32px;
+    margin-top: 32px;
+    overflow: hidden;
+}
+.featureCardImageLeft { grid-template-areas: "image content"; }
+.featureCardImageWrap { grid-area: image; min-height: 300px; }
+.featureCardImage { display: block; height: 100%; object-fit: cover; width: 100%; }
+.featureCardContent { align-self: stretch; background: #f4f6f7; display: flex; flex-direction: column; grid-area: content; justify-content: center; padding: clamp(28px, 4vw, 56px); }
+.featureCardHeading { color: #1b2730; font-size: clamp(1.6rem, 3vw, 2.25rem); margin: 0 0 16px; }
+.featureCardText { color: #5a5a5a; font-size: 1.05rem; line-height: 1.8; margin: 0 0 24px; white-space: pre-wrap; }
+.featureCardText:last-child { margin-bottom: 0; }
 .tableWrap { overflow-x: auto; }
 .table { width: 100%; border-collapse: collapse; min-width: 520px; }
 .table caption { font-weight: 700; margin-bottom: 10px; }
@@ -127,6 +146,7 @@
 .checkGrid label { font-weight: 400; }
 .imagePreviewWrap { margin-bottom: 16px; width: 100%; }
 .imagePreview { max-height: 300px; object-fit: contain; }
+.cardEditorPreview { border: 1px solid #d9e0e5; border-radius: 8px; width: min(100%, 520px); }
 .imageOptionList { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
 .sliderEditorList { display: grid; gap: 14px; margin: 16px 0; }
 .sliderEditorItem { border: 1px solid #d5d5d5; border-radius: 8px; background: #fff; padding: 14px; }
@@ -178,6 +198,29 @@
 .nestedBlockList .blockEditor { margin: 12px 0; background: #f7f9fa; }
 .emptyTab { color: #666; padding: 18px 10px 6px; text-align: center; }
 
+.mediaLibraryOverlay {
+    align-items: center;
+    background: rgba(16, 25, 32, .68);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+.mediaLibraryDialog { background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.3); max-height: min(760px, calc(100vh - 40px)); max-width: 960px; overflow-y: auto; padding: 22px; width: 100%; }
+.mediaLibraryHeader { align-items: flex-start; display: flex; gap: 16px; justify-content: space-between; margin-bottom: 18px; }
+.mediaLibraryHeader h2 { margin: 0 0 4px; }
+.mediaLibraryHeader p { margin: 0; }
+.mediaLibraryGrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.mediaLibraryItem { background: #fff; border: 2px solid #d9e0e5; border-radius: 9px; cursor: pointer; overflow: hidden; padding: 0; text-align: left; transition: border-color .15s ease, transform .15s ease; }
+.mediaLibraryItem:hover { border-color: var(--primary-blue, #2192ff); transform: translateY(-2px); }
+.mediaLibraryItem:focus-visible { border-color: var(--primary-blue, #2192ff); outline: 3px solid var(--primary-blue-light, #dcefff); outline-offset: 2px; }
+.mediaLibraryItem img { aspect-ratio: 4 / 3; display: block; object-fit: cover; width: 100%; }
+.mediaLibraryItem span { display: block; font-size: 13px; overflow: hidden; padding: 9px 9px 2px; text-overflow: ellipsis; white-space: nowrap; }
+.mediaLibraryItem small { color: #66727a; display: block; overflow: hidden; padding: 0 9px 9px; text-overflow: ellipsis; white-space: nowrap; }
+.mediaLibraryStatus { color: #666; padding: 45px 20px; text-align: center; }
+
 @media (max-width: 700px) {
     .page, .contentBlock, .adminShell { width: min(100% - 20px, 1180px); }
     .packageGrid { grid-template-columns: minmax(0, 600px); }
@@ -188,4 +231,11 @@
     .tabEditorHeader { align-items: stretch; }
     .flightFareTable { min-width: 620px; width: 100%; }
     .flightFareTable th, .flightFareTable td { border: 0; font-size: 12px; }
+    .featureCard, .featureCardImageLeft {
+        grid-template-areas: "image" "content";
+        grid-template-columns: 1fr;
+    }
+    .featureCardImageWrap { min-height: 0; }
+    .featureCardImage { aspect-ratio: 16 / 10; height: auto; }
+    .featureCardContent { padding: 26px 22px 30px; }
 }

@@ -11,10 +11,16 @@ describe("page builder utilities", () => {
     test("creates supported editable block shapes", () => {
         expect(PAGE_BLOCK_TYPES).toContain("slider");
         expect(TAB_CHILD_BLOCK_TYPES).toContain("slider");
+        expect(PAGE_BLOCK_TYPES).toContain("card");
+        expect(TAB_CHILD_BLOCK_TYPES).toContain("card");
         expect(createBlock("heading")).toMatchObject({ type: "heading", level: 2, text: "", align: "left" });
         expect(createBlock("list")).toMatchObject({ type: "list", ordered: false, iconList: false, bold: false, items: [""] });
         expect(createBlock("image")).toMatchObject({ type: "image", size: "fullWidth", rounded: false, shadow: false });
         expect(createBlock("slider")).toMatchObject({ type: "slider", images: [] });
+        expect(createBlock("card")).toMatchObject({
+            type: "card", heading: "", content: "", imageUrl: "", imageAlt: "", imagePosition: "right",
+            buttonText: "", buttonHref: "", buttonNewTab: false
+        });
         expect(createBlock("table")).toMatchObject({ type: "table", headers: ["Column 1", "Column 2"], rows: [["", ""]] });
         expect(createBlock("packages")).toMatchObject({ type: "packages", source: "umrah", groupTagIds: [] });
         expect(createBlock("flightFares")).toMatchObject({ type: "flightFares" });
@@ -40,6 +46,8 @@ describe("page builder utilities", () => {
     test("requires meaningful editable block content", () => {
         expect(validateBlocks([{ type: "heading", text: "" }])).toMatch(/heading text/i);
         expect(validateBlocks([{ type: "image", url: "https://example.com/a.jpg", alt: "" }])).toMatch(/alt text/i);
+        expect(validateBlocks([{ type: "card", heading: "Offer", content: "Details", imageUrl: "/offer.jpg", imageAlt: "Offer", buttonText: "", buttonHref: "" }])).toBe("");
+        expect(validateBlocks([{ type: "card", heading: "Offer", content: "Details", imageUrl: "/offer.jpg", imageAlt: "Offer", buttonText: "Book", buttonHref: "" }])).toMatch(/valid link/i);
         expect(validateBlocks([{ type: "slider", images: [{ id: "1", url: "/one.jpg", alt: "One" }] }])).toMatch(/2 to 3 images/i);
         expect(validateBlocks([{ type: "slider", images: [
             { id: "1", url: "/one.jpg", alt: "One" },

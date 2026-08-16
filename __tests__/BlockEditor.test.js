@@ -2,10 +2,15 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { useState } from "react";
 import BlockEditor from "@/components/pageBuilder/BlockEditor";
 import { loadPackageEditorOptions } from "@/services/packageBlocks";
-import { uploadPageImage } from "@/services/media";
+import { listUploadedImages, uploadPageImage } from "@/services/media";
 
 jest.mock("@/services/packageBlocks", () => ({ loadPackageEditorOptions: jest.fn() }));
-jest.mock("@/services/media", () => ({ uploadPageImage: jest.fn() }));
+jest.mock("@/services/media", () => ({ listUploadedImages: jest.fn(), uploadPageImage: jest.fn() }));
+
+beforeEach(() => {
+    listUploadedImages.mockReset();
+    listUploadedImages.mockResolvedValue([]);
+});
 
 const baseProps = {
     index: 0, count: 1, pageKey: "home", onMove: jest.fn(), onDelete: jest.fn(),
@@ -113,6 +118,51 @@ describe("BlockEditor image controls", () => {
         fireEvent.click(screen.getByLabelText("Shadow"));
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ shadow: true }));
     });
+
+    test("selects a previously uploaded image and supplies default alt text", async () => {
+        const onChange = jest.fn();
+        listUploadedImages.mockResolvedValue([{ name: "beach-view.jpg", pageKey: "visa", url: "/beach.jpg", storagePath: "page-media/visa/beach.jpg" }]);
+        const block = { id: "image", type: "image", url: "", storagePath: "", alt: "", caption: "" };
+        render(<BlockEditor {...baseProps} block={block} onChange={onChange} />);
+
+        fireEvent.click(screen.getByRole("button", { name: "Choose from uploaded images" }));
+        fireEvent.click(await screen.findByRole("button", { name: "Use beach-view.jpg" }));
+
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
+            url: "/beach.jpg", storagePath: "page-media/visa/beach.jpg", alt: "beach view"
+        }));
+        expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    });
+});
+
+describe("BlockEditor card controls", () => {
+    test("uses the 8 MB upload allowance for card images", async () => {
+        const onChange = jest.fn();
+        uploadPageImage.mockReset();
+        uploadPageImage.mockResolvedValue({ url: "/card.jpg", storagePath: "page-media/home/card.jpg" });
+        const block = { id: "card", type: "card", heading: "Stay", content: "Details", imageUrl: "", imageStoragePath: "", imageAlt: "" };
+        render(<BlockEditor {...baseProps} block={block} onChange={onChange} />);
+
+        const file = new File(["card"], "card.jpg", { type: "image/jpeg" });
+        fireEvent.change(screen.getByLabelText("Card image file"), { target: { files: [file] } });
+
+        await waitFor(() => expect(uploadPageImage).toHaveBeenCalledWith("home", file, { maxImageBytes: 8 * 1024 * 1024 }));
+        expect(screen.getByText(/maximum 8 MB/i)).toBeInTheDocument();
+    });
+
+    test("selects a previously uploaded card image", async () => {
+        const onChange = jest.fn();
+        listUploadedImages.mockResolvedValue([{ name: "hotel-room.webp", pageKey: "holiday", url: "/hotel.webp", storagePath: "page-media/holiday/hotel.webp" }]);
+        const block = { id: "card", type: "card", heading: "Stay", content: "Details", imageUrl: "", imageStoragePath: "", imageAlt: "" };
+        render(<BlockEditor {...baseProps} block={block} onChange={onChange} />);
+
+        fireEvent.click(screen.getByRole("button", { name: "Choose from uploaded images" }));
+        fireEvent.click(await screen.findByRole("button", { name: "Use hotel-room.webp" }));
+
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
+            imageUrl: "/hotel.webp", imageStoragePath: "page-media/holiday/hotel.webp", imageAlt: "hotel room"
+        }));
+    });
 });
 
 describe("BlockEditor slider controls", () => {
@@ -139,6 +189,19 @@ describe("BlockEditor slider controls", () => {
         expect(screen.getByText("2 images uploaded successfully.")).toBeInTheDocument();
         expect(screen.getByText("2 of 3 images added")).toBeInTheDocument();
         expect(screen.getByAltText("Slide 1 preview")).toHaveAttribute("src", "/one.jpg");
+    });
+
+    test("adds a previously uploaded image as a new slide", async () => {
+        const onChange = jest.fn();
+        listUploadedImages.mockResolvedValue([{ name: "mosque.png", pageKey: "umrah", url: "/mosque.png", storagePath: "page-media/umrah/mosque.png" }]);
+        render(<SliderEditorHost initialBlock={{ id: "slider", type: "slider", images: [] }} onChange={onChange} />);
+
+        fireEvent.click(screen.getByRole("button", { name: "Add from uploaded images" }));
+        fireEvent.click(await screen.findByRole("button", { name: "Use mosque.png" }));
+
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ images: [expect.objectContaining({
+            url: "/mosque.png", storagePath: "page-media/umrah/mosque.png", alt: "mosque"
+        })] }));
     });
 
     test("edits, reorders, removes, and caps configured slides", () => {
