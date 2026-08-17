@@ -15,7 +15,9 @@ describe("page builder utilities", () => {
         expect(TAB_CHILD_BLOCK_TYPES).toContain("card");
         expect(createBlock("heading")).toMatchObject({ type: "heading", level: 2, text: "", align: "left" });
         expect(createBlock("list")).toMatchObject({ type: "list", ordered: false, iconList: false, bold: false, items: [""] });
-        expect(createBlock("image")).toMatchObject({ type: "image", size: "fullWidth", rounded: false, shadow: false });
+        expect(createBlock("image")).toMatchObject({
+            type: "image", mobileUrl: "", mobileStoragePath: "", size: "fullWidth", rounded: false, shadow: false
+        });
         expect(createBlock("slider")).toMatchObject({ type: "slider", images: [] });
         expect(createBlock("card")).toMatchObject({
             type: "card", heading: "", content: "", imageUrl: "", imageAlt: "", imagePosition: "right",

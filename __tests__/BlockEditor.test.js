@@ -133,6 +133,28 @@ describe("BlockEditor image controls", () => {
         }));
         expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     });
+
+    test("uploads and removes a separate mobile image", async () => {
+        const onChange = jest.fn();
+        uploadPageImage.mockReset();
+        uploadPageImage.mockResolvedValue({ url: "/photo-mobile.jpg", storagePath: "page-media/home/photo-mobile.jpg" });
+        const block = {
+            id: "image", type: "image", url: "/photo.jpg", storagePath: "", mobileUrl: "", mobileStoragePath: "",
+            alt: "Photo", caption: ""
+        };
+        render(<SliderEditorHost initialBlock={block} onChange={onChange} />);
+
+        const mobileFile = new File(["mobile"], "photo-mobile.jpg", { type: "image/jpeg" });
+        fireEvent.change(screen.getByLabelText("Mobile image file (optional)"), { target: { files: [mobileFile] } });
+
+        await waitFor(() => expect(screen.getByAltText("Mobile image preview")).toHaveAttribute("src", "/photo-mobile.jpg"));
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
+            mobileUrl: "/photo-mobile.jpg", mobileStoragePath: "page-media/home/photo-mobile.jpg"
+        }));
+
+        fireEvent.click(screen.getByRole("button", { name: "Use desktop image on mobile" }));
+        expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ mobileUrl: "", mobileStoragePath: "" }));
+    });
 });
 
 describe("BlockEditor card controls", () => {

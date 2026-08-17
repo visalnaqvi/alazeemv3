@@ -227,14 +227,16 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
         </>}
         {block.type === "image" && <>
             {block.url && <div className={styles.imagePreviewWrap}>
+                <strong>Desktop image</strong>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={block.url}
-                    alt="Upload preview"
+                    alt="Desktop image preview"
                     className={`${styles.imagePreview} ${block.size === "original" ? styles.imageOriginal : styles.imageFullWidth} ${block.rounded ? styles.imageRounded : ""} ${block.shadow ? styles.imageShadow : ""}`}
                 />
             </div>}
-            <div className={styles.field}><label>Image file</label><input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={async event => {
+            <p className={styles.muted}>Add an optional mobile image for screens up to 700px wide. If none is added, the desktop image is used.</p>
+            <div className={styles.field}><label>Desktop image file</label><input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={async event => {
                 const file = event.target.files?.[0];
                 if (!file) return;
                 setUploading(true);
@@ -243,7 +245,33 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
             <button type="button" className="primary-btn blue" onClick={() => openMediaPicker("Choose an image", image => patch({
                 url: image.url, storagePath: image.storagePath, alt: block.alt || getDefaultAlt(image.name)
             }))}>Choose from uploaded images</button>
-            <div className={styles.field}><label>Image URL</label><input value={block.url || ""} onChange={event => patch({ url: event.target.value, storagePath: "" })} placeholder="/images/photo.jpg or https://…" /></div>
+            <div className={styles.field}><label>Desktop image URL</label><input value={block.url || ""} onChange={event => patch({ url: event.target.value, storagePath: "" })} placeholder="/images/photo.jpg or https://…" /></div>
+            <div className={styles.mobileImageEditor}>
+                <strong>Mobile image (optional)</strong>
+                {block.mobileUrl && <div className={styles.imagePreviewWrap}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        src={block.mobileUrl}
+                        alt="Mobile image preview"
+                        className={`${styles.imagePreview} ${styles.mobileImagePreview} ${block.rounded ? styles.imageRounded : ""} ${block.shadow ? styles.imageShadow : ""}`}
+                    />
+                </div>}
+                <div className={styles.field}><label htmlFor={`image-mobile-file-${block.id}`}>{block.mobileUrl ? "Replace mobile image" : "Mobile image file (optional)"}</label><input id={`image-mobile-file-${block.id}`} type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={async event => {
+                    const file = event.target.files?.[0];
+                    event.target.value = "";
+                    if (!file) return;
+                    setUploading(true);
+                    try {
+                        const upload = await uploadPageImage(pageKey, file);
+                        patch({ mobileUrl: upload.url, mobileStoragePath: upload.storagePath || "" });
+                    } catch (error) { onError(error.message); } finally { setUploading(false); }
+                }} /></div>
+                <button type="button" className="primary-btn blue" onClick={() => openMediaPicker("Choose a mobile image", image => patch({
+                    mobileUrl: image.url, mobileStoragePath: image.storagePath
+                }))}>Choose mobile image from uploaded images</button>
+                <div className={styles.field}><label>Mobile image URL</label><input value={block.mobileUrl || ""} onChange={event => patch({ mobileUrl: event.target.value, mobileStoragePath: "" })} placeholder="Optional mobile image URL" /></div>
+                {block.mobileUrl && <button type="button" onClick={() => patch({ mobileUrl: "", mobileStoragePath: "" })}>Use desktop image on mobile</button>}
+            </div>
             <div className={styles.field}><label>Alt text</label><input value={block.alt} onChange={event => patch({ alt: event.target.value })} /></div>
             <div className={styles.field}><label>Caption (optional)</label><input value={block.caption} onChange={event => patch({ caption: event.target.value })} /></div>
             <div className={styles.field}><label htmlFor={`image-size-${block.id}`}>Image size</label><select id={`image-size-${block.id}`} value={block.size === "original" ? "original" : "fullWidth"} onChange={event => patch({ size: event.target.value })}>

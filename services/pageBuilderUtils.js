@@ -44,6 +44,8 @@ export const createBlock = type => {
             ...base,
             url: "",
             storagePath: "",
+            mobileUrl: "",
+            mobileStoragePath: "",
             alt: "",
             caption: "",
             size: "fullWidth",

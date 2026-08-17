@@ -31,11 +31,14 @@ const RenderedBlock = ({ block, systemComponents }) => {
     if (block.type === "image") return <figure className={`${styles.block} ${styles.imageBlock}`}>
         <div className={styles.imageWrap}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                className={`${styles.image} ${block.size === "original" ? styles.imageOriginal : styles.imageFullWidth} ${block.rounded ? styles.imageRounded : ""} ${block.shadow ? styles.imageShadow : ""}`}
-                src={block.url}
-                alt={block.alt}
-            />
+            <picture>
+                {block.mobileUrl && <source media="(max-width: 700px)" srcSet={block.mobileUrl} />}
+                <img
+                    className={`${styles.image} ${block.size === "original" ? styles.imageOriginal : styles.imageFullWidth} ${block.rounded ? styles.imageRounded : ""} ${block.shadow ? styles.imageShadow : ""}`}
+                    src={block.url}
+                    alt={block.alt}
+                />
+            </picture>
         </div>
         {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
     </figure>;

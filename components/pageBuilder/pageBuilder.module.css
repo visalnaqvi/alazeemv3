@@ -16,6 +16,7 @@
 .iconList { line-height: 1.75; }
 .imageBlock { width: 100%; }
 .imageWrap { width: 100%; }
+.imageWrap picture { display: block; width: 100%; }
 .image { display: block; height: auto; max-width: 100%; }
 .imageFullWidth { width: 100%; }
 .imageOriginal { width: auto; margin-left: auto; margin-right: auto; }
@@ -146,6 +147,10 @@
 .checkGrid label { font-weight: 400; }
 .imagePreviewWrap { margin-bottom: 16px; width: 100%; }
 .imagePreview { max-height: 300px; object-fit: contain; }
+.imagePreviewWrap > strong { display: block; margin-bottom: 8px; }
+.mobileImageEditor { border-top: 1px solid #e0e0e0; margin: 18px 0 16px; padding-top: 16px; }
+.mobileImageEditor > strong { display: block; margin-bottom: 12px; }
+.mobileImagePreview { display: block; max-width: min(100%, 520px); }
 .cardEditorPreview { border: 1px solid #d9e0e5; border-radius: 8px; width: min(100%, 520px); }
 .imageOptionList { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
 .sliderEditorList { display: grid; gap: 14px; margin: 16px 0; }

@@ -32,6 +32,22 @@ describe("PageRenderer", () => {
         expect(screen.getByAltText("Shadow image")).not.toHaveClass(styles.imageRounded);
     });
 
+    test("uses an optional mobile image with the desktop image as fallback", () => {
+        render(<PageRenderer
+            page={{ title: "Responsive image" }}
+            version={{ blocks: [
+                { id: "responsive", type: "image", url: "/desktop.jpg", mobileUrl: "/mobile.jpg", alt: "Responsive trip" },
+                { id: "fallback", type: "image", url: "/fallback.jpg", alt: "Desktop fallback" }
+            ] }}
+        />);
+
+        const responsivePicture = screen.getByAltText("Responsive trip").closest("picture");
+        expect(responsivePicture.querySelector("source")).toHaveAttribute("media", "(max-width: 700px)");
+        expect(responsivePicture.querySelector("source")).toHaveAttribute("srcset", "/mobile.jpg");
+        expect(screen.getByAltText("Responsive trip")).toHaveAttribute("src", "/desktop.jpg");
+        expect(screen.getByAltText("Desktop fallback").closest("picture").querySelector("source")).toBeNull();
+    });
+
     test("renders editable blocks and the locked system component in order", () => {
         render(<PageRenderer
             page={{ title: "Test page" }}
