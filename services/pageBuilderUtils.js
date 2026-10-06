@@ -6,10 +6,11 @@ export const createBlockId = () => {
 };
 
 export const TAB_CHILD_BLOCK_TYPES = [
-    "heading", "paragraph", "list", "image", "card", "slider", "table", "cta", "packages", "flightFares"
+    "heading", "paragraph", "list", "image", "card", "slider", "table", "file", "cta", "packages"
 ];
 
 export const PAGE_BLOCK_TYPES = [...TAB_CHILD_BLOCK_TYPES, "tabs"];
+const SUPPORTED_TAB_CHILD_BLOCK_TYPES = [...TAB_CHILD_BLOCK_TYPES, "flightFares"];
 
 export const getBlockTypeLabel = type => {
     if (type === "flightFares") return "flight fares";
@@ -65,7 +66,17 @@ export const createBlock = type => {
             buttonNewTab: false
         };
         case "slider": return { ...base, images: [] };
-        case "table": return { ...base, caption: "", headers: ["Column 1", "Column 2"], rows: [["", ""]] };
+        case "table": return { ...base, heading: "", headers: ["Column 1", "Column 2"], rows: [["", ""]] };
+        case "file": return {
+            ...base,
+            heading: "",
+            buttonText: "Download file",
+            fileName: "",
+            fileSize: 0,
+            fileType: "",
+            storagePath: "",
+            url: ""
+        };
         case "cta": return { ...base, text: "Contact us", href: "tel:+919811136987", newTab: false };
         case "packages": return {
             ...base,
@@ -91,6 +102,48 @@ export const createBlock = type => {
     }
 };
 
+const mapTableRows = (block, mapRow) => {
+    if (block?.type === "table") {
+        return {
+            ...block,
+            rows: Array.isArray(block.rows) ? block.rows.map(mapRow) : []
+        };
+    }
+    if (block?.type === "tabs") {
+        return {
+            ...block,
+            tabs: Array.isArray(block.tabs) ? block.tabs.map(tab => ({
+                ...tab,
+                blocks: mapTableBlocks(tab.blocks, mapRow)
+            })) : []
+        };
+    }
+    return block;
+};
+
+const mapTableBlocks = (blocks, mapRow) => Array.isArray(blocks)
+    ? blocks.map(block => mapTableRows(block, mapRow))
+    : [];
+
+// Firestore does not allow an array to contain another array directly. Keep the
+// editor-friendly row arrays in memory, but wrap each row in a map when saving.
+export const encodePageVersion = version => ({
+    ...version,
+    blocks: mapTableBlocks(version?.blocks, row => ({
+        cells: Array.isArray(row) ? row : (Array.isArray(row?.cells) ? row.cells : [])
+    }))
+});
+
+export const decodePageVersion = version => {
+    if (!version) return version;
+    return {
+        ...version,
+        blocks: mapTableBlocks(version.blocks, row => (
+            Array.isArray(row) ? row : (Array.isArray(row?.cells) ? row.cells : [])
+        ))
+    };
+};
+
 export const moveItem = (items, from, to) => {
     if (from === to || from < 0 || to < 0 || from >= items.length || to >= items.length) return items;
     const next = [...items];
@@ -105,7 +158,7 @@ const validateBlockList = (blocks, prefix = "Block", allowTabs = true) => {
         const block = blocks[index];
         const name = `${prefix} ${index + 1}`;
         if (!block || typeof block !== "object") return `${name}: select a valid block type.`;
-        if (!allowTabs && !TAB_CHILD_BLOCK_TYPES.includes(block.type)) return `${name}: tabs and system blocks cannot be placed inside a tab.`;
+        if (!allowTabs && !SUPPORTED_TAB_CHILD_BLOCK_TYPES.includes(block.type)) return `${name}: tabs and system blocks cannot be placed inside a tab.`;
         if (block.type === "heading" && !block.text?.trim()) return `${name}: heading text is required.`;
         if (block.type === "paragraph" && !block.text?.trim()) return `${name}: paragraph text is required.`;
         if (block.type === "list" && (!block.items?.length || block.items.some(item => !item?.trim()))) return `${name}: list items cannot be empty.`;
@@ -124,6 +177,11 @@ const validateBlockList = (blocks, prefix = "Block", allowTabs = true) => {
             if (block.images.some(image => !image?.url || !image?.alt?.trim())) return `${name}: every slider image needs an image and alt text.`;
         }
         if (block.type === "table" && (!block.headers?.length || block.headers.some(cell => !cell?.trim()))) return `${name}: table headers cannot be empty.`;
+        if (block.type === "file") {
+            if (!block.heading?.trim()) return `${name}: file heading is required.`;
+            if (!block.buttonText?.trim()) return `${name}: download button text is required.`;
+            if (!block.url || !block.fileName) return `${name}: upload a file.`;
+        }
         if (block.type === "cta" && (!block.text?.trim() || !/^(\/|https?:\/\/|mailto:|tel:|#)/i.test(block.href || ""))) return `${name}: CTA text and a valid link are required.`;
         if (block.type === "packages" && !["umrah", "hajj", "iraq", "turkey", "holiday"].includes(block.source)) return `${name}: select a valid package source.`;
         if (block.type === "tabs") {

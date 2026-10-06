@@ -2,6 +2,9 @@
     width: min(1180px, calc(100% - 32px));
     margin: 32px auto;
 }
+.block {
+    margin-block: clamp(24px, 3vw, 36px);
+}
 .contentBlock { width: 93%; margin-left: auto; margin-right: auto; }
 
 .paragraph {
@@ -49,6 +52,7 @@
 .table th, .table td { border: 1px solid #d8d8d8; padding: 12px; text-align: left; }
 .table th { background: #f3f6f8; }
 .flightFareTableWrap { margin-bottom: 40px; overflow-x: auto; }
+.genericTableWrap { margin-bottom: 0; }
 .flightFareTable {
     border-collapse: separate;
     border-spacing: 2px;
@@ -75,6 +79,28 @@
     font-weight: 600;
     text-align: center;
 }
+.fileDownloadBlock {
+    background: #f4f9fd;
+    border: 1px solid #d5e5f0;
+    border-radius: 12px;
+    padding: clamp(24px, 4vw, 42px);
+    text-align: center;
+}
+.fileDownloadHeading { color: #1b2730; font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 20px; }
+.fileDownloadButton { display: inline-block; margin-top: 0; }
+.fileEditorSummary {
+    align-items: center;
+    background: #f4f9fd;
+    border: 1px solid #d5e5f0;
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 14px;
+}
+.fileEditorSummary strong, .fileEditorSummary small { display: block; overflow-wrap: anywhere; }
+.fileEditorSummary small { color: #66727a; margin-top: 4px; }
+.fileEditorSummary button { flex: 0 0 auto; margin-top: 0; }
 .empty { padding: 50px 20px; text-align: center; color: #666; }
 
 .adminShell { width: min(1180px, calc(100% - 32px)); margin: 30px auto 80px; }
@@ -228,6 +254,7 @@
 
 @media (max-width: 700px) {
     .page, .contentBlock, .adminShell { width: min(100% - 20px, 1180px); }
+    .block { margin-block: 24px; }
     .packageGrid { grid-template-columns: minmax(0, 600px); }
     .tabsHeader { align-items: stretch; flex-direction: column; }
     .tabsLabel { font-size: 18px; }
@@ -243,4 +270,5 @@
     .featureCardImageWrap { min-height: 0; }
     .featureCardImage { aspect-ratio: 16 / 10; height: auto; }
     .featureCardContent { padding: 26px 22px 30px; }
+    .fileEditorSummary { align-items: stretch; flex-direction: column; }
 }

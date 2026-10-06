@@ -1,4 +1,4 @@
-import { PAGE_BLOCK_TYPES, TAB_CHILD_BLOCK_TYPES, createBlock, moveItem, normalizeNavItem, normalizeSlug, validateBlocks, validateSlug } from "@/services/pageBuilderUtils";
+import { PAGE_BLOCK_TYPES, TAB_CHILD_BLOCK_TYPES, createBlock, decodePageVersion, encodePageVersion, moveItem, normalizeNavItem, normalizeSlug, validateBlocks, validateSlug } from "@/services/pageBuilderUtils";
 
 describe("page builder utilities", () => {
     test("normalizes and validates custom page slugs", () => {
@@ -13,6 +13,10 @@ describe("page builder utilities", () => {
         expect(TAB_CHILD_BLOCK_TYPES).toContain("slider");
         expect(PAGE_BLOCK_TYPES).toContain("card");
         expect(TAB_CHILD_BLOCK_TYPES).toContain("card");
+        expect(PAGE_BLOCK_TYPES).toContain("file");
+        expect(TAB_CHILD_BLOCK_TYPES).toContain("file");
+        expect(PAGE_BLOCK_TYPES).not.toContain("flightFares");
+        expect(TAB_CHILD_BLOCK_TYPES).not.toContain("flightFares");
         expect(createBlock("heading")).toMatchObject({ type: "heading", level: 2, text: "", align: "left" });
         expect(createBlock("list")).toMatchObject({ type: "list", ordered: false, iconList: false, bold: false, items: [""] });
         expect(createBlock("image")).toMatchObject({
@@ -23,7 +27,8 @@ describe("page builder utilities", () => {
             type: "card", heading: "", content: "", imageUrl: "", imageAlt: "", imagePosition: "right",
             buttonText: "", buttonHref: "", buttonNewTab: false
         });
-        expect(createBlock("table")).toMatchObject({ type: "table", headers: ["Column 1", "Column 2"], rows: [["", ""]] });
+        expect(createBlock("table")).toMatchObject({ type: "table", heading: "", headers: ["Column 1", "Column 2"], rows: [["", ""]] });
+        expect(createBlock("file")).toMatchObject({ type: "file", heading: "", buttonText: "Download file", fileName: "", url: "" });
         expect(createBlock("packages")).toMatchObject({ type: "packages", source: "umrah", groupTagIds: [] });
         expect(createBlock("flightFares")).toMatchObject({ type: "flightFares" });
         const tabs = createBlock("tabs");
@@ -43,6 +48,28 @@ describe("page builder utilities", () => {
         const source = ["a", "b", "c"];
         expect(moveItem(source, 0, 2)).toEqual(["b", "c", "a"]);
         expect(source).toEqual(["a", "b", "c"]);
+    });
+
+    test("stores table rows without Firestore nested arrays and restores them for editing", () => {
+        const version = {
+            seoTitle: "Rates",
+            blocks: [
+                { id: "table-1", type: "table", headers: ["Currency", "Rate"], rows: [["USD", "84"], ["EUR", "91"]] },
+                {
+                    id: "tabs-1",
+                    type: "tabs",
+                    tabs: [{ id: "tab-1", label: "Retail", blocks: [
+                        { id: "table-2", type: "table", headers: ["Currency"], rows: [["GBP"]] }
+                    ] }]
+                }
+            ]
+        };
+
+        const encoded = encodePageVersion(version);
+        expect(encoded.blocks[0].rows).toEqual([{ cells: ["USD", "84"] }, { cells: ["EUR", "91"] }]);
+        expect(encoded.blocks[1].tabs[0].blocks[0].rows).toEqual([{ cells: ["GBP"] }]);
+        expect(decodePageVersion(encoded)).toEqual(version);
+        expect(version.blocks[0].rows).toEqual([["USD", "84"], ["EUR", "91"]]);
     });
 
     test("requires meaningful editable block content", () => {
@@ -66,6 +93,8 @@ describe("page builder utilities", () => {
             { id: "2", url: "/two.jpg", alt: "Two" }
         ] }])).toBe("");
         expect(validateBlocks([{ type: "paragraph", text: "Ready" }])).toBe("");
+        expect(validateBlocks([{ type: "file", heading: "Brochure", buttonText: "Download", fileName: "brochure.pdf", url: "https://example.com/brochure.pdf" }])).toBe("");
+        expect(validateBlocks([{ type: "file", heading: "Brochure", buttonText: "Download", fileName: "", url: "" }])).toMatch(/upload a file/i);
         expect(validateBlocks([{ type: "cta", text: "Call", href: "tel:+91123" }])).toBe("");
         expect(validateBlocks([{ type: "packages", source: "unknown" }])).toMatch(/valid package source/i);
     });

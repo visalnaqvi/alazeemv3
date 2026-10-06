@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { uploadPageImage } from "@/services/media";
+import { PAGE_FILE_ACCEPT, uploadPageFile, uploadPageImage } from "@/services/media";
 import { PACKAGE_SOURCES, getPackageSource } from "@/config/packageSources";
 import { loadPackageEditorOptions } from "@/services/packageBlocks";
 import { TAB_CHILD_BLOCK_TYPES, createBlock, createBlockId, getBlockTypeLabel, moveItem } from "@/services/pageBuilderUtils";
@@ -410,7 +410,7 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
             </section>)}</div>
         </>}
         {block.type === "table" && <>
-            <div className={styles.field}><label>Caption (optional)</label><input value={block.caption} onChange={event => patch({ caption: event.target.value })} /></div>
+            <div className={styles.field}><label htmlFor={`table-heading-${block.id}`}>Heading (optional)</label><input id={`table-heading-${block.id}`} value={block.heading ?? block.caption ?? ""} onChange={event => patch({ heading: event.target.value, caption: "" })} /></div>
             <div className={styles.tableWrap}><table className={styles.editorTable}>
                 <thead><tr>{block.headers.map((header, cellIndex) => <th key={cellIndex}>
                     <input className={styles.cellInput} value={header} onChange={event => updateHeader(cellIndex, event.target.value)} />
@@ -419,6 +419,28 @@ export default function BlockEditor({ block, index, count, pageKey, onChange, on
                 <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}><input className={styles.cellInput} value={cell} onChange={event => updateCell(rowIndex, cellIndex, event.target.value)} /></td>)}<td><button type="button" className="primary-btn red" disabled={block.rows.length === 1} onClick={() => patch({ rows: block.rows.filter((_, i) => i !== rowIndex) })}>Remove row</button></td></tr>)}</tbody>
             </table></div>
             <div className={styles.toolbar} style={{ marginTop: 12 }}><button type="button" className="primary-btn blue" onClick={addColumn}>Add column</button><button type="button" className="primary-btn blue" onClick={() => patch({ rows: [...block.rows, block.headers.map(() => "")] })}>Add row</button></div>
+        </>}
+        {block.type === "file" && <>
+            <div className={styles.field}><label htmlFor={`file-heading-${block.id}`}>Heading</label><input id={`file-heading-${block.id}`} value={block.heading || ""} onChange={event => patch({ heading: event.target.value })} placeholder="Download our brochure" /></div>
+            <div className={styles.field}><label htmlFor={`file-button-${block.id}`}>Button text</label><input id={`file-button-${block.id}`} value={block.buttonText || ""} onChange={event => patch({ buttonText: event.target.value })} placeholder="Download PDF" /></div>
+            <div className={styles.field}>
+                <label htmlFor={`file-upload-${block.id}`}>{block.url ? "Replace file" : "Upload file"}</label>
+                <input id={`file-upload-${block.id}`} type="file" accept={PAGE_FILE_ACCEPT} disabled={uploading} onChange={async event => {
+                    const file = event.target.files?.[0];
+                    event.target.value = "";
+                    if (!file) return;
+                    setUploading(true);
+                    try { patch(await uploadPageFile(pageKey, file)); }
+                    catch (error) { onError(error.message); }
+                    finally { setUploading(false); }
+                }} />
+                <p className={styles.muted}>PDF, Office, text, ZIP, or image files up to 20 MB.</p>
+                {uploading && <span className={styles.muted}>Uploading file...</span>}
+            </div>
+            {block.url && <div className={styles.fileEditorSummary}>
+                <div><strong>{block.fileName}</strong>{block.fileSize > 0 && <small>{(block.fileSize / (1024 * 1024)).toFixed(2)} MB</small>}</div>
+                <button type="button" className="primary-btn red" onClick={() => patch({ fileName: "", fileSize: 0, fileType: "", storagePath: "", url: "" })}>Remove file</button>
+            </div>}
         </>}
         {block.type === "cta" && <>
             <div className={styles.field}><label>Button text</label><input value={block.text || ""} onChange={event => patch({ text: event.target.value })} /></div>

@@ -2,10 +2,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { useState } from "react";
 import BlockEditor from "@/components/pageBuilder/BlockEditor";
 import { loadPackageEditorOptions } from "@/services/packageBlocks";
-import { listUploadedImages, uploadPageImage } from "@/services/media";
+import { listUploadedImages, uploadPageFile, uploadPageImage } from "@/services/media";
 
 jest.mock("@/services/packageBlocks", () => ({ loadPackageEditorOptions: jest.fn() }));
-jest.mock("@/services/media", () => ({ listUploadedImages: jest.fn(), uploadPageImage: jest.fn() }));
+jest.mock("@/services/media", () => ({ PAGE_FILE_ACCEPT: ".pdf,.docx", listUploadedImages: jest.fn(), uploadPageFile: jest.fn(), uploadPageImage: jest.fn() }));
 
 beforeEach(() => {
     listUploadedImages.mockReset();
@@ -67,6 +67,47 @@ describe("BlockEditor list controls", () => {
 
         fireEvent.click(screen.getByLabelText("Bold text"));
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ bold: true }));
+    });
+});
+
+describe("BlockEditor table controls", () => {
+    test("uses an optional heading and keeps legacy captions editable", () => {
+        const onChange = jest.fn();
+        const block = { id: "table", type: "table", caption: "Legacy rates", headers: ["Room"], rows: [["Double"]] };
+        render(<BlockEditor {...baseProps} block={block} onChange={onChange} />);
+
+        const heading = screen.getByLabelText("Heading (optional)");
+        expect(heading).toHaveValue("Legacy rates");
+        fireEvent.change(heading, { target: { value: "Current rates" } });
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ heading: "Current rates", caption: "" }));
+    });
+});
+
+describe("BlockEditor file controls", () => {
+    test("uploads a downloadable file and saves its metadata", async () => {
+        const onChange = jest.fn();
+        uploadPageFile.mockResolvedValue({
+            fileName: "brochure.pdf",
+            fileSize: 1024,
+            fileType: "application/pdf",
+            storagePath: "page-files/home/brochure.pdf",
+            url: "https://example.com/brochure.pdf"
+        });
+        const block = {
+            id: "brochure", type: "file", heading: "Brochure", buttonText: "Download",
+            fileName: "", fileSize: 0, fileType: "", storagePath: "", url: ""
+        };
+        render(<BlockEditor {...baseProps} block={block} onChange={onChange} />);
+
+        const file = new File(["brochure"], "brochure.pdf", { type: "application/pdf" });
+        fireEvent.change(screen.getByLabelText("Upload file"), { target: { files: [file] } });
+
+        await waitFor(() => expect(uploadPageFile).toHaveBeenCalledWith("home", file));
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
+            fileName: "brochure.pdf",
+            storagePath: "page-files/home/brochure.pdf",
+            url: "https://example.com/brochure.pdf"
+        }));
     });
 });
 

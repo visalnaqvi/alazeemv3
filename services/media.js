@@ -3,6 +3,18 @@ import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_FILE_BYTES = 20 * 1024 * 1024;
+const ALLOWED_FILE_EXTENSIONS = [
+    "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "csv", "txt", "rtf", "zip",
+    "jpg", "jpeg", "png", "webp"
+];
+
+export const PAGE_FILE_ACCEPT = ALLOWED_FILE_EXTENSIONS.map(extension => `.${extension}`).join(",");
+
+const safeUploadName = name => String(name || "download")
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]/g, "-")
+    .replace(/-+/g, "-");
 
 export const validatePageImage = (file, maxImageBytes = MAX_IMAGE_BYTES) => {
     if (!file) return "Choose an image to upload.";
@@ -14,7 +26,7 @@ export const validatePageImage = (file, maxImageBytes = MAX_IMAGE_BYTES) => {
 export const uploadPageImage = async (pageKey, file, { maxImageBytes = MAX_IMAGE_BYTES } = {}) => {
     const error = validatePageImage(file, maxImageBytes);
     if (error) throw new Error(error);
-    const safeName = file.name.toLowerCase().replace(/[^a-z0-9._-]/g, "-");
+    const safeName = safeUploadName(file.name);
     const uniqueSuffix = typeof crypto !== "undefined" && crypto.randomUUID
         ? crypto.randomUUID()
         : Math.random().toString(36).slice(2);
@@ -22,6 +34,38 @@ export const uploadPageImage = async (pageKey, file, { maxImageBytes = MAX_IMAGE
     const storageRef = ref(storage, storagePath);
     await uploadBytes(storageRef, file, { contentType: file.type });
     return { storagePath, url: await getDownloadURL(storageRef) };
+};
+
+export const validatePageFile = (file, maxFileBytes = MAX_FILE_BYTES) => {
+    if (!file) return "Choose a file to upload.";
+    const extension = String(file.name || "").split(".").pop().toLowerCase();
+    if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
+        return "Upload a PDF, Office document, text file, ZIP archive, or supported image.";
+    }
+    if (file.size > maxFileBytes) return `Files must be ${Math.floor(maxFileBytes / (1024 * 1024))} MB or smaller.`;
+    return "";
+};
+
+export const uploadPageFile = async (pageKey, file, { maxFileBytes = MAX_FILE_BYTES } = {}) => {
+    const error = validatePageFile(file, maxFileBytes);
+    if (error) throw new Error(error);
+    const safeName = safeUploadName(file.name);
+    const uniqueSuffix = typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2);
+    const storagePath = `page-files/${pageKey}/${Date.now()}-${uniqueSuffix}-${safeName}`;
+    const storageRef = ref(storage, storagePath);
+    await uploadBytes(storageRef, file, {
+        contentType: file.type || "application/octet-stream",
+        contentDisposition: `attachment; filename="${safeName}"`
+    });
+    return {
+        fileName: file.name,
+        fileSize: file.size,
+        fileType: file.type || "application/octet-stream",
+        storagePath,
+        url: await getDownloadURL(storageRef)
+    };
 };
 
 const listImageRefs = async directoryRef => {

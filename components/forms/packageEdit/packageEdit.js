@@ -9,7 +9,7 @@ import { BsCheck } from "react-icons/bs"
 import Toast from "@/components/notification/toast";
 import FlightsTable from "@/components/flights/table/flightsTable";
 import PricingTable from "@/components/flights/table/pricingTable";
-import { addPackageCategory, addPackageTag, getPackageCategories, getPackageTags } from "@/services/packageTaxonomy";
+import { addPackageCategory, addPackageFeature, addPackageTag, getPackageCategories, getPackageFeatures, getPackageTags } from "@/services/packageTaxonomy";
 import { getIraqPackageVariant } from "@/services/packageBlocks";
 const PackageEditForm = ({ details, packageid }) => {
     const [vendors, setVendors] = useState([])
@@ -22,7 +22,9 @@ const PackageEditForm = ({ details, packageid }) => {
     const [activeTags, setActiveTags] = useState([])
     const [categories, setCategories] = useState([])
     const [groupTags, setGroupTags] = useState([])
+    const [featureOptions, setFeatureOptions] = useState([])
     const [newCategoryName, setNewCategoryName] = useState("")
+    const [newFeatureName, setNewFeatureName] = useState("")
     const [newTagName, setNewTagName] = useState("")
     const [newDetails, setNewDetails] = useState({
         title: "",
@@ -32,22 +34,8 @@ const PackageEditForm = ({ details, packageid }) => {
         sectionData: [],
         hotels: ["", ""],
         tags: [],
-        features: [
-            "All Meals and Laudary",
-            "Air Ticket and Visa",
-            "Hotel 4/5 Bed Sharing",
-            "Insurance and Ziyarat",
-            "Round Trip Transport",
-            "Flight by Saudi Air"
-        ],
-        isBold: [
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-        ],
+        features: [],
+        isBold: [],
         startDate: "",
         endDate: "",
         sectionId:[],
@@ -60,18 +48,20 @@ const PackageEditForm = ({ details, packageid }) => {
 
     const fetchData = async () => {
         try {
-            const [cities, categoryOptions, tagOptions] = await Promise.all([
+            const [cities, categoryOptions, tagOptions, packageFeatureOptions] = await Promise.all([
                 getCitiesFromTags(),
                 getPackageCategories(),
-                getPackageTags()
+                getPackageTags(),
+                getPackageFeatures()
             ]);
             setActiveTags(Array.isArray(cities) ? cities : []);
             setCategories(categoryOptions);
             setGroupTags(tagOptions);
+            setFeatureOptions(packageFeatureOptions);
         }
         catch (err) {
             if (err) {
-                setToastMsg({ status: "warning", msg: "Something went wrong cannot get package" })
+                setToastMessage({ status: "warning", msg: "Something went wrong cannot get package" })
             }
         }
     }
@@ -81,7 +71,9 @@ const PackageEditForm = ({ details, packageid }) => {
             ...details,
             sectionData: Array.isArray(details.sectionData) ? details.sectionData : [],
             sectionId: Array.isArray(details.sectionId) ? details.sectionId : [],
-            groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : []
+            groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : [],
+            features: Array.isArray(details.features) ? details.features : [],
+            isBold: Array.isArray(details.isBold) ? details.isBold : []
         });
 
         getVendor();
@@ -125,6 +117,41 @@ const PackageEditForm = ({ details, packageid }) => {
             setNewTagName("");
         } catch (error) {
             setToastMessage({ status: "warning", msg: error.message || "Unable to add tag" });
+        }
+    };
+
+    const toggleFeature = featureLabel => {
+        setNewDetails(prev => {
+            const features = Array.isArray(prev.features) ? prev.features : [];
+            const isBold = Array.isArray(prev.isBold) ? prev.isBold : [];
+            const selectedIndex = features.findIndex(feature => feature.toLowerCase() === featureLabel.toLowerCase());
+            if (selectedIndex >= 0) {
+                return {
+                    ...prev,
+                    features: features.filter((_, index) => index !== selectedIndex),
+                    isBold: isBold.filter((_, index) => index !== selectedIndex)
+                };
+            }
+            return { ...prev, features: [...features, featureLabel], isBold: [...isBold, false] };
+        });
+    };
+
+    const handleAddFeature = async () => {
+        try {
+            const feature = await addPackageFeature(newFeatureName);
+            setFeatureOptions(await getPackageFeatures());
+            setNewDetails(prev => {
+                const features = Array.isArray(prev.features) ? prev.features : [];
+                if (features.some(item => item.toLowerCase() === feature.label.toLowerCase())) return prev;
+                return {
+                    ...prev,
+                    features: [...features, feature.label],
+                    isBold: [...(Array.isArray(prev.isBold) ? prev.isBold : []), false]
+                };
+            });
+            setNewFeatureName("");
+        } catch (error) {
+            setToastMessage({ status: "warning", msg: error.message || "Unable to add feature" });
         }
     };
 
@@ -178,7 +205,9 @@ const PackageEditForm = ({ details, packageid }) => {
                 ...details,
                 sectionData: Array.isArray(details.sectionData) ? details.sectionData : [],
                 sectionId: Array.isArray(details.sectionId) ? details.sectionId : [],
-                groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : []
+                groupTagIds: Array.isArray(details.groupTagIds) ? details.groupTagIds : [],
+                features: Array.isArray(details.features) ? details.features : [],
+                isBold: Array.isArray(details.isBold) ? details.isBold : []
             })
         }
     }, [details, packageid])
@@ -205,6 +234,13 @@ const PackageEditForm = ({ details, packageid }) => {
 
     const getSectionPrice = (sectionId) =>
         newDetails?.sectionData?.find(s => s.id == sectionId)?.price || "";
+
+    const selectableFeatures = [...featureOptions];
+    (newDetails.features || []).forEach((label, index) => {
+        if (!selectableFeatures.some(feature => feature.label.toLowerCase() === label.toLowerCase())) {
+            selectableFeatures.push({ id: `existing-${index}-${label}`, label });
+        }
+    });
 
         const getSectionMadinaHotel = (sectionId) =>
         newDetails?.sectionData?.find(s => s.id == sectionId)?.madinaHotel || "";
@@ -252,51 +288,51 @@ const PackageEditForm = ({ details, packageid }) => {
                             />
                         </div>
                         <div className={styles.formItem}>
-                            <label className={styles.label} htmlFor="feature">Features</label>
-                            {
-                                newDetails.features.map((feature, i) => (
-                                    <div key={i} className={`${styles.formItem} body-wrapper justify-start`}>
-                                        <input onChange={(e) => {
-                                            const updatedFeatures = [...newDetails.features];
-                                            updatedFeatures[i] = e.target.value;
-                                            setNewDetails({ ...newDetails, features: [...updatedFeatures] })
+                            <span className={styles.label}>Features</span>
+                            <p className={styles.fieldHint}>Select features to add them to this package. Select one again to remove it.</p>
+                            <div className={styles.featurePool}>
+                                {selectableFeatures.map(feature => {
+                                    const selected = (newDetails.features || []).some(item => item.toLowerCase() === feature.label.toLowerCase());
+                                    return <button
+                                        key={feature.id}
+                                        type="button"
+                                        aria-pressed={selected}
+                                        className={`${styles.featureTag} ${selected ? styles.featureTagSelected : ""}`}
+                                        onClick={() => toggleFeature(feature.label)}
+                                    >{selected ? "✓ " : "+ "}{feature.label}</button>;
+                                })}
+                            </div>
+                            {(newDetails.features || []).length > 0 && <div className={styles.boldFeatureList}>
+                                <span>Bold display (optional)</span>
+                                {(newDetails.features || []).map((feature, index) => <label key={`${feature}-${index}`} className={styles.boldFeatureOption}>
+                                    <input
+                                        type="checkbox"
+                                        checked={Boolean(newDetails.isBold?.[index])}
+                                        onChange={event => setNewDetails(prev => {
+                                            const isBold = [...(Array.isArray(prev.isBold) ? prev.isBold : [])];
+                                            isBold[index] = event.target.checked;
+                                            return { ...prev, isBold };
+                                        })}
+                                    />
+                                    {feature}
+                                </label>)}
+                            </div>}
+                            <div className={styles.addFeatureRow}>
+                                <input
+                                    id="new-package-feature"
+                                    className={styles.input}
+                                    value={newFeatureName}
+                                    onChange={event => setNewFeatureName(event.target.value)}
+                                    onKeyDown={event => {
+                                        if (event.key === "Enter") {
+                                            event.preventDefault();
+                                            handleAddFeature();
                                         }
-                                        } className={`${styles.input} ${styles.optionsIinput}`} type="text" value={feature} placeholder="Enter New Feature" />
-                                        {newDetails.isBold[i] ? <input checked type="checkbox" name="isBold" id="isBold" onChange={(e) => {
-                                            let updatedIsBold = [...newDetails.isBold]
-                                            updatedIsBold[i] = e.target.checked
-                                            setNewDetails({ ...newDetails, isBold: [...updatedIsBold] })
-                                        }} /> : <input type="checkbox" name="isBold" id="isBold" onChange={(e) => {
-                                            let updatedIsBold = [...newDetails.isBold]
-                                            updatedIsBold[i] = e.target.checked
-                                            setNewDetails({ ...newDetails, isBold: [...updatedIsBold] })
-                                        }} />}<label htmlFor="isBold">Bold?</label>
-                                        <div className="delete-icon" id={i} onClick={async (e) => {
-
-                                            let newFeatures = newDetails.features.filter((f, i) => {
-                                                return i != e.target.id;
-                                            });
-
-                                            let newIsBold = newDetails.isBold.filter((f, i) => {
-                                                return i != e.target.id;
-                                            });
-                                            setNewDetails({ ...newDetails, features: [...newFeatures], isBold: [...newIsBold] })
-                                        }}>
-                                            <RiDeleteBin5Fill style={{ pointerEvents: "none" }} />
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                        <div className={styles.formItem}>
-                            <button className="primary-btn blue" onClick={(e) => {
-                                e.preventDefault()
-                                setNewDetails({
-                                    ...newDetails,
-                                    features: [...newDetails.features, "Add New Feature"],
-                                    isBold: [...newDetails.isBold, false]
-                                })
-                            }}>Add New Feature</button>
+                                    }}
+                                    placeholder="New feature name"
+                                />
+                                <button type="button" className="primary-btn blue" onClick={handleAddFeature}>Add Feature</button>
+                            </div>
                         </div>
                         {/* Add the drop down Here */}
                         <div className={styles.formItem}>

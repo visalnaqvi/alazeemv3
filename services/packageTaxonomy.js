@@ -1,6 +1,7 @@
 import db from "@/config/firebase";
 import { DEFAULT_PACKAGE_CATEGORIES } from "@/config/categories";
-import { packageCategoriesCollection, packageTagsCollection } from "@/config/collections";
+import { DEFAULT_PACKAGE_FEATURES } from "@/config/packageFeatures";
+import { packageCategoriesCollection, packageFeaturesCollection, packageTagsCollection } from "@/config/collections";
 import { doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 
 export const normalizeTaxonomyLabel = value => String(value || "").trim().replace(/\s+/g, " ");
@@ -54,6 +55,40 @@ export const addPackageCategory = async label => {
     const category = { label: normalizedLabel, order: Date.now() };
     await setDoc(reference, category);
     return { id, ...category };
+};
+
+export const getPackageFeatures = async () => {
+    let stored = [];
+    try {
+        stored = await readCollection(packageFeaturesCollection);
+    } catch (error) {
+        // Built-in options keep the editor usable until the collection is provisioned.
+        return DEFAULT_PACKAGE_FEATURES;
+    }
+    const merged = new Map(DEFAULT_PACKAGE_FEATURES.map(feature => [feature.id, feature]));
+    stored.forEach(feature => merged.set(feature.id, {
+        id: feature.id,
+        label: normalizeTaxonomyLabel(feature.label) || feature.id,
+        order: feature.order
+    }));
+    return sortRecords([...merged.values()]);
+};
+
+export const addPackageFeature = async label => {
+    const normalizedLabel = normalizeTaxonomyLabel(label);
+    const id = createTaxonomyId(normalizedLabel);
+    if (!id) throw new Error("Enter a feature using letters or numbers.");
+
+    const builtIn = DEFAULT_PACKAGE_FEATURES.find(feature => feature.id === id);
+    if (builtIn) return builtIn;
+
+    const reference = doc(db, process.env.NEXT_PUBLIC_PACKAGE_FEATURES_COLLECTION || "package_features", id);
+    const existing = await getDoc(reference);
+    if (existing.exists()) return { id: existing.id, ...existing.data() };
+
+    const feature = { label: normalizedLabel, order: Date.now() };
+    await setDoc(reference, feature);
+    return { id, ...feature };
 };
 
 export const getPackageTags = async () => sortRecords((await readCollection(packageTagsCollection)).map(tag => ({

@@ -1,6 +1,6 @@
 import db from "@/config/firebase";
 import { PUBLIC_PAGE_DEFINITIONS, getDefaultVersion, getPageDefinition } from "@/config/pageRegistry";
-import { normalizeSlug, validateSlug } from "./pageBuilderUtils";
+import { decodePageVersion, encodePageVersion, normalizeSlug, validateSlug } from "./pageBuilderUtils";
 import {
     collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, where, writeBatch
 } from "firebase/firestore";
@@ -23,8 +23,8 @@ export const getAdminPage = async pageKey => {
     if (!metadata) return null;
 
     const fallback = definition ? getDefaultVersion(definition) : { seoTitle: metadata.title || "", seoDescription: "", blocks: [] };
-    const published = publishedSnapshot.exists() ? publishedSnapshot.data() : null;
-    const draft = draftSnapshot.exists() ? draftSnapshot.data() : (published || fallback);
+    const published = publishedSnapshot.exists() ? decodePageVersion(publishedSnapshot.data()) : null;
+    const draft = draftSnapshot.exists() ? decodePageVersion(draftSnapshot.data()) : (published || fallback);
     return { ...metadata, draft, published, hasPublishedVersion: Boolean(published) };
 };
 
@@ -37,7 +37,7 @@ export const getPublicPage = async pageKey => {
     const metadata = plainMetadata(metadataSnapshot);
     if (metadata?.status === "archived") return null;
     if (publishedSnapshot.exists()) {
-        return { ...(metadata || definition), version: publishedSnapshot.data() };
+        return { ...(metadata || definition), version: decodePageVersion(publishedSnapshot.data()) };
     }
     if (definition) return { ...definition, version: getDefaultVersion(definition), isDefault: true };
     return null;
@@ -104,7 +104,7 @@ export const savePageDraft = async ({ pageKey, title, version }) => {
         createdAt: currentData.createdAt || serverTimestamp(),
         updatedAt: serverTimestamp()
     }, { merge: true });
-    batch.set(versionRef(pageKey, "draft"), { ...version, updatedAt: serverTimestamp() });
+    batch.set(versionRef(pageKey, "draft"), { ...encodePageVersion(version), updatedAt: serverTimestamp() });
     await batch.commit();
 };
 
@@ -121,9 +121,10 @@ export const publishPage = async pageKey => {
 export const revertPageDraft = async pageKey => {
     const definition = getPageDefinition(pageKey);
     const published = await getDoc(versionRef(pageKey, "published"));
-    const version = published.exists() ? published.data() : getDefaultVersion(definition);
+    const storedVersion = published.exists() ? published.data() : getDefaultVersion(definition);
+    const version = decodePageVersion(storedVersion);
     if (!version) throw new Error("There is no published version to restore.");
-    await setDoc(versionRef(pageKey, "draft"), { ...version, updatedAt: serverTimestamp() });
+    await setDoc(versionRef(pageKey, "draft"), { ...encodePageVersion(version), updatedAt: serverTimestamp() });
     return version;
 };
 

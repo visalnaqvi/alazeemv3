@@ -11,22 +11,8 @@ const TourPackagesEdit = ({ singlePackageId, packageid }) => {
         order: "",
         hotels: ["", ""],
         tags: [],
-        features: [
-            "All Meals and Laudary",
-            "Air Ticket and Visa",
-            "Hotel 4/5 Bed Sharing",
-            "Insurance and Ziyarat",
-            "Round Trip Transport",
-            "Flight by Saudi Air"
-        ],
-        isBold: [
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-        ],
+        features: [],
+        isBold: [],
         startDate: "",
         endDate: "",
         sectionId:[],

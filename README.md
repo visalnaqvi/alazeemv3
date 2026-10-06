@@ -44,7 +44,7 @@ Administrators can manage content from:
 - `/admin-panel/pages` for page drafts, previews, publishing, and custom pages.
 - `/admin-panel/navigation` for top-level link labels, visibility, and ordering.
 
-Page metadata is stored in the Firestore `pages` collection (or the collection named by the optional `NEXT_PUBLIC_PAGES_COLLECTION` variable). Draft and published content are stored in each page document's `versions` subcollection. Uploaded images use Firebase Storage under `page-media/{pageKey}`. Image blocks also accept an existing local or HTTPS URL.
+Page metadata is stored in the Firestore `pages` collection (or the collection named by the optional `NEXT_PUBLIC_PAGES_COLLECTION` variable). Draft and published content are stored in each page document's `versions` subcollection. Uploaded images use Firebase Storage under `page-media/{pageKey}`. Downloadable file blocks use `page-files/{pageKey}`. Image blocks also accept an existing local or HTTPS URL.
 
 The 12 registered public routes are thin shells rendered from ordered page blocks. Package and flight-fare blocks query their existing live collections, so matching records appear without republishing the page. The checked-in generated seed is used only as a resilience fallback when Firestore is unavailable.
 
@@ -62,5 +62,7 @@ Package tags replace the legacy package-section/heading assignments. Package car
 Run the dry run immediately before apply. The command fails instead of using Firebase's offline cache when the backend is unavailable.
 
 The migration replaces exactly one `legacy-page` marker and preserves blocks around it. Versions containing unrelated content without that marker are rejected instead of overwritten. A later successful `pages:migrate:apply` can refresh only migrated image URLs after Storage permissions are corrected.
+
+Package features are shared through the `package_features` Firestore collection by default. Set `NEXT_PUBLIC_PACKAGE_FEATURES_COLLECTION` to use a different collection name. The built-in feature choices remain available if the collection has not been populated yet.
 
 The project intentionally retains its existing client-side admin login. Firestore and Storage rules must therefore remain compatible with the current client writes; migrate to Firebase Authentication and restrictive rules before treating the admin area as a security boundary.

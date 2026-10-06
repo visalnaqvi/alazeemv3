@@ -59,13 +59,24 @@ const RenderedBlock = ({ block, systemComponents }) => {
     if (block.type === "slider") return <section className={`${styles.block} ${styles.sliderBlock}`} aria-label="Image slider">
         <CarouselComp images={Array.isArray(block.images) ? block.images : []} fixedFrame />
     </section>;
-    if (block.type === "table") return <div className={`${styles.block} ${styles.contentBlock} ${styles.tableWrap}`}>
-        <table className={styles.table}>
-            {block.caption && <caption>{block.caption}</caption>}
-            <thead><tr>{block.headers.map((cell, index) => <th key={index}>{cell}</th>)}</tr></thead>
-            <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
-        </table>
-    </div>;
+    if (block.type === "table") {
+        const tableHeading = block.heading !== undefined ? block.heading : block.caption;
+        return <section className={`${styles.block} ${styles.contentBlock}`}>
+            {tableHeading && <h2 className="boldHeading center">{tableHeading}</h2>}
+            <div className={`${styles.flightFareTableWrap} ${styles.genericTableWrap}`}>
+                <table className={styles.flightFareTable}>
+                    <thead><tr className={styles.flightFareHeader}>{block.headers.map((cell, index) => <th key={index}>{cell}</th>)}</tr></thead>
+                    <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
+                </table>
+            </div>
+        </section>;
+    }
+    if (block.type === "file") return <section className={`${styles.block} ${styles.contentBlock} ${styles.fileDownloadBlock}`}>
+        <h2 className={styles.fileDownloadHeading}>{block.heading}</h2>
+        <a className={`primary-btn blue ${styles.fileDownloadButton}`} href={block.url} download={block.fileName || true}>
+            {block.buttonText || "Download file"}
+        </a>
+    </section>;
     if (block.type === "cta") return <div className={`${styles.block} ${styles.contentBlock} ${styles.cta}`}><a href={block.href} target={block.newTab ? "_blank" : undefined} rel={block.newTab ? "noopener noreferrer" : undefined} className="primary-btn blue">{block.text}</a></div>;
     if (block.type === "packages") return <div className={styles.block}><PackageBlock block={block} /></div>;
     if (block.type === "flightFares") return <div className={styles.block}><FlightFaresBlock block={block} /></div>;

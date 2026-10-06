@@ -15,6 +15,7 @@ export const tagsCollection = collection(db,`${process.env.NEXT_PUBLIC_TAGS_COLL
 export const avaliableSectionsCollection = collection(db,`${process.env.NEXT_PUBLIC_SECTIONS_COLLECTION}`);
 export const packageCategoriesCollection = collection(db, process.env.NEXT_PUBLIC_PACKAGE_CATEGORIES_COLLECTION || "package_categories");
 export const packageTagsCollection = collection(db, process.env.NEXT_PUBLIC_PACKAGE_TAGS_COLLECTION || "package_tags");
+export const packageFeaturesCollection = collection(db, process.env.NEXT_PUBLIC_PACKAGE_FEATURES_COLLECTION || "package_features");
 
 export const getCollectionName = (packageId)=>{
     switch(packageId){

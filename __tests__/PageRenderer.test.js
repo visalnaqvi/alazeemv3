@@ -64,6 +64,9 @@ describe("PageRenderer", () => {
         expect(screen.getByText("Page copy")).toBeInTheDocument();
         expect(screen.getByText("Two")).toBeInTheDocument();
         expect(screen.getByText("Double")).toBeInTheDocument();
+        expect(screen.getByRole("table")).toHaveClass(styles.flightFareTable);
+        expect(screen.getByText("Room").closest("tr")).toHaveClass(styles.flightFareHeader);
+        expect(screen.getByRole("heading", { name: "Prices" })).toBeInTheDocument();
         expect(screen.getByText("Package listing")).toBeInTheDocument();
     });
 
@@ -80,6 +83,24 @@ describe("PageRenderer", () => {
         expect(screen.getByRole("heading", { name: "Legacy heading" })).toHaveStyle({ textAlign: "left" });
         expect(screen.getByRole("heading", { name: "Centered heading" })).toHaveStyle({ textAlign: "center" });
         expect(screen.getByRole("heading", { name: "Right heading" })).toHaveStyle({ textAlign: "right" });
+    });
+
+    test("renders a downloadable file with its configured heading and button text", () => {
+        render(<PageRenderer
+            page={{ title: "Downloads" }}
+            version={{ blocks: [{
+                id: "brochure",
+                type: "file",
+                heading: "2026 Brochure",
+                buttonText: "Download brochure",
+                fileName: "brochure.pdf",
+                url: "https://example.com/brochure.pdf"
+            }] }}
+        />);
+
+        expect(screen.getByRole("heading", { name: "2026 Brochure" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "Download brochure" })).toHaveAttribute("href", "https://example.com/brochure.pdf");
+        expect(screen.getByRole("link", { name: "Download brochure" })).toHaveAttribute("download", "brochure.pdf");
     });
 
     test("renders reversible cards with an optional button", () => {
